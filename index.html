@@ -314,144 +314,193 @@
             <div class="container relative-z">
                 <div class="faq-container reveal fade-up delay-1">
 
-                    <div class="section-header text-center mb-5" style="border-bottom: 2px solid rgba(255, 255, 255, 0.4); padding-bottom: 2rem;">
-                        <h2 class="faq-custom-title mb-3">Preguntas Frecuentes</h2>
-                        <p class="faq-custom-subtitle" style="max-width: 700px; margin: 0 auto;">Todo lo que
-                            necesitas saber antes de dar el primer paso. Transparencia total y claridad absoluta.</p>
-                    </div>
+                    <!-- Contenedor Maestro: HUD Radial (Desktop) y Acordeón (Móvil) -->
+                    <div class="hud-master-container">
 
-                    <!-- Accordion Item 1 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Quién realiza las pruebas de ADN?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>El laboratorio Genes SAS, es quien realiza, practica y procesa las pruebas de paternidad
-                                o exámenes de ADN, brindando a todos nuestros usuarios un servicio de alta calidad, con
-                                más de 24 años de experiencia.</p>
+                        <!-- === MOBILE FALLBACK (Aparece sólo en celulares) === -->
+                        <div class="hud-mobile-view d-lg-none">
+                            <div class="section-header text-center mb-5" style="border-bottom: 2px solid rgba(255, 255, 255, 0.4); padding-bottom: 2rem;">
+                                <h2 class="faq-custom-title mb-3">Preguntas Frecuentes</h2>
+                                <p class="faq-custom-subtitle" style="max-width: 700px; margin: 0 auto;">Todo lo que necesitas saber antes de dar el primer paso. Transparencia total y claridad absoluta.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Quién realiza las pruebas de ADN?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>El laboratorio Genes SAS, es quien realiza, practica y procesa las pruebas de paternidad o exámenes de ADN, brindando a todos nuestros usuarios un servicio de alta calidad, con más de 24 años de experiencia.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Qué tan confiable es el resultado?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Nuestros análisis ofrecen una confiabilidad superior al 99.99% cuando el resultado confirma la paternidad, y un 100% de certeza cuando se descarta.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Cuánto cuesta la prueba?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>El valor puede variar según el tipo de prueba y la ciudad donde desees realizarla. Escríbenos por WhatsApp y uno de nuestros asesores te dará el precio exacto.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿En cuánto tiempo recibiré los resultados?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>El tiempo de entrega depende del tipo de prueba y la ciudad donde se realice:</p>
+                                    <ul style="padding-left: 1.5rem; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.6;">
+                                        <li style="margin-bottom: 0.5rem;">Pruebas de paternidad en Medellín: <strong>2 días hábiles</strong>.</li>
+                                        <li style="margin-bottom: 0.5rem;">Servicio de pronta entrega (<strong>1 día hábil</strong>) en Medellín.</li>
+                                        <li style="margin-bottom: 0.5rem;">Otras ciudades: <strong>5 a 6 días hábiles</strong>.</li>
+                                        <li style="margin-bottom: 0.5rem;">Casos complejos/fallecidos: 2 a 13 días hábiles.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿La prueba tiene validez legal en Colombia?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Sí. El laboratorio Genes S.A.S. cumple con todos los requisitos legales y técnicos exigidos en Colombia para tener validez jurídica.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Cómo se toma la muestra? ¿Es doloroso?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>No, es completamente indoloro. La muestra se obtiene mediante un hisopado bucal, tomando suavemente células del interior de las mejillas.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Es necesario que la madre participe en la prueba?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Depende. Si el padre no ha reconocido legalmente al menor, sí. Si ya está reconocido, no es obligatoria su participación. Comunícate con nuestros asesores.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Garantizan la confidencialidad?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Sí. Toda la información es manejada bajo estrictos protocolos de privacidad. Solo las personas autorizadas tendrán acceso a los resultados.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span class="faq-text">¿Tienen cobertura en mi ciudad?</span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Contamos con atención en Medellín, Bogotá, Cali, Barranquilla y más de 30 ciudades en Colombia.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Accordion Item 2 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Qué tan confiable es el resultado?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Nuestros análisis ofrecen una confiabilidad superior al 99.99% cuando el resultado
-                                confirma la paternidad, y un 100% de certeza cuando se descarta.</p>
-                        </div>
-                    </div>
+                        <!-- === DESKTOP RADIAL HUD (Interactiva, sólo PCs) === -->
+                        <div class="hud-desktop-view d-none d-lg-block">
+                            
+                            <!-- El visor central que muestra las respuestas activas -->
+                            <div class="hud-core-visor">
+                                <div class="visor-content default-content active" id="hud-ans-0">
+                                    <h3>Preguntas Frecuentes</h3>
+                                    <p>Todo lo que necesitas saber antes de dar el primer paso. Toca un nodo para extraer la información.</p>
+                                    <i class="fa-solid fa-fingerprint hud-pulse-icon"></i>
+                                </div>
+                                <div class="visor-content" id="hud-ans-1">
+                                    <h4>Laboratorios Certificados</h4>
+                                    <p>El laboratorio Genes SAS realiza y procesa las pruebas, brindando un servicio de altísima calidad con más de 24 años de experiencia.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-2">
+                                    <h4>Confiabilidad Clínica</h4>
+                                    <p>Nuestros análisis ofrecen una precisión superior al 99.99% cuando se confirma, y un exacto 100% de certeza cuando se descarta la paternidad.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-3">
+                                    <h4>Valores y Costos</h4>
+                                    <p>El valor varía según el tipo de prueba y tu ciudad. Pulsa nuestro WhatsApp y un asesor te brindará un presupuesto exacto en minutos.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-4">
+                                    <h4>Tiempos de Entrega</h4>
+                                    <p>Pruebas de paternidad estándar en Medellín: <strong>2 días hábiles</strong>.<br>Otras ciudades: 5 a 6 días. Casos especiales: 2-13 días.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-5">
+                                    <h4>Validez Legal</h4>
+                                    <p>Sí, absolutamente. Cumplimos con todos los avales y requisitos exigidos en Colombia para validez total frente a procesos jurídicos.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-6">
+                                    <h4>Toma de Muestra</h4>
+                                    <p>El proceso es un hisopado bucal. 100% indoloro, muy rápido y completamente no-invasivo para bebés o adultos.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-7">
+                                    <h4>Rol de la Presunta Madre</h4>
+                                    <p>Si el padre nunca reconoció al hijo legalmente, la participación de la madre suele requerirse. Si ya está reconocido legalmente, no es obligatoria.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-8">
+                                    <h4>Confidencialidad</h4>
+                                    <p>Manejamos encriptación de datos y estrictos protocolos privados. Solo el paciente autorizado puede retirar la información clínica.</p>
+                                </div>
+                                <div class="visor-content" id="hud-ans-9">
+                                    <h4>Cobertura Nacional</h4>
+                                    <p>Operamos presencialmente en Medellín, Cali, Bogotá, Barranquilla y a través de +30 puntos aliados en todo el territorio colombiano.</p>
+                                </div>
+                            </div>
 
-                    <!-- Accordion Item 3 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Cuánto cuesta la prueba?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>El valor puede variar según el tipo de prueba y la ciudad donde desees realizarla.
-                                Escríbenos por WhatsApp y uno de nuestros asesores te dará el precio exacto.</p>
-                        </div>
-                    </div>
+                            <!-- Los Nodos Orbitales de la Rueda -->
+                            <div class="hud-orbit-ring">
+                                <button class="hud-node" data-target="hud-ans-1" style="--angle: -80deg;">
+                                    <span>¿Quién realiza las pruebas?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-2" style="--angle: -40deg;">
+                                    <span>¿Son confiables?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-3" style="--angle: 0deg;">
+                                    <span>¿Cuánto cuesta?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-4" style="--angle: 40deg;">
+                                    <span>¿Tiempos de resultado?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-5" style="--angle: 80deg;">
+                                    <span>¿Validez legal en Colombia?</span>
+                                </button>
 
-                    <!-- Accordion Item 4 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿En cuánto tiempo recibiré los resultados?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>El tiempo de entrega depende del tipo de prueba y la ciudad donde se realice:</p>
-                            <ul
-                                style="padding-left: 1.5rem; margin-bottom: 2rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.6;">
-                                <li style="margin-bottom: 0.5rem;">Para pruebas de paternidad (dúo o trío) donde
-                                    participa el presunto padre, en Medellín los resultados están listos en <strong>2
-                                        días hábiles</strong>.</li>
-                                <li style="margin-bottom: 0.5rem;">Contamos con servicio de pronta entrega (<strong>1
-                                        día hábil</strong>) disponible únicamente en Medellín para estos casos.</li>
-                                <li style="margin-bottom: 0.5rem;">En otras ciudades, el tiempo estimado es de <strong>5
-                                        a 6 días hábiles</strong>.</li>
-                                <li style="margin-bottom: 0.5rem;">En casos especiales, como pruebas con padre fallecido
-                                    u otros análisis complejos, el proceso puede tardar entre 2 y 13 días hábiles, según
-                                    el caso.</li>
-                            </ul>
-                        </div>
-                    </div>
+                                <button class="hud-node" data-target="hud-ans-6" style="--angle: 120deg;">
+                                    <span>¿Es muy doloroso?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-7" style="--angle: 160deg;">
+                                    <span>¿Necesito a la madre?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-8" style="--angle: 200deg;">
+                                    <span>¿Es confidencial?</span>
+                                </button>
+                                <button class="hud-node" data-target="hud-ans-9" style="--angle: 240deg;">
+                                    <span>¿Cobertura en mi ciudad?</span>
+                                </button>
+                            </div>
 
-                    <!-- Accordion Item 5 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿La prueba tiene validez legal en Colombia?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sí. El laboratorio Genes S.A.S. cumple con todos los requisitos legales y técnicos
-                                exigidos en Colombia para tener validez jurídica.</p>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 6 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Cómo se toma la muestra? ¿Es doloroso?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No, es completamente indoloro. La muestra se obtiene mediante un hisopado bucal, tomando
-                                suavemente células del interior de las mejillas.</p>
-                            <p>Es un proceso rápido, sencillo y no invasivo.</p>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 7 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Es necesario que la madre participe en la prueba?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Depende del caso.</p>
-                            <p>En algunas situaciones, como cuando el presunto padre no ha reconocido legalmente al
-                                menor, sí es necesario que la madre participe en la prueba.</p>
-                            <p>En otros casos, cuando el presunto padre ya ha reconocido al hijo/a, la participación de
-                                la madre no es obligatoria.</p>
-                            <p>Escríbenos por WhatsApp y te orientamos según tu caso específico.</p>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 8 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Garantizan la confidencialidad?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sí. Toda la información es manejada bajo estrictos protocolos de privacidad. Solo las
-                                personas autorizadas tendrán acceso a los resultados.</p>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 9 -->
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span class="faq-text">¿Tienen cobertura en mi ciudad?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i
-                                    class="fa-solid fa-dna icon-opened"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Contamos con atención en Medellín, Bogotá, Cali, Barranquilla y más de 30 ciudades en
-                                Colombia.</p>
                         </div>
                     </div>
 

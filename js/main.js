@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBenefitsDNA();
     initCTADNA();
     initFAQ();
+    initRadialHUD();
     initFaqDNA();
     initProcessParticles();
 });
@@ -214,25 +215,43 @@ function initTechHUD() {
     setTimeout(() => { resize(); draw(); }, 150);
 }
 
-// FAQ Accordion Interaction
+// FAQ Accordion Interaction (Mobile Fallback)
 function initFAQ() {
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const isActive = question.classList.contains('active');
+            const isActive = question.parentElement.classList.contains('active');
             
             // Close all items quietly
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.classList.remove('active');
-                if(q.nextElementSibling) q.nextElementSibling.classList.remove('active');
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
             });
 
             // If it wasn't active initially, toggle it to active
             if (!isActive) {
-                question.classList.add('active');
-                answer.classList.add('active');
+                question.parentElement.classList.add('active');
             }
+        });
+    });
+}
+
+// Radial HUD Desktop Interaction
+function initRadialHUD() {
+    const nodes = document.querySelectorAll('.hud-node');
+    const visors = document.querySelectorAll('.visor-content');
+
+    nodes.forEach(node => {
+        node.addEventListener('click', () => {
+            const targetId = node.getAttribute('data-target');
+            
+            // Remove active from all nodes and visors
+            nodes.forEach(n => n.classList.remove('active'));
+            visors.forEach(v => v.classList.remove('active'));
+
+            // Add active to clicked node and correct visor
+            node.classList.add('active');
+            const targetVisor = document.getElementById(targetId);
+            if(targetVisor) targetVisor.classList.add('active');
         });
     });
 }
