@@ -2508,11 +2508,12 @@ section {
     padding-left: 1.5rem;
 }
 .faq-answer li::before {
-    content: '•';
+    content: '\f101'; /* FontAwesome chevron right */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
     position: absolute;
     left: 0;
     color: #38bdf8 !important;
-    font-weight: bold;
 }
 
 .faq-item.active .faq-answer {
@@ -2575,11 +2576,9 @@ section {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(4, 18, 48, 0.5); /* Deep space blue glass */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: rgba(2, 10, 28, 0.95); /* Deep space blue solid filter for perf */
     border: 1px solid rgba(56, 189, 248, 0.4);
-    box-shadow: 0 0 50px rgba(56, 189, 248, 0.15), inset 0 0 30px rgba(56, 189, 248, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* simplified shadow */
     /* Sci-Fi Corners */
     clip-path: polygon(
         0% 20px, 
@@ -2613,18 +2612,16 @@ section {
     background: rgba(255, 255, 255, 0.02) !important;
     border: 1px solid rgba(56, 189, 248, 0.2) !important;
     border-radius: 8px !important; /* Squarer tech aesthetic */
-    transition: all 0.4s ease;
+    transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .faq-item:hover {
-    border-color: rgba(56, 189, 248, 0.6) !important;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.5) !important;
 }
 
 .faq-item.active {
     background: rgba(9, 60, 141, 0.2) !important;
     border-color: #38bdf8 !important;
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2), inset 0 0 15px rgba(56, 189, 248, 0.1) !important;
 }
 
 .faq-question {
@@ -2647,77 +2644,41 @@ section {
     transform: scale(1.1);
 }
 
-/* MOCKUP DASHBOARD ELEMENTS */
-.scifi-dashboard-mockup {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px dashed rgba(56, 189, 248, 0.3);
-    border-radius: 8px;
-}
-
-.mockup-panel {
-    border-right: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.mockup-panel:last-child { border-right: none; }
-
-.dna-match-visual { display: flex; align-items: center; justify-content: center; }
-
-.stat-mini {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 10px;
-}
-
-.badged-text {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #4ade80;
-    text-shadow: 0 0 10px #4ade80;
-    border: 1px solid #4ade80;
-    padding: 4px 10px;
-    border-radius: 20px;
-    background: rgba(74, 222, 128, 0.1);
-}
-
-.stat-label { font-size: 0.8rem; letter-spacing: 1px; }
-
-.stat-bar {
+/* ELEGANT TECH WATERMARKS (For all answers) */
+.tech-watermark-container {
+    position: relative;
     width: 100%;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    overflow: hidden;
+}
+.faq-answer p, .faq-answer ul {
+    position: relative;
+    z-index: 2; /* Text above watermark */
+    padding-right: 40px; /* Space for watermark */
+}
+.tech-watermark {
+    position: absolute;
+    right: -10px;
+    bottom: 50%;
+    transform: translateY(50%);
+    opacity: 0.03; /* Very subtle */
+    font-size: 8rem;
+    color: #38bdf8;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.faq-item.active .tech-watermark {
+    opacity: 0.15;
+    animation: slowPulse 4s infinite alternate;
 }
 
-.stat-fill {
-    height: 100%;
-    width: 0%;
-    background: #38bdf8;
-    box-shadow: 0 0 10px #38bdf8;
-    border-radius: 3px;
-}
-
-.faq-item.active .stat-fill {
-    animation: fillBar 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-}
-
-@keyframes fillBar {
-    from { width: 0%; }
-    to { width: 100%; }
+@keyframes slowPulse {
+    from { opacity: 0.03; transform: translateY(50%) scale(0.95); }
+    to { opacity: 0.08; transform: translateY(50%) scale(1.05); }
 }
 
 @media (max-width: 768px) {
-    .scifi-dashboard-mockup { grid-template-columns: 1fr; }
-    .mockup-panel { border-right: none; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 1.5rem; }
-    .mockup-panel:last-child { border-bottom: none; }
     .scifi-tablet-content { padding: 2rem 1.5rem; }
+    .tech-watermark {
+        width: 80px;
+    }
 }
