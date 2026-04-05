@@ -2641,7 +2641,12 @@ section {
 }
 
 .faq-item.active .faq-icon .icon-opened {
-    color: var(--primary-blue-dark) !important;
+    display: inline-block !important;
+    color: #062863 !important; /* Force hex color instead of var just in case */
+    font-size: 1.2rem;
+    z-index: 10;
+    opacity: 1 !important;
+    transform: scale(1) rotate(0deg) !important;
 }
 
 /* ELEGANT TECH WATERMARKS (For all answers) */
