@@ -2435,25 +2435,27 @@ section {
    FAQ REDESIGN (Premium Medical Background)
    ========================================= */
 .faq-section {
-    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%) !important;
+    background: var(--primary-blue-light) !important;
     position: relative;
     padding: 6rem 0;
     overflow: hidden;
-    color: white;
+    color: var(--text-main);
 }
 
-/* Abstract Grid Pattern Overlay */
+/* Minimalist Eye-Catching DNA Background */
 .faq-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px; 
+    top: -10%;
+    right: -10%;
+    width: 800px;
+    height: 120%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200'%3E%3Cpath fill='none' stroke='%23093c8d' stroke-width='2' stroke-linecap='round' d='M20,20 C40,40 60,60 80,60 C100,60 100,80 80,100 C60,120 40,140 20,140 C0,140 0,160 20,180 M80,20 C60,40 40,60 20,60 C0,60 0,80 20,100 C40,120 60,140 80,140 C100,140 100,160 80,180'/%3E%3Cline x1='35' y1='30' x2='65' y2='30' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='50' y1='50' x2='50' y2='50' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='35' y1='70' x2='65' y2='70' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='20' y1='90' x2='80' y2='90' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='35' y1='110' x2='65' y2='110' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='50' y1='130' x2='50' y2='130' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='35' y1='150' x2='65' y2='150' stroke='%2338bdf8' stroke-width='1.5'/%3E%3Cline x1='20' y1='170' x2='80' y2='170' stroke='%2338bdf8' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+    opacity: 0.05;
+    transform: rotate(15deg);
     pointer-events: none;
     z-index: 0;
 }
@@ -2462,60 +2464,94 @@ section {
 .faq-section::after {
     content: '';
     position: absolute;
-    bottom: -20%;
-    right: -10%;
-    width: 60%;
-    height: 70%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 60%);
+    bottom: -10%;
+    left: -10%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
 
 .faq-container {
-    background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0;
+    padding: 0 !important;
+    box-shadow: none !important;
     position: relative;
     z-index: 1;
+    max-width: 850px;
+    margin: 0 auto;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .faq-custom-title {
-    color: white !important;
+    color: var(--primary-blue-dark) !important;
+    font-weight: 800;
 }
 
 .faq-custom-subtitle {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-main) !important;
 }
 
 .faq-item {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
+    background: white !important;
+    border: 1px solid rgba(9, 60, 141, 0.08) !important;
+    border-left: 4px solid var(--primary-blue) !important;
+    border-radius: 12px !important;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
 }
 
 .faq-item:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 15px 30px rgba(9, 60, 141, 0.12) !important;
+    transform: translateY(-3px);
+    border-left-color: var(--whatsapp-green) !important;
 }
 
 .faq-question {
     background: transparent !important;
-    color: white !important;
+    color: var(--primary-blue-dark) !important;
+    padding: 1.5rem 2rem !important;
+    font-size: 1.15rem !important;
 }
 
 .faq-answer {
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: var(--text-main) !important;
+    background: #fafbfc !important;
+    border-top: 1px solid rgba(0,0,0,0.03);
+}
+
+.faq-item.active .faq-answer {
+    padding: 1.5rem 2rem !important;
 }
 
 .faq-icon {
-    color: rgba(56, 189, 248, 0.8) !important;
+    color: var(--primary-blue) !important;
+    background: rgba(9, 60, 141, 0.05);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
+
+.faq-item:hover .faq-icon {
+    background: var(--whatsapp-green);
+    color: white !important;
+}
+
+.faq-item.active .faq-icon {
+    background: var(--primary-blue);
+    color: white !important;
+}
+
 .faq-item.active .faq-icon .icon-opened {
     color: white !important;
 }
