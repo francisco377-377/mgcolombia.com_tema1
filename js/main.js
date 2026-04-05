@@ -681,9 +681,227 @@ function initFaqDNA() {
 }
 
 /* =========================================
-   COBERTURA NACIONAL - Tooltip Handler
-   Código aislado, no toca nada del resto.
+   COBERTURA NACIONAL v2 - Isometric 3D Buildings
+   Renders SVG polygon buildings with 3 faces (top/left/right)
+   Geographic coordinates: x=(79-lon)*27.87+30, y=(12.5-lat)*29.34+15
    ========================================= */
+(function() {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const container = document.getElementById('city-buildings');
+    const tooltip = document.getElementById('mapTooltip2');
+    const wrapper = document.querySelector('.coverage-map-wrapper');
+    if (!container) return;
+
+    // City data: [name, svgX, svgY, type(1-5), isHQ]
+    // type: 1=standard, 2=wide, 3=tall, 4=l-shape, 5=double
+    const cities = [
+        ['Medellín ★ Sede Principal', 126, 199, 1, true],
+        ['Bogotá',                    167, 244, 2, false],
+        ['Barranquilla',              147,  60, 3, false],
+        ['Cali',                       99, 281, 1, false],
+        ['Cartagena',                 127,  77, 4, false],
+        ['Cúcuta',                    211, 150, 2, false],
+        ['Bucaramanga',               194, 173, 5, false],
+        ['Manizales',                 127, 233, 3, false],
+        ['Armenia',                   123, 249, 4, false],
+        ['Pereira',                   116, 241, 2, false],
+        ['Ibagué',                    135, 252, 5, false],
+        ['Neiva',                     134, 296, 1, false],
+        ['Pasto',                      78, 346, 3, false],
+        ['Popayán',                    97, 310, 2, false],
+        ['Montería',                  117, 125, 4, false],
+        ['Sincelejo',                 130, 109, 5, false],
+        ['Valledupar',                190,  74, 1, false],
+        ['Villavicencio',             179, 260, 3, false],
+        ['Yopal',                     214, 225, 4, false],
+        ['Tunja',                     187, 219, 2, false],
+        ['Quibdó',                     96, 215, 5, false],
+        ['Tumaco',                     35, 328, 1, false],
+        ['Ipiales',                    68, 358, 3, false],
+        ['Túquerres',                  68, 350, 4, false],
+        ['Arauca',                    260, 174, 2, false],
+        ['Mocoa',                      96, 348, 5, false],
+        ['Pitalito',                  107, 328, 1, false],
+        ['Palmira',                   105, 278, 3, false],
+        ['Apartadó',                   96, 151, 2, false],
+        ['Caucasia',                  136, 147, 4, false],
+        ['Cajicá',                    169, 237, 5, false],
+        ['Tocancipá',                 172, 236, 1, false],
+        ['Granada',                   177, 278, 2, false],
+        ['Magangué',                  148, 111, 3, false],
+        ['Montelíbano',               130, 148, 4, false],
+        ['Monterrey',                 200, 238, 5, false],
+        ['Acacías',                   176, 265, 1, false],
+        ['San Andrés',                 48, 168, 2, false],
+    ];
+
+    // Building type definitions — isometric SVG polygons at origin (0,0)
+    // Each type: { top, left, right } as polygon point strings
+    // Top face: lightest, Left face: medium, Right face: darkest
+    function getBuildingPaths(type) {
+        const T = { // top colors
+            fill: '#eef5fc', stroke: '#7aafd4'
+        };
+        const L = { fill: '#c8dff3', stroke: '#7aafd4' };
+        const R = { fill: '#a5c8e8', stroke: '#7aafd4' };
+
+        const types = {
+            1: { // Standard lab box
+                top:   '0,-14  9,-9.5  0,-5  -9,-9.5',
+                left:  '-9,-9.5  0,-5  0,3  -9,-1.5',
+                right: '9,-9.5  0,-5  0,3  9,-1.5',
+                winL:  '-6,-6  -2,-8  -2,-4  -6,-2',
+                winR:  '3,-8  7,-10  7,-6  3,-4',
+                antH: 14
+            },
+            2: { // Wide flat
+                top:   '0,-10  11,-6  0,-2  -11,-6',
+                left:  '-11,-6  0,-2  0,2  -11,-2',
+                right: '11,-6  0,-2  0,2  11,-2',
+                winL:  '-7,-4  -3,-6  -3,-3  -7,-1',
+                winR:  '3,-6  8,-8  8,-5  3,-3',
+                antH: 10
+            },
+            3: { // Tall narrow
+                top:   '0,-18  7,-14  0,-10  -7,-14',
+                left:  '-7,-14  0,-10  0,3  -7,-1',
+                right: '7,-14  0,-10  0,3  7,-1',
+                winL:  '-5,-11  -1,-13  -1,-8  -5,-6',
+                winR:  '1,-13  5,-15  5,-10  1,-8',
+                antH: 18
+            },
+            4: { // L-shape: main box + left extension
+                top:   '0,-13  8,-9  0,-5  -8,-9',
+                left:  '-8,-9  0,-5  0,3  -8,-1',
+                right: '8,-9  0,-5  0,3  8,-1',
+                ext_top:   '-8,-9  -3,-12  -8,-15  -13,-12',
+                ext_left:  '-13,-12  -8,-9  -8,-1  -13,-4',
+                winL:  '-5,-7  -2,-9  -2,-5  -5,-3',
+                winR:  '2,-9  6,-11  6,-7  2,-5',
+                antH: 13
+            },
+            5: { // Double: two connected boxes
+                top:   '0,-12  8,-8  0,-4  -8,-8',
+                left:  '-8,-8  0,-4  0,2  -8,-2',
+                right: '8,-8  0,-4  0,2  8,-2',
+                sec_top:   '5,-16  11,-13  5,-10  -1,-13',
+                sec_left:  '-1,-13  5,-10  5,2  -1,-1',
+                sec_right: '11,-13  5,-10  5,2  11,-1',
+                winR:  '2,-8  6,-10  6,-6  2,-4',
+                antH: 12
+            }
+        };
+        return types[type] || types[1];
+    }
+
+    function makePoly(points, fill, stroke, opacity) {
+        const p = document.createElementNS(svgNS, 'polygon');
+        p.setAttribute('points', points);
+        p.setAttribute('fill', fill);
+        p.setAttribute('stroke', stroke || '#7aafd4');
+        p.setAttribute('stroke-width', '0.6');
+        if (opacity) p.setAttribute('opacity', opacity);
+        return p;
+    }
+
+    function makeAntenna(antH, isHQ) {
+        const g = document.createElementNS(svgNS, 'g');
+        const line = document.createElementNS(svgNS, 'line');
+        line.setAttribute('x1', '0'); line.setAttribute('y1', -antH);
+        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 8);
+        line.setAttribute('stroke', isHQ ? '#f5c842' : '#38bdf8');
+        line.setAttribute('stroke-width', isHQ ? '1.2' : '0.9');
+        g.appendChild(line);
+        // DNA double helix suggestion (two arcs)
+        const dna = document.createElementNS(svgNS, 'path');
+        const y0 = -antH - 8, y1 = -antH - 5, y2 = -antH - 2;
+        dna.setAttribute('d', `M-2,${y0} Q0,${y0-3} 2,${y0} Q0,${y0+3} -2,${y0} M-1.5,${y1} Q0,${y1-2.5} 1.5,${y1}`);
+        dna.setAttribute('fill', 'none');
+        dna.setAttribute('stroke', isHQ ? '#f5c842' : '#38bdf8');
+        dna.setAttribute('stroke-width', isHQ ? '1' : '0.7');
+        g.appendChild(dna);
+        return g;
+    }
+
+    function buildIsometric(type, isHQ) {
+        const b = getBuildingPaths(type);
+        const g = document.createElementNS(svgNS, 'g');
+
+        // HQ golden halo
+        if (isHQ) {
+            const h1 = document.createElementNS(svgNS, 'ellipse');
+            h1.setAttribute('cx','0'); h1.setAttribute('cy','0');
+            h1.setAttribute('rx','16'); h1.setAttribute('ry','8');
+            h1.setAttribute('fill','#f5c842'); h1.setAttribute('opacity','0.2');
+            h1.setAttribute('class','hq-halo-outer');
+            g.appendChild(h1);
+        }
+
+        // Extension for L-shape (type 4)
+        if (type === 4 && b.ext_top) {
+            g.appendChild(makePoly(b.ext_top, '#ddeefa', '#7aafd4'));
+            g.appendChild(makePoly(b.ext_left, '#b8d4ed', '#7aafd4'));
+        }
+        // Second section for double (type 5)
+        if (type === 5 && b.sec_top) {
+            g.appendChild(makePoly(b.sec_top, '#deeefa', '#7aafd4'));
+            g.appendChild(makePoly(b.sec_left, '#b5d2ec', '#7aafd4'));
+            g.appendChild(makePoly(b.sec_right, '#9bc2e0', '#7aafd4'));
+        }
+
+        // Main building faces
+        g.appendChild(makePoly(b.top,   isHQ ? '#fff9e8' : '#eef5fc', '#7aafd4'));
+        g.appendChild(makePoly(b.left,  isHQ ? '#f5e5a0' : '#c8dff3', '#7aafd4'));
+        g.appendChild(makePoly(b.right, isHQ ? '#e8cc72' : '#a5c8e8', '#7aafd4'));
+
+        // Windows
+        if (b.winL) g.appendChild(makePoly(b.winL, '#60a5fa', null, '0.75'));
+        if (b.winR) g.appendChild(makePoly(b.winR, '#3b82f6', null, '0.65'));
+
+        // DNA antenna
+        g.appendChild(makeAntenna(b.antH, isHQ));
+
+        // City label for HQ
+        if (isHQ) {
+            const txt = document.createElementNS(svgNS, 'text');
+            txt.setAttribute('y', '14');
+            txt.setAttribute('text-anchor', 'middle');
+            txt.setAttribute('class', 'city-label hq-label');
+            txt.textContent = 'Medellín ★';
+            g.appendChild(txt);
+        }
+        return g;
+    }
+
+    cities.forEach(([name, cx, cy, type, isHQ]) => {
+        const group = document.createElementNS(svgNS, 'g');
+        group.setAttribute('class', 'city-pin' + (isHQ ? ' hq-pin' : ''));
+        group.setAttribute('transform', `translate(${cx},${cy})`);
+        group.setAttribute('data-city', name);
+
+        const building = buildIsometric(type, isHQ);
+        group.appendChild(building);
+
+        // Tooltip interactions
+        if (tooltip && wrapper) {
+            group.addEventListener('mouseenter', () => {
+                tooltip.textContent = name;
+                tooltip.classList.add('visible');
+            });
+            group.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                tooltip.style.left = (e.clientX - rect.left + 14) + 'px';
+                tooltip.style.top  = (e.clientY - rect.top  - 35) + 'px';
+            });
+            group.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('visible');
+            });
+        }
+
+        container.appendChild(group);
+    });
+})();
+
 (function() {
     const tooltip = document.getElementById('mapTooltip');
     const pins = document.querySelectorAll('.city-pin');
