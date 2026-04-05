@@ -315,19 +315,23 @@
                 <div class="faq-container reveal fade-up delay-1">
 
                     <!-- Contenedor Maestro: HUD Radial (Desktop) y Acordeón (Móvil) -->
-                    <div class="hud-master-container">
-
-                        <!-- === MOBILE FALLBACK (Aparece sólo en celulares) === -->
-                        <div class="hud-mobile-view d-lg-none">
-                            <div class="section-header text-center mb-5" style="border-bottom: 2px solid rgba(255, 255, 255, 0.4); padding-bottom: 2rem;">
+                    <!-- Contenedor Maestro: Sci-Fi Glass Tablet Accordion -->
+                    <div class="scifi-tablet-wrapper">
+                        <!-- Holographic clamps / edge details -->
+                        <div class="tablet-clamp left-clamp"></div>
+                        <div class="tablet-clamp right-clamp"></div>
+                        <div class="tablet-clamp top-clamp"></div>
+                        
+                        <div class="scifi-tablet-content">
+                            <div class="section-header text-center mb-5" style="border-bottom: 1px solid rgba(56, 189, 248, 0.4); padding-bottom: 2rem;">
                                 <h2 class="faq-custom-title mb-3">Preguntas Frecuentes</h2>
-                                <p class="faq-custom-subtitle" style="max-width: 700px; margin: 0 auto;">Todo lo que necesitas saber antes de dar el primer paso. Transparencia total y claridad absoluta.</p>
+                                <p class="faq-custom-subtitle" style="max-width: 700px; margin: 0 auto; color: rgba(255, 255, 255, 0.8);">Todo lo que necesitas saber antes de dar el primer paso. Transparencia total y claridad absoluta.</p>
                             </div>
 
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Quién realiza las pruebas de ADN?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>El laboratorio Genes SAS, es quien realiza, practica y procesa las pruebas de paternidad o exámenes de ADN, brindando a todos nuestros usuarios un servicio de alta calidad, con más de 24 años de experiencia.</p>
@@ -337,17 +341,45 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Qué tan confiable es el resultado?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>Nuestros análisis ofrecen una confiabilidad superior al 99.99% cuando el resultado confirma la paternidad, y un 100% de certeza cuando se descarta.</p>
+                                    
+                                    <!-- MÓDULOS DE DIAGNÓSTICO FALSOS (Renders Sci-Fi) -->
+                                    <div class="scifi-dashboard-mockup mt-4">
+                                        <div class="mockup-panel mockup-graph-panel text-center">
+                                            <i class="fa-solid fa-chart-line fa-3x text-primary-cyan mb-2" style="opacity: 0.8; filter: drop-shadow(0 0 10px #38bdf8)"></i>
+                                            <div class="stat-mini">PROBABILIDAD OK</div>
+                                        </div>
+                                        <div class="mockup-panel mockup-dna-panel text-center">
+                                            <div class="dna-match-visual">
+                                                <i class="fa-solid fa-dna fa-2x text-primary-blue mx-2"></i>
+                                                <span class="badged-text mb-0 mx-2"><i class="fa-solid fa-arrow-right-arrow-left"></i> MATCH</span>
+                                                <i class="fa-solid fa-dna fa-2x text-primary-cyan mx-2" style="animation: pulseGlow 1.5s infinite"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mockup-panel mockup-stats-panel">
+                                            <div class="mockup-stat mb-2">
+                                                <div class="stat-label d-flex justify-content-between mb-1"><span class="text-white"><i class="fa-solid fa-shield-halved text-primary-cyan me-1"></i> Confiabilidad</span> <span class="text-white">99.99%</span></div>
+                                                <div class="stat-bar"><div class="stat-fill pulse-bar"></div></div>
+                                            </div>
+                                            <div class="mockup-stat mb-3">
+                                                <div class="stat-label d-flex justify-content-between mb-1"><span class="text-white"><i class="fa-solid fa-bullseye text-primary-cyan me-1"></i> Precisión</span> <span class="text-white">99.9%</span></div>
+                                                <div class="stat-bar"><div class="stat-fill pulse-bar" style="animation-delay: 0.5s"></div></div>
+                                            </div>
+                                            <div class="mockup-stat mb-1">
+                                                <span class="badge" style="background: rgba(40, 167, 69, 0.2); color: #4ade80; border: 1px solid #28a745; font-size: 0.8rem; font-weight: 500;"><i class="fa-solid fa-circle-check me-1"></i> Control de Calidad</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Cuánto cuesta la prueba?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>El valor puede variar según el tipo de prueba y la ciudad donde desees realizarla. Escríbenos por WhatsApp y uno de nuestros asesores te dará el precio exacto.</p>
@@ -357,7 +389,7 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿En cuánto tiempo recibiré los resultados?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>El tiempo de entrega depende del tipo de prueba y la ciudad donde se realice:</p>
@@ -373,7 +405,7 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿La prueba tiene validez legal en Colombia?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>Sí. El laboratorio Genes S.A.S. cumple con todos los requisitos legales y técnicos exigidos en Colombia para tener validez jurídica.</p>
@@ -383,7 +415,7 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Cómo se toma la muestra? ¿Es doloroso?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>No, es completamente indoloro. La muestra se obtiene mediante un hisopado bucal, tomando suavemente células del interior de las mejillas.</p>
@@ -393,7 +425,7 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Es necesario que la madre participe en la prueba?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>Depende. Si el padre no ha reconocido legalmente al menor, sí. Si ya está reconocido, no es obligatoria su participación. Comunícate con nuestros asesores.</p>
@@ -403,7 +435,7 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Garantizan la confidencialidad?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>Sí. Toda la información es manejada bajo estrictos protocolos de privacidad. Solo las personas autorizadas tendrán acceso a los resultados.</p>
@@ -413,94 +445,12 @@
                             <div class="faq-item">
                                 <button class="faq-question">
                                     <span class="faq-text">¿Tienen cobertura en mi ciudad?</span>
-                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
+                                    <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-minus icon-opened"></i></span>
                                 </button>
                                 <div class="faq-answer">
                                     <p>Contamos con atención en Medellín, Bogotá, Cali, Barranquilla y más de 30 ciudades en Colombia.</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- === DESKTOP RADIAL HUD (Interactiva, sólo PCs) === -->
-                        <div class="hud-desktop-view d-none d-lg-block">
-                            
-                            <!-- El visor central que muestra las respuestas activas -->
-                            <div class="hud-core-visor">
-                                <div class="visor-content default-content active" id="hud-ans-0">
-                                    <h3>Preguntas Frecuentes</h3>
-                                    <p>Todo lo que necesitas saber antes de dar el primer paso. Toca un nodo para extraer la información.</p>
-                                    <i class="fa-solid fa-fingerprint hud-pulse-icon"></i>
-                                </div>
-                                <div class="visor-content" id="hud-ans-1">
-                                    <h4>Laboratorios Certificados</h4>
-                                    <p>El laboratorio Genes SAS realiza y procesa las pruebas, brindando un servicio de altísima calidad con más de 24 años de experiencia.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-2">
-                                    <h4>Confiabilidad Clínica</h4>
-                                    <p>Nuestros análisis ofrecen una precisión superior al 99.99% cuando se confirma, y un exacto 100% de certeza cuando se descarta la paternidad.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-3">
-                                    <h4>Valores y Costos</h4>
-                                    <p>El valor varía según el tipo de prueba y tu ciudad. Pulsa nuestro WhatsApp y un asesor te brindará un presupuesto exacto en minutos.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-4">
-                                    <h4>Tiempos de Entrega</h4>
-                                    <p>Pruebas de paternidad estándar en Medellín: <strong>2 días hábiles</strong>.<br>Otras ciudades: 5 a 6 días. Casos especiales: 2-13 días.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-5">
-                                    <h4>Validez Legal</h4>
-                                    <p>Sí, absolutamente. Cumplimos con todos los avales y requisitos exigidos en Colombia para validez total frente a procesos jurídicos.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-6">
-                                    <h4>Toma de Muestra</h4>
-                                    <p>El proceso es un hisopado bucal. 100% indoloro, muy rápido y completamente no-invasivo para bebés o adultos.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-7">
-                                    <h4>Rol de la Presunta Madre</h4>
-                                    <p>Si el padre nunca reconoció al hijo legalmente, la participación de la madre suele requerirse. Si ya está reconocido legalmente, no es obligatoria.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-8">
-                                    <h4>Confidencialidad</h4>
-                                    <p>Manejamos encriptación de datos y estrictos protocolos privados. Solo el paciente autorizado puede retirar la información clínica.</p>
-                                </div>
-                                <div class="visor-content" id="hud-ans-9">
-                                    <h4>Cobertura Nacional</h4>
-                                    <p>Operamos presencialmente en Medellín, Cali, Bogotá, Barranquilla y a través de +30 puntos aliados en todo el territorio colombiano.</p>
-                                </div>
-                            </div>
-
-                            <!-- Los Nodos Orbitales de la Rueda -->
-                            <div class="hud-orbit-ring">
-                                <button class="hud-node" data-target="hud-ans-1" style="--angle: -80deg;">
-                                    <span>¿Quién realiza las pruebas?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-2" style="--angle: -40deg;">
-                                    <span>¿Son confiables?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-3" style="--angle: 0deg;">
-                                    <span>¿Cuánto cuesta?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-4" style="--angle: 40deg;">
-                                    <span>¿Tiempos de resultado?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-5" style="--angle: 80deg;">
-                                    <span>¿Validez legal en Colombia?</span>
-                                </button>
-
-                                <button class="hud-node" data-target="hud-ans-6" style="--angle: 120deg;">
-                                    <span>¿Es muy doloroso?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-7" style="--angle: 160deg;">
-                                    <span>¿Necesito a la madre?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-8" style="--angle: 200deg;">
-                                    <span>¿Es confidencial?</span>
-                                </button>
-                                <button class="hud-node" data-target="hud-ans-9" style="--angle: 240deg;">
-                                    <span>¿Cobertura en mi ciudad?</span>
-                                </button>
-                            </div>
-
                         </div>
                     </div>
 

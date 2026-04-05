@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initBenefitsDNA();
     initCTADNA();
     initFAQ();
-    initRadialHUD();
     initFaqDNA();
     initProcessParticles();
 });
@@ -235,26 +234,7 @@ function initFAQ() {
     });
 }
 
-// Radial HUD Desktop Interaction
-function initRadialHUD() {
-    const nodes = document.querySelectorAll('.hud-node');
-    const visors = document.querySelectorAll('.visor-content');
 
-    nodes.forEach(node => {
-        node.addEventListener('click', () => {
-            const targetId = node.getAttribute('data-target');
-            
-            // Remove active from all nodes and visors
-            nodes.forEach(n => n.classList.remove('active'));
-            visors.forEach(v => v.classList.remove('active'));
-
-            // Add active to clicked node and correct visor
-            node.classList.add('active');
-            const targetVisor = document.getElementById(targetId);
-            if(targetVisor) targetVisor.classList.add('active');
-        });
-    });
-}
 
 function initBenefitsDNA() {
     const canvas = document.getElementById('benefits-canvas');
