@@ -584,8 +584,8 @@
 
 
     <!-- ================================================
-         COBERTURA NACIONAL - MAPA DE COLOMBIA v2
-         Edificios isométricos 3D + coordenadas geográficas reales
+         COBERTURA NACIONAL - MAPA COLOMBIA (Diseño 3B Aprobado)
+         Mapa imagen + capa interactiva CSS/JS
          ================================================ -->
     <section class="coverage-section" id="cobertura">
         <div class="coverage-inner">
@@ -596,55 +596,64 @@
             </div>
 
             <div class="coverage-layout">
+                <!-- Mapa interactivo sobre imagen aprobada -->
                 <div class="coverage-map-container">
                     <div class="coverage-map-wrapper">
-                        <svg id="colombia-svg" class="colombia-map-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="mapGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#d4e9f7"/>
-                                    <stop offset="100%" style="stop-color:#b8d8ef"/>
-                                </linearGradient>
-                                <filter id="mapShadow2" x="-10%" y="-10%" width="120%" height="120%">
-                                    <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="rgba(9,60,141,0.18)"/>
-                                </filter>
-                                <filter id="glow2">
-                                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                                </filter>
-                            </defs>
-                            <!-- Colombia silhouette - accurate simplified path -->
-                            <path id="colombia-path" filter="url(#mapShadow2)" fill="url(#mapGrad2)" stroke="#8ab8d8" stroke-width="1.2"
-                                d="M195,18 L210,15 L228,20 L248,18 L262,28 L272,22 L285,32
-                                   L296,38 L302,52 L298,62 L310,75 L315,90 L308,105 L318,118
-                                   L322,132 L316,148 L208,148 L205,138 L188,128 L175,118
-                                   L168,105 L158,100 L148,108 L138,118 L125,122 L112,118
-                                   L100,125 L88,138 L78,152 L72,168 L68,185 L72,200 L78,215
-                                   L72,228 L68,242 L72,258 L68,272 L72,285 L68,298 L72,312
-                                   L78,325 L85,338 L78,352 L72,365 L80,378 L95,388 L108,395
-                                   L118,408 L112,420 L118,432 L128,442 L138,450 L148,458
-                                   L155,448 L162,438 L168,428 L175,418 L182,408 L188,398
-                                   L195,388 L202,398 L208,408 L215,418 L222,428 L228,438
-                                   L235,448 L242,458 L248,468 L242,478 L232,485 L222,482
-                                   L212,478 L205,470 L198,460 L192,450 L210,435 L218,422
-                                   L225,410 L232,420 L238,432 L245,442 L252,450 L258,440
-                                   L265,428 L272,415 L278,402 L285,388 L292,372 L298,358
-                                   L305,342 L310,328 L316,312 L320,295 L322,278 L318,262
-                                   L322,245 L326,228 L322,212 L318,195 L322,178 L318,162
-                                   L322,148 L316,132 L322,118 L315,90 L310,75 L298,62
-                                   L302,52 L296,38 L285,32 L272,22 L262,28 L248,18 L228,20
-                                   L210,15 L195,18 Z"/>
-                            <!-- San Andrés inset -->
-                            <ellipse cx="48" cy="175" rx="11" ry="18" fill="url(#mapGrad2)" stroke="#8ab8d8" stroke-width="1"/>
-                            <text x="48" y="200" text-anchor="middle" font-size="6.5" fill="#5a8ab0" font-family="Inter,sans-serif">San Andrés</text>
-                            <!-- Buildings rendered by JS -->
-                            <g id="city-buildings"></g>
-                            <!-- Tooltip -->
-                            <div class="map-tooltip" id="mapTooltip2"></div>
-                        </svg>
-                        <div class="map-tooltip" id="mapTooltip2"></div>
+                        <!-- Imagen del mapa aprobado (Diseño 3B Refinada) -->
+                        <img src="assets/images/mapa_cobertura_colombia.png"
+                             alt="Mapa de cobertura nacional Mundo Genético - 37 ciudades"
+                             class="colombia-img" id="colombia-img" draggable="false">
+                        <!-- Capa interactiva de puntos de ciudad -->
+                        <!-- Coordenadas en % relativas al tamaño de la imagen 1024x1024 -->
+                        <div class="map-pins-layer" id="map-pins-layer">
+                            <!-- HQ: Medellín -->
+                            <div class="map-pin pin-hq" style="left:33%;top:44%" data-city="Medellín ★ Sede Principal"></div>
+                            <!-- Ciudades aliadas - ordenadas N→S, W→E -->
+                            <div class="map-pin" style="left:28%;top:14%" data-city="Cartagena"></div>
+                            <div class="map-pin" style="left:35%;top:12%" data-city="Sincelejo"></div>
+                            <div class="map-pin" style="left:36%;top:10%" data-city="Barranquilla"></div>
+                            <div class="map-pin" style="left:38%;top:9%"  data-city="Magangué"></div>
+                            <div class="map-pin" style="left:43%;top:8%"  data-city="Valledupar"></div>
+                            <div class="map-pin" style="left:30%;top:19%" data-city="Montería"></div>
+                            <div class="map-pin" style="left:31%;top:22%" data-city="Montelíbano"></div>
+                            <div class="map-pin" style="left:27%;top:28%" data-city="Caucasia"></div>
+                            <div class="map-pin" style="left:52%;top:15%" data-city="Cúcuta"></div>
+                            <div class="map-pin" style="left:49%;top:21%" data-city="Bucaramanga"></div>
+                            <div class="map-pin" style="left:55%;top:20%" data-city="Arauca"></div>
+                            <div class="map-pin" style="left:23%;top:34%" data-city="Apartadó"></div>
+                            <div class="map-pin" style="left:20%;top:40%" data-city="Quibdó"></div>
+                            <div class="map-pin" style="left:44%;top:30%" data-city="Tunja"></div>
+                            <div class="map-pin" style="left:43%;top:32%" data-city="Cajicá"></div>
+                            <div class="map-pin" style="left:44%;top:33%" data-city="Tocancipá"></div>
+                            <div class="map-pin" style="left:43%;top:35%" data-city="Bogotá"></div>
+                            <div class="map-pin" style="left:50%;top:33%" data-city="Monterrey (Casanare)"></div>
+                            <div class="map-pin" style="left:53%;top:36%" data-city="Yopal"></div>
+                            <div class="map-pin" style="left:30%;top:46%" data-city="Manizales"></div>
+                            <div class="map-pin" style="left:29%;top:48%" data-city="Pereira"></div>
+                            <div class="map-pin" style="left:29%;top:49%" data-city="Armenia"></div>
+                            <div class="map-pin" style="left:36%;top:49%" data-city="Ibagué"></div>
+                            <div class="map-pin" style="left:47%;top:45%" data-city="Villavicencio"></div>
+                            <div class="map-pin" style="left:47%;top:48%" data-city="Granada"></div>
+                            <div class="map-pin" style="left:47%;top:50%" data-city="Acacías"></div>
+                            <div class="map-pin" style="left:26%;top:56%" data-city="Cali"></div>
+                            <div class="map-pin" style="left:25%;top:57%" data-city="Palmira"></div>
+                            <div class="map-pin" style="left:37%;top:57%" data-city="Neiva"></div>
+                            <div class="map-pin" style="left:25%;top:62%" data-city="Popayán"></div>
+                            <div class="map-pin" style="left:35%;top:65%" data-city="Pitalito"></div>
+                            <div class="map-pin" style="left:23%;top:68%" data-city="Pasto"></div>
+                            <div class="map-pin" style="left:30%;top:69%" data-city="Mocoa"></div>
+                            <div class="map-pin" style="left:18%;top:73%" data-city="Tumaco"></div>
+                            <div class="map-pin" style="left:20%;top:75%" data-city="Ipiales"></div>
+                            <div class="map-pin" style="left:20%;top:74%" data-city="Túquerres"></div>
+                            <!-- San Andrés (isla - arriba izquierda) -->
+                            <div class="map-pin pin-island" style="left:7%;top:30%" data-city="San Andrés"></div>
+                        </div>
+                        <!-- Tooltip -->
+                        <div class="map-tooltip" id="mapTooltip3"></div>
                     </div>
                 </div>
 
+                <!-- Panel lateral -->
                 <div class="coverage-sidebar">
                     <div class="coverage-legend">
                         <div class="legend-item">

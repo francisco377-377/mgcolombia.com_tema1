@@ -902,32 +902,28 @@ function initFaqDNA() {
     });
 })();
 
+/* Tooltip para capa interactiva del mapa imagen */
 (function() {
-    const tooltip = document.getElementById('mapTooltip');
-    const pins = document.querySelectorAll('.city-pin');
+    const tooltip = document.getElementById('mapTooltip3');
+    const wrapper = document.querySelector('.coverage-map-wrapper');
+    const pins    = document.querySelectorAll('.map-pin[data-city]');
     if (!tooltip || !pins.length) return;
 
     pins.forEach(pin => {
-        const cityName = pin.getAttribute('data-city');
-        if (!cityName) return;
-
-        pin.addEventListener('mouseenter', (e) => {
-            tooltip.textContent = cityName;
+        const city = pin.getAttribute('data-city');
+        pin.addEventListener('mouseenter', () => {
+            tooltip.textContent = city;
             tooltip.classList.add('visible');
         });
-
-        pin.addEventListener('mousemove', (e) => {
-            const wrapper = document.querySelector('.coverage-map-wrapper');
+        pin.addEventListener('mousemove', e => {
             if (!wrapper) return;
-            const rect = wrapper.getBoundingClientRect();
-            const x = e.clientX - rect.left + 12;
-            const y = e.clientY - rect.top - 30;
-            tooltip.style.left = x + 'px';
-            tooltip.style.top = y + 'px';
+            const r = wrapper.getBoundingClientRect();
+            tooltip.style.left = (e.clientX - r.left + 14) + 'px';
+            tooltip.style.top  = (e.clientY - r.top  - 36) + 'px';
         });
-
         pin.addEventListener('mouseleave', () => {
             tooltip.classList.remove('visible');
         });
     });
 })();
+

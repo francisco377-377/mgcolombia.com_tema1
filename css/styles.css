@@ -2969,3 +2969,64 @@ section {
     .coverage-inner { padding: 0 1rem; }
     .coverage-title { font-size: 1.6rem; }
 }
+
+/* =========================================
+   MAPA IMAGEN + CAPA INTERACTIVA
+   ========================================= */
+.colombia-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    user-select: none;
+}
+.map-pins-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.map-pin {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #38bdf8;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px rgba(56,189,248,0.4);
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: pinPulse 2.8s ease-in-out infinite;
+}
+.map-pin:hover {
+    transform: translate(-50%, -50%) scale(1.6);
+    box-shadow: 0 0 0 4px rgba(56,189,248,0.5);
+    animation: none;
+    z-index: 20;
+}
+.map-pin.pin-hq {
+    width: 14px;
+    height: 14px;
+    background: #f5c842;
+    border: 2.5px solid #fff;
+    box-shadow: 0 0 0 3px rgba(245,200,66,0.45), 0 0 16px rgba(245,200,66,0.6);
+    animation: hqPinPulse 2s ease-in-out infinite;
+    z-index: 10;
+}
+.map-pin.pin-hq:hover {
+    transform: translate(-50%, -50%) scale(1.8);
+}
+.map-pin.pin-island {
+    width: 9px;
+    height: 9px;
+    background: #7dd3fc;
+}
+@keyframes pinPulse {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(56,189,248,0.4); }
+    50%       { box-shadow: 0 0 0 5px rgba(56,189,248,0.15); }
+}
+@keyframes hqPinPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(245,200,66,0.45), 0 0 12px rgba(245,200,66,0.5); }
+    50%       { box-shadow: 0 0 0 8px rgba(245,200,66,0.15), 0 0 24px rgba(245,200,66,0.4); }
+}
