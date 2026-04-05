@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBenefitsDNA();
     initCTADNA();
     initFAQ();
+    initFaqDNA();
     initProcessParticles();
 });
 
@@ -597,3 +598,85 @@ document.addEventListener('DOMContentLoaded', () => {
         if(e.target === popup) closeModal();
     });
 });
+
+function initFaqDNA() {
+    const canvas = document.getElementById('faq-dna-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = document.querySelector('.faq-section').offsetHeight || 800; // fallback height
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Create DNA strands
+    for (let i = 0; i < 200; i++) {
+        particles.push({
+            y: (i / 200) * height,
+            angleOffset: i * 0.12,
+            speed: 0.01 + Math.random() * 0.005,
+            radius: 2 + Math.random() * 3,
+        });
+    }
+
+    function draw() {
+        if (window.canvasVisibility && window.canvasVisibility['faq-dna-canvas'] === false) {
+            requestAnimationFrame(draw);
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const centerX = width > 768 ? width * 0.8 : width * 1.5; // Offset to right
+
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.angleOffset += p.speed;
+
+            const scaleX = 180;
+            const x1 = centerX + Math.sin(p.angleOffset) * scaleX;
+            const x2 = centerX + Math.sin(p.angleOffset + Math.PI) * scaleX;
+            
+            const z1 = Math.cos(p.angleOffset);
+            const z2 = Math.cos(p.angleOffset + Math.PI);
+
+            const alpha1 = (z1 + 1) / 2 * 0.6 + 0.1;
+            const alpha2 = (z2 + 1) / 2 * 0.6 + 0.1;
+
+            if (i % 5 === 0) {
+                ctx.beginPath();
+                ctx.moveTo(x1, p.y);
+                ctx.lineTo(x2, p.y);
+                const grad = ctx.createLinearGradient(x1, p.y, x2, p.y);
+                grad.addColorStop(0, `rgba(56, 189, 248, ${alpha1 * 0.3})`);
+                grad.addColorStop(1, `rgba(9, 60, 141, ${alpha2 * 0.3})`);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+
+            ctx.beginPath();
+            ctx.arc(x1, p.y, p.radius * (z1 + 1.5), 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(56, 189, 248, ${alpha1})`;
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#38bdf8';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x2, p.y, p.radius * (z2 + 1.5), 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(9, 60, 141, ${alpha2})`;
+            ctx.shadowBlur = 0;
+            ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
