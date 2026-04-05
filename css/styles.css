@@ -2634,11 +2634,14 @@ section {
 }
 
 .faq-item.active .faq-icon {
-    background: #38bdf8;
-    color: #020a1c !important;
-    border-color: #38bdf8;
-    /* Don't rotate, because it's a minus sign now */
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
+}
+
+.faq-item.active .faq-icon .icon-opened {
+    color: var(--primary-blue-dark) !important;
 }
 
 /* ELEGANT TECH WATERMARKS (For all answers) */
