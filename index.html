@@ -582,6 +582,598 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+
+    <!-- ================================================
+         COBERTURA NACIONAL - MAPA DE COLOMBIA
+         Sección completamente aislada - NO TOCAR código anterior
+         ================================================ -->
+    <section class="coverage-section" id="cobertura">
+        <div class="coverage-inner">
+            <!-- Header -->
+            <div class="coverage-header">
+                <span class="coverage-badge"><i class="fa-solid fa-dna"></i> Red Nacional</span>
+                <h2 class="coverage-title">Presencia en <span class="coverage-highlight">más de 35 ciudades</span></h2>
+                <p class="coverage-subtitle">Sede principal en Medellín · Puntos aliados de toma de muestras en todo el país</p>
+            </div>
+
+            <!-- Map + Legend layout -->
+            <div class="coverage-layout">
+
+                <!-- Colombia SVG Map -->
+                <div class="coverage-map-container">
+                    <div class="coverage-map-wrapper">
+                        <!-- Colombia SVG Geographic Shape -->
+                        <svg class="colombia-map-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#c8dff5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#a8c8e8;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="mapShadow">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="8" flood-color="rgba(9,60,141,0.2)"/>
+                                </filter>
+                                <filter id="hqGlow">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Colombia silhouette (simplified accurate path) -->
+                            <path class="colombia-shape" filter="url(#mapShadow)"
+                                d="M155,18 L170,15 L195,20 L215,18 L235,25 L250,22 L265,30 L275,25 L285,35 L295,38 L300,50 L295,60 L305,70 L310,80 L305,95 L315,105 L320,118 L315,130 L310,145 L318,158 L322,170 L318,185 L325,195 L328,210 L322,225 L318,238 L325,248 L330,262 L325,275 L318,288 L322,298 L318,312 L312,325 L305,338 L298,350 L290,362 L282,372 L275,382 L268,390 L260,398 L252,408 L245,418 L238,428 L232,438 L228,450 L235,458 L240,468 L235,478 L225,485 L215,482 L205,478 L198,470 L192,462 L185,455 L178,448 L172,440 L165,432 L158,425 L152,435 L148,445 L142,452 L135,458 L128,462 L120,458 L115,448 L112,438 L118,428 L122,418 L128,408 L122,398 L115,388 L108,378 L102,368 L98,358 L92,348 L88,338 L82,328 L78,318 L75,305 L72,292 L70,278 L68,265 L70,252 L75,240 L80,228 L85,215 L82,202 L78,190 L75,178 L80,165 L85,152 L90,140 L95,128 L100,115 L105,102 L108,90 L105,78 L100,68 L98,55 L105,45 L115,38 L128,30 L142,22 L155,18 Z"
+                                fill="url(#mapGrad)" stroke="#7aafd4" stroke-width="1.5"/>
+
+                            <!-- San Andrés Islands (inset) -->
+                            <ellipse cx="52" cy="180" rx="12" ry="20" fill="url(#mapGrad)" stroke="#7aafd4" stroke-width="1.2"/>
+                            <text x="52" y="207" text-anchor="middle" font-size="7" fill="#5588b8">San Andrés</text>
+
+                            <!-- =========================================
+                                 CITY MARKERS
+                                 Building types: 1=Modern Lab, 2=Glass Office, 3=L-Shape, 4=Compact, 5=Angular
+                                 ========================================= -->
+
+                            <!-- HQ: MEDELLÍN (★ Sede Principal) -->
+                            <g class="city-pin hq-pin" transform="translate(152, 238)" data-city="Medellín ★ Sede Principal">
+                                <circle cx="0" cy="0" r="18" fill="#f5c842" opacity="0.18" class="hq-halo-outer"/>
+                                <circle cx="0" cy="0" r="12" fill="#f5c842" opacity="0.25" class="hq-halo"/>
+                                <!-- Building type 1: Modern Lab -->
+                                <g transform="translate(-10,-20)">
+                                    <rect x="2" y="8" width="16" height="10" fill="#fff" stroke="#093c8d" stroke-width="1.2" rx="1"/>
+                                    <rect x="4" y="4" width="12" height="6" fill="#e8f0fd" stroke="#093c8d" stroke-width="1" rx="1"/>
+                                    <rect x="6" y="10" width="3" height="4" fill="#93c5fd"/>
+                                    <rect x="11" y="10" width="3" height="4" fill="#93c5fd"/>
+                                    <!-- DNA antenna -->
+                                    <line x1="10" y1="4" x2="10" y2="-2" stroke="#38bdf8" stroke-width="1.2"/>
+                                    <path d="M8,-2 Q10,-5 12,-2 Q10,1 8,-2" fill="none" stroke="#38bdf8" stroke-width="0.8"/>
+                                </g>
+                                <text y="14" text-anchor="middle" class="city-label hq-label">Medellín ★</text>
+                            </g>
+
+                            <!-- BOGOTÁ -->
+                            <g class="city-pin" transform="translate(195, 268)" data-city="Bogotá">
+                                <g transform="translate(-8,-18)">
+                                    <rect x="1" y="7" width="14" height="9" fill="#fff" stroke="#2563eb" stroke-width="1" rx="1"/>
+                                    <rect x="3" y="3" width="10" height="6" fill="#dbeafe" stroke="#2563eb" stroke-width="0.8" rx="1"/>
+                                    <rect x="4" y="9" width="2.5" height="3.5" fill="#60a5fa"/>
+                                    <rect x="9" y="9" width="2.5" height="3.5" fill="#60a5fa"/>
+                                    <line x1="8" y1="3" x2="8" y2="-1" stroke="#38bdf8" stroke-width="1"/>
+                                    <path d="M6.5,-1 Q8,-3.5 9.5,-1 Q8,1 6.5,-1" fill="none" stroke="#38bdf8" stroke-width="0.7"/>
+                                </g>
+                                <text y="8" text-anchor="middle" class="city-label">Bogotá</text>
+                            </g>
+
+                            <!-- BARRANQUILLA -->
+                            <g class="city-pin" transform="translate(178, 80)" data-city="Barranquilla">
+                                <g transform="translate(-8,-18)">
+                                    <rect x="1" y="7" width="15" height="9" fill="#fff" stroke="#1d4ed8" stroke-width="1" rx="2"/>
+                                    <rect x="1" y="3" width="15" height="5" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="0.8" rx="1"/>
+                                    <rect x="3" y="8.5" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <rect x="10" y="8.5" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <line x1="8" y1="3" x2="8" y2="-1" stroke="#38bdf8" stroke-width="1"/>
+                                    <path d="M6.5,-1 Q8,-3.5 9.5,-1" fill="none" stroke="#38bdf8" stroke-width="0.7"/>
+                                </g>
+                                <text y="8" text-anchor="middle" class="city-label">Barranquilla</text>
+                            </g>
+
+                            <!-- CALI -->
+                            <g class="city-pin" transform="translate(148, 308)" data-city="Cali">
+                                <g transform="translate(-8,-18)">
+                                    <rect x="1" y="5" width="14" height="11" fill="#fff" stroke="#1e40af" stroke-width="1" rx="1"/>
+                                    <rect x="3" y="5" width="4" height="11" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="5" y="8" width="2" height="5" fill="#60a5fa"/>
+                                    <rect x="10" y="9" width="2.5" height="3" fill="#93c5fd"/>
+                                    <line x1="8" y1="5" x2="8" y2="0" stroke="#38bdf8" stroke-width="1"/>
+                                    <path d="M6.5,0 Q8,-2.5 9.5,0 Q8,2 6.5,0" fill="none" stroke="#38bdf8" stroke-width="0.7"/>
+                                </g>
+                                <text y="8" text-anchor="middle" class="city-label">Cali</text>
+                            </g>
+
+                            <!-- CARTAGENA -->
+                            <g class="city-pin" transform="translate(160, 70)" data-city="Cartagena">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="1" y="6" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="3" width="10" height="4" fill="#eff6ff" stroke="#2563eb" stroke-width="0.7"/>
+                                    <rect x="3" y="8" width="2" height="3" fill="#93c5fd"/>
+                                    <line x1="7" y1="3" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Cartagena</text>
+                            </g>
+
+                            <!-- BUCARAMANGA -->
+                            <g class="city-pin" transform="translate(218, 185)" data-city="Bucaramanga">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="0" y="6" width="13" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="2" width="9" height="5" fill="#dbeafe" stroke="#1d4ed8" stroke-width="0.7" rx="1"/>
+                                    <rect x="2" y="8" width="2" height="3" fill="#60a5fa"/>
+                                    <rect x="8" y="8" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="6.5" y1="2" x2="6.5" y2="-1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5,-1 Q6.5,-3.5 8,-1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Bucaramanga</text>
+                            </g>
+
+                            <!-- CÚCUTA -->
+                            <g class="city-pin" transform="translate(245, 155)" data-city="Cúcuta">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="1" y="5" width="12" height="9" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="5" width="8" height="3" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7"/>
+                                    <rect x="3" y="9" width="2" height="3" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Cúcuta</text>
+                            </g>
+
+                            <!-- MANIZALES -->
+                            <g class="city-pin" transform="translate(162, 265)" data-city="Manizales">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="0" y="6" width="13" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="2" width="6" height="5" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="7" y="2" width="6" height="7" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="6.5" y1="2" x2="6.5" y2="-1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5,-1 Q6.5,-3.5 8,-1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Manizales</text>
+                            </g>
+
+                            <!-- PEREIRA -->
+                            <g class="city-pin" transform="translate(154, 275)" data-city="Pereira">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="1" y="5" width="12" height="9" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="2"/>
+                                    <rect x="3" y="8" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <rect x="7.5" y="8" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Pereira</text>
+                            </g>
+
+                            <!-- IBAGUÉ -->
+                            <g class="city-pin" transform="translate(180, 282)" data-city="Ibagué">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="1" y="5" width="12" height="9" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="12" height="3" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <rect x="4" y="9" width="2" height="3.5" fill="#60a5fa"/>
+                                    <line x1="7" y1="5" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Ibagué</text>
+                            </g>
+
+                            <!-- NEIVA -->
+                            <g class="city-pin" transform="translate(188, 322)" data-city="Neiva">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="1" y="6" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="3" width="8" height="4" fill="#eff6ff" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <line x1="7" y1="3" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Neiva</text>
+                            </g>
+
+                            <!-- PASTO -->
+                            <g class="city-pin" transform="translate(152, 390)" data-city="Pasto">
+                                <g transform="translate(-7,-15)">
+                                    <rect x="0" y="5" width="14" height="9" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="2" width="5" height="4" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="8" y="2" width="4" height="7" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="7" y1="2" x2="7" y2="-1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-1 Q7,-3.5 8.5,-1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Pasto</text>
+                            </g>
+
+                            <!-- POPAYÁN -->
+                            <g class="city-pin" transform="translate(155, 348)" data-city="Popayán">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="5" height="8" fill="#dbeafe" stroke="#2563eb" stroke-width="0.7"/>
+                                    <rect x="5" y="8" width="2" height="3" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Popayán</text>
+                            </g>
+
+                            <!-- MONTERÍA -->
+                            <g class="city-pin" transform="translate(168, 115)" data-city="Montería">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="7" width="2.5" height="3.5" fill="#60a5fa"/>
+                                    <rect x="8" y="7" width="2.5" height="3.5" fill="#60a5fa"/>
+                                    <rect x="2" y="3" width="10" height="3" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <line x1="7" y1="3" x2="7" y2="0" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,0 Q7,-2.5 8.5,0" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Montería</text>
+                            </g>
+
+                            <!-- SINCELEJO -->
+                            <g class="city-pin" transform="translate(175, 100)" data-city="Sincelejo">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="2"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#dbeafe" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Sincelejo</text>
+                            </g>
+
+                            <!-- VALLEDUPAR -->
+                            <g class="city-pin" transform="translate(225, 85)" data-city="Valledupar">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="5" width="7" height="5" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="7" y="5" width="7" height="5" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Valledupar</text>
+                            </g>
+
+                            <!-- VILLAVICENCIO -->
+                            <g class="city-pin" transform="translate(225, 278)" data-city="Villavicencio">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <rect x="5" y="7" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Villavicencio</text>
+                            </g>
+
+                            <!-- YOPAL -->
+                            <g class="city-pin" transform="translate(248, 240)" data-city="Yopal">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="6" height="3" fill="#dbeafe" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <rect x="4" y="9" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Yopal</text>
+                            </g>
+
+                            <!-- TUNJA -->
+                            <g class="city-pin" transform="translate(207, 248)" data-city="Tunja">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="2" width="10" height="4" fill="#eff6ff" stroke="#2563eb" stroke-width="0.7"/>
+                                    <rect x="3" y="7" width="2" height="3" fill="#93c5fd"/>
+                                    <rect x="9" y="7" width="2" height="3" fill="#93c5fd"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Tunja</text>
+                            </g>
+
+                            <!-- QUIBDÓ -->
+                            <g class="city-pin" transform="translate(118, 215)" data-city="Quibdó">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="5" height="4" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="7" y="3" width="5" height="6" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="7" y1="3" x2="7" y2="0" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,0 Q7,-2.5 8.5,0" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Quibdó</text>
+                            </g>
+
+                            <!-- TUMACO -->
+                            <g class="city-pin" transform="translate(130, 418)" data-city="Tumaco">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Tumaco</text>
+                            </g>
+
+                            <!-- IPIALES -->
+                            <g class="city-pin" transform="translate(142, 410)" data-city="Ipiales">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="4" width="14" height="9" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="4" width="14" height="3" fill="#dbeafe" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <rect x="2" y="8" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="4" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Ipiales</text>
+                            </g>
+
+                            <!-- TÚQUERRES -->
+                            <g class="city-pin" transform="translate(145, 400)" data-city="Túquerres">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="2"/>
+                                    <rect x="3" y="7" width="2" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Túquerres</text>
+                            </g>
+
+                            <!-- ARAUCA -->
+                            <g class="city-pin" transform="translate(268, 168)" data-city="Arauca">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7" rx="1"/>
+                                    <rect x="9" y="7" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Arauca</text>
+                            </g>
+
+                            <!-- ARMENIA -->
+                            <g class="city-pin" transform="translate(157, 285)" data-city="Armenia">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="5" width="7" height="8" fill="#dbeafe" stroke="#2563eb" stroke-width="0.7"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Armenia</text>
+                            </g>
+
+                            <!-- MOCOA -->
+                            <g class="city-pin" transform="translate(168, 370)" data-city="Mocoa">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="7" width="2" height="3.5" fill="#93c5fd"/>
+                                    <rect x="8" y="7" width="2" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Mocoa</text>
+                            </g>
+
+                            <!-- PITALITO -->
+                            <g class="city-pin" transform="translate(175, 358)" data-city="Pitalito">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="4" width="12" height="9" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="4" width="12" height="3" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7"/>
+                                    <line x1="7" y1="4" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Pitalito</text>
+                            </g>
+
+                            <!-- PALMIRA -->
+                            <g class="city-pin" transform="translate(145, 318)" data-city="Palmira">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="2" width="10" height="4" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="3" y="7" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Palmira</text>
+                            </g>
+
+                            <!-- APARTADÓ -->
+                            <g class="city-pin" transform="translate(135, 168)" data-city="Apartadó">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#eff6ff" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Apartadó</text>
+                            </g>
+
+                            <!-- CAUCASIA -->
+                            <g class="city-pin" transform="translate(155, 150)" data-city="Caucasia">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="5" width="7" height="4" fill="#dbeafe" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <rect x="4" y="8" width="2" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Caucasia</text>
+                            </g>
+
+                            <!-- CAJICÁ -->
+                            <g class="city-pin" transform="translate(200, 258)" data-city="Cajicá">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="2"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <rect x="9" y="7" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Cajicá</text>
+                            </g>
+
+                            <!-- TOCANCIPÁ -->
+                            <g class="city-pin" transform="translate(203, 262)" data-city="Tocancipá">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="5" height="8" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Tocancipá</text>
+                            </g>
+
+                            <!-- GRANADA -->
+                            <g class="city-pin" transform="translate(218, 288)" data-city="Granada">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="7" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <rect x="8" y="7" width="2.5" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Granada</text>
+                            </g>
+
+                            <!-- MAGANGUÉ -->
+                            <g class="city-pin" transform="translate(185, 115)" data-city="Magangué">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="5" width="14" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="1"/>
+                                    <rect x="2" y="2" width="10" height="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="0.7"/>
+                                    <rect x="9" y="7" width="2" height="3" fill="#60a5fa"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Magangué</text>
+                            </g>
+
+                            <!-- MONTELÍBANO -->
+                            <g class="city-pin" transform="translate(162, 135)" data-city="Montelíbano">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="1" y="5" width="12" height="3" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Montelíbano</text>
+                            </g>
+
+                            <!-- MONTERREY (CASANARE) -->
+                            <g class="city-pin" transform="translate(252, 228)" data-city="Monterrey (Casanare)">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="0" y="4" width="14" height="9" fill="#fff" stroke="#1e40af" stroke-width="0.9" rx="1"/>
+                                    <rect x="0" y="4" width="7" height="5" fill="#dbeafe" stroke="#1e40af" stroke-width="0.7"/>
+                                    <rect x="7" y="4" width="7" height="5" fill="#eff6ff" stroke="#1e40af" stroke-width="0.7"/>
+                                    <line x1="7" y1="4" x2="7" y2="1" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1 Q7,-1.5 8.5,1" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Monterrey</text>
+                            </g>
+
+                            <!-- ACACÍAS -->
+                            <g class="city-pin" transform="translate(222, 298)" data-city="Acacías">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#2563eb" stroke-width="0.9" rx="1"/>
+                                    <rect x="3" y="2" width="8" height="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="0.7" rx="1"/>
+                                    <rect x="5" y="8" width="2" height="3.5" fill="#60a5fa"/>
+                                    <line x1="7" y1="2" x2="7" y2="-0.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,-0.5 Q7,-3 8.5,-0.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                                <text y="7" text-anchor="middle" class="city-label">Acacías</text>
+                            </g>
+
+                            <!-- SAN ANDRÉS (island area label) -->
+                            <g class="city-pin" transform="translate(52, 168)" data-city="San Andrés">
+                                <g transform="translate(-7,-14)">
+                                    <rect x="1" y="5" width="12" height="8" fill="#fff" stroke="#1d4ed8" stroke-width="0.9" rx="2"/>
+                                    <rect x="3" y="7" width="2" height="3.5" fill="#93c5fd"/>
+                                    <line x1="7" y1="5" x2="7" y2="1.5" stroke="#38bdf8" stroke-width="0.9"/>
+                                    <path d="M5.5,1.5 Q7,-1 8.5,1.5" fill="none" stroke="#38bdf8" stroke-width="0.6"/>
+                                </g>
+                            </g>
+
+                        </svg>
+
+                        <!-- Tooltip -->
+                        <div class="map-tooltip" id="mapTooltip"></div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Legend + City List -->
+                <div class="coverage-sidebar">
+                    <div class="coverage-legend">
+                        <div class="legend-item legend-hq">
+                            <span class="legend-dot hq-dot"></span>
+                            <div>
+                                <strong>Sede Principal</strong>
+                                <p>Medellín, Antioquia</p>
+                            </div>
+                        </div>
+                        <div class="legend-item legend-allied">
+                            <span class="legend-dot allied-dot"></span>
+                            <div>
+                                <strong>Ciudad Aliada</strong>
+                                <p>Punto de toma de muestras</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="coverage-stats">
+                        <div class="stat-box">
+                            <span class="stat-num">37+</span>
+                            <span class="stat-label">Ciudades</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">24</span>
+                            <span class="stat-label">Años</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">99.99%</span>
+                            <span class="stat-label">Precisión</span>
+                        </div>
+                    </div>
+
+                    <div class="city-list-grid">
+                        <span class="city-tag hq-tag"><i class="fa-solid fa-star"></i> Medellín</span>
+                        <span class="city-tag">Acacías</span>
+                        <span class="city-tag">Apartadó</span>
+                        <span class="city-tag">Arauca</span>
+                        <span class="city-tag">Armenia</span>
+                        <span class="city-tag">Barranquilla</span>
+                        <span class="city-tag">Bogotá</span>
+                        <span class="city-tag">Bucaramanga</span>
+                        <span class="city-tag">Cajicá</span>
+                        <span class="city-tag">Cali</span>
+                        <span class="city-tag">Cartagena</span>
+                        <span class="city-tag">Caucasia</span>
+                        <span class="city-tag">Cúcuta</span>
+                        <span class="city-tag">Granada</span>
+                        <span class="city-tag">Ibagué</span>
+                        <span class="city-tag">Ipiales</span>
+                        <span class="city-tag">Magangué</span>
+                        <span class="city-tag">Manizales</span>
+                        <span class="city-tag">Mocoa</span>
+                        <span class="city-tag">Montelíbano</span>
+                        <span class="city-tag">Montería</span>
+                        <span class="city-tag">Monterrey</span>
+                        <span class="city-tag">Neiva</span>
+                        <span class="city-tag">Palmira</span>
+                        <span class="city-tag">Pasto</span>
+                        <span class="city-tag">Pereira</span>
+                        <span class="city-tag">Pitalito</span>
+                        <span class="city-tag">Popayán</span>
+                        <span class="city-tag">Quibdó</span>
+                        <span class="city-tag">San Andrés</span>
+                        <span class="city-tag">Sincelejo</span>
+                        <span class="city-tag">Tocancipá</span>
+                        <span class="city-tag">Tumaco</span>
+                        <span class="city-tag">Tunja</span>
+                        <span class="city-tag">Túquerres</span>
+                        <span class="city-tag">Valledupar</span>
+                        <span class="city-tag">Villavicencio</span>
+                        <span class="city-tag">Yopal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIN SECCIÓN COBERTURA NACIONAL -->
+
     <!-- Footer Light Medical -->
     <footer class="footer-medical">
         <div class="container">

@@ -2687,3 +2687,285 @@ section {
         width: 80px;
     }
 }
+
+/* =========================================
+   COBERTURA NACIONAL - MAPA DE COLOMBIA
+   SECCIÓN COMPLETAMENTE AISLADA
+   No modificar ningún selector de arriba.
+   ========================================= */
+.coverage-section {
+    background: #f8faff;
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.coverage-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(9,60,141,0.04) 0%, transparent 70%),
+                radial-gradient(ellipse at 70% 50%, rgba(56,189,248,0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+.coverage-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.coverage-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.coverage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(9,60,141,0.08);
+    color: #093c8d;
+    border: 1px solid rgba(9,60,141,0.15);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+.coverage-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+}
+.coverage-highlight {
+    color: #093c8d;
+    position: relative;
+}
+.coverage-subtitle {
+    color: #64748b;
+    font-size: 1.05rem;
+    max-width: 580px;
+    margin: 0 auto;
+}
+.coverage-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    align-items: start;
+}
+/* Map */
+.coverage-map-container {
+    position: relative;
+}
+.coverage-map-wrapper {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(9,60,141,0.10), 0 2px 8px rgba(0,0,0,0.04);
+    padding: 1.5rem;
+    border: 1px solid rgba(9,60,141,0.08);
+}
+.colombia-map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.colombia-shape {
+    transition: filter 0.3s ease;
+}
+/* City pins */
+.city-pin {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.city-pin:hover {
+    transform: translateY(-3px) scale(1.15);
+}
+.city-label {
+    font-size: 6px;
+    fill: #334155;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    pointer-events: none;
+}
+.hq-label {
+    font-size: 7px;
+    fill: #b45309;
+    font-weight: 700;
+}
+/* HQ Halo animation */
+.hq-halo-outer {
+    animation: hqPulseOuter 2.5s ease-in-out infinite;
+}
+.hq-halo {
+    animation: hqPulse 2.5s ease-in-out infinite;
+}
+@keyframes hqPulse {
+    0%, 100% { opacity: 0.25; r: 12; }
+    50% { opacity: 0.45; r: 14; }
+}
+@keyframes hqPulseOuter {
+    0%, 100% { opacity: 0.08; r: 18; }
+    50% { opacity: 0.20; r: 22; }
+}
+/* Tooltip */
+.map-tooltip {
+    position: absolute;
+    background: #0f172a;
+    color: #fff;
+    font-size: 0.78rem;
+    font-family: 'Inter', sans-serif;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.map-tooltip.visible {
+    opacity: 1;
+}
+/* Sidebar */
+.coverage-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+/* Legend */
+.coverage-legend {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(9,60,141,0.08);
+    border: 1px solid rgba(9,60,141,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.hq-dot {
+    background: #f5c842;
+    box-shadow: 0 0 8px rgba(245,200,66,0.6);
+    border: 2px solid #b45309;
+}
+.allied-dot {
+    background: #38bdf8;
+    box-shadow: 0 0 6px rgba(56,189,248,0.4);
+    border: 2px solid #0284c7;
+}
+.legend-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #0f172a;
+    font-weight: 600;
+}
+.legend-item p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0;
+}
+/* Stats */
+.coverage-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+}
+.stat-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(9,60,141,0.07);
+    border: 1px solid rgba(9,60,141,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.stat-num {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #093c8d;
+    line-height: 1;
+}
+.stat-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* City tag grid */
+.city-list-grid {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(9,60,141,0.08);
+    border: 1px solid rgba(9,60,141,0.07);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    max-height: 320px;
+    overflow-y: auto;
+}
+.city-list-grid::-webkit-scrollbar {
+    width: 4px;
+}
+.city-list-grid::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+.city-list-grid::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 4px; }
+.city-tag {
+    background: rgba(9,60,141,0.05);
+    color: #1e40af;
+    border: 1px solid rgba(9,60,141,0.12);
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: default;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+.city-tag:hover {
+    background: rgba(9,60,141,0.12);
+    transform: translateY(-1px);
+}
+.city-tag.hq-tag {
+    background: rgba(180,83,9,0.08);
+    color: #b45309;
+    border-color: rgba(180,83,9,0.2);
+    font-weight: 700;
+}
+.city-tag.hq-tag i {
+    font-size: 0.6rem;
+    margin-right: 2px;
+}
+/* Responsive coverage map */
+@media (max-width: 900px) {
+    .coverage-layout {
+        grid-template-columns: 1fr;
+    }
+    .coverage-sidebar {
+        position: static;
+    }
+    .coverage-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .coverage-section { padding: 4rem 0; }
+    .coverage-inner { padding: 0 1rem; }
+    .coverage-title { font-size: 1.6rem; }
+}

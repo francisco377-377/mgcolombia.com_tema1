@@ -679,3 +679,37 @@ function initFaqDNA() {
     }
     draw();
 }
+
+/* =========================================
+   COBERTURA NACIONAL - Tooltip Handler
+   Código aislado, no toca nada del resto.
+   ========================================= */
+(function() {
+    const tooltip = document.getElementById('mapTooltip');
+    const pins = document.querySelectorAll('.city-pin');
+    if (!tooltip || !pins.length) return;
+
+    pins.forEach(pin => {
+        const cityName = pin.getAttribute('data-city');
+        if (!cityName) return;
+
+        pin.addEventListener('mouseenter', (e) => {
+            tooltip.textContent = cityName;
+            tooltip.classList.add('visible');
+        });
+
+        pin.addEventListener('mousemove', (e) => {
+            const wrapper = document.querySelector('.coverage-map-wrapper');
+            if (!wrapper) return;
+            const rect = wrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left + 12;
+            const y = e.clientY - rect.top - 30;
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        });
+
+        pin.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('visible');
+        });
+    });
+})();
