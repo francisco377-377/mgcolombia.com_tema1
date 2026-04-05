@@ -21,6 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(reveal);
     });
 
+    // Mobile Navigation Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mainNav = document.getElementById('main-nav');
+    
+    if (mobileBtn && mainNav) {
+        mobileBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-scroll').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
