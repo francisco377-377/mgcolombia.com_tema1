@@ -1642,10 +1642,7 @@ section {
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
+    display: none;
 }
 
 .faq-answer p {
@@ -2435,7 +2432,7 @@ section {
    FAQ REDESIGN (Futuristic Tech Medical Background)
    ========================================= */
 .faq-section {
-    background: #020a1c !important; 
+    background: var(--primary-blue-dark) !important; 
     position: relative;
     padding: 7rem 0;
     overflow: hidden;
@@ -2517,10 +2514,9 @@ section {
 }
 
 .faq-item.active .faq-answer {
+    display: block;
     padding: 1.5rem 2rem !important;
     background: rgba(0, 0, 0, 0.2) !important; 
-    max-height: 1200px;
-    opacity: 1;
 }
 
 .faq-item.active {
@@ -2546,7 +2542,7 @@ section {
     background: rgba(56, 189, 248, 0.15);
     color: #38bdf8 !important;
     box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.2);
-    transform: scale(1.1) rotate(90deg);
+    transform: scale(1.1);
 }
 
 .faq-icon .icon-opened {
@@ -2563,10 +2559,11 @@ section {
 }
 
 .faq-item.active .faq-icon {
-    background: #ffffff;
-    color: #093c8d !important;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    transform: scale(1.1) rotate(180deg);
+    background: rgba(2, 10, 28, 0.8);
+    color: #38bdf8 !important;
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    transform: scale(1.1);
 }
 
 /* =========================================
@@ -2576,7 +2573,7 @@ section {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(2, 10, 28, 0.95); /* Deep space blue solid filter for perf */
+    background: var(--primary-blue); /* Matches hero better than dark space glass */
     border: 1px solid rgba(56, 189, 248, 0.4);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* simplified shadow */
     /* Sci-Fi Corners */
