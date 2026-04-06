@@ -706,110 +706,50 @@ function initFaqDNA() {
 
     const normalize = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-    function makePoly(points, fill, stroke, strokeW = 0.5) {
-        const p = document.createElementNS(svgNS, 'polygon');
-        p.setAttribute('points', points);
-        p.setAttribute('fill', fill);
-        if (stroke) {
-            p.setAttribute('stroke', stroke);
-            p.setAttribute('stroke-width', strokeW);
-            p.setAttribute('stroke-linejoin', 'round');
-        }
-        return p;
-    }
+    // =========================================================================================
+    // 🎨 ZONA EXCLUSIVA PARA EDICIÓN DE PINES - EDIFICIO 3D ISOMÉTRICO
+    // Para cambiar el diseño visual modifica solo los strings PIN_HQ_SVG y PIN_CITY_SVG.
+    // NO tocar renderMap ni highlightCity para no dañar coordenadas.
+    // =========================================================================================
 
-    function buildOrbMarker(isHQ) {
-        const g = document.createElementNS(svgNS, 'g');
-        const coreSize = isHQ ? 16 : 12;
-        const colorMain = isHQ ? '#093c8d' : '#0ea5e9';
-        
-        // 1. PULSING AURA (Subtle breathing effect)
-        const aura = document.createElementNS(svgNS, 'circle');
-        aura.setAttribute('r', coreSize);
-        aura.setAttribute('fill', colorMain);
-        aura.setAttribute('opacity', '0.3');
-        aura.style.animation = 'orbPulse 3s infinite ease-out';
-        g.appendChild(aura);
+    // PIN SEDE PRINCIPAL (HQ) — Edificio grande con torre y antena
+    const PIN_HQ_SVG = `<svg class="pin-building" width="70" height="100" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <ellipse cx="70" cy="170" rx="62" ry="18" fill="none" stroke="#007799" stroke-width="0.8" opacity="0.25"/>
+      <ellipse cx="70" cy="170" rx="46" ry="13" fill="none" stroke="#0099bb" stroke-width="1" opacity="0.4"/>
+      <ellipse cx="70" cy="170" rx="30" ry="9" fill="none" stroke="#00bbdd" stroke-width="1.2" opacity="0.6"/>
+      <ellipse cx="70" cy="168" rx="36" ry="8" fill="#003344" opacity="0.35"/>
+      <polygon points="100,155 116,143 116,90 100,102" fill="#004060" stroke="#003355" stroke-width="0.5"/>
+      <polygon points="36,155 100,155 100,102 36,110" fill="#005f80" stroke="#004466" stroke-width="0.5"/>
+      <polygon points="36,110 100,102 116,90 52,98" fill="#0088bb" stroke="#005577" stroke-width="0.5"/>
+      <rect x="43" y="114" width="12" height="8" rx="1" fill="rgba(0,200,255,0.2)" stroke="#00bbdd" stroke-width="0.6"/>
+      <rect x="60" y="113" width="12" height="8" rx="1" fill="rgba(0,200,255,0.22)" stroke="#00bbdd" stroke-width="0.6"/>
+      <rect x="77" y="112" width="12" height="8" rx="1" fill="rgba(0,200,255,0.18)" stroke="#00bbdd" stroke-width="0.6"/>
+      <rect x="43" y="127" width="12" height="8" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
+      <rect x="60" y="127" width="12" height="8" rx="1" fill="rgba(57,255,20,0.15)" stroke="#39ff14" stroke-width="0.5"/>
+      <rect x="77" y="126" width="12" height="8" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
+      <rect x="62" y="139" width="10" height="16" rx="1" fill="rgba(0,50,80,0.8)" stroke="#00bbdd" stroke-width="0.7"/>
+      <polygon points="78,98 84,94 84,73 78,77" fill="#004060" stroke="#003355" stroke-width="0.5"/>
+      <polygon points="56,103 78,98 78,77 56,82" fill="#006688" stroke="#004466" stroke-width="0.5"/>
+      <polygon points="56,82 78,77 84,73 62,78" fill="#0099cc" stroke="#005577" stroke-width="0.5"/>
+      <line x1="71" y1="58" x2="71" y2="77" stroke="#00ccee" stroke-width="1.2" opacity="0.9"/>
+      <circle cx="71" cy="57" r="3" fill="#00e5ff" opacity="0.95"/>
+      <text x="68" y="109.8" text-anchor="middle" font-size="3.2" fill="#00e5ff" font-family="monospace">MG LAB</text>
+    </svg>`;
 
-        // 2. CORE ORB (Gradient & Stroke)
-        const core = document.createElementNS(svgNS, 'circle');
-        core.setAttribute('r', coreSize);
-        core.setAttribute('fill', `url(#orbGrad_${isHQ?'hq':'al'})`);
-        core.setAttribute('stroke', '#fff');
-        core.setAttribute('stroke-width', '1.5');
-        g.appendChild(core);
-
-        // 3. INNER DNA ICON
-        const dna = document.createElementNS(svgNS, 'g');
-        dna.setAttribute('transform', `scale(${isHQ ? 0.45 : 0.35})`);
-        dna.innerHTML = `
-            <path d="M-8,-10 C-4,-10 4,-5 8,0 C4,5 -4,10 -8,10" fill="none" stroke="#fff" stroke-width="2.5" />
-            <path d="M8,-10 C4,-10 -4,-5 -8,0 C-4,5 4,10 8,10" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" />
-            <circle cx="0" cy="0" r="2" fill="#fff"/>
-        `;
-        g.appendChild(dna);
-
-        return g;
-    }
-
-    function makeDoubleHelix(antH, isHQ) {
-        const g = document.createElementNS(svgNS, 'g');
-        const c1 = isHQ ? '#093c8d' : '#0ea5e9'; // HQ is Deep Blue
-        const c2 = isHQ ? '#22d3ee' : '#34d399'; // Contrast
-        
-        // Glow Filter
-        const glowId = `glow_${Math.random().toString(36).substr(2, 5)}`;
-        const defs = document.createElementNS(svgNS, 'defs');
-        defs.innerHTML = `<filter id="${glowId}"><feGaussianBlur stdDeviation="1.5" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>`;
-        g.appendChild(defs);
-
-        const createStrand = (offset, color) => {
-            const strandG = document.createElementNS(svgNS, 'g');
-            strandG.setAttribute('filter', `url(#${glowId})`);
-            
-            for(let y=0; y<=18; y+=2) {
-                let x = Math.sin((y/3) + offset) * 3.5;
-                const dot = document.createElementNS(svgNS, 'circle');
-                dot.setAttribute('cx', x);
-                dot.setAttribute('cy', -antH - 2 - y);
-                dot.setAttribute('r', 1.2 - (y/25)); // Tapering
-                dot.setAttribute('fill', color);
-                strandG.appendChild(dot);
-                
-                // Connecting bar
-                if (offset === 0) {
-                    const bar = document.createElementNS(svgNS, 'line');
-                    const x2 = Math.sin((y/3) + Math.PI) * 3.5;
-                    bar.setAttribute('x1', x); bar.setAttribute('y1', -antH - 2 - y);
-                    bar.setAttribute('x2', x2); bar.setAttribute('y2', -antH - 2 - y);
-                    bar.setAttribute('stroke', 'rgba(15,23,42,0.1)');
-                    bar.setAttribute('stroke-width', '0.3');
-                    g.appendChild(bar);
-                }
-            }
-            return strandG;
-        };
-        g.appendChild(createStrand(0, c1));
-        g.appendChild(createStrand(Math.PI, c2));
-        return g;
-    }
-
-    // Global SVG Defs
-    const globalSvg = document.createElementNS(svgNS, 'svg');
-    globalSvg.style.cssText = 'position:absolute; width:0; height:0;';
-    globalSvg.innerHTML = `
-        <defs>
-            <radialGradient id="orbGrad_hq" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#0ea5e9"/>
-                <stop offset="100%" stop-color="#093c8d"/>
-            </radialGradient>
-            <radialGradient id="orbGrad_al" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#38bdf8"/>
-                <stop offset="100%" stop-color="#0ea5e9"/>
-            </radialGradient>
-        </defs>
-    `;
-    wrapper.appendChild(globalSvg);
+    // PIN CIUDAD ALIADA — Edificio compacto sin torre
+    const PIN_CITY_SVG = `<svg class="pin-building" width="44" height="63" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <ellipse cx="70" cy="170" rx="46" ry="12" fill="none" stroke="#0099bb" stroke-width="1.2" opacity="0.45"/>
+      <ellipse cx="70" cy="168" rx="28" ry="7" fill="#003344" opacity="0.28"/>
+      <polygon points="100,155 116,145 116,110 100,120" fill="#004060" stroke="#003355" stroke-width="0.5"/>
+      <polygon points="36,155 100,155 100,120 36,128" fill="#005f80" stroke="#004466" stroke-width="0.5"/>
+      <polygon points="36,128 100,120 116,110 52,116" fill="#0088bb" stroke="#005577" stroke-width="0.5"/>
+      <rect x="44" y="132" width="11" height="7" rx="1" fill="rgba(0,200,255,0.2)" stroke="#00bbdd" stroke-width="0.6"/>
+      <rect x="60" y="131" width="11" height="7" rx="1" fill="rgba(0,200,255,0.22)" stroke="#00bbdd" stroke-width="0.6"/>
+      <rect x="76" y="130" width="11" height="7" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
+      <rect x="63" y="143" width="9" height="12" rx="1" fill="rgba(0,50,80,0.8)" stroke="#00bbdd" stroke-width="0.7"/>
+      <line x1="70" y1="106" x2="70" y2="116" stroke="#00ccee" stroke-width="1" opacity="0.8"/>
+      <circle cx="70" cy="105" r="2.5" fill="#00e5ff" opacity="0.9"/>
+    </svg>`;
 
     const pinMap = new Map();
 
@@ -837,36 +777,18 @@ function initFaqDNA() {
             const id = normalize(loc.name);
             const fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
             
-            // 1. Map Pin — ANCLA CERO + PIN HTML (zonarespetada)
+            // 1. Map Pin — ANCLA CERO + SVG Edificio (coordenadas intactas)
             const pinDiv = document.createElement('div');
             pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
             pinDiv.style.left = `${loc.left}%`;
             pinDiv.style.top = `${loc.top}%`;
 
-            // 10 pairs de doble hélice
-            const pairs = Array.from({length:10}, (_,i) => `<div class="base-pair" style="--i:${i};"></div>`).join('');
-
-            // Estructura HTML del nuevo pin (crece hacia ARRIBA desde el punto 0,0 del ancla)
-            pinDiv.innerHTML = `
-                <div class="pin-geometry-container pin-geom-active">
-                    <div class="floor-shadow"></div>
-                    <div class="radar-ring"></div>
-                    <div class="floor-dot"></div>
-                    <div class="pin-wrapper">
-                        <div class="pin-aura"></div>
-                        <div class="pin-visual-gota">
-                            <div class="pin-inner-content">
-                                <div class="dna-core">${pairs}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="city-floating-label">${loc.name}</div>
-            `;
+            pinDiv.innerHTML = (loc.hq ? PIN_HQ_SVG : PIN_CITY_SVG) +
+                `<div class="city-floating-label">${loc.name}</div>`;
 
             pinsLayer.appendChild(pinDiv);
-            const pinWrapper = pinDiv.querySelector('.pin-wrapper');
-            pinMap.set(id, { pin: pinDiv, pinWrapper, loc: loc });
+            const pinSvg = pinDiv.querySelector('svg.pin-building');
+            pinMap.set(id, { pin: pinDiv, pinSvg, loc: loc });
 
             // 2. Sidebar Item
             const cityItem = document.createElement('div');
@@ -882,10 +804,10 @@ function initFaqDNA() {
             cityListContainer.appendChild(cityItem);
             pinMap.get(id).listItem = cityItem;
 
-            // Pin Events (se capturan en .pin-wrapper que tiene pointer-events:all)
-            if (pinWrapper) {
-                pinWrapper.onmouseenter = () => highlightCity(id, true);
-                pinWrapper.onmouseleave = () => highlightCity(id, false);
+            // Pin Events — el SVG captura los eventos (pointer-events:all)
+            if (pinSvg) {
+                pinSvg.onmouseenter = () => highlightCity(id, true);
+                pinSvg.onmouseleave = () => highlightCity(id, false);
             }
         });
     }
@@ -894,16 +816,16 @@ function initFaqDNA() {
         const data = pinMap.get(id);
         if(!data) return;
         if(active) {
-            if (data.pinWrapper) {
-                data.pinWrapper.style.transform = 'scale(1.25) translateY(-18px)';
-                data.pinWrapper.style.filter = 'drop-shadow(0 0 12px rgba(9, 60, 141, 0.9))';
+            if (data.pinSvg) {
+                data.pinSvg.style.transform = 'translateX(-50%) scale(1.25) translateY(-6px)';
+                data.pinSvg.style.filter = 'drop-shadow(0 4px 16px rgba(0,180,230,0.75))';
             }
             data.listItem.classList.add('active');
             data.listItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-            if (data.pinWrapper) {
-                data.pinWrapper.style.transform = '';
-                data.pinWrapper.style.filter = '';
+            if (data.pinSvg) {
+                data.pinSvg.style.transform = 'translateX(-50%)';
+                data.pinSvg.style.filter = 'none';
             }
             data.listItem.classList.remove('active');
         }
