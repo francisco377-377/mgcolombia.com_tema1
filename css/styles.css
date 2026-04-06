@@ -2710,7 +2710,9 @@ section {
 
 .coverage-header {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem; /* Más separación del mapa */
+    position: relative;
+    z-index: 10;
 }
 
 .coverage-badge {
@@ -2732,11 +2734,17 @@ section {
 }
 
 .coverage-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 800;
-    color: #0f172a; /* Color "Historias de" de la imagen */
-    letter-spacing: -1.5px;
-    margin-bottom: 1rem;
+    color: #000; /* Negro puro como solicitaste */
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+}
+
+.title-first-line {
+    color: #000;
+    opacity: 0.95;
 }
 
 .coverage-highlight {
@@ -2824,10 +2832,10 @@ section {
 .coverage-map-wrapper::after {
     content: "";
     position: absolute;
-    inset: -100px; /* Wider to cover map bleed */
-    background: radial-gradient(circle at center, transparent 35%, #eff5fc 95%);
+    inset: -150px -100px -100px -100px; /* Más amplio hacia arriba para alejar el borde */
+    background: radial-gradient(circle at 50% 60%, transparent 35%, #eff5fc 95%);
     pointer-events: none;
-    z-index: 1; /* Below pins but over map */
+    z-index: 1; 
 }
 
 .map-pins-layer {
