@@ -865,6 +865,38 @@ function initFaqDNA() {
         });
     });
 
+
+    // --- Counter Animation for "39 Cities" ---
+    function animateCounter(targetId, targetValue, duration = 2000) {
+        const el = document.getElementById(targetId);
+        if (!el) return;
+        
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            el.innerText = Math.floor(progress * targetValue);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.innerText = targetValue;
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter('city-counter', 39, 1500);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const coverageSection = document.getElementById('cobertura');
+    if (coverageSection) counterObserver.observe(coverageSection);
+
     renderMap();
 })();
 
