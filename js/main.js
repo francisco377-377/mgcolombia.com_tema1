@@ -939,7 +939,7 @@ function initFaqDNA() {
         svg.style.overflow = 'visible';
         svg.style.position = 'absolute';
         svg.style.left = '50%'; svg.style.top = '50%';
-        svg.style.transform = 'translate(-50%, -85%)';
+        svg.style.transform = 'translate(-50%, -50%)';
         svg.style.pointerEvents = 'none';
         svg.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         
@@ -948,7 +948,7 @@ function initFaqDNA() {
         pinDiv.appendChild(svg);
         
         pinDiv.addEventListener('mouseenter', () => {
-            svg.style.transform = 'translate(-50%, -85%) scale(1.2) translateY(-10px)';
+            svg.style.transform = 'translate(-50%, -50%) scale(1.2) translateY(-10px)';
             tooltip.textContent = fullName;
             tooltip.classList.add('visible');
         });
@@ -958,7 +958,7 @@ function initFaqDNA() {
             tooltip.style.top  = (e.clientY - r.top  - 40) + 'px';
         });
         pinDiv.addEventListener('mouseleave', () => {
-            svg.style.transform = 'translate(-50%, -85%) scale(1)';
+            svg.style.transform = 'translate(-50%, -50%) scale(1)';
             tooltip.classList.remove('visible');
         });
 

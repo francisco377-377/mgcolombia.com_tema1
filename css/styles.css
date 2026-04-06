@@ -2763,7 +2763,8 @@ section {
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 8px 40px rgba(9,60,141,0.10), 0 2px 8px rgba(0,0,0,0.04);
-    padding: 1.5rem;
+    padding: 0;
+    overflow: hidden;
     border: 1px solid rgba(9,60,141,0.08);
 }
 .colombia-map-svg {
