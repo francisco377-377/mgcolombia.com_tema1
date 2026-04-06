@@ -690,55 +690,61 @@ function initFaqDNA() {
     const pinsLayer = document.getElementById('map-pins-layer');
     const tooltip = document.getElementById('mapTooltip3');
     const wrapper = document.querySelector('.coverage-map-wrapper');
+    const imgMap = document.getElementById('colombia-img');
     if (!pinsLayer || !wrapper || !tooltip) return;
+
+    // ELIMINAR EL TONO AMARILLENTO DEL MAPA
+    if (imgMap) {
+        imgMap.style.filter = "saturate(0.85) brightness(1.05) contrast(1.1) hue-rotate(-6deg)";
+    }
 
     // JSON Locations provided by user
     const locations = [
-      { "name": "Medellín", "hq": true, "left": 36.37, "top": 40.89 },
-      { "name": "Acacías", "hq": false, "left": 46.95, "top": 54.52 },
-      { "name": "Apartadó", "hq": false, "left": 30.28, "top": 28.71 },
-      { "name": "Arauca", "hq": false, "left": 66.39, "top": 36.11 },
-      { "name": "Armenia", "hq": false, "left": 35.93, "top": 50.32 },
-      { "name": "Barranquilla", "hq": false, "left": 40.72, "top": 11.75 },
-      { "name": "Bogotá", "hq": false, "left": 45.94, "top": 49.01 },
-      { "name": "Bucaramanga", "hq": false, "left": 51.74, "top": 35.96 },
-      { "name": "Cajicá", "hq": false, "left": 46.95, "top": 47.42 },
-      { "name": "Cali", "hq": false, "left": 30.86, "top": 57.28 },
-      { "name": "Cartagena", "hq": false, "left": 36.95, "top": 15.52 },
-      { "name": "Caucasia", "hq": false, "left": 39.56, "top": 30.74 },
-      { "name": "Cúcuta", "hq": false, "left": 54.5, "top": 31.03 },
-      { "name": "Granada", "hq": false, "left": 47.82, "top": 57.86 },
-      { "name": "Ibagué", "hq": false, "left": 39.85, "top": 51.77 },
-      { "name": "Ipiales", "hq": false, "left": 25.93, "top": 72.65 },
-      { "name": "Magangué", "hq": false, "left": 41.3, "top": 21.75 },
-      { "name": "Manizales", "hq": false, "left": 35.93, "top": 47.56 },
-      { "name": "Mocoa", "hq": false, "left": 29.7, "top": 69.61 },
-      { "name": "Montelíbano", "hq": false, "left": 35.5, "top": 30.45 },
-      { "name": "Montería", "hq": false, "left": 34.34, "top": 25.38 },
-      { "name": "Monterrey (Casanare)", "hq": false, "left": 53.77, "top": 48.29 },
-      { "name": "Neiva", "hq": false, "left": 38.4, "top": 59.74 },
-      { "name": "Palmira", "hq": false, "left": 32.45, "top": 55.25 },
-      { "name": "Pasto", "hq": false, "left": 26.22, "top": 69.32 },
-      { "name": "Pereira", "hq": false, "left": 35.21, "top": 48.87 },
-      { "name": "Pitalito", "hq": false, "left": 33.61, "top": 66.27 },
-      { "name": "Popayán", "hq": false, "left": 30.13, "top": 63.23 },
-      { "name": "Quibdó", "hq": false, "left": 26.51, "top": 43.65 },
-      { "name": "San Andrés", "hq": false, "left": 6.93, "top": 9.43 },
-      { "name": "Sincelejo", "hq": false, "left": 37.09, "top": 21.75 },
-      { "name": "Tocancipá", "hq": false, "left": 44.49, "top": 47.27 },
-      { "name": "Tumaco", "hq": false, "left": 16.94, "top": 66.56 },
-      { "name": "Tunja", "hq": false, "left": 52.32, "top": 44.08 },
-      { "name": "Túquerres", "hq": false, "left": 24.78, "top": 70.43 },
-      { "name": "Valledupar", "hq": false, "left": 50.61, "top": 15.24 },
-      { "name": "Villavicencio", "hq": false, "left": 50.77, "top": 55.35 },
-      { "name": "Yopal", "hq": false, "left": 57.51, "top": 45.73 }
+      { "name": "Medellín", "hq": true, "left": 33.12, "top": 40.11 },
+      { "name": "Acacías", "hq": false, "left": 45.48, "top": 53.75 },
+      { "name": "Apartadó", "hq": false, "left": 27.35, "top": 32.09 },
+      { "name": "Arauca", "hq": false, "left": 62.49, "top": 38.51 },
+      { "name": "Armenia", "hq": false, "left": 32.96, "top": 50.38 },
+      { "name": "Barranquilla", "hq": false, "left": 37.46, "top": 18.45 },
+      { "name": "Bogotá", "hq": false, "left": 42.75, "top": 48.13 },
+      { "name": "Bucaramanga", "hq": false, "left": 49.97, "top": 36.26 },
+      { "name": "Cajicá", "hq": false, "left": 45.8, "top": 49.1 },
+      { "name": "Cali", "hq": false, "left": 26.87, "top": 55.03 },
+      { "name": "Cartagena", "hq": false, "left": 35.53, "top": 21.66 },
+      { "name": "Caucasia", "hq": false, "left": 36.81, "top": 33.69 },
+      { "name": "Cúcuta", "hq": false, "left": 53.34, "top": 31.13 },
+      { "name": "Granada", "hq": false, "left": 49.81, "top": 55.03 },
+      { "name": "Ibagué", "hq": false, "left": 36.01, "top": 52.46 },
+      { "name": "Ipiales", "hq": false, "left": 21.41, "top": 68.83 },
+      { "name": "Magangué", "hq": false, "left": 42.27, "top": 30.64 },
+      { "name": "Manizales", "hq": false, "left": 34.41, "top": 46.85 },
+      { "name": "Mocoa", "hq": false, "left": 30.56, "top": 68.35 },
+      { "name": "Montelíbano", "hq": false, "left": 32.48, "top": 33.69 },
+      { "name": "Montería", "hq": false, "left": 31.2, "top": 28.24 },
+      { "name": "Monterrey (Casanare)", "hq": false, "left": 58.15, "top": 47.97 },
+      { "name": "Neiva", "hq": false, "left": 34.25, "top": 58.56 },
+      { "name": "Palmira", "hq": false, "left": 29.43, "top": 52.95 },
+      { "name": "Pasto", "hq": false, "left": 20.93, "top": 66.1 },
+      { "name": "Pereira", "hq": false, "left": 31.52, "top": 47.01 },
+      { "name": "Pitalito", "hq": false, "left": 31.52, "top": 62.09 },
+      { "name": "Popayán", "hq": false, "left": 25.58, "top": 60.17 },
+      { "name": "Quibdó", "hq": false, "left": 23.98, "top": 44.12 },
+      { "name": "San Andrés", "hq": false, "left": 18.84, "top": 8.18 },
+      { "name": "Sincelejo", "hq": false, "left": 35.69, "top": 25.51 },
+      { "name": "Tocancipá", "hq": false, "left": 44.36, "top": 46.53 },
+      { "name": "Tumaco", "hq": false, "left": 14.03, "top": 63.86 },
+      { "name": "Tunja", "hq": false, "left": 51.41, "top": 43.64 },
+      { "name": "Túquerres", "hq": false, "left": 17.56, "top": 66.42 },
+      { "name": "Valledupar", "hq": false, "left": 47.89, "top": 21.18 },
+      { "name": "Villavicencio", "hq": false, "left": 54.46, "top": 52.3 },
+      { "name": "Yopal", "hq": false, "left": 61.36, "top": 44.28 }
     ];
 
     // Map building variety to cities automatically (1-5 styles)
     const getCityType = (name) => {
         let n = 0; 
         for(let i=0; i<name.length; i++) n += name.charCodeAt(i);
-        return (n % 5) + 1; // Returns 1-5 reliably based on name
+        return (n % 4) + 1; 
     };
 
     function getBuildingPaths(type) {
@@ -747,24 +753,18 @@ function initFaqDNA() {
                 top:   '0,-14  9,-9.5  0,-5  -9,-9.5',
                 left:  '-9,-9.5  0,-5  0,3  -9,-1.5',
                 right: '9,-9.5  0,-5  0,3  9,-1.5',
-                winL:  '-6,-6  -2,-8  -2,-4  -6,-2',
-                winR:  '3,-8  7,-10  7,-6  3,-4',
                 antH: 14
             },
             2: { // Wide flat
                 top:   '0,-10  11,-6  0,-2  -11,-6',
                 left:  '-11,-6  0,-2  0,2  -11,-2',
                 right: '11,-6  0,-2  0,2  11,-2',
-                winL:  '-7,-4  -3,-6  -3,-3  -7,-1',
-                winR:  '3,-6  8,-8  8,-5  3,-3',
                 antH: 10
             },
             3: { // Tall narrow
                 top:   '0,-18  7,-14  0,-10  -7,-14',
                 left:  '-7,-14  0,-10  0,3  -7,-1',
                 right: '7,-14  0,-10  0,3  7,-1',
-                winL:  '-5,-11  -1,-13  -1,-8  -5,-6',
-                winR:  '1,-13  5,-15  5,-10  1,-8',
                 antH: 18
             },
             4: { // L-shape: main box + left extension
@@ -773,59 +773,69 @@ function initFaqDNA() {
                 right: '8,-9  0,-5  0,3  8,-1',
                 ext_top:   '-8,-9  -3,-12  -8,-15  -13,-12',
                 ext_left:  '-13,-12  -8,-9  -8,-1  -13,-4',
-                winL:  '-5,-7  -2,-9  -2,-5  -5,-3',
-                winR:  '2,-9  6,-11  6,-7  2,-5',
                 antH: 13
-            },
-            5: { // Double: two connected boxes
-                top:   '0,-12  8,-8  0,-4  -8,-8',
-                left:  '-8,-8  0,-4  0,2  -8,-2',
-                right: '8,-8  0,-4  0,2  8,-2',
-                sec_top:   '5,-16  11,-13  5,-10  -1,-13',
-                sec_left:  '-1,-13  5,-10  5,2  -1,-1',
-                sec_right: '11,-13  5,-10  5,2  11,-1',
-                winR:  '2,-8  6,-10  6,-6  2,-4',
-                antH: 12
             }
         };
         return types[type] || types[1];
     }
 
-    function makePoly(points, fill, stroke, opacity) {
+    function makePoly(points, fill, stroke) {
         const p = document.createElementNS(svgNS, 'polygon');
         p.setAttribute('points', points);
         p.setAttribute('fill', fill);
-        p.setAttribute('stroke', stroke || '#7aafd4');
-        p.setAttribute('stroke-width', '0.6');
-        if (opacity) p.setAttribute('opacity', opacity);
+        p.setAttribute('stroke', stroke || 'rgba(0,0,0,0.1)');
+        p.setAttribute('stroke-width', '0.4');
         return p;
     }
 
-    function makeEnormousDNA(antH, isHQ) {
+    // REALISTIC DOUBLE HELIX DNA
+    function makeDoubleHelix(antH, isHQ) {
         const g = document.createElementNS(svgNS, 'g');
-        // Main antenna mast
+        const color1 = isHQ ? '#fde047' : '#22d3ee'; // Amarillo/Dorado o Cian
+        const color2 = isHQ ? '#ca8a04' : '#0ea5e9'; // Oscuro complementario
+        
+        // Mast
         const line = document.createElementNS(svgNS, 'line');
         line.setAttribute('x1', '0'); line.setAttribute('y1', -antH);
-        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 22);
-        line.setAttribute('stroke', isHQ ? '#f5c842' : '#38bdf8');
-        line.setAttribute('stroke-width', isHQ ? '1.5' : '1');
+        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 25);
+        line.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+        line.setAttribute('stroke-width', '0.5');
         g.appendChild(line);
 
-        // Holographic DNA Helix
-        const dna = document.createElementNS(svgNS, 'path');
-        const startY = -antH - 2;
-        let dScale = isHQ ? 4 : 2.5; 
-        let path = '';
-        for(let j=0; j<4; j++) {
-            let y = startY - (j * 4.5);
-            path += `M-${dScale},${y} Q0,${y-4} ${dScale},${y} Q0,${y+4} -${dScale},${y} `;
+        // HELIX 1 & 2
+        function createHelixPath(offset, color, blur) {
+            const path = document.createElementNS(svgNS, 'path');
+            let d = `M${Math.sin(offset)*3},${-antH-2}`;
+            for(let y=0; y<=20; y+=2) {
+                let x = Math.sin((y/3) + offset) * 3.5;
+                d += ` L${x},${-antH - 2 - y}`;
+            }
+            path.setAttribute('d', d);
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', color);
+            path.setAttribute('stroke-width', isHQ ? '1.4' : '1.1');
+            path.setAttribute('stroke-linecap', 'round');
+            if(blur) path.style.filter = `blur(${blur}px)`;
+            return path;
         }
-        dna.setAttribute('d', path);
-        dna.setAttribute('fill', 'none');
-        dna.setAttribute('stroke', isHQ ? '#fde047' : '#22d3ee'); // cyan/turquesa or dorado
-        dna.setAttribute('stroke-width', isHQ ? '1.5' : '1.2');
-        dna.style.filter = `drop-shadow(0px 0px 4px ${isHQ ? '#f5c842' : '#22d3ee'})`;
-        g.appendChild(dna);
+
+        g.appendChild(createHelixPath(0, color1, 3)); // Glow
+        g.appendChild(createHelixPath(0, color1, 0)); // Line
+        g.appendChild(createHelixPath(Math.PI, color2, 3)); // Glow 2
+        g.appendChild(createHelixPath(Math.PI, isHQ ? '#fffbeb' : '#f0f9ff', 0)); // Line 2
+
+        // Small dots for base pairs
+        for(let py=0; py<=18; py+=4) {
+            let x1 = Math.sin((py/3)) * 3.5;
+            let x2 = Math.sin((py/3) + Math.PI) * 3.5;
+            const l = document.createElementNS(svgNS, 'line');
+            l.setAttribute('x1', x1); l.setAttribute('y1', -antH - 2 - py);
+            l.setAttribute('x2', x2); l.setAttribute('y2', -antH - 2 - py);
+            l.setAttribute('stroke', 'rgba(255,255,255,0.4)');
+            l.setAttribute('stroke-width', '0.5');
+            g.appendChild(l);
+        }
+
         return g;
     }
 
@@ -833,95 +843,122 @@ function initFaqDNA() {
         const b = getBuildingPaths(type);
         const g = document.createElementNS(svgNS, 'g');
 
-        // Golden Base for HQ (V6)
+        // Professional Base Shadow
+        const shadow = document.createElementNS(svgNS, 'ellipse');
+        shadow.setAttribute('cx','0'); shadow.setAttribute('cy','3');
+        shadow.setAttribute('rx', isHQ ? '20' : '15'); shadow.setAttribute('ry', isHQ ? '10' : '7');
+        shadow.setAttribute('fill','rgba(0,0,0,0.15)');
+        shadow.style.filter = 'blur(4px)';
+        g.appendChild(shadow);
+
         if (isHQ) {
             const h1 = document.createElementNS(svgNS, 'ellipse');
             h1.setAttribute('cx','0'); h1.setAttribute('cy','0');
-            h1.setAttribute('rx','16'); h1.setAttribute('ry','8');
-            h1.setAttribute('fill','#f5c842'); h1.setAttribute('opacity','0.3');
-            h1.setAttribute('class','hq-halo-outer');
+            h1.setAttribute('rx','24'); h1.setAttribute('ry','12');
+            h1.setAttribute('fill','url(#hqGlow)'); h1.setAttribute('opacity','0.4');
             g.appendChild(h1);
         }
 
+        // Use gradients for faces
+        const topFill = isHQ ? 'url(#topHQ)' : 'url(#topStd)';
+        const sideL   = isHQ ? '#fde047' : '#e0f2fe';
+        const sideR   = isHQ ? '#eab308' : '#bae6fd';
+
         if (type === 4 && b.ext_top) {
-            g.appendChild(makePoly(b.ext_top, '#ddeefa', '#7aafd4'));
-            g.appendChild(makePoly(b.ext_left, '#b8d4ed', '#7aafd4'));
-        }
-        if (type === 5 && b.sec_top) {
-            g.appendChild(makePoly(b.sec_top, '#deeefa', '#7aafd4'));
-            g.appendChild(makePoly(b.sec_left, '#b5d2ec', '#7aafd4'));
-            g.appendChild(makePoly(b.sec_right, '#9bc2e0', '#7aafd4'));
+            g.appendChild(makePoly(b.ext_top, topFill));
+            g.appendChild(makePoly(b.ext_left, sideL));
         }
 
-        g.appendChild(makePoly(b.top,   isHQ ? '#fff9e8' : '#eef5fc', '#7aafd4'));
-        g.appendChild(makePoly(b.left,  isHQ ? '#f5e5a0' : '#c8dff3', '#7aafd4'));
-        g.appendChild(makePoly(b.right, isHQ ? '#e8cc72' : '#a5c8e8', '#7aafd4'));
+        g.appendChild(makePoly(b.top,   topFill));
+        g.appendChild(makePoly(b.left,  sideL));
+        g.appendChild(makePoly(b.right, sideR));
 
-        if (b.winL) g.appendChild(makePoly(b.winL, '#60a5fa', null, '0.75'));
-        if (b.winR) g.appendChild(makePoly(b.winR, '#3b82f6', null, '0.65'));
+        // Window Details (Realistic Grid)
+        function makeWindows(points, color) {
+            const p = document.createElementNS(svgNS, 'polygon');
+            p.setAttribute('points', points);
+            p.setAttribute('fill', color);
+            p.setAttribute('opacity', '0.7');
+            return p;
+        }
+        // Simplified window grid simulation
+        if (type===1) {
+            g.appendChild(makeWindows('-7,-7 -2,-9 -2,-6 -7,-4', '#7dd3fc'));
+            g.appendChild(makeWindows('2,-9 7,-7 7,-4 2,-6', '#0ea5e9'));
+        }
 
-        // Enormous DNA Antenna
-        g.appendChild(makeEnormousDNA(b.antH, isHQ));
+        // DNA
+        g.appendChild(makeDoubleHelix(b.antH, isHQ));
         return g;
     }
 
-    // Clear and rebuild map pins layer safely
+    // SVG DEFS for Gradients
+    const defs = document.createElementNS(svgNS, 'defs');
+    defs.innerHTML = `
+        <linearGradient id="topStd" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f0f9ff;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="topHQ" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fefce8;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#fef9c3;stop-opacity:1" />
+        </linearGradient>
+        <radialGradient id="hqGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0" />
+        </radialGradient>
+    `;
+    
+    // Inject defs globally if not exists
+    let globalSvg = document.querySelector('.coverage-map-wrapper svg.global-defs');
+    if(!globalSvg) {
+        globalSvg = document.createElementNS(svgNS, 'svg');
+        globalSvg.setAttribute('class', 'global-defs');
+        globalSvg.style.position = 'absolute'; globalSvg.style.width = '0'; globalSvg.style.height = '0';
+        globalSvg.appendChild(defs);
+        wrapper.appendChild(globalSvg);
+    }
+
     pinsLayer.innerHTML = '';
 
     locations.forEach((loc) => {
         let fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
         let type = getCityType(loc.name);
         
-        // Parent Div positioning the element absolutely using JSON%
         const pinDiv = document.createElement('div');
         pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
         pinDiv.style.left = `${loc.left}%`;
         pinDiv.style.top = `${loc.top}%`;
         pinDiv.setAttribute('data-city', fullName);
-        
-        // Remove standard circle styles, we only want the SVG to show
-        pinDiv.style.background = 'transparent';
-        pinDiv.style.border = 'none';
-        pinDiv.style.boxShadow = 'none';
-        pinDiv.style.width = '0px';
-        pinDiv.style.height = '0px';
-        pinDiv.style.animation = 'none'; // removing old bouncing dots 
+        pinDiv.style.cssText += 'background:none; border:none; box-shadow:none; width:0; height:0; animation:none;';
 
-        // SVG wrapper inside the PIN
         const svg = document.createElementNS(svgNS, 'svg');
-        svg.setAttribute('viewBox', '-30 -50 60 70'); 
-        svg.style.width = loc.hq ? '75px' : '55px';
-        svg.style.height = loc.hq ? '85px' : '65px';
+        svg.setAttribute('viewBox', '-40 -60 80 80'); 
+        svg.style.width = loc.hq ? '90px' : '65px';
+        svg.style.height = loc.hq ? '110px' : '85px';
         svg.style.overflow = 'visible';
         svg.style.position = 'absolute';
-        svg.style.top = '50%';
-        svg.style.left = '50%';
-        // Lift the building anchors slightly higher so it sits well on the coordinate
-        svg.style.transform = 'translate(-50%, -75%)'; 
-        svg.style.pointerEvents = 'none'; // let the div trap the hover
+        svg.style.left = '50%'; svg.style.top = '50%';
+        svg.style.transform = 'translate(-50%, -85%)';
+        svg.style.pointerEvents = 'none';
+        svg.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         
         const building = buildIsometric(type, loc.hq);
-        
-        // Optional scale transition inside CSS, we can apply class here.
-        svg.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        pinDiv.addEventListener('mouseenter', () => svg.style.transform = 'translate(-50%, -75%) scale(1.35)');
-        pinDiv.addEventListener('mouseleave', () => svg.style.transform = 'translate(-50%, -75%) scale(1)');
-
         svg.appendChild(building);
         pinDiv.appendChild(svg);
         
-        // Tooltip logic attachment
         pinDiv.addEventListener('mouseenter', () => {
+            svg.style.transform = 'translate(-50%, -85%) scale(1.2) translateY(-10px)';
             tooltip.textContent = fullName;
             tooltip.classList.add('visible');
         });
         pinDiv.addEventListener('mousemove', e => {
-            if (!wrapper) return;
             const r = wrapper.getBoundingClientRect();
-            tooltip.style.left = (e.clientX - r.left + 14) + 'px';
-            tooltip.style.top  = (e.clientY - r.top  - 36) + 'px';
+            tooltip.style.left = (e.clientX - r.left + 15) + 'px';
+            tooltip.style.top  = (e.clientY - r.top  - 40) + 'px';
         });
         pinDiv.addEventListener('mouseleave', () => {
+            svg.style.transform = 'translate(-50%, -85%) scale(1)';
             tooltip.classList.remove('visible');
         });
 

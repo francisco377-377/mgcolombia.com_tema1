@@ -164,7 +164,7 @@ button {
 <!-- MAPA -->
 <div id="left">
   <div id="img-wrap">
-    <img id="mapa" src="assets/images/colombia_ref_departamentos.png" alt="Colombia">
+    <img id="mapa" src="assets/images/Mapa base limpio.webp" alt="Colombia">
     <div id="hair-h"></div>
     <div id="hair-v"></div>
     <div id="live-coords">x:— y:—</div>
@@ -175,8 +175,15 @@ button {
 <div id="right">
   <header>
     <h1>🗺️ Calibrador de Ciudades</h1>
-    <p>Clic o arrastra para colocar · Arrastra pin para mover</p>
+    <p>Clic para colocar · Arrastra pin para mover</p>
   </header>
+  
+  <div style="padding: 10px 16px; border-bottom: 1px solid #334155;">
+    <small style="font-size:0.65rem; color:#64748b; display:block; margin-bottom:5px;">IMPORTAR JSON (opcional)</small>
+    <textarea id="json-input" placeholder="Pega aquí tu JSON anterior para corregir..." style="width:100%; height:60px; background:#0f172a; border:1px solid #334155; color:#38bdf8; font-size:0.6rem; padding:5px; border-radius:4px;"></textarea>
+    <button onclick="importJSON()" style="width:100%; margin-top:5px; background:#1e3a8a; color:white; padding:5px; border-radius:4px; font-size:0.7rem;">Cargar JSON para corregir</button>
+  </div>
+
   <div id="prog-row">
     <div id="prog-bar-bg"><div id="prog-bar"></div></div>
     <span id="prog-txt">0 / 38</span>
@@ -408,7 +415,28 @@ function exportJSON(autoCopy = true) {
     setTimeout(() => b.textContent = '📋 Copiar JSON', 2000);
   });
 }
-function copy() { exportJSON(true); }
+function importJSON() {
+  const input = document.getElementById('json-input').value;
+  if (!input) return alert('Por favor pega el JSON primero');
+  try {
+    const data = JSON.parse(input);
+    // Limpiar actuales
+    Object.values(els).forEach(e => e.remove());
+    Object.keys(placed).forEach(k => delete placed[k]);
+    Object.keys(els).forEach(k => delete els[k]);
+    
+    data.forEach(item => {
+      setPin(item.name, item.left, item.top);
+    });
+    // Apuntar a la siguiente pendiente o al final
+    const next = CITIES.findIndex((c, i) => !placed[c.name]);
+    cur = next === -1 ? CITIES.length : next;
+    render();
+    alert('JSON cargado. Ahora puedes arrastrar los pines para ajustarlos.');
+  } catch(e) {
+    alert('Error al leer el JSON: ' + e.message);
+  }
+}
 
 render();
 </script>
