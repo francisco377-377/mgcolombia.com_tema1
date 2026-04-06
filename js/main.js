@@ -712,8 +712,9 @@ function initFaqDNA() {
     // NO tocar renderMap ni highlightCity para no dañar coordenadas.
     // =========================================================================================
 
-    // PIN SEDE PRINCIPAL (HQ) — Edificio grande con torre y antena
-    const PIN_HQ_SVG = `<svg class="pin-building" width="70" height="100" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+    // PIN SEDE PRINCIPAL (HQ) — Edificio grande con torre y antena (azul marca)
+    // viewBox recortado en y=175 para que las elipses del suelo queden en la base del SVG (sin flotamiento)
+    const PIN_HQ_SVG = `<svg class="pin-building" width="70" height="88" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
       <ellipse cx="70" cy="170" rx="62" ry="18" fill="none" stroke="#007799" stroke-width="0.8" opacity="0.25"/>
       <ellipse cx="70" cy="170" rx="46" ry="13" fill="none" stroke="#0099bb" stroke-width="1" opacity="0.4"/>
       <ellipse cx="70" cy="170" rx="30" ry="9" fill="none" stroke="#00bbdd" stroke-width="1.2" opacity="0.6"/>
@@ -736,20 +737,22 @@ function initFaqDNA() {
       <text x="68" y="109.8" text-anchor="middle" font-size="3.2" fill="#00e5ff" font-family="monospace">MG LAB</text>
     </svg>`;
 
-    // PIN CIUDAD ALIADA — Edificio compacto sin torre
-    const PIN_CITY_SVG = `<svg class="pin-building" width="44" height="63" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-      <ellipse cx="70" cy="170" rx="46" ry="12" fill="none" stroke="#0099bb" stroke-width="1.2" opacity="0.45"/>
-      <ellipse cx="70" cy="168" rx="28" ry="7" fill="#003344" opacity="0.28"/>
-      <polygon points="100,155 116,145 116,110 100,120" fill="#004060" stroke="#003355" stroke-width="0.5"/>
-      <polygon points="36,155 100,155 100,120 36,128" fill="#005f80" stroke="#004466" stroke-width="0.5"/>
-      <polygon points="36,128 100,120 116,110 52,116" fill="#0088bb" stroke="#005577" stroke-width="0.5"/>
-      <rect x="44" y="132" width="11" height="7" rx="1" fill="rgba(0,200,255,0.2)" stroke="#00bbdd" stroke-width="0.6"/>
-      <rect x="60" y="131" width="11" height="7" rx="1" fill="rgba(0,200,255,0.22)" stroke="#00bbdd" stroke-width="0.6"/>
-      <rect x="76" y="130" width="11" height="7" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
-      <rect x="63" y="143" width="9" height="12" rx="1" fill="rgba(0,50,80,0.8)" stroke="#00bbdd" stroke-width="0.7"/>
-      <line x1="70" y1="106" x2="70" y2="116" stroke="#00ccee" stroke-width="1" opacity="0.8"/>
-      <circle cx="70" cy="105" r="2.5" fill="#00e5ff" opacity="0.9"/>
+    // PIN CIUDAD ALIADA — Edificio compacto en verde esmeralda
+    // viewBox recortado en y=175 para que las elipses queden en la base (sin flotamiento)
+    const PIN_CITY_SVG = `<svg class="pin-building" width="44" height="55" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <ellipse cx="70" cy="170" rx="46" ry="12" fill="none" stroke="#00cc66" stroke-width="1.2" opacity="0.45"/>
+      <ellipse cx="70" cy="168" rx="28" ry="7" fill="#0a3320" opacity="0.35"/>
+      <polygon points="100,155 116,145 116,110 100,120" fill="#0a4028" stroke="#062a18" stroke-width="0.5"/>
+      <polygon points="36,155 100,155 100,120 36,128" fill="#0f5c3a" stroke="#0a3d25" stroke-width="0.5"/>
+      <polygon points="36,128 100,120 116,110 52,116" fill="#1a8a55" stroke="#0f6040" stroke-width="0.5"/>
+      <rect x="44" y="132" width="11" height="7" rx="1" fill="rgba(0,255,128,0.18)" stroke="#00dd66" stroke-width="0.6"/>
+      <rect x="60" y="131" width="11" height="7" rx="1" fill="rgba(0,255,128,0.22)" stroke="#00dd66" stroke-width="0.6"/>
+      <rect x="76" y="130" width="11" height="7" rx="1" fill="rgba(0,220,100,0.15)" stroke="#00bb55" stroke-width="0.5"/>
+      <rect x="63" y="143" width="9" height="12" rx="1" fill="rgba(5,30,15,0.85)" stroke="#00cc55" stroke-width="0.7"/>
+      <line x1="70" y1="106" x2="70" y2="116" stroke="#00ee77" stroke-width="1" opacity="0.8"/>
+      <circle cx="70" cy="105" r="2.5" fill="#00ff88" opacity="0.9"/>
     </svg>`;
+
 
     const pinMap = new Map();
 
