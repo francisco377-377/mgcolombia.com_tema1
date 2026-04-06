@@ -2733,14 +2733,14 @@ section {
 
 .coverage-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    color: #0f172a;
+    font-weight: 800;
+    color: #0f172a; /* Color "Historias de" de la imagen */
     letter-spacing: -1.5px;
     margin-bottom: 1rem;
 }
 
 .coverage-highlight {
-    color: #093c8d;
+    color: #0d47a1; /* Azul vibrante "Paz y Certeza" */
     font-weight: 900;
     display: inline-block;
 }
