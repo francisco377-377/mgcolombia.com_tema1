@@ -715,10 +715,10 @@ function initFaqDNA() {
     // PIN SEDE PRINCIPAL (HQ) — Edificio grande con torre y antena (azul marca)
     // viewBox recortado en y=175 para que las elipses del suelo queden en la base del SVG (sin flotamiento)
     const PIN_HQ_SVG = `<svg class="pin-building" width="70" height="88" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-      <ellipse cx="70" cy="170" rx="62" ry="18" fill="none" stroke="#007799" stroke-width="0.8" opacity="0.25"/>
-      <ellipse cx="70" cy="170" rx="46" ry="13" fill="none" stroke="#0099bb" stroke-width="1" opacity="0.4"/>
-      <ellipse cx="70" cy="170" rx="30" ry="9" fill="none" stroke="#00bbdd" stroke-width="1.2" opacity="0.6"/>
-      <ellipse cx="70" cy="168" rx="36" ry="8" fill="#003344" opacity="0.35"/>
+      <ellipse cx="70" cy="157" rx="56" ry="14" fill="none" stroke="#007799" stroke-width="0.8" opacity="0.25"/>
+      <ellipse cx="70" cy="157" rx="42" ry="10" fill="none" stroke="#0099bb" stroke-width="1" opacity="0.4"/>
+      <ellipse cx="70" cy="157" rx="28" ry="7" fill="none" stroke="#00bbdd" stroke-width="1.2" opacity="0.6"/>
+      <ellipse cx="70" cy="156" rx="32" ry="6" fill="#003344" opacity="0.35"/>
       <polygon points="100,155 116,143 116,90 100,102" fill="#004060" stroke="#003355" stroke-width="0.5"/>
       <polygon points="36,155 100,155 100,102 36,110" fill="#005f80" stroke="#004466" stroke-width="0.5"/>
       <polygon points="36,110 100,102 116,90 52,98" fill="#0088bb" stroke="#005577" stroke-width="0.5"/>
@@ -740,8 +740,8 @@ function initFaqDNA() {
     // PIN CIUDAD ALIADA — Edificio compacto en verde esmeralda
     // viewBox recortado en y=175 para que las elipses queden en la base (sin flotamiento)
     const PIN_CITY_SVG = `<svg class="pin-building" width="44" height="55" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-      <ellipse cx="70" cy="170" rx="46" ry="12" fill="none" stroke="#00cc66" stroke-width="1.2" opacity="0.45"/>
-      <ellipse cx="70" cy="168" rx="28" ry="7" fill="#0a3320" opacity="0.35"/>
+      <ellipse cx="70" cy="157" rx="42" ry="10" fill="none" stroke="#00cc66" stroke-width="1.2" opacity="0.45"/>
+      <ellipse cx="70" cy="156" rx="26" ry="6" fill="#0a3320" opacity="0.35"/>
       <polygon points="100,155 116,145 116,110 100,120" fill="#0a4028" stroke="#062a18" stroke-width="0.5"/>
       <polygon points="36,155 100,155 100,120 36,128" fill="#0f5c3a" stroke="#0a3d25" stroke-width="0.5"/>
       <polygon points="36,128 100,120 116,110 52,116" fill="#1a8a55" stroke="#0f6040" stroke-width="0.5"/>
