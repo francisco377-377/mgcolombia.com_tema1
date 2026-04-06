@@ -2697,7 +2697,7 @@ section {
    ========================================= */
 .coverage-section {
     background: #ffffff; /* Fondo limpio para que la imagen luzca */
-    padding: 8rem 0;
+    padding: 3rem 0 6rem; /* Subido el título reduciendo padding top */
     position: relative;
     overflow: hidden;
 }
@@ -2710,7 +2710,7 @@ section {
 
 .coverage-header {
     text-align: center;
-    margin-bottom: 7rem; /* Más separación del mapa */
+    margin-bottom: 2.5rem; /* Más cerca del mapa */
     position: relative;
     z-index: 10;
 }
@@ -2832,7 +2832,7 @@ section {
 .coverage-map-wrapper::after {
     content: "";
     position: absolute;
-    inset: -150px -100px -100px -100px; /* Más amplio hacia arriba para alejar el borde */
+    inset: 0 -50px -50px -50px; /* Reducido al mínimo para evitar el espacio "gris" feo */
     background: radial-gradient(circle at 50% 60%, transparent 35%, #eff5fc 95%);
     pointer-events: none;
     z-index: 1; 
