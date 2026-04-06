@@ -837,30 +837,36 @@ function initFaqDNA() {
             const id = normalize(loc.name);
             const fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
             
-            // 1. Map Pin
+            // 1. Map Pin — ANCLA CERO + PIN HTML (zonarespetada)
             const pinDiv = document.createElement('div');
             pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
             pinDiv.style.left = `${loc.left}%`;
             pinDiv.style.top = `${loc.top}%`;
-            
-            const svg = document.createElementNS(svgNS, 'svg');
-            svg.setAttribute('viewBox', '-40 -40 80 80');
-            svg.style.width = loc.hq ? '80px' : '60px';
-            svg.style.height = loc.hq ? '80px' : '60px';
-            svg.style.overflow = 'visible';
-            
-            const marker = buildOrbMarker(loc.hq);
-            svg.appendChild(marker);
-            
-            // Floating Label
-            const label = document.createElement('div');
-            label.className = 'city-floating-label';
-            label.textContent = loc.name;
-            
-            pinDiv.appendChild(label);
-            pinDiv.appendChild(svg);
+
+            // 10 pairs de doble hélice
+            const pairs = Array.from({length:10}, (_,i) => `<div class="base-pair" style="--i:${i};"></div>`).join('');
+
+            // Estructura HTML del nuevo pin (crece hacia ARRIBA desde el punto 0,0 del ancla)
+            pinDiv.innerHTML = `
+                <div class="pin-geometry-container pin-geom-active">
+                    <div class="floor-shadow"></div>
+                    <div class="radar-ring"></div>
+                    <div class="floor-dot"></div>
+                    <div class="pin-wrapper">
+                        <div class="pin-aura"></div>
+                        <div class="pin-visual-gota">
+                            <div class="pin-inner-content">
+                                <div class="dna-core">${pairs}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="city-floating-label">${loc.name}</div>
+            `;
+
             pinsLayer.appendChild(pinDiv);
-            pinMap.set(id, { pin: pinDiv, svg: svg, loc: loc });
+            const pinWrapper = pinDiv.querySelector('.pin-wrapper');
+            pinMap.set(id, { pin: pinDiv, pinWrapper, loc: loc });
 
             // 2. Sidebar Item
             const cityItem = document.createElement('div');
@@ -876,9 +882,11 @@ function initFaqDNA() {
             cityListContainer.appendChild(cityItem);
             pinMap.get(id).listItem = cityItem;
 
-            // Pin Events
-            pinDiv.onmouseenter = () => highlightCity(id, true);
-            pinDiv.onmouseleave = () => highlightCity(id, false);
+            // Pin Events (se capturan en .pin-wrapper que tiene pointer-events:all)
+            if (pinWrapper) {
+                pinWrapper.onmouseenter = () => highlightCity(id, true);
+                pinWrapper.onmouseleave = () => highlightCity(id, false);
+            }
         });
     }
 
@@ -886,14 +894,17 @@ function initFaqDNA() {
         const data = pinMap.get(id);
         if(!data) return;
         if(active) {
-            // Enhanced lift for holograms
-            data.svg.style.transform = 'translateY(-35%) scale(1.15)';
-            data.svg.style.filter = 'drop-shadow(0 0 20px rgba(14, 165, 233, 0.6))';
+            if (data.pinWrapper) {
+                data.pinWrapper.style.transform = 'scale(1.25) translateY(-18px)';
+                data.pinWrapper.style.filter = 'drop-shadow(0 0 12px rgba(9, 60, 141, 0.9))';
+            }
             data.listItem.classList.add('active');
             data.listItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-            data.svg.style.transform = 'translateY(-20%) scale(1)';
-            data.svg.style.filter = 'none';
+            if (data.pinWrapper) {
+                data.pinWrapper.style.transform = '';
+                data.pinWrapper.style.filter = '';
+            }
             data.listItem.classList.remove('active');
         }
     }

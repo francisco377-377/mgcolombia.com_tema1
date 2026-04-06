@@ -2829,43 +2829,225 @@ section {
     z-index: 100;
 }
 
-/* Ensure visual elements capture interaction */
-.map-pin svg {
+/* Nuevo Diseño de Pin (HTML/CSS en Gota) */
+:root {
+    --brand-primary: #093c8d;
+    --brand-glow: rgba(9, 60, 141, 0.6);
+    --glass-bg: rgba(9, 60, 141, 0.15);
+    --white-accent: #ffffff;
+}
+
+/* Contenedor adaptado a la regla Cero-Dimensión */
+.pin-geometry-container {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    width: 100px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+    transform: scale(0.48); /* Escala visible para la gota */
+    transform-origin: bottom center;
+}
+
+/* --- BASE DEL PISO (Radar y Anclaje) --- */
+.floor-shadow {
+    position: absolute;
+    bottom: 5px;
+    width: 24px;
+    height: 8px;
+    background: var(--brand-glow);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: shadow-pulse 3s ease-in-out infinite;
+}
+
+.radar-ring {
+    position: absolute;
+    bottom: 3px;
+    width: 20px;
+    height: 6px;
+    border: 2px solid var(--brand-primary);
+    border-radius: 50%;
+    animation: radar-expand 2s infinite ease-out;
+}
+
+.floor-dot {
+    position: absolute;
+    bottom: 5px;
+    width: 6px;
+    height: 3px;
+    background: var(--brand-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--brand-primary);
+}
+
+/* --- WRAPPER ANIMADO PARA FLOTAR --- */
+.pin-wrapper {
+    position: absolute;
+    bottom: 25px; /* Altura de flotación */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pin-float 3s ease-in-out infinite;
     pointer-events: all;
     cursor: pointer;
-}
-.city-floating-label {
-    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Hologram Animations */
-/* Orbes de ADN: Pulso Sutil */
-@keyframes orbPulse {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(1.7); opacity: 0; }
+.pin-wrapper:hover {
+    transform: scale(1.15) translateY(-5px);
 }
 
-.map-pin svg {
+/* --- NUEVO: LUZ ENVOLVENTE (Aura) --- */
+.pin-aura {
     position: absolute;
-    /* Removed translateY shift - flex centering and symmetrical viewBox now provide 100% precision */
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+    width: 60px;
+    height: 60px;
+    transform: scaleX(0.75) rotate(-45deg);
+    border-radius: 50% 50% 50% 0;
+    z-index: -1; 
+    animation: aura-breathe 3s ease-in-out infinite;
 }
 
-.map-pin:hover svg {
-    transform: scale(1.15) !important;
-    filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.6));
+/* --- PIN VISUAL (Renombrado para no chocar con .map-pin) --- */
+.pin-visual-gota {
+    width: 60px;
+    height: 60px;
+    transform: scaleX(0.75) rotate(-45deg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid var(--brand-primary);
+    border-radius: 50% 50% 50% 0;
+    box-shadow: 0 0 20px var(--brand-glow), inset 0 0 15px var(--brand-glow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
 }
 
-.city-floating-label {
-    pointer-events: none;
-    z-index: 10;
+/* Reflejo barriendo el cristal */
+.pin-visual-gota::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    animation: glass-shine 4s infinite ease-in-out;
 }
 
-.island-shape {
-    fill: #a5f3fc;
-    opacity: 0.4;
-    filter: blur(1px);
+/* --- CONTENIDO INTERNO (Enderezado) --- */
+.pin-inner-content {
+    transform: rotate(45deg) scaleX(1.33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
+
+/* --- ADN DENTRO DEL PIN --- */
+.dna-core {
+    width: 18px;
+    height: 42px;
+    transform-style: preserve-3d;
+    animation: dna-spin 4s linear infinite;
+    margin-top: -5px; 
+}
+
+.base-pair {
+    position: absolute;
+    top: calc(var(--i) * 4.5px);
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%) rotateY(calc(var(--i) * 30deg));
+    transform-style: preserve-3d;
+}
+
+.base-pair::before, .base-pair::after {
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+.base-pair::before {
+    left: -2px;
+    background: var(--brand-primary); 
+    box-shadow: 0 0 8px var(--brand-primary);
+}
+
+.base-pair::after {
+    right: -2px;
+    background: var(--white-accent);
+    box-shadow: 0 0 8px var(--white-accent);
+}
+
+/* Variación Sede Principal (HQ) */
+.map-pin.pin-hq .pin-geom-active .pin-visual-gota {
+    border-color: #f7a600;
+    box-shadow: 0 0 25px rgba(247, 166, 0, 0.5), inset 0 0 15px rgba(247, 166, 0, 0.4);
+}
+.map-pin.pin-hq .pin-geom-active .base-pair::before {
+    background: #f7a600;
+    box-shadow: 0 0 8px #f7a600;
+}
+.map-pin.pin-hq .pin-geom-active .radar-ring {
+    border-color: #f7a600;
+}
+.map-pin.pin-hq .pin-geom-active .floor-dot {
+    background: #f7a600;
+    box-shadow: 0 0 10px #f7a600;
+}
+.map-pin.pin-hq .pin-geometry-container {
+    transform: scale(0.5); /* Ligeramente más grande */
+}
+
+
+/* --- ANIMACIONES --- */
+@keyframes pin-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes shadow-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(0.6); opacity: 0.3; }
+}
+
+@keyframes radar-expand {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes dna-spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+@keyframes glass-shine {
+    0%, 30% { transform: rotate(45deg) translateX(-150%); }
+    70%, 100% { transform: rotate(45deg) translateX(150%); }
+}
+
+@keyframes aura-breathe {
+    0%, 100% { 
+        box-shadow: 0 0 10px 2px var(--brand-primary), 0 0 15px 5px var(--brand-glow);
+        opacity: 0.4; 
+    }
+    50% { 
+        box-shadow: 0 0 20px 5px var(--brand-primary), 0 0 35px 10px rgba(255, 255, 255, 0.2);
+        opacity: 0.9; 
+    }
+}
+
 
 /* Sidebar Search & List - Ultra Medical Lab */
 .coverage-sidebar {
