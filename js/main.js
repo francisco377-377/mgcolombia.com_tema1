@@ -809,13 +809,17 @@ function initFaqDNA() {
 
             // Pin Events — el SVG captura los eventos (pointer-events:all)
             if (pinSvg) {
-                pinSvg.onmouseenter = () => highlightCity(id, true);
+                pinSvg.onmouseenter = () => highlightCity(id, true, false); // Don't scroll list on hover
                 pinSvg.onmouseleave = () => highlightCity(id, false);
+                pinSvg.onclick = (e) => {
+                    e.stopPropagation();
+                    focusCity(id, false); // Click on pin shouldn't scroll the list
+                };
             }
         });
     }
 
-    function highlightCity(id, active) {
+    function highlightCity(id, active, scrollList = true) {
         const data = pinMap.get(id);
         if(!data) return;
         if(active) {
@@ -824,7 +828,12 @@ function initFaqDNA() {
                 data.pinSvg.style.filter = 'drop-shadow(0 4px 16px rgba(0,180,230,0.75))';
             }
             data.listItem.classList.add('active');
-            data.listItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (scrollList && data.listItem) {
+                const container = cityListContainer;
+                const item = data.listItem;
+                const targetTop = item.offsetTop - (container.clientHeight / 2) + (item.clientHeight / 2);
+                container.scrollTo({ top: targetTop, behavior: 'smooth' });
+            }
         } else {
             if (data.pinSvg) {
                 data.pinSvg.style.transform = 'translateX(-50%)';
@@ -834,10 +843,11 @@ function initFaqDNA() {
         }
     }
 
-    function focusCity(id) {
+    function focusCity(id, scrollList = true) {
         const data = pinMap.get(id);
-        highlightCity(id, true);
-        setTimeout(() => highlightCity(id, false), 2000);
+        if(!data) return;
+        highlightCity(id, true, scrollList);
+        setTimeout(() => highlightCity(id, false), 2500);
     }
 
     searchInput.addEventListener('input', (e) => {
