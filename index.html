@@ -591,7 +591,7 @@
         <div class="coverage-inner">
             <div class="coverage-header">
                 <span class="coverage-badge"><i class="fa-solid fa-dna"></i> Red Nacional</span>
-                <h2 class="coverage-title">Presencia en <span class="coverage-highlight">más de 35 ciudades</span></h2>
+                <h2 class="coverage-title">Cobertura en <span class="coverage-highlight">más de 39 ciudades de Colombia.</span></h2>
                 <p class="coverage-subtitle">Sede principal en Medellín · Puntos aliados de toma de muestras en todo el país</p>
             </div>
 
@@ -603,55 +603,14 @@
                         <img src="assets/images/Mapa base limpio.webp"
                              alt="Mapa de cobertura nacional Mundo Genético - 37 ciudades"
                              class="colombia-img" id="colombia-img" draggable="false">
-                        <!-- Pines calibrados manualmente — coordenadas precisas -->
-                        <div class="map-pins-layer" id="map-pins-layer">
-                            <!-- HQ -->
-                            <div class="map-pin pin-hq"     style="left:36.37%;top:40.89%" data-city="Medellín ★ Sede Principal"></div>
-                            <!-- Ciudades aliadas -->
-                            <div class="map-pin"            style="left:46.95%;top:54.52%" data-city="Acacías"></div>
-                            <div class="map-pin"            style="left:30.28%;top:28.71%" data-city="Apartadó"></div>
-                            <div class="map-pin"            style="left:66.39%;top:36.11%" data-city="Arauca"></div>
-                            <div class="map-pin"            style="left:35.93%;top:50.32%" data-city="Armenia"></div>
-                            <div class="map-pin"            style="left:40.72%;top:11.75%" data-city="Barranquilla"></div>
-                            <div class="map-pin"            style="left:45.94%;top:49.01%" data-city="Bogotá"></div>
-                            <div class="map-pin"            style="left:51.74%;top:35.96%" data-city="Bucaramanga"></div>
-                            <div class="map-pin"            style="left:46.95%;top:47.42%" data-city="Cajicá"></div>
-                            <div class="map-pin"            style="left:30.86%;top:57.28%" data-city="Cali"></div>
-                            <div class="map-pin"            style="left:36.95%;top:15.52%" data-city="Cartagena"></div>
-                            <div class="map-pin"            style="left:39.56%;top:30.74%" data-city="Caucasia"></div>
-                            <div class="map-pin"            style="left:54.50%;top:31.03%" data-city="Cúcuta"></div>
-                            <div class="map-pin"            style="left:47.82%;top:57.86%" data-city="Granada"></div>
-                            <div class="map-pin"            style="left:39.85%;top:51.77%" data-city="Ibagué"></div>
-                            <div class="map-pin"            style="left:25.93%;top:72.65%" data-city="Ipiales"></div>
-                            <div class="map-pin"            style="left:41.30%;top:21.75%" data-city="Magangué"></div>
-                            <div class="map-pin"            style="left:35.93%;top:47.56%" data-city="Manizales"></div>
-                            <div class="map-pin"            style="left:29.70%;top:69.61%" data-city="Mocoa"></div>
-                            <div class="map-pin"            style="left:35.50%;top:30.45%" data-city="Montelíbano"></div>
-                            <div class="map-pin"            style="left:34.34%;top:25.38%" data-city="Montería"></div>
-                            <div class="map-pin"            style="left:53.77%;top:48.29%" data-city="Monterrey (Casanare)"></div>
-                            <div class="map-pin"            style="left:38.40%;top:59.74%" data-city="Neiva"></div>
-                            <div class="map-pin"            style="left:32.45%;top:55.25%" data-city="Palmira"></div>
-                            <div class="map-pin"            style="left:26.22%;top:69.32%" data-city="Pasto"></div>
-                            <div class="map-pin"            style="left:35.21%;top:48.87%" data-city="Pereira"></div>
-                            <div class="map-pin"            style="left:33.61%;top:66.27%" data-city="Pitalito"></div>
-                            <div class="map-pin"            style="left:30.13%;top:63.23%" data-city="Popayán"></div>
-                            <div class="map-pin"            style="left:26.51%;top:43.65%" data-city="Quibdó"></div>
-                            <div class="map-pin pin-island" style="left:6.93%;top:9.43%"   data-city="San Andrés"></div>
-                            <div class="map-pin"            style="left:37.09%;top:21.75%" data-city="Sincelejo"></div>
-                            <div class="map-pin"            style="left:44.49%;top:47.27%" data-city="Tocancipá"></div>
-                            <div class="map-pin"            style="left:16.94%;top:66.56%" data-city="Tumaco"></div>
-                            <div class="map-pin"            style="left:52.32%;top:44.08%" data-city="Tunja"></div>
-                            <div class="map-pin"            style="left:24.78%;top:70.43%" data-city="Túquerres"></div>
-                            <div class="map-pin"            style="left:50.61%;top:15.24%" data-city="Valledupar"></div>
-                            <div class="map-pin"            style="left:50.77%;top:55.35%" data-city="Villavicencio"></div>
-                            <div class="map-pin"            style="left:57.51%;top:45.73%" data-city="Yopal"></div>
-                        </div>
+                        <!-- Pines dinámicos generados por JS -->
+                        <div class="map-pins-layer" id="map-pins-layer"></div>
                         <!-- Tooltip -->
                         <div class="map-tooltip" id="mapTooltip3"></div>
                     </div>
                 </div>
 
-                <!-- Panel lateral -->
+                <!-- Panel lateral interactivo -->
                 <div class="coverage-sidebar">
                     <div class="coverage-legend">
                         <div class="legend-item">
@@ -663,32 +622,20 @@
                             <div><strong>Ciudad Aliada</strong><p>Punto de toma de muestras</p></div>
                         </div>
                     </div>
-                    <div class="coverage-stats">
-                        <div class="stat-box"><span class="stat-num">37+</span><span class="stat-label">Ciudades</span></div>
-                        <div class="stat-box"><span class="stat-num">24</span><span class="stat-label">Años</span></div>
-                        <div class="stat-box"><span class="stat-num">99.99%</span><span class="stat-label">Precisión</span></div>
+
+                    <div class="city-search-box">
+                        <div class="search-input-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="citySearchInput" placeholder="Escribe tu ciudad (ej: Pasto)..." autocomplete="off">
+                        </div>
                     </div>
-                    <div class="city-list-grid">
-                        <span class="city-tag hq-tag"><i class="fa-solid fa-star"></i> Medellín</span>
-                        <span class="city-tag">Acacías</span><span class="city-tag">Apartadó</span>
-                        <span class="city-tag">Arauca</span><span class="city-tag">Armenia</span>
-                        <span class="city-tag">Barranquilla</span><span class="city-tag">Bogotá</span>
-                        <span class="city-tag">Bucaramanga</span><span class="city-tag">Cajicá</span>
-                        <span class="city-tag">Cali</span><span class="city-tag">Cartagena</span>
-                        <span class="city-tag">Caucasia</span><span class="city-tag">Cúcuta</span>
-                        <span class="city-tag">Granada</span><span class="city-tag">Ibagué</span>
-                        <span class="city-tag">Ipiales</span><span class="city-tag">Magangué</span>
-                        <span class="city-tag">Manizales</span><span class="city-tag">Mocoa</span>
-                        <span class="city-tag">Montelíbano</span><span class="city-tag">Montería</span>
-                        <span class="city-tag">Monterrey</span><span class="city-tag">Neiva</span>
-                        <span class="city-tag">Palmira</span><span class="city-tag">Pasto</span>
-                        <span class="city-tag">Pereira</span><span class="city-tag">Pitalito</span>
-                        <span class="city-tag">Popayán</span><span class="city-tag">Quibdó</span>
-                        <span class="city-tag">San Andrés</span><span class="city-tag">Sincelejo</span>
-                        <span class="city-tag">Tocancipá</span><span class="city-tag">Tumaco</span>
-                        <span class="city-tag">Tunja</span><span class="city-tag">Túquerres</span>
-                        <span class="city-tag">Valledupar</span><span class="city-tag">Villavicencio</span>
-                        <span class="city-tag">Yopal</span>
+
+                    <div class="city-list-container" id="cityListContainer">
+                        <!-- JS inyectará las ciudades aquí dinámicamente -->
+                    </div>
+
+                    <div class="coverage-stats-mini">
+                        <div class="stat-mini"><strong>39</strong> <span>Ubicaciones activas en el país</span></div>
                     </div>
                 </div>
             </div>
@@ -731,7 +678,7 @@
                     </p>
                     
                     <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; display: flex; align-items: center;">
-                        <i class="fa-solid fa-map-location-dot mr-2" style="font-size: 1.2rem;"></i> Atención en +30 ciudades
+                        <i class="fa-solid fa-map-location-dot mr-2" style="font-size: 1.2rem;"></i> Atención en 39 ciudades
                     </p>
                 </div>
             </div>

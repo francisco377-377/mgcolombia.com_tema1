@@ -681,288 +681,274 @@ function initFaqDNA() {
 }
 
 /* =========================================
-   COBERTURA NACIONAL v3 - Isometric 3D Buildings
-   Renders SVG polygon buildings with 3 faces (top/left/right)
-   Placing them into pre-calibrated position dots
+   COBERTURA NACIONAL v4 - PREMIUM REDESIGN
    ========================================= */
 (function() {
     const svgNS = "http://www.w3.org/2000/svg";
     const pinsLayer = document.getElementById('map-pins-layer');
-    const tooltip = document.getElementById('mapTooltip3');
+    const cityListContainer = document.getElementById('cityListContainer');
+    const searchInput = document.getElementById('citySearchInput');
     const wrapper = document.querySelector('.coverage-map-wrapper');
-    const imgMap = document.getElementById('colombia-img');
-    if (!pinsLayer || !wrapper || !tooltip) return;
+    if (!pinsLayer || !wrapper || !cityListContainer || !searchInput) return;
 
-    // ELIMINAR EL TONO AMARILLENTO DEL MAPA
-    if (imgMap) {
-        imgMap.style.filter = "saturate(0.85) brightness(1.05) contrast(1.1) hue-rotate(-6deg)";
-    }
-
-    // JSON Locations provided by user
+    // JSON Locations
     const locations = [
-      { "name": "Medellín", "hq": true, "left": 33.12, "top": 40.11 },
-      { "name": "Acacías", "hq": false, "left": 45.48, "top": 53.75 },
-      { "name": "Apartadó", "hq": false, "left": 27.35, "top": 32.09 },
-      { "name": "Arauca", "hq": false, "left": 62.49, "top": 38.51 },
-      { "name": "Armenia", "hq": false, "left": 32.96, "top": 50.38 },
-      { "name": "Barranquilla", "hq": false, "left": 37.46, "top": 18.45 },
-      { "name": "Bogotá", "hq": false, "left": 42.75, "top": 48.13 },
-      { "name": "Bucaramanga", "hq": false, "left": 49.97, "top": 36.26 },
-      { "name": "Cajicá", "hq": false, "left": 45.8, "top": 49.1 },
-      { "name": "Cali", "hq": false, "left": 26.87, "top": 55.03 },
-      { "name": "Cartagena", "hq": false, "left": 35.53, "top": 21.66 },
-      { "name": "Caucasia", "hq": false, "left": 36.81, "top": 33.69 },
-      { "name": "Cúcuta", "hq": false, "left": 53.34, "top": 31.13 },
-      { "name": "Granada", "hq": false, "left": 49.81, "top": 55.03 },
-      { "name": "Ibagué", "hq": false, "left": 36.01, "top": 52.46 },
-      { "name": "Ipiales", "hq": false, "left": 21.41, "top": 68.83 },
-      { "name": "Magangué", "hq": false, "left": 42.27, "top": 30.64 },
-      { "name": "Manizales", "hq": false, "left": 34.41, "top": 46.85 },
-      { "name": "Mocoa", "hq": false, "left": 30.56, "top": 68.35 },
-      { "name": "Montelíbano", "hq": false, "left": 32.48, "top": 33.69 },
-      { "name": "Montería", "hq": false, "left": 31.2, "top": 28.24 },
-      { "name": "Monterrey (Casanare)", "hq": false, "left": 58.15, "top": 47.97 },
-      { "name": "Neiva", "hq": false, "left": 34.25, "top": 58.56 },
-      { "name": "Palmira", "hq": false, "left": 29.43, "top": 52.95 },
-      { "name": "Pasto", "hq": false, "left": 20.93, "top": 66.1 },
-      { "name": "Pereira", "hq": false, "left": 31.52, "top": 47.01 },
-      { "name": "Pitalito", "hq": false, "left": 31.52, "top": 62.09 },
-      { "name": "Popayán", "hq": false, "left": 25.58, "top": 60.17 },
-      { "name": "Quibdó", "hq": false, "left": 23.98, "top": 44.12 },
-      { "name": "San Andrés", "hq": false, "left": 18.84, "top": 8.18 },
-      { "name": "Sincelejo", "hq": false, "left": 35.69, "top": 25.51 },
-      { "name": "Tocancipá", "hq": false, "left": 44.36, "top": 46.53 },
-      { "name": "Tumaco", "hq": false, "left": 14.03, "top": 63.86 },
-      { "name": "Tunja", "hq": false, "left": 51.41, "top": 43.64 },
-      { "name": "Túquerres", "hq": false, "left": 17.56, "top": 66.42 },
-      { "name": "Valledupar", "hq": false, "left": 47.89, "top": 21.18 },
-      { "name": "Villavicencio", "hq": false, "left": 54.46, "top": 52.3 },
-      { "name": "Yopal", "hq": false, "left": 61.36, "top": 44.28 }
+      { name: "Acacías", hq: false, left: 45.48, top: 53.75 },
+      { name: "Apartadó", hq: false, left: 27.35, top: 32.09 },
+      { name: "Arauca", hq: false, left: 62.49, top: 38.51 },
+      { name: "Armenia", hq: false, left: 32.96, top: 50.38 },
+      { name: "Barrancabermeja", hq: false, left: 46.5, top: 38.5 },
+      { name: "Barranquilla", hq: false, left: 37.46, top: 18.45 },
+      { name: "Bogotá", hq: false, left: 42.75, top: 48.13 },
+      { name: "Bucaramanga", hq: false, left: 49.97, top: 36.26 },
+      { name: "Cajicá", hq: false, left: 45.8, top: 49.1 },
+      { name: "Cali", hq: false, left: 26.87, top: 55.03 },
+      { name: "Cartagena", hq: false, left: 35.53, top: 21.66 },
+      { name: "Caucasia", hq: false, left: 36.81, top: 33.69 },
+      { name: "Cúcuta", hq: false, left: 53.34, top: 31.13 },
+      { name: "Granada", hq: false, left: 49.81, top: 55.03 },
+      { name: "Ibagué", hq: false, left: 36.01, top: 52.46 },
+      { name: "Ipiales", hq: false, left: 21.41, top: 68.83 },
+      { name: "Magangué", hq: false, left: 42.27, top: 30.64 },
+      { name: "Manizales", hq: false, left: 34.41, top: 46.85 },
+      { name: "Medellín", hq: true, left: 33.12, top: 40.11 },
+      { name: "Mocoa", hq: false, left: 30.56, top: 68.35 },
+      { name: "Montelíbano", hq: false, left: 32.48, top: 33.69 },
+      { name: "Montería", hq: false, left: 31.2, top: 28.24 },
+      { name: "Monterrey (Casanare)", hq: false, left: 58.15, top: 47.97 },
+      { name: "Neiva", hq: false, left: 34.25, top: 58.56 },
+      { name: "Palmira", hq: false, left: 29.43, top: 52.95 },
+      { name: "Pasto", hq: false, left: 20.93, top: 66.1 },
+      { name: "Pereira", hq: false, left: 31.52, top: 47.01 },
+      { name: "Pitalito", hq: false, left: 31.52, top: 62.09 },
+      { name: "Popayán", hq: false, left: 25.58, top: 60.17 },
+      { name: "Quibdó", hq: false, left: 23.98, top: 44.12 },
+      { name: "San Andrés", hq: false, left: 18.84, top: 8.18 },
+      { name: "Sincelejo", hq: false, left: 35.69, top: 25.51 },
+      { name: "Tocancipá", hq: false, left: 44.36, top: 46.53 },
+      { name: "Tumaco", hq: false, left: 14.03, top: 63.86 },
+      { name: "Tunja", hq: false, left: 51.41, top: 43.64 },
+      { name: "Túquerres", hq: false, left: 17.56, top: 66.42 },
+      { name: "Valledupar", hq: false, left: 47.89, top: 21.18 },
+      { name: "Villavicencio", hq: false, left: 54.46, top: 52.3 },
+      { name: "Yopal", hq: false, left: 61.36, top: 44.28 }
     ];
 
-    // Map building variety to cities automatically (1-5 styles)
-    const getCityType = (name) => {
-        let n = 0; 
-        for(let i=0; i<name.length; i++) n += name.charCodeAt(i);
-        return (n % 4) + 1; 
-    };
+    const normalize = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-    function getBuildingPaths(type) {
-        const types = {
-            1: { // Standard lab box
-                top:   '0,-14  9,-9.5  0,-5  -9,-9.5',
-                left:  '-9,-9.5  0,-5  0,3  -9,-1.5',
-                right: '9,-9.5  0,-5  0,3  9,-1.5',
-                antH: 14
-            },
-            2: { // Wide flat
-                top:   '0,-10  11,-6  0,-2  -11,-6',
-                left:  '-11,-6  0,-2  0,2  -11,-2',
-                right: '11,-6  0,-2  0,2  11,-2',
-                antH: 10
-            },
-            3: { // Tall narrow
-                top:   '0,-18  7,-14  0,-10  -7,-14',
-                left:  '-7,-14  0,-10  0,3  -7,-1',
-                right: '7,-14  0,-10  0,3  7,-1',
-                antH: 18
-            },
-            4: { // L-shape: main box + left extension
-                top:   '0,-13  8,-9  0,-5  -8,-9',
-                left:  '-8,-9  0,-5  0,3  -8,-1',
-                right: '8,-9  0,-5  0,3  8,-1',
-                ext_top:   '-8,-9  -3,-12  -8,-15  -13,-12',
-                ext_left:  '-13,-12  -8,-9  -8,-1  -13,-4',
-                antH: 13
-            }
-        };
-        return types[type] || types[1];
-    }
-
-    function makePoly(points, fill, stroke) {
+    function makePoly(points, fill, stroke, strokeW = 0.5) {
         const p = document.createElementNS(svgNS, 'polygon');
         p.setAttribute('points', points);
         p.setAttribute('fill', fill);
-        p.setAttribute('stroke', stroke || 'rgba(0,0,0,0.1)');
-        p.setAttribute('stroke-width', '0.4');
+        if (stroke) {
+            p.setAttribute('stroke', stroke);
+            p.setAttribute('stroke-width', strokeW);
+            p.setAttribute('stroke-linejoin', 'round');
+        }
         return p;
     }
 
-    // REALISTIC DOUBLE HELIX DNA
+    function buildOrbMarker(isHQ) {
+        const g = document.createElementNS(svgNS, 'g');
+        const coreSize = isHQ ? 16 : 12;
+        const colorMain = isHQ ? '#093c8d' : '#0ea5e9';
+        
+        // 1. PULSING AURA (Subtle breathing effect)
+        const aura = document.createElementNS(svgNS, 'circle');
+        aura.setAttribute('r', coreSize);
+        aura.setAttribute('fill', colorMain);
+        aura.setAttribute('opacity', '0.3');
+        aura.style.animation = 'orbPulse 3s infinite ease-out';
+        g.appendChild(aura);
+
+        // 2. CORE ORB (Gradient & Stroke)
+        const core = document.createElementNS(svgNS, 'circle');
+        core.setAttribute('r', coreSize);
+        core.setAttribute('fill', `url(#orbGrad_${isHQ?'hq':'al'})`);
+        core.setAttribute('stroke', '#fff');
+        core.setAttribute('stroke-width', '1.5');
+        g.appendChild(core);
+
+        // 3. INNER DNA ICON
+        const dna = document.createElementNS(svgNS, 'g');
+        dna.setAttribute('transform', `scale(${isHQ ? 0.45 : 0.35})`);
+        dna.innerHTML = `
+            <path d="M-8,-10 C-4,-10 4,-5 8,0 C4,5 -4,10 -8,10" fill="none" stroke="#fff" stroke-width="2.5" />
+            <path d="M8,-10 C4,-10 -4,-5 -8,0 C-4,5 4,10 8,10" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" />
+            <circle cx="0" cy="0" r="2" fill="#fff"/>
+        `;
+        g.appendChild(dna);
+
+        return g;
+    }
+
     function makeDoubleHelix(antH, isHQ) {
         const g = document.createElementNS(svgNS, 'g');
-        const color1 = isHQ ? '#fde047' : '#22d3ee'; // Amarillo/Dorado o Cian
-        const color2 = isHQ ? '#ca8a04' : '#0ea5e9'; // Oscuro complementario
+        const c1 = isHQ ? '#093c8d' : '#0ea5e9'; // HQ is Deep Blue
+        const c2 = isHQ ? '#22d3ee' : '#34d399'; // Contrast
         
-        // Mast
-        const line = document.createElementNS(svgNS, 'line');
-        line.setAttribute('x1', '0'); line.setAttribute('y1', -antH);
-        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 25);
-        line.setAttribute('stroke', 'rgba(255,255,255,0.2)');
-        line.setAttribute('stroke-width', '0.5');
-        g.appendChild(line);
+        // Glow Filter
+        const glowId = `glow_${Math.random().toString(36).substr(2, 5)}`;
+        const defs = document.createElementNS(svgNS, 'defs');
+        defs.innerHTML = `<filter id="${glowId}"><feGaussianBlur stdDeviation="1.5" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>`;
+        g.appendChild(defs);
 
-        // HELIX 1 & 2
-        function createHelixPath(offset, color, blur) {
-            const path = document.createElementNS(svgNS, 'path');
-            let d = `M${Math.sin(offset)*3},${-antH-2}`;
-            for(let y=0; y<=20; y+=2) {
+        const createStrand = (offset, color) => {
+            const strandG = document.createElementNS(svgNS, 'g');
+            strandG.setAttribute('filter', `url(#${glowId})`);
+            
+            for(let y=0; y<=18; y+=2) {
                 let x = Math.sin((y/3) + offset) * 3.5;
-                d += ` L${x},${-antH - 2 - y}`;
+                const dot = document.createElementNS(svgNS, 'circle');
+                dot.setAttribute('cx', x);
+                dot.setAttribute('cy', -antH - 2 - y);
+                dot.setAttribute('r', 1.2 - (y/25)); // Tapering
+                dot.setAttribute('fill', color);
+                strandG.appendChild(dot);
+                
+                // Connecting bar
+                if (offset === 0) {
+                    const bar = document.createElementNS(svgNS, 'line');
+                    const x2 = Math.sin((y/3) + Math.PI) * 3.5;
+                    bar.setAttribute('x1', x); bar.setAttribute('y1', -antH - 2 - y);
+                    bar.setAttribute('x2', x2); bar.setAttribute('y2', -antH - 2 - y);
+                    bar.setAttribute('stroke', 'rgba(15,23,42,0.1)');
+                    bar.setAttribute('stroke-width', '0.3');
+                    g.appendChild(bar);
+                }
             }
-            path.setAttribute('d', d);
-            path.setAttribute('fill', 'none');
-            path.setAttribute('stroke', color);
-            path.setAttribute('stroke-width', isHQ ? '1.4' : '1.1');
-            path.setAttribute('stroke-linecap', 'round');
-            if(blur) path.style.filter = `blur(${blur}px)`;
-            return path;
-        }
-
-        g.appendChild(createHelixPath(0, color1, 3)); // Glow
-        g.appendChild(createHelixPath(0, color1, 0)); // Line
-        g.appendChild(createHelixPath(Math.PI, color2, 3)); // Glow 2
-        g.appendChild(createHelixPath(Math.PI, isHQ ? '#fffbeb' : '#f0f9ff', 0)); // Line 2
-
-        // Small dots for base pairs
-        for(let py=0; py<=18; py+=4) {
-            let x1 = Math.sin((py/3)) * 3.5;
-            let x2 = Math.sin((py/3) + Math.PI) * 3.5;
-            const l = document.createElementNS(svgNS, 'line');
-            l.setAttribute('x1', x1); l.setAttribute('y1', -antH - 2 - py);
-            l.setAttribute('x2', x2); l.setAttribute('y2', -antH - 2 - py);
-            l.setAttribute('stroke', 'rgba(255,255,255,0.4)');
-            l.setAttribute('stroke-width', '0.5');
-            g.appendChild(l);
-        }
-
+            return strandG;
+        };
+        g.appendChild(createStrand(0, c1));
+        g.appendChild(createStrand(Math.PI, c2));
         return g;
     }
 
-    function buildIsometric(type, isHQ) {
-        const b = getBuildingPaths(type);
-        const g = document.createElementNS(svgNS, 'g');
-
-        // Professional Base Shadow
-        const shadow = document.createElementNS(svgNS, 'ellipse');
-        shadow.setAttribute('cx','0'); shadow.setAttribute('cy','3');
-        shadow.setAttribute('rx', isHQ ? '20' : '15'); shadow.setAttribute('ry', isHQ ? '10' : '7');
-        shadow.setAttribute('fill','rgba(0,0,0,0.15)');
-        shadow.style.filter = 'blur(4px)';
-        g.appendChild(shadow);
-
-        if (isHQ) {
-            const h1 = document.createElementNS(svgNS, 'ellipse');
-            h1.setAttribute('cx','0'); h1.setAttribute('cy','0');
-            h1.setAttribute('rx','24'); h1.setAttribute('ry','12');
-            h1.setAttribute('fill','url(#hqGlow)'); h1.setAttribute('opacity','0.4');
-            g.appendChild(h1);
-        }
-
-        // Use gradients for faces
-        const topFill = isHQ ? 'url(#topHQ)' : 'url(#topStd)';
-        const sideL   = isHQ ? '#fde047' : '#e0f2fe';
-        const sideR   = isHQ ? '#eab308' : '#bae6fd';
-
-        if (type === 4 && b.ext_top) {
-            g.appendChild(makePoly(b.ext_top, topFill));
-            g.appendChild(makePoly(b.ext_left, sideL));
-        }
-
-        g.appendChild(makePoly(b.top,   topFill));
-        g.appendChild(makePoly(b.left,  sideL));
-        g.appendChild(makePoly(b.right, sideR));
-
-        // Window Details (Realistic Grid)
-        function makeWindows(points, color) {
-            const p = document.createElementNS(svgNS, 'polygon');
-            p.setAttribute('points', points);
-            p.setAttribute('fill', color);
-            p.setAttribute('opacity', '0.7');
-            return p;
-        }
-        // Simplified window grid simulation
-        if (type===1) {
-            g.appendChild(makeWindows('-7,-7 -2,-9 -2,-6 -7,-4', '#7dd3fc'));
-            g.appendChild(makeWindows('2,-9 7,-7 7,-4 2,-6', '#0ea5e9'));
-        }
-
-        // DNA
-        g.appendChild(makeDoubleHelix(b.antH, isHQ));
-        return g;
-    }
-
-    // SVG DEFS for Gradients
-    const defs = document.createElementNS(svgNS, 'defs');
-    defs.innerHTML = `
-        <linearGradient id="topStd" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#f0f9ff;stop-opacity:1" />
-        </linearGradient>
-        <linearGradient id="topHQ" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#fefce8;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#fef9c3;stop-opacity:1" />
-        </linearGradient>
-        <radialGradient id="hqGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0" />
-        </radialGradient>
+    // Global SVG Defs
+    const globalSvg = document.createElementNS(svgNS, 'svg');
+    globalSvg.style.cssText = 'position:absolute; width:0; height:0;';
+    globalSvg.innerHTML = `
+        <defs>
+            <radialGradient id="orbGrad_hq" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#093c8d"/>
+            </radialGradient>
+            <radialGradient id="orbGrad_al" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0ea5e9"/>
+            </radialGradient>
+        </defs>
     `;
-    
-    // Inject defs globally if not exists
-    let globalSvg = document.querySelector('.coverage-map-wrapper svg.global-defs');
-    if(!globalSvg) {
-        globalSvg = document.createElementNS(svgNS, 'svg');
-        globalSvg.setAttribute('class', 'global-defs');
-        globalSvg.style.position = 'absolute'; globalSvg.style.width = '0'; globalSvg.style.height = '0';
-        globalSvg.appendChild(defs);
-        wrapper.appendChild(globalSvg);
+    wrapper.appendChild(globalSvg);
+
+    const pinMap = new Map();
+
+    function renderMap() {
+        pinsLayer.innerHTML = '';
+        cityListContainer.innerHTML = '';
+
+        // Draw Islands (San Andrés & Providencia)
+        const drawIsland = (l, t, w, h, d) => {
+            const svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('viewBox', '0 0 100 100');
+            svg.style.cssText = `position:absolute; left:${l}%; top:${t}%; width:${w}px; height:${h}px; transform:translate(-50%,-50%); pointer-events:none; z-index:-1;`;
+            const path = document.createElementNS(svgNS, 'path');
+            path.setAttribute('d', d);
+            path.setAttribute('class', 'island-shape');
+            svg.appendChild(path);
+            pinsLayer.appendChild(svg);
+        };
+        // San Andrés silhouette (Relative to calibrated point)
+        drawIsland(18.84, 8.18, 45, 45, "M30,20 C50,10 80,30 70,60 C60,90 30,90 20,60 C10,30 30,30 30,20 Z");
+        // Providencia silhouette (North-East)
+        drawIsland(20.5, 5.2, 25, 25, "M40,30 C60,10 90,40 70,70 C50,90 20,70 30,40 C40,20 40,30 40,30 Z");
+
+        locations.forEach((loc) => {
+            const id = normalize(loc.name);
+            const fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
+            
+            // 1. Map Pin
+            const pinDiv = document.createElement('div');
+            pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
+            pinDiv.style.left = `${loc.left}%`;
+            pinDiv.style.top = `${loc.top}%`;
+            
+            const svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('viewBox', '-40 -40 80 80');
+            svg.style.width = loc.hq ? '80px' : '60px';
+            svg.style.height = loc.hq ? '80px' : '60px';
+            svg.style.overflow = 'visible';
+            
+            const marker = buildOrbMarker(loc.hq);
+            svg.appendChild(marker);
+            
+            // Floating Label
+            const label = document.createElement('div');
+            label.className = 'city-floating-label';
+            label.textContent = loc.name;
+            
+            pinDiv.appendChild(label);
+            pinDiv.appendChild(svg);
+            pinsLayer.appendChild(pinDiv);
+            pinMap.set(id, { pin: pinDiv, svg: svg, loc: loc });
+
+            // 2. Sidebar Item
+            const cityItem = document.createElement('div');
+            cityItem.className = 'city-item';
+            cityItem.innerHTML = `
+                <div class="city-item-name">
+                    <i class="fa-solid ${loc.hq ? 'fa-star text-warning' : 'fa-location-dot text-primary'}"></i>
+                    ${loc.name}
+                </div>
+                <div class="city-item-type">${loc.hq ? 'Principal' : 'Aliado'}</div>
+            `;
+            cityItem.onclick = () => focusCity(id);
+            cityListContainer.appendChild(cityItem);
+            pinMap.get(id).listItem = cityItem;
+
+            // Pin Events
+            pinDiv.onmouseenter = () => highlightCity(id, true);
+            pinDiv.onmouseleave = () => highlightCity(id, false);
+        });
     }
 
-    pinsLayer.innerHTML = '';
+    function highlightCity(id, active) {
+        const data = pinMap.get(id);
+        if(!data) return;
+        if(active) {
+            // Enhanced lift for holograms
+            data.svg.style.transform = 'translateY(-35%) scale(1.15)';
+            data.svg.style.filter = 'drop-shadow(0 0 20px rgba(14, 165, 233, 0.6))';
+            data.listItem.classList.add('active');
+            data.listItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            data.svg.style.transform = 'translateY(-20%) scale(1)';
+            data.svg.style.filter = 'none';
+            data.listItem.classList.remove('active');
+        }
+    }
 
-    locations.forEach((loc) => {
-        let fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
-        let type = getCityType(loc.name);
-        
-        const pinDiv = document.createElement('div');
-        pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
-        pinDiv.style.left = `${loc.left}%`;
-        pinDiv.style.top = `${loc.top}%`;
-        pinDiv.setAttribute('data-city', fullName);
-        pinDiv.style.cssText += 'background:none; border:none; box-shadow:none; width:0; height:0; animation:none;';
+    function focusCity(id) {
+        const data = pinMap.get(id);
+        highlightCity(id, true);
+        setTimeout(() => highlightCity(id, false), 2000);
+    }
 
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.setAttribute('viewBox', '-40 -60 80 80'); 
-        svg.style.width = loc.hq ? '90px' : '65px';
-        svg.style.height = loc.hq ? '110px' : '85px';
-        svg.style.overflow = 'visible';
-        svg.style.position = 'absolute';
-        svg.style.left = '50%'; svg.style.top = '50%';
-        svg.style.transform = 'translate(-50%, -70%)';
-        svg.style.pointerEvents = 'none';
-        svg.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        
-        const building = buildIsometric(type, loc.hq);
-        svg.appendChild(building);
-        pinDiv.appendChild(svg);
-        
-        pinDiv.addEventListener('mouseenter', () => {
-            svg.style.transform = 'translate(-50%, -70%) scale(1.2) translateY(-10px)';
-            tooltip.textContent = fullName;
-            tooltip.classList.add('visible');
+    searchInput.addEventListener('input', (e) => {
+        const term = normalize(e.target.value);
+        locations.forEach(loc => {
+            const id = normalize(loc.name);
+            const data = pinMap.get(id);
+            const match = id.includes(term);
+            
+            data.listItem.classList.toggle('hidden', !match);
+            data.pin.style.opacity = match ? '1' : '0.15';
+            data.pin.style.pointerEvents = match ? 'all' : 'none';
+            data.pin.style.filter = match ? 'none' : 'grayscale(0.8)';
+            data.pin.style.transition = 'all 0.4s ease';
         });
-        pinDiv.addEventListener('mousemove', e => {
-            const r = wrapper.getBoundingClientRect();
-            tooltip.style.left = (e.clientX - r.left + 15) + 'px';
-            tooltip.style.top  = (e.clientY - r.top  - 40) + 'px';
-        });
-        pinDiv.addEventListener('mouseleave', () => {
-            svg.style.transform = 'translate(-50%, -70%) scale(1)';
-            tooltip.classList.remove('visible');
-        });
-
-        pinsLayer.appendChild(pinDiv);
     });
+
+    renderMap();
 })();
 

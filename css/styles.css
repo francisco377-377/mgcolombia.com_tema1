@@ -2692,326 +2692,382 @@ section {
    COBERTURA NACIONAL - MAPA DE COLOMBIA
    SECCIÓN COMPLETAMENTE AISLADA
    No modificar ningún selector de arriba.
+   =====================================/* =========================================
+   COBERTURA NACIONAL - REDISEÑO HIGH-FIDELITY
    ========================================= */
 .coverage-section {
-    background: #f8faff;
-    padding: 6rem 0;
+    background: #ffffff; /* Fondo limpio para que la imagen luzca */
+    padding: 8rem 0;
     position: relative;
     overflow: hidden;
 }
-.coverage-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(9,60,141,0.04) 0%, transparent 70%),
-                radial-gradient(ellipse at 70% 50%, rgba(56,189,248,0.03) 0%, transparent 70%);
-    pointer-events: none;
-}
+
 .coverage-inner {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 2rem;
 }
+
 .coverage-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
+
 .coverage-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(9,60,141,0.08);
+    gap: 0.6rem;
+    background: rgba(9, 60, 141, 0.05);
     color: #093c8d;
-    border: 1px solid rgba(9,60,141,0.15);
-    padding: 0.4rem 1.2rem;
-    border-radius: 50px;
+    padding: 0.5rem 1.4rem;
+    border-radius: 100px;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-}
-.coverage-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.2;
-    margin-bottom: 0.8rem;
-}
-.coverage-highlight {
-    color: #093c8d;
-    position: relative;
-}
-.coverage-subtitle {
-    color: #64748b;
-    font-size: 1.05rem;
-    max-width: 580px;
-    margin: 0 auto;
-}
-.coverage-layout {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 3rem;
-    align-items: start;
-}
-/* Map */
-.coverage-map-container {
-    position: relative;
-}
-.coverage-map-wrapper {
-    position: relative;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 8px 40px rgba(9,60,141,0.10), 0 2px 8px rgba(0,0,0,0.04);
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid rgba(9,60,141,0.08);
-}
-.colombia-map-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.colombia-shape {
-    transition: filter 0.3s ease;
-}
-/* City pins */
-.city-pin {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-.city-pin:hover {
-    transform: translateY(-3px) scale(1.15);
-}
-.city-label {
-    font-size: 6px;
-    fill: #334155;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    pointer-events: none;
-}
-.hq-label {
-    font-size: 7px;
-    fill: #b45309;
     font-weight: 700;
-}
-/* HQ Halo animation */
-.hq-halo-outer {
-    animation: hqPulseOuter 2.5s ease-in-out infinite;
-}
-.hq-halo {
-    animation: hqPulse 2.5s ease-in-out infinite;
-}
-@keyframes hqPulse {
-    0%, 100% { opacity: 0.25; r: 12; }
-    50% { opacity: 0.45; r: 14; }
-}
-@keyframes hqPulseOuter {
-    0%, 100% { opacity: 0.08; r: 18; }
-    50% { opacity: 0.20; r: 22; }
-}
-/* Tooltip */
-.map-tooltip {
-    position: absolute;
-    background: #0f172a;
-    color: #fff;
-    font-size: 0.78rem;
-    font-family: 'Inter', sans-serif;
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
-    pointer-events: none;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    z-index: 10;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.map-tooltip.visible {
-    opacity: 1;
-}
-/* Sidebar */
-.coverage-sidebar {
-    position: sticky;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-/* Legend */
-.coverage-legend {
-    background: #fff;
-    border-radius: 14px;
-    padding: 1.2rem 1.5rem;
-    box-shadow: 0 4px 20px rgba(9,60,141,0.08);
-    border: 1px solid rgba(9,60,141,0.07);
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-.legend-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-.hq-dot {
-    background: #f5c842;
-    box-shadow: 0 0 8px rgba(245,200,66,0.6);
-    border: 2px solid #b45309;
-}
-.allied-dot {
-    background: #38bdf8;
-    box-shadow: 0 0 6px rgba(56,189,248,0.4);
-    border: 2px solid #0284c7;
-}
-.legend-item strong {
-    display: block;
-    font-size: 0.85rem;
-    color: #0f172a;
-    font-weight: 600;
-}
-.legend-item p {
-    font-size: 0.75rem;
-    color: #64748b;
-    margin: 0;
-}
-/* Stats */
-.coverage-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
-}
-.stat-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1rem 0.5rem;
-    text-align: center;
-    box-shadow: 0 4px 16px rgba(9,60,141,0.07);
-    border: 1px solid rgba(9,60,141,0.07);
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-.stat-num {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #093c8d;
-    line-height: 1;
-}
-.stat-label {
-    font-size: 0.7rem;
-    color: #64748b;
-    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-/* City tag grid */
-.city-list-grid {
-    background: #fff;
-    border-radius: 14px;
-    padding: 1.2rem;
-    box-shadow: 0 4px 20px rgba(9,60,141,0.08);
-    border: 1px solid rgba(9,60,141,0.07);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    max-height: 320px;
-    overflow-y: auto;
-}
-.city-list-grid::-webkit-scrollbar {
-    width: 4px;
-}
-.city-list-grid::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
-.city-list-grid::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 4px; }
-.city-tag {
-    background: rgba(9,60,141,0.05);
-    color: #1e40af;
-    border: 1px solid rgba(9,60,141,0.12);
-    border-radius: 20px;
-    padding: 0.2rem 0.7rem;
-    font-size: 0.72rem;
-    font-weight: 500;
-    cursor: default;
-    transition: background 0.2s ease, transform 0.15s ease;
-}
-.city-tag:hover {
-    background: rgba(9,60,141,0.12);
-    transform: translateY(-1px);
-}
-.city-tag.hq-tag {
-    background: rgba(180,83,9,0.08);
-    color: #b45309;
-    border-color: rgba(180,83,9,0.2);
-    font-weight: 700;
-}
-.city-tag.hq-tag i {
-    font-size: 0.6rem;
-    margin-right: 2px;
-}
-/* Responsive coverage map */
-@media (max-width: 900px) {
-    .coverage-layout {
-        grid-template-columns: 1fr;
-    }
-    .coverage-sidebar {
-        position: static;
-    }
-    .coverage-stats {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-@media (max-width: 480px) {
-    .coverage-section { padding: 4rem 0; }
-    .coverage-inner { padding: 0 1rem; }
-    .coverage-title { font-size: 1.6rem; }
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(9, 60, 141, 0.1);
 }
 
-/* =========================================
-   MAPA IMAGEN + CAPA INTERACTIVA
-   ========================================= */
+.coverage-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+}
+
+.coverage-highlight {
+    background: linear-gradient(120deg, #093c8d, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.coverage-subtitle {
+    font-size: 1.15rem;
+    color: #475569;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.coverage-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Map Container */
+.coverage-map-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.coverage-map-wrapper {
+    position: relative;
+    background: transparent; /* Transparente como pidió el usuario */
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
 .colombia-img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
-    user-select: none;
+    filter: brightness(1.04) contrast(1.1); 
+    mix-blend-mode: multiply;
+    opacity: 0.98;
+    transition: all 0.5s ease;
 }
+
+.coverage-map-wrapper {
+    position: relative;
+    width: 100%;
+    background: transparent; /* No padding! Relative to image only */
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.coverage-map-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: -100px; /* Wider to cover map bleed */
+    background: radial-gradient(circle at center, transparent 35%, #eff5fc 95%);
+    pointer-events: none;
+    z-index: 1; /* Below pins but over map */
+}
+
 .map-pins-layer {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
+
+/* Modern Pin/City styling */
 .map-pin {
     position: absolute;
-    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    transform: translate(-50%, -50%); /* Centered Hitbox */
     pointer-events: all;
     cursor: pointer;
-    transition: transform 0.2s ease;
-    z-index: 5;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
 }
+
 .map-pin:hover {
-    /* SVG handles visuals, just bump index */
-    z-index: 20;
+    z-index: 100;
+    background: rgba(9, 60, 141, 0.08); /* Visual feedback for hitbox */
 }
-.map-pin.pin-hq {
+
+/* Ensure visual elements don't block interaction */
+.map-pin svg,
+.city-floating-label {
+    pointer-events: none;
+}
+
+/* Hologram Animations */
+/* Orbes de ADN: Pulso Sutil */
+@keyframes orbPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.7); opacity: 0; }
+}
+
+.map-pin svg {
+    position: absolute;
+    /* Removed translateY shift - flex centering and symmetrical viewBox now provide 100% precision */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.map-pin:hover svg {
+    transform: scale(1.15) !important;
+    filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.6));
+}
+
+.city-floating-label {
+    pointer-events: none;
     z-index: 10;
 }
-.map-pin.pin-hq:hover {
-    z-index: 25;
+
+.island-shape {
+    fill: #a5f3fc;
+    opacity: 0.4;
+    filter: blur(1px);
 }
-.map-pin.pin-island {
-    /* No longer a dot */
+
+/* Sidebar Search & List - Ultra Medical Lab */
+.coverage-sidebar {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 36px;
+    padding: 2.5rem;
+    box-shadow: 0 30px 60px -12px rgba(9, 60, 141, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    position: relative;
 }
-@keyframes pinPulse {
-    0%, 100% { box-shadow: 0 0 0 2px rgba(56,189,248,0.4); }
-    50%       { box-shadow: 0 0 0 5px rgba(56,189,248,0.15); }
+
+.coverage-sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(9, 60, 141, 0.2), transparent);
 }
-@keyframes hqPinPulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(245,200,66,0.45), 0 0 12px rgba(245,200,66,0.5); }
-    50%       { box-shadow: 0 0 0 8px rgba(245,200,66,0.15), 0 0 24px rgba(245,200,66,0.4); }
+
+.city-search-box {
+    position: relative;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper i {
+    position: absolute;
+    left: 1.2rem;
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1rem 1rem 1rem 3rem;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.3s ease;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+    background: #fff;
+    border-color: #093c8d;
+    box-shadow: 0 0 0 4px rgba(9, 60, 141, 0.05);
+}
+
+.city-list-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.city-list-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.city-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.city-list-container::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.city-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.2rem;
+    background: transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.city-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(6px);
+    box-shadow: 0 4px 15px rgba(9, 60, 141, 0.06);
+}
+
+.city-item.active {
+    background: #ffffff;
+    border-color: rgba(9, 60, 141, 0.1);
+    box-shadow: 0 12px 30px rgba(9, 60, 141, 0.1);
+    transform: translateX(10px);
+}
+
+.city-item.active .city-item-name {
+    color: #093c8d;
+    font-weight: 700;
+}
+
+.city-item.hidden {
+    display: none;
+}
+
+.city-item-name {
+    font-size: 0.9rem;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.city-item-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.coverage-stats-mini {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(9, 60, 141, 0.05);
+}
+
+.stat-mini {
+    text-align: center;
+}
+
+.stat-mini strong {
+    display: block;
+    font-size: 1.8rem;
+    color: #093c8d;
+    letter-spacing: -0.5px;
+}
+
+.stat-mini span {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Floating City Label on Hover */
+.city-floating-label {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(9, 60, 141, 0.1);
+    color: #093c8d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.map-pin:hover .city-floating-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Tooltip remains as backup for general info if needed */
+.map-tooltip {
+    position: absolute;
+    background: #0f172a;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+    .coverage-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .coverage-sidebar {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .coverage-section { padding: 5rem 0; }
+    .coverage-sidebar { padding: 1.5rem; }
+    .coverage-header { margin-bottom: 3rem; }
 }
