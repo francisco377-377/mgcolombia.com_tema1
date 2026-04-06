@@ -681,70 +681,67 @@ function initFaqDNA() {
 }
 
 /* =========================================
-   COBERTURA NACIONAL v2 - Isometric 3D Buildings
+   COBERTURA NACIONAL v3 - Isometric 3D Buildings
    Renders SVG polygon buildings with 3 faces (top/left/right)
-   Geographic coordinates: x=(79-lon)*27.87+30, y=(12.5-lat)*29.34+15
+   Placing them into pre-calibrated position dots
    ========================================= */
 (function() {
     const svgNS = "http://www.w3.org/2000/svg";
-    const container = document.getElementById('city-buildings');
-    const tooltip = document.getElementById('mapTooltip2');
+    const pinsLayer = document.getElementById('map-pins-layer');
+    const tooltip = document.getElementById('mapTooltip3');
     const wrapper = document.querySelector('.coverage-map-wrapper');
-    if (!container) return;
+    if (!pinsLayer || !wrapper || !tooltip) return;
 
-    // City data: [name, svgX, svgY, type(1-5), isHQ]
-    // type: 1=standard, 2=wide, 3=tall, 4=l-shape, 5=double
-    const cities = [
-        ['Medellín ★ Sede Principal', 126, 199, 1, true],
-        ['Bogotá',                    167, 244, 2, false],
-        ['Barranquilla',              147,  60, 3, false],
-        ['Cali',                       99, 281, 1, false],
-        ['Cartagena',                 127,  77, 4, false],
-        ['Cúcuta',                    211, 150, 2, false],
-        ['Bucaramanga',               194, 173, 5, false],
-        ['Manizales',                 127, 233, 3, false],
-        ['Armenia',                   123, 249, 4, false],
-        ['Pereira',                   116, 241, 2, false],
-        ['Ibagué',                    135, 252, 5, false],
-        ['Neiva',                     134, 296, 1, false],
-        ['Pasto',                      78, 346, 3, false],
-        ['Popayán',                    97, 310, 2, false],
-        ['Montería',                  117, 125, 4, false],
-        ['Sincelejo',                 130, 109, 5, false],
-        ['Valledupar',                190,  74, 1, false],
-        ['Villavicencio',             179, 260, 3, false],
-        ['Yopal',                     214, 225, 4, false],
-        ['Tunja',                     187, 219, 2, false],
-        ['Quibdó',                     96, 215, 5, false],
-        ['Tumaco',                     35, 328, 1, false],
-        ['Ipiales',                    68, 358, 3, false],
-        ['Túquerres',                  68, 350, 4, false],
-        ['Arauca',                    260, 174, 2, false],
-        ['Mocoa',                      96, 348, 5, false],
-        ['Pitalito',                  107, 328, 1, false],
-        ['Palmira',                   105, 278, 3, false],
-        ['Apartadó',                   96, 151, 2, false],
-        ['Caucasia',                  136, 147, 4, false],
-        ['Cajicá',                    169, 237, 5, false],
-        ['Tocancipá',                 172, 236, 1, false],
-        ['Granada',                   177, 278, 2, false],
-        ['Magangué',                  148, 111, 3, false],
-        ['Montelíbano',               130, 148, 4, false],
-        ['Monterrey',                 200, 238, 5, false],
-        ['Acacías',                   176, 265, 1, false],
-        ['San Andrés',                 48, 168, 2, false],
+    // JSON Locations provided by user
+    const locations = [
+      { "name": "Medellín", "hq": true, "left": 36.37, "top": 40.89 },
+      { "name": "Acacías", "hq": false, "left": 46.95, "top": 54.52 },
+      { "name": "Apartadó", "hq": false, "left": 30.28, "top": 28.71 },
+      { "name": "Arauca", "hq": false, "left": 66.39, "top": 36.11 },
+      { "name": "Armenia", "hq": false, "left": 35.93, "top": 50.32 },
+      { "name": "Barranquilla", "hq": false, "left": 40.72, "top": 11.75 },
+      { "name": "Bogotá", "hq": false, "left": 45.94, "top": 49.01 },
+      { "name": "Bucaramanga", "hq": false, "left": 51.74, "top": 35.96 },
+      { "name": "Cajicá", "hq": false, "left": 46.95, "top": 47.42 },
+      { "name": "Cali", "hq": false, "left": 30.86, "top": 57.28 },
+      { "name": "Cartagena", "hq": false, "left": 36.95, "top": 15.52 },
+      { "name": "Caucasia", "hq": false, "left": 39.56, "top": 30.74 },
+      { "name": "Cúcuta", "hq": false, "left": 54.5, "top": 31.03 },
+      { "name": "Granada", "hq": false, "left": 47.82, "top": 57.86 },
+      { "name": "Ibagué", "hq": false, "left": 39.85, "top": 51.77 },
+      { "name": "Ipiales", "hq": false, "left": 25.93, "top": 72.65 },
+      { "name": "Magangué", "hq": false, "left": 41.3, "top": 21.75 },
+      { "name": "Manizales", "hq": false, "left": 35.93, "top": 47.56 },
+      { "name": "Mocoa", "hq": false, "left": 29.7, "top": 69.61 },
+      { "name": "Montelíbano", "hq": false, "left": 35.5, "top": 30.45 },
+      { "name": "Montería", "hq": false, "left": 34.34, "top": 25.38 },
+      { "name": "Monterrey (Casanare)", "hq": false, "left": 53.77, "top": 48.29 },
+      { "name": "Neiva", "hq": false, "left": 38.4, "top": 59.74 },
+      { "name": "Palmira", "hq": false, "left": 32.45, "top": 55.25 },
+      { "name": "Pasto", "hq": false, "left": 26.22, "top": 69.32 },
+      { "name": "Pereira", "hq": false, "left": 35.21, "top": 48.87 },
+      { "name": "Pitalito", "hq": false, "left": 33.61, "top": 66.27 },
+      { "name": "Popayán", "hq": false, "left": 30.13, "top": 63.23 },
+      { "name": "Quibdó", "hq": false, "left": 26.51, "top": 43.65 },
+      { "name": "San Andrés", "hq": false, "left": 6.93, "top": 9.43 },
+      { "name": "Sincelejo", "hq": false, "left": 37.09, "top": 21.75 },
+      { "name": "Tocancipá", "hq": false, "left": 44.49, "top": 47.27 },
+      { "name": "Tumaco", "hq": false, "left": 16.94, "top": 66.56 },
+      { "name": "Tunja", "hq": false, "left": 52.32, "top": 44.08 },
+      { "name": "Túquerres", "hq": false, "left": 24.78, "top": 70.43 },
+      { "name": "Valledupar", "hq": false, "left": 50.61, "top": 15.24 },
+      { "name": "Villavicencio", "hq": false, "left": 50.77, "top": 55.35 },
+      { "name": "Yopal", "hq": false, "left": 57.51, "top": 45.73 }
     ];
 
-    // Building type definitions — isometric SVG polygons at origin (0,0)
-    // Each type: { top, left, right } as polygon point strings
-    // Top face: lightest, Left face: medium, Right face: darkest
-    function getBuildingPaths(type) {
-        const T = { // top colors
-            fill: '#eef5fc', stroke: '#7aafd4'
-        };
-        const L = { fill: '#c8dff3', stroke: '#7aafd4' };
-        const R = { fill: '#a5c8e8', stroke: '#7aafd4' };
+    // Map building variety to cities automatically (1-5 styles)
+    const getCityType = (name) => {
+        let n = 0; 
+        for(let i=0; i<name.length; i++) n += name.charCodeAt(i);
+        return (n % 5) + 1; // Returns 1-5 reliably based on name
+    };
 
+    function getBuildingPaths(type) {
         const types = {
             1: { // Standard lab box
                 top:   '0,-14  9,-9.5  0,-5  -9,-9.5',
@@ -804,21 +801,30 @@ function initFaqDNA() {
         return p;
     }
 
-    function makeAntenna(antH, isHQ) {
+    function makeEnormousDNA(antH, isHQ) {
         const g = document.createElementNS(svgNS, 'g');
+        // Main antenna mast
         const line = document.createElementNS(svgNS, 'line');
         line.setAttribute('x1', '0'); line.setAttribute('y1', -antH);
-        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 8);
+        line.setAttribute('x2', '0'); line.setAttribute('y2', -antH - 22);
         line.setAttribute('stroke', isHQ ? '#f5c842' : '#38bdf8');
-        line.setAttribute('stroke-width', isHQ ? '1.2' : '0.9');
+        line.setAttribute('stroke-width', isHQ ? '1.5' : '1');
         g.appendChild(line);
-        // DNA double helix suggestion (two arcs)
+
+        // Holographic DNA Helix
         const dna = document.createElementNS(svgNS, 'path');
-        const y0 = -antH - 8, y1 = -antH - 5, y2 = -antH - 2;
-        dna.setAttribute('d', `M-2,${y0} Q0,${y0-3} 2,${y0} Q0,${y0+3} -2,${y0} M-1.5,${y1} Q0,${y1-2.5} 1.5,${y1}`);
+        const startY = -antH - 2;
+        let dScale = isHQ ? 4 : 2.5; 
+        let path = '';
+        for(let j=0; j<4; j++) {
+            let y = startY - (j * 4.5);
+            path += `M-${dScale},${y} Q0,${y-4} ${dScale},${y} Q0,${y+4} -${dScale},${y} `;
+        }
+        dna.setAttribute('d', path);
         dna.setAttribute('fill', 'none');
-        dna.setAttribute('stroke', isHQ ? '#f5c842' : '#38bdf8');
-        dna.setAttribute('stroke-width', isHQ ? '1' : '0.7');
+        dna.setAttribute('stroke', isHQ ? '#fde047' : '#22d3ee'); // cyan/turquesa or dorado
+        dna.setAttribute('stroke-width', isHQ ? '1.5' : '1.2');
+        dna.style.filter = `drop-shadow(0px 0px 4px ${isHQ ? '#f5c842' : '#22d3ee'})`;
         g.appendChild(dna);
         return g;
     }
@@ -827,103 +833,99 @@ function initFaqDNA() {
         const b = getBuildingPaths(type);
         const g = document.createElementNS(svgNS, 'g');
 
-        // HQ golden halo
+        // Golden Base for HQ (V6)
         if (isHQ) {
             const h1 = document.createElementNS(svgNS, 'ellipse');
             h1.setAttribute('cx','0'); h1.setAttribute('cy','0');
             h1.setAttribute('rx','16'); h1.setAttribute('ry','8');
-            h1.setAttribute('fill','#f5c842'); h1.setAttribute('opacity','0.2');
+            h1.setAttribute('fill','#f5c842'); h1.setAttribute('opacity','0.3');
             h1.setAttribute('class','hq-halo-outer');
             g.appendChild(h1);
         }
 
-        // Extension for L-shape (type 4)
         if (type === 4 && b.ext_top) {
             g.appendChild(makePoly(b.ext_top, '#ddeefa', '#7aafd4'));
             g.appendChild(makePoly(b.ext_left, '#b8d4ed', '#7aafd4'));
         }
-        // Second section for double (type 5)
         if (type === 5 && b.sec_top) {
             g.appendChild(makePoly(b.sec_top, '#deeefa', '#7aafd4'));
             g.appendChild(makePoly(b.sec_left, '#b5d2ec', '#7aafd4'));
             g.appendChild(makePoly(b.sec_right, '#9bc2e0', '#7aafd4'));
         }
 
-        // Main building faces
         g.appendChild(makePoly(b.top,   isHQ ? '#fff9e8' : '#eef5fc', '#7aafd4'));
         g.appendChild(makePoly(b.left,  isHQ ? '#f5e5a0' : '#c8dff3', '#7aafd4'));
         g.appendChild(makePoly(b.right, isHQ ? '#e8cc72' : '#a5c8e8', '#7aafd4'));
 
-        // Windows
         if (b.winL) g.appendChild(makePoly(b.winL, '#60a5fa', null, '0.75'));
         if (b.winR) g.appendChild(makePoly(b.winR, '#3b82f6', null, '0.65'));
 
-        // DNA antenna
-        g.appendChild(makeAntenna(b.antH, isHQ));
-
-        // City label for HQ
-        if (isHQ) {
-            const txt = document.createElementNS(svgNS, 'text');
-            txt.setAttribute('y', '14');
-            txt.setAttribute('text-anchor', 'middle');
-            txt.setAttribute('class', 'city-label hq-label');
-            txt.textContent = 'Medellín ★';
-            g.appendChild(txt);
-        }
+        // Enormous DNA Antenna
+        g.appendChild(makeEnormousDNA(b.antH, isHQ));
         return g;
     }
 
-    cities.forEach(([name, cx, cy, type, isHQ]) => {
-        const group = document.createElementNS(svgNS, 'g');
-        group.setAttribute('class', 'city-pin' + (isHQ ? ' hq-pin' : ''));
-        group.setAttribute('transform', `translate(${cx},${cy})`);
-        group.setAttribute('data-city', name);
+    // Clear and rebuild map pins layer safely
+    pinsLayer.innerHTML = '';
 
-        const building = buildIsometric(type, isHQ);
-        group.appendChild(building);
+    locations.forEach((loc) => {
+        let fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
+        let type = getCityType(loc.name);
+        
+        // Parent Div positioning the element absolutely using JSON%
+        const pinDiv = document.createElement('div');
+        pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
+        pinDiv.style.left = `${loc.left}%`;
+        pinDiv.style.top = `${loc.top}%`;
+        pinDiv.setAttribute('data-city', fullName);
+        
+        // Remove standard circle styles, we only want the SVG to show
+        pinDiv.style.background = 'transparent';
+        pinDiv.style.border = 'none';
+        pinDiv.style.boxShadow = 'none';
+        pinDiv.style.width = '0px';
+        pinDiv.style.height = '0px';
+        pinDiv.style.animation = 'none'; // removing old bouncing dots 
 
-        // Tooltip interactions
-        if (tooltip && wrapper) {
-            group.addEventListener('mouseenter', () => {
-                tooltip.textContent = name;
-                tooltip.classList.add('visible');
-            });
-            group.addEventListener('mousemove', (e) => {
-                const rect = wrapper.getBoundingClientRect();
-                tooltip.style.left = (e.clientX - rect.left + 14) + 'px';
-                tooltip.style.top  = (e.clientY - rect.top  - 35) + 'px';
-            });
-            group.addEventListener('mouseleave', () => {
-                tooltip.classList.remove('visible');
-            });
-        }
+        // SVG wrapper inside the PIN
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('viewBox', '-30 -50 60 70'); 
+        svg.style.width = loc.hq ? '75px' : '55px';
+        svg.style.height = loc.hq ? '85px' : '65px';
+        svg.style.overflow = 'visible';
+        svg.style.position = 'absolute';
+        svg.style.top = '50%';
+        svg.style.left = '50%';
+        // Lift the building anchors slightly higher so it sits well on the coordinate
+        svg.style.transform = 'translate(-50%, -75%)'; 
+        svg.style.pointerEvents = 'none'; // let the div trap the hover
+        
+        const building = buildIsometric(type, loc.hq);
+        
+        // Optional scale transition inside CSS, we can apply class here.
+        svg.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        pinDiv.addEventListener('mouseenter', () => svg.style.transform = 'translate(-50%, -75%) scale(1.35)');
+        pinDiv.addEventListener('mouseleave', () => svg.style.transform = 'translate(-50%, -75%) scale(1)');
 
-        container.appendChild(group);
-    });
-})();
-
-/* Tooltip para capa interactiva del mapa imagen */
-(function() {
-    const tooltip = document.getElementById('mapTooltip3');
-    const wrapper = document.querySelector('.coverage-map-wrapper');
-    const pins    = document.querySelectorAll('.map-pin[data-city]');
-    if (!tooltip || !pins.length) return;
-
-    pins.forEach(pin => {
-        const city = pin.getAttribute('data-city');
-        pin.addEventListener('mouseenter', () => {
-            tooltip.textContent = city;
+        svg.appendChild(building);
+        pinDiv.appendChild(svg);
+        
+        // Tooltip logic attachment
+        pinDiv.addEventListener('mouseenter', () => {
+            tooltip.textContent = fullName;
             tooltip.classList.add('visible');
         });
-        pin.addEventListener('mousemove', e => {
+        pinDiv.addEventListener('mousemove', e => {
             if (!wrapper) return;
             const r = wrapper.getBoundingClientRect();
             tooltip.style.left = (e.clientX - r.left + 14) + 'px';
             tooltip.style.top  = (e.clientY - r.top  - 36) + 'px';
         });
-        pin.addEventListener('mouseleave', () => {
+        pinDiv.addEventListener('mouseleave', () => {
             tooltip.classList.remove('visible');
         });
+
+        pinsLayer.appendChild(pinDiv);
     });
 })();
 
