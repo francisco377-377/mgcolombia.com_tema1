@@ -3067,9 +3067,12 @@ section {
         gap: 3rem;
     }
     .coverage-sidebar {
-        order: -1;
+        order: 1;
         max-width: 500px;
         margin: 0 auto;
+    }
+    .city-list-container {
+        max-height: 280px;
     }
 }
 
