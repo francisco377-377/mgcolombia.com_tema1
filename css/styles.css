@@ -2805,29 +2805,35 @@ section {
     pointer-events: none;
 }
 
-/* Modern Pin/City styling */
+/* =========================================================================
+   🛑 ZONA PROTEGIDA: ANCLAJE GEOGRÁFICO DE PINES 🛑
+   ¡IA NO MODIFICAR! Esta clase (.map-pin) SIEMPRE debe ser de 0x0 (width/height 0)
+   y usar transform: translate(-50%, -50%) o equivalente para no romper el centro real.
+   CUALQUIER ESTILO VISUAL DEBE APLICARSE A LOS HIJOS (ej: .map-pin svg o .pin-visual)
+   ========================================================================= */
 .map-pin {
     position: absolute;
-    width: 22px;
-    height: 22px;
-    transform: translate(-50%, -50%); /* Centered Hitbox */
-    pointer-events: all;
-    cursor: pointer;
+    /* ANCLAJE ESTRICTO DE DIMENSIÓN CERO */
+    width: 0;
+    height: 0;
+    /* Se mueve el centro exacto al punto X,Y y no se debe cambiar */
+    transform: translate(-50%, -50%); 
+    pointer-events: none; /* El contenedor no recibe eventos, los reciben los hijos */
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: background 0.2s ease;
 }
 
 .map-pin:hover {
     z-index: 100;
-    background: rgba(9, 60, 141, 0.08); /* Visual feedback for hitbox */
 }
 
-/* Ensure visual elements don't block interaction */
-.map-pin svg,
+/* Ensure visual elements capture interaction */
+.map-pin svg {
+    pointer-events: all;
+    cursor: pointer;
+}
 .city-floating-label {
     pointer-events: none;
 }
