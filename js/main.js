@@ -79,7 +79,50 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initFaqDNA();
     initProcessParticles();
+    initTransparencyStats();
 });
+
+function initTransparencyStats() {
+    const section = document.querySelector('.transparency-section');
+    if (!section) return;
+
+    const values = section.querySelectorAll('.stat-value');
+    const bars = section.querySelectorAll('.progress-fill');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate numbers
+                values.forEach(val => {
+                    const target = parseFloat(val.getAttribute('data-target'));
+                    let current = 0;
+                    const duration = 2000; // 2 seconds
+                    const step = target / (duration / 16); // 60fps
+
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            val.textContent = current.toFixed(target % 1 === 0 ? 0 : 3) + '%';
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            val.textContent = target + '%';
+                        }
+                    };
+                    updateCounter();
+                });
+
+                // Animate bars
+                bars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+
+                observer.unobserve(section);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+}
 
 function initTechHUD() {
     const canvas = document.getElementById('tech-canvas');
