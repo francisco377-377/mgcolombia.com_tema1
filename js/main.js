@@ -80,7 +80,79 @@ document.addEventListener('DOMContentLoaded', () => {
     initFaqDNA();
     initProcessParticles();
     initTransparencyStats();
+    initTransparencyDNA();
 });
+
+function initTransparencyDNA() {
+    const canvas = document.getElementById('transparency-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let phase = 0;
+
+    function draw() {
+        if (window.canvasVisibility[canvas.id] === false) {
+            setTimeout(() => requestAnimationFrame(draw), 200);
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        const isMobile = window.innerWidth < 768;
+        const amplitude = isMobile ? 120 : 380; // Large to expand
+        const spacing = isMobile ? 40 : 90;
+        const diag = Math.sqrt(width * width + height * height);
+        const numPoints = Math.ceil(diag / spacing) + 12;
+
+        ctx.lineWidth = isMobile ? 2 : 5;
+        ctx.save();
+        ctx.translate(width / 2, height / 2);
+        const tiltAngle = Math.atan2(height, width);
+        ctx.rotate(tiltAngle * 0.4); // Different tilt for variety
+
+        const startY = -diag / 2 - 200;
+
+        for (let i = 0; i < numPoints; i++) {
+            const y = startY + i * spacing;
+            const angle = phase + i * 0.15;
+            const x1 = Math.sin(angle) * amplitude;
+            const x2 = Math.sin(angle + Math.PI) * amplitude;
+            const z1 = Math.cos(angle);
+            const z2 = Math.cos(angle + Math.PI);
+            const size1 = (z1 + 1.5) * (isMobile ? 5 : 14);
+            const size2 = (z2 + 1.5) * (isMobile ? 5 : 14);
+            const alpha1 = ((z1 + 1.5) / 2.5) * 0.15; // Subtle background
+            const alpha2 = ((z2 + 1.5) / 2.5) * 0.15;
+
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.strokeStyle = `rgba(9, 60, 141, ${Math.min(alpha1, alpha2) * 0.3})`;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(x1, y, size1, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(9, 60, 141, ${alpha1})`;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x2, y, size2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(9, 60, 141, ${alpha2})`;
+            ctx.fill();
+        }
+        ctx.restore();
+        phase += 0.015;
+        requestAnimationFrame(draw);
+    }
+    setTimeout(() => { resize(); draw(); }, 150);
+}
 
 function initTransparencyStats() {
     const section = document.querySelector('.transparency-section');
