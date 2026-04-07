@@ -2942,53 +2942,42 @@ section {
 
 .sidebar-header-modern {
     margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .lab-status-tag {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(9, 60, 141, 0.06);
-    padding: 0.4rem 0.9rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    background: rgba(9, 60, 141, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
     border: 1px solid rgba(9, 60, 141, 0.1);
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 10px #10b981;
-}
-
-.status-dot.pulsing {
-    animation: statusPulse 2s infinite;
-}
-
-@keyframes statusPulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 1; }
 }
 
 .status-text {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     color: #0d47a1;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 }
 
 .sidebar-title-premium {
-    font-size: 1.6rem;
+    font-size: 1.65rem;
     font-weight: 800;
-    color: #0f172a;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -0.8px;
     margin: 0;
 }
+
+.title-dark { color: #000; }
+.title-blue { color: #0d47a1; }
+
 
 .city-search-box {
     margin-bottom: 2rem;
@@ -3012,13 +3001,12 @@ section {
 
 .search-input-wrapper i {
     position: absolute;
-    left: 1.25rem;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     color: #94a3b8;
-    transition: color 0.3s ease;
-}
-
-.search-input-wrapper:focus-within i {
-    color: #0d47a1;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .search-input-wrapper input {
@@ -3223,7 +3211,7 @@ section {
 
 @media (max-width: 1024px) {
     .coverage-section {
-        padding: 4rem 0 8rem;
+        padding: 2rem 0 6rem;
     }
     .coverage-header {
         margin-bottom: 2rem;
@@ -3233,17 +3221,17 @@ section {
     .coverage-layout {
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
     .coverage-sidebar {
         order: 1;
         max-width: 500px;
         margin: 0 auto;
-        max-height: 450px;
-        padding: 1.5rem;
+        max-height: 600px; /* Incrementado para que no sea tan apretado */
+        padding: 2rem;
     }
     .city-list-container {
-        max-height: 220px;
+        max-height: 320px; /* Incrementado para ver más ciudades (aprox 5) */
     }
 }
 
