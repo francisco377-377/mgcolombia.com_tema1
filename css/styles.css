@@ -2807,9 +2807,8 @@ section {
     width: 100%;
     height: auto;
     display: block;
-    filter: brightness(1.04) contrast(1.1); 
-    mix-blend-mode: multiply;
-    opacity: 0.98;
+    filter: brightness(1.05) contrast(1.05); 
+    opacity: 1;
     transition: all 0.5s ease;
 }
 
@@ -2822,14 +2821,7 @@ section {
     overflow: visible;
 }
 
-.coverage-map-wrapper::after {
-    content: "";
-    position: absolute;
-    inset: 0 -50px -50px -50px; /* Reducido al mínimo para evitar el espacio "gris" feo */
-    background: radial-gradient(circle at 50% 60%, transparent 35%, #eff5fc 95%);
-    pointer-events: none;
-    z-index: 1; 
-}
+
 
 .map-pins-layer {
     position: absolute;
@@ -2854,6 +2846,14 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: z-index 0.3s step-end;
+}
+
+/* Elevamos el pin completo (edificio + letrero) al frente de todos al interactuar o estar activo */
+.map-pin:hover, 
+.map-pin:active,
+.map-pin.active {
+    z-index: 5000 !important;
 }
 
 /* Nuevo Contenedor para Edificios Arquitectónicos */
@@ -2877,9 +2877,11 @@ section {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.18));
 }
 
-.lab-marker-container:hover {
-    transform: translateX(-50%) scale(1.3) translateY(-6px);
+.lab-marker-container:hover,
+.map-pin.active .lab-marker-container {
+    transform: translateX(-50%) scale(1.35) translateY(-8px);
     z-index: 1000 !important;
+    filter: drop-shadow(0 15px 30px rgba(0, 180, 230, 0.4));
 }
 
 /* ---------------------------------------------------------
@@ -2910,24 +2912,9 @@ section {
 @keyframes pin3Outer { 0%,100%{ opacity:.28; transform:scale(0.985); } 50%{ opacity:.74; transform:scale(1.07); } }
 @keyframes pin3Edge { 0%,100%{ opacity:.26; } 50%{ opacity:.90; } }
 
-/* Etiqueta flotante sobre el pin */
-.city-floating-label {
-    pointer-events: none;
-    z-index: 10;
-}
 
-/* Etiqueta flotante sobre el pin */
-.city-floating-label {
-    pointer-events: none;
-    z-index: 10;
-}
 
-/* Marcador de isla (San Andrés, Providencia) */
-.island-shape {
-    fill: #a5f3fc;
-    opacity: 0.4;
-    filter: blur(1px);
-}
+
 
 
 /* Sidebar Search & List - Scientific Lab Console Redesign */
@@ -3195,27 +3182,29 @@ section {
 }
 
 /* Floating City Label on Hover */
+/* Floating City Label on Hover - High Z-Index to avoid being covered by buildings */
 .city-floating-label {
     position: absolute;
-    top: -45px;
+    top: -70px; /* Elevated to clear building roofs */
     left: 50%;
     transform: translateX(-50%) translateY(10px);
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 0.4rem 0.9rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(9, 60, 141, 0.1);
+    background: #ffffff; /* Opaque White: No transparency conflict with nearby pins */
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(9, 60, 141, 0.2);
     color: #093c8d;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 800;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
+    z-index: 2000; /* Strict priority above building pins */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.map-pin:hover .city-floating-label {
+.map-pin:hover .city-floating-label,
+.map-pin.active .city-floating-label {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }

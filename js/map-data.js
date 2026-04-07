@@ -14,10 +14,11 @@ Este archivo garantiza la "Arquitectura de Coordenadas Congeladas" para evitar q
 */
 
 const locations = [
+  { name: "Medellín", hq: true, left: 33.62, top: 41.11 },
   { name: "Acacías", hq: false, left: 45.48, top: 53.75 },
   { name: "Apartadó", hq: false, left: 27.35, top: 32.09 },
   { name: "Arauca", hq: false, left: 62.49, top: 39.61 },
-  { name: "Armenia", hq: false, left: 32.96, top: 50.38 },
+  { name: "Armenia", hq: false, left: 33.30, top: 51.10 },
   { name: "Barranquilla", hq: false, left: 37.46, top: 18.45 },
   { name: "Bogotá", hq: false, left: 42.75, top: 48.13 },
   { name: "Bucaramanga", hq: false, left: 49.97, top: 36.26 },
@@ -27,11 +28,10 @@ const locations = [
   { name: "Caucasia", hq: false, left: 36.81, top: 33.69 },
   { name: "Cúcuta", hq: false, left: 53.04, top: 31.13 },
   { name: "Granada", hq: false, left: 49.81, top: 55.03 },
-  { name: "Ibagué", hq: false, left: 36.01, top: 52.46 },
+  { name: "Ibagué", hq: false, left: 37.01, top: 53.46 },
   { name: "Ipiales", hq: false, left: 21.41, top: 68.83 },
   { name: "Magangué", hq: false, left: 42.27, top: 30.64 },
   { name: "Manizales", hq: false, left: 34.41, top: 46.85 },
-  { name: "Medellín", hq: true, left: 33.12, top: 40.11 },
   { name: "Mocoa", hq: false, left: 30.56, top: 68.35 },
   { name: "Montelíbano", hq: false, left: 32.48, top: 33.69 },
   { name: "Montería", hq: false, left: 31.2, top: 28.24 },

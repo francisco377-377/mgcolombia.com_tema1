@@ -778,21 +778,7 @@ function initFaqDNA() {
         pinsLayer.innerHTML = '';
         cityListContainer.innerHTML = '';
 
-        // Draw Islands (San Andrés & Providencia)
-        const drawIsland = (l, t, w, h, d) => {
-            const svg = document.createElementNS(svgNS, 'svg');
-            svg.setAttribute('viewBox', '0 0 100 100');
-            svg.style.cssText = `position:absolute; left:${l}%; top:${t}%; width:${w}px; height:${h}px; transform:translate(-50%,-50%); pointer-events:none; z-index:-1;`;
-            const path = document.createElementNS(svgNS, 'path');
-            path.setAttribute('d', d);
-            path.setAttribute('class', 'island-shape');
-            svg.appendChild(path);
-            pinsLayer.appendChild(svg);
-        };
-        // San Andrés silhouette (Relative to calibrated point)
-        drawIsland(18.84, 8.18, 45, 45, "M30,20 C50,10 80,30 70,60 C60,90 30,90 20,60 C10,30 30,30 30,20 Z");
-        // Providencia silhouette (North-East)
-        drawIsland(20.5, 5.2, 25, 25, "M40,30 C60,10 90,40 70,70 C50,90 20,70 30,40 C40,20 40,30 40,30 Z");
+
 
         locations.forEach((loc) => {
             const id = normalize(loc.name);
@@ -870,12 +856,20 @@ function initFaqDNA() {
     function highlightCity(id, active, scrollList = true) {
         const data = pinMap.get(id);
         if(!data) return;
+
         if(active) {
-            if (data.pinSvg) {
-                data.pinSvg.style.transform = 'translateX(-50%) scale(1.25) translateY(-6px)';
-                data.pinSvg.style.filter = 'drop-shadow(0 4px 16px rgba(0,180,230,0.75))';
-            }
+            // Limpiar CUALQUIER otra ciudad activa para evitar etiquetas encimadas
+            pinMap.forEach((otherData, otherId) => {
+                if (otherId !== id) {
+                    otherData.pin.classList.remove('active');
+                    otherData.listItem.classList.remove('active');
+                }
+            });
+
+            // Activar la actual
+            data.pin.classList.add('active');
             data.listItem.classList.add('active');
+
             if (scrollList && data.listItem) {
                 const container = cityListContainer;
                 const item = data.listItem;
@@ -883,10 +877,8 @@ function initFaqDNA() {
                 container.scrollTo({ top: targetTop, behavior: 'smooth' });
             }
         } else {
-            if (data.pinSvg) {
-                data.pinSvg.style.transform = 'translateX(-50%)';
-                data.pinSvg.style.filter = 'none';
-            }
+            // Desactivar específicamente esta ciudad
+            data.pin.classList.remove('active');
             data.listItem.classList.remove('active');
         }
     }
