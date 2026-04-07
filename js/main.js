@@ -105,36 +105,44 @@ function initTransparencyDNA() {
         }
         ctx.clearRect(0, 0, width, height);
 
+        // Massive Helix matching Benefits section EXACTLY
         const isMobile = window.innerWidth < 768;
-        const amplitude = isMobile ? 120 : 380; // Large to expand
-        const spacing = isMobile ? 40 : 90;
+        const amplitude = isMobile ? 120 : 350; 
+        const spacing = isMobile ? 40 : 80;     
+
         const diag = Math.sqrt(width * width + height * height);
-        const numPoints = Math.ceil(diag / spacing) + 12;
+        const numPoints = Math.ceil(diag / spacing) + 10;
 
-        ctx.lineWidth = isMobile ? 2 : 5;
+        ctx.lineWidth = isMobile ? 2 : 4;
+
         ctx.save();
-        ctx.translate(width / 2, height / 2);
-        const tiltAngle = Math.atan2(height, width);
-        ctx.rotate(tiltAngle * 0.4); // Different tilt for variety
+        ctx.translate(width / 2, height / 2); 
 
-        const startY = -diag / 2 - 200;
+        const tiltAngle = Math.atan2(height, width);
+        ctx.rotate(-tiltAngle * 0.7); 
+
+        const startY = -diag / 2 - 200; 
 
         for (let i = 0; i < numPoints; i++) {
             const y = startY + i * spacing;
-            const angle = phase + i * 0.15;
+            const angle = phase + i * 0.12; 
+
             const x1 = Math.sin(angle) * amplitude;
             const x2 = Math.sin(angle + Math.PI) * amplitude;
+
             const z1 = Math.cos(angle);
             const z2 = Math.cos(angle + Math.PI);
-            const size1 = (z1 + 1.5) * (isMobile ? 5 : 14);
-            const size2 = (z2 + 1.5) * (isMobile ? 5 : 14);
-            const alpha1 = ((z1 + 1.5) / 2.5) * 0.15; // Subtle background
-            const alpha2 = ((z2 + 1.5) / 2.5) * 0.15;
+
+            const size1 = (z1 + 1.5) * (isMobile ? 5 : 12); 
+            const size2 = (z2 + 1.5) * (isMobile ? 5 : 12);
+
+            const alpha1 = ((z1 + 1.5) / 2.5) * 0.22;
+            const alpha2 = ((z2 + 1.5) / 2.5) * 0.22;
 
             ctx.beginPath();
             ctx.moveTo(x1, y);
             ctx.lineTo(x2, y);
-            ctx.strokeStyle = `rgba(9, 60, 141, ${Math.min(alpha1, alpha2) * 0.3})`;
+            ctx.strokeStyle = `rgba(9, 60, 141, ${Math.min(alpha1, alpha2) * 0.5})`;
             ctx.stroke();
 
             ctx.beginPath();
@@ -148,7 +156,8 @@ function initTransparencyDNA() {
             ctx.fill();
         }
         ctx.restore();
-        phase += 0.015;
+        
+        phase += 0.012; // Matching exact speed
         requestAnimationFrame(draw);
     }
     setTimeout(() => { resize(); draw(); }, 150);
