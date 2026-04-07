@@ -2696,16 +2696,30 @@ section {
    COBERTURA NACIONAL - REDISEÑO HIGH-FIDELITY
    ========================================= */
 .coverage-section {
-    background: #ffffff; /* Fondo limpio para que la imagen luzca */
-    padding: 3rem 0 6rem; /* Subido el título reduciendo padding top */
+    background: #ffffff url('../assets/images/clinical_white_dna_bg.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect for premium feel */
+    padding: 3rem 0 6rem;
     position: relative;
     overflow: hidden;
+}
+
+/* Soft Scientific Overlay to keep readability */
+.coverage-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .coverage-inner {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
+    z-index: 2; /* Encima del fondo de ADN */
 }
 
 .coverage-header {
@@ -2763,30 +2777,9 @@ section {
 }
 
 /* Background Visuals - DNA/Grid Scientific Touch */
+/* Removed Grid/DNA old styles to favor the new high-fidelity WebP background */
 .coverage-bg-dna {
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(circle at 2px 2px, rgba(9, 60, 141, 0.05) 1.5px, transparent 0),
-        linear-gradient(rgba(15, 23, 42, 0.01) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.01) 1px, transparent 1px);
-    background-size: 40px 40px, 100px 100px, 100px 100px;
-    opacity: 0.8;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.coverage-bg-dna::before {
-    content: "DNA GENETICS";
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    font-size: 15vw;
-    font-weight: 900;
-    color: rgba(9, 60, 141, 0.015);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
+    display: none;
 }
 
 .coverage-layout {
