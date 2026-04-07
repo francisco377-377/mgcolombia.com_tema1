@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sede principal científica</title>
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:grid;
+      place-items:center;
+      background:#eef3f3;
+      font-family:Arial, sans-serif;
+    }
+
+    .lab-marker{
+      width:280px;
+      height:280px;
+      filter: drop-shadow(0 10px 16px rgba(44,72,89,.10));
+    }
+
+    svg{
+      width:100%;
+      height:100%;
+      overflow:visible;
+    }
+
+    .neon-soft{
+      animation: breatheSoft 3.4s ease-in-out infinite;
+      transform-origin: 140px 210px;
+    }
+
+    .neon-strong{
+      animation: breatheStrong 3.4s ease-in-out infinite;
+      transform-origin: 140px 210px;
+    }
+
+    .edge-breath{
+      animation: edgeGlow 3.4s ease-in-out infinite;
+    }
+
+    @keyframes breatheSoft{
+      0%,100%{ opacity:.20; transform:scale(0.985); }
+      50%{ opacity:.46; transform:scale(1.05); }
+    }
+
+    @keyframes breatheStrong{
+      0%,100%{ opacity:.30; transform:scale(0.99); }
+      50%{ opacity:.80; transform:scale(1.04); }
+    }
+
+    @keyframes edgeGlow{
+      0%,100%{ opacity:.14; }
+      50%{ opacity:.55; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lab-marker">
+<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="roofTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dde7ec"/>
+    </linearGradient>
+
+    <linearGradient id="frontWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dbe5ea"/>
+    </linearGradient>
+
+    <linearGradient id="sideWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d5e0e6"/>
+      <stop offset="100%" stop-color="#b9c7d0"/>
+    </linearGradient>
+
+    <linearGradient id="glassMain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8fbff"/>
+      <stop offset="100%" stop-color="#8ec4d8"/>
+    </linearGradient>
+
+    <linearGradient id="glassDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5d7790"/>
+      <stop offset="100%" stop-color="#283f52"/>
+    </linearGradient>
+
+    <linearGradient id="platformTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fcfd"/>
+      <stop offset="100%" stop-color="#dbe8eb"/>
+    </linearGradient>
+
+    <linearGradient id="platformLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c6dbe0"/>
+      <stop offset="100%" stop-color="#97b7be"/>
+    </linearGradient>
+
+    <linearGradient id="platformRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b7d0d6"/>
+      <stop offset="100%" stop-color="#87aab1"/>
+    </linearGradient>
+
+    <radialGradient id="neonBaseOuter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d1e0f5" stop-opacity="0.92"/>
+      <stop offset="55%" stop-color="#d1e0f5" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="neonBaseInner" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d1e0f5" stop-opacity="0.98"/>
+      <stop offset="65%" stop-color="#d1e0f5" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="edgeNeon" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#d1e0f5" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="shadowSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#4a5f6f" flood-opacity="0.12"/>
+    </filter>
+
+    <filter id="neonBlurStrong" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+
+    <filter id="neonBlurSoft" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2.3"/>
+    </filter>
+  </defs>
+
+  <!-- neon base respirando -->
+  <g>
+    <ellipse class="neon-soft"
+             cx="140" cy="210"
+             rx="52" ry="14"
+             fill="url(#neonBaseOuter)"
+             filter="url(#neonBlurStrong)"/>
+
+    <ellipse class="neon-strong"
+             cx="140" cy="209"
+             rx="36" ry="8"
+             fill="url(#neonBaseInner)"
+             filter="url(#neonBlurSoft)"/>
+  </g>
+
+  <!-- plataforma principal -->
+  <g filter="url(#shadowSoft)">
+    <path d="M70 176 L145 138 L214 176 L140 214 Z"
+          fill="url(#platformTop)"/>
+    <path d="M70 176 L70 191 L140 230 L140 214 Z"
+          fill="url(#platformLeft)"/>
+    <path d="M214 176 L214 191 L140 230 L140 214 Z"
+          fill="url(#platformRight)"/>
+  </g>
+
+  <!-- borde neon integrado -->
+  <path class="edge-breath"
+        d="M76 178 L145 144 L208 178"
+        fill="none"
+        stroke="#d1e0f5"
+        stroke-width="1.5"
+        opacity="0.24"
+        filter="url(#neonBlurSoft)"/>
+
+  <!-- edificio principal central -->
+  <g filter="url(#shadowSoft)">
+    <!-- lateral torre -->
+    <path d="M150 74 L188 93 L188 164 L150 184 Z"
+          fill="url(#sideWall)" stroke="#bcc9d1" stroke-width="1"/>
+
+    <!-- frente torre -->
+    <path d="M101 93 L150 74 L150 184 L101 164 Z"
+          fill="url(#frontWall)" stroke="#dce6ea" stroke-width="1"/>
+
+    <!-- techo torre -->
+    <path d="M101 93 L150 74 L188 93 L139 112 Z"
+          fill="url(#roofTop)" stroke="#dce6ea" stroke-width="1"/>
+
+    <!-- glass frente -->
+    <path d="M113 100 L144 88 L144 172 L113 160 Z"
+          fill="url(#glassMain)" stroke="#d9fbff" stroke-width="1"/>
+
+    <!-- glass lateral -->
+    <path d="M150 88 L180 103 L180 170 L150 185 Z"
+          fill="url(#glassMain)" opacity="0.93" stroke="#d6fbff" stroke-width="1"/>
+
+    <!-- neon edges -->
+    <path class="edge-breath"
+          d="M113 160 L113 100 L144 88"
+          fill="none"
+          stroke="url(#edgeNeon)"
+          stroke-width="2.1"
+          filter="url(#neonBlurSoft)"/>
+
+    <path class="edge-breath"
+          d="M150 185 L150 88 L180 103"
+          fill="none"
+          stroke="url(#edgeNeon)"
+          stroke-width="2.1"
+          filter="url(#neonBlurSoft)"/>
+
+    <!-- divisiones frente -->
+    <path d="M121 97 L121 163" stroke="#d6fbff" stroke-width="1" opacity="0.8"/>
+    <path d="M128 94.5 L128 166" stroke="#d6fbff" stroke-width="1" opacity="0.8"/>
+    <path d="M136 91.5 L136 169" stroke="#d6fbff" stroke-width="1" opacity="0.8"/>
+
+    <path d="M113 112 L144 100" stroke="#d6fbff" stroke-width="1" opacity="0.72"/>
+    <path d="M113 125 L144 113" stroke="#d6fbff" stroke-width="1" opacity="0.72"/>
+    <path d="M113 138 L144 126" stroke="#d6fbff" stroke-width="1" opacity="0.72"/>
+    <path d="M113 151 L144 139" stroke="#d6fbff" stroke-width="1" opacity="0.72"/>
+
+    <!-- divisiones lateral -->
+    <path d="M160 93 L160 180" stroke="#d6fbff" stroke-width="1" opacity="0.7"/>
+    <path d="M170 98 L170 175" stroke="#d6fbff" stroke-width="1" opacity="0.7"/>
+    <path d="M150 110 L180 125" stroke="#d6fbff" stroke-width="1" opacity="0.62"/>
+    <path d="M150 126 L180 141" stroke="#d6fbff" stroke-width="1" opacity="0.62"/>
+
+    <!-- puerta principal -->
+    <path d="M131 145 L145 140 L145 177 L131 182 Z"
+          fill="#effcff" stroke="#d7eef3" stroke-width="0.9"/>
+    <path d="M138 142.5 L138 179.5" stroke="#c8e8f0" stroke-width="0.8"/>
+    <circle cx="140.8" cy="161" r="1.1" fill="#ffffff"/>
+
+    <!-- terraza/techo técnico -->
+    <path d="M111 80 L147 66 L173 79 L137 93 Z"
+          fill="#f8fbfc" stroke="#d8e2e8" stroke-width="0.8"/>
+
+    <!-- panel solar grande -->
+    <path d="M120 74 L147 64 L165 72 L138 82 Z"
+          fill="url(#glassDark)" stroke="#708ca2" stroke-width="0.8"/>
+    <path d="M125 72 L143 65.5" stroke="#8fb1c9" stroke-width="0.8"/>
+    <path d="M132 69.8 L150 76.5" stroke="#8fb1c9" stroke-width="0.8"/>
+    <path d="M138 67.8 L158 74.8" stroke="#8fb1c9" stroke-width="0.8"/>
+
+    <!-- corona neon techo -->
+    <path class="edge-breath"
+          d="M111 80 L147 66 L173 79"
+          fill="none"
+          stroke="#d1e0f5"
+          stroke-width="1.3"
+          opacity="0.22"
+          filter="url(#neonBlurSoft)"/>
+  </g>
+
+  <!-- ala izquierda -->
+  <g filter="url(#shadowSoft)">
+    <path d="M70 141 L103 124 L123 136 L90 153 Z"
+          fill="#ffffff" stroke="#d9e5ea" stroke-width="0.9"/>
+    <path d="M90 153 L123 136 L123 164 L90 182 Z"
+          fill="#d3e0e5" stroke="#c4d3d9" stroke-width="0.9"/>
+    <path d="M70 141 L90 153 L90 182 L70 170 Z"
+          fill="#eef6f8" stroke="#d9e5ea" stroke-width="0.9"/>
+
+    <path d="M76 145 L90 153 L90 168 L76 160 Z"
+          fill="url(#glassMain)" opacity="0.92"/>
+    <path d="M94 142 L118 130 L118 156 L94 168 Z"
+          fill="url(#glassMain)" opacity="0.92"/>
+
+    <path class="edge-breath"
+          d="M70 170 L90 182 L123 164"
+          fill="none"
+          stroke="#d1e0f5"
+          stroke-width="1.1"
+          opacity="0.17"
+          filter="url(#neonBlurSoft)"/>
+  </g>
+
+  <!-- ala derecha -->
+  <g filter="url(#shadowSoft)">
+    <path d="M166 134 L192 147 L210 138 L184 125 Z"
+          fill="#fdfefe" stroke="#d9e5ea" stroke-width="0.9"/>
+    <path d="M184 125 L210 138 L210 163 L184 176 Z"
+          fill="#d6e2e7" stroke="#c6d4da" stroke-width="0.9"/>
+    <path d="M166 134 L184 125 L184 176 L166 185 Z"
+          fill="#eef6f8" stroke="#d9e5ea" stroke-width="0.9"/>
+
+    <path d="M170 140 L182 134 L182 165 L170 171 Z"
+          fill="url(#glassMain)" opacity="0.9"/>
+    <path d="M186 129 L206 139 L206 156 L186 166 Z"
+          fill="url(#glassMain)" opacity="0.92"/>
+
+    <path class="edge-breath"
+          d="M166 185 L184 176 L210 163"
+          fill="none"
+          stroke="#d1e0f5"
+          stroke-width="1.1"
+          opacity="0.17"
+          filter="url(#neonBlurSoft)"/>
+  </g>
+
+  <!-- módulo de acceso frontal -->
+  <g filter="url(#shadowSoft)">
+    <path d="M118 177 L149 162 L167 171 L136 187 Z"
+          fill="#ffffff" stroke="#d9e5ea" stroke-width="0.8"/>
+    <path d="M136 187 L167 171 L167 180 L136 196 Z"
+          fill="#c9d8de" stroke="#c1d0d6" stroke-width="0.8"/>
+    <path d="M118 177 L136 187 L136 196 L118 186 Z"
+          fill="#eef5f8" stroke="#d9e5ea" stroke-width="0.8"/>
+
+    <path d="M124 180 L136 186 L136 192 L124 186 Z"
+          fill="url(#glassMain)" opacity="0.9"/>
+    <path d="M139 176 L162 165 L162 178 L139 189 Z"
+          fill="url(#glassMain)" opacity="0.92"/>
+  </g>
+
+  <!-- pequeñas antenas / detalles HQ -->
+  <g filter="url(#shadowSoft)">
+    <line x1="125" y1="77" x2="125" y2="61" stroke="#91a4af" stroke-width="1.4"/>
+    <line x1="132" y1="75" x2="132" y2="58" stroke="#91a4af" stroke-width="1.4"/>
+    <line x1="140" y1="72" x2="140" y2="55" stroke="#91a4af" stroke-width="1.4"/>
+    <circle cx="125" cy="60" r="2" fill="#e4fbff"/>
+    <circle cx="132" cy="57" r="2" fill="#e4fbff"/>
+    <circle cx="140" cy="54" r="2" fill="#e4fbff"/>
+  </g>
+
+</svg>
+</div>
+
+</body>
+</html>

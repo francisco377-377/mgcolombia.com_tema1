@@ -712,45 +712,63 @@ function initFaqDNA() {
     // NO tocar renderMap ni highlightCity para no dañar coordenadas.
     // =========================================================================================
 
-    // PIN SEDE PRINCIPAL (HQ) — Edificio grande con torre y antena (azul marca)
-    // viewBox recortado en y=175 para que las elipses del suelo queden en la base del SVG (sin flotamiento)
-    const PIN_HQ_SVG = `<svg class="pin-building" width="70" height="88" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-      <ellipse cx="70" cy="157" rx="56" ry="14" fill="none" stroke="#007799" stroke-width="0.8" opacity="0.25"/>
-      <ellipse cx="70" cy="157" rx="42" ry="10" fill="none" stroke="#0099bb" stroke-width="1" opacity="0.4"/>
-      <ellipse cx="70" cy="157" rx="28" ry="7" fill="none" stroke="#00bbdd" stroke-width="1.2" opacity="0.6"/>
-      <ellipse cx="70" cy="156" rx="32" ry="6" fill="#003344" opacity="0.35"/>
-      <polygon points="100,155 116,143 116,90 100,102" fill="#004060" stroke="#003355" stroke-width="0.5"/>
-      <polygon points="36,155 100,155 100,102 36,110" fill="#005f80" stroke="#004466" stroke-width="0.5"/>
-      <polygon points="36,110 100,102 116,90 52,98" fill="#0088bb" stroke="#005577" stroke-width="0.5"/>
-      <rect x="43" y="114" width="12" height="8" rx="1" fill="rgba(0,200,255,0.2)" stroke="#00bbdd" stroke-width="0.6"/>
-      <rect x="60" y="113" width="12" height="8" rx="1" fill="rgba(0,200,255,0.22)" stroke="#00bbdd" stroke-width="0.6"/>
-      <rect x="77" y="112" width="12" height="8" rx="1" fill="rgba(0,200,255,0.18)" stroke="#00bbdd" stroke-width="0.6"/>
-      <rect x="43" y="127" width="12" height="8" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
-      <rect x="60" y="127" width="12" height="8" rx="1" fill="rgba(57,255,20,0.15)" stroke="#39ff14" stroke-width="0.5"/>
-      <rect x="77" y="126" width="12" height="8" rx="1" fill="rgba(0,180,230,0.15)" stroke="#0099bb" stroke-width="0.5"/>
-      <rect x="62" y="139" width="10" height="16" rx="1" fill="rgba(0,50,80,0.8)" stroke="#00bbdd" stroke-width="0.7"/>
-      <polygon points="78,98 84,94 84,73 78,77" fill="#004060" stroke="#003355" stroke-width="0.5"/>
-      <polygon points="56,103 78,98 78,77 56,82" fill="#006688" stroke="#004466" stroke-width="0.5"/>
-      <polygon points="56,82 78,77 84,73 62,78" fill="#0099cc" stroke="#005577" stroke-width="0.5"/>
-      <line x1="71" y1="58" x2="71" y2="77" stroke="#00ccee" stroke-width="1.2" opacity="0.9"/>
-      <circle cx="71" cy="57" r="3" fill="#00e5ff" opacity="0.95"/>
-      <text x="68" y="109.8" text-anchor="middle" font-size="3.2" fill="#00e5ff" font-family="monospace">MG LAB</text>
+    // =========================================================================================
+    // 🎨 MODELOS ARQUITECTÓNICOS 3D (SVG HIGH-FIDELITY)
+    // =========================================================================================
+
+    const SVG_PIN_HQ = `<svg class="pin-building" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="roofTopHQ" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dde7ec"/></linearGradient>
+        <linearGradient id="frontWallHQ" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dbe5ea"/></linearGradient>
+        <linearGradient id="sideWallHQ" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d5e0e6"/><stop offset="100%" stop-color="#b9c7d0"/></linearGradient>
+        <linearGradient id="glassMainHQ" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8fbff"/><stop offset="100%" stop-color="#8ec4d8"/></linearGradient>
+        <radialGradient id="neonBaseHQ" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#d1e0f5" stop-opacity="0.92"/><stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/></radialGradient>
+        <filter id="neonBlurHQ" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+      </defs>
+      <g class="pin-hq-soft"><ellipse cx="140" cy="210" rx="52" ry="14" fill="url(#neonBaseHQ)" filter="url(#neonBlurHQ)"/></g>
+      <path d="M70 176 L145 138 L214 176 L140 214 Z" fill="#f7fcfd"/><path d="M70 176 L70 191 L140 230 L140 214 Z" fill="#c6dbe0"/><path d="M214 176 L214 191 L140 230 L140 214 Z" fill="#b7d0d6"/>
+      <g><path d="M150 74 L188 93 L188 164 L150 184 Z" fill="url(#sideWallHQ)"/><path d="M101 93 L150 74 L150 184 L101 164 Z" fill="url(#frontWallHQ)"/><path d="M101 93 L150 74 L188 93 L139 112 Z" fill="url(#roofTopHQ)"/>
+      <path d="M113 100 L144 88 L144 172 L113 160 Z" fill="url(#glassMainHQ)"/><path d="M150 88 L180 103 L180 170 L150 185 Z" fill="url(#glassMainHQ)" opacity="0.9"/>
+      <path class="pin-hq-edge" d="M113 160 L113 100 L144 88" fill="none" stroke="#d1e0f5" stroke-width="2" filter="url(#neonBlurHQ)"/></g>
     </svg>`;
 
-    // PIN CIUDAD ALIADA — Edificio compacto en verde esmeralda
-    // viewBox recortado en y=175 para que las elipses queden en la base (sin flotamiento)
-    const PIN_CITY_SVG = `<svg class="pin-building" width="44" height="55" viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-      <ellipse cx="70" cy="157" rx="42" ry="10" fill="none" stroke="#00cc66" stroke-width="1.2" opacity="0.45"/>
-      <ellipse cx="70" cy="156" rx="26" ry="6" fill="#0a3320" opacity="0.35"/>
-      <polygon points="100,155 116,145 116,110 100,120" fill="#0a4028" stroke="#062a18" stroke-width="0.5"/>
-      <polygon points="36,155 100,155 100,120 36,128" fill="#0f5c3a" stroke="#0a3d25" stroke-width="0.5"/>
-      <polygon points="36,128 100,120 116,110 52,116" fill="#1a8a55" stroke="#0f6040" stroke-width="0.5"/>
-      <rect x="44" y="132" width="11" height="7" rx="1" fill="rgba(0,255,128,0.18)" stroke="#00dd66" stroke-width="0.6"/>
-      <rect x="60" y="131" width="11" height="7" rx="1" fill="rgba(0,255,128,0.22)" stroke="#00dd66" stroke-width="0.6"/>
-      <rect x="76" y="130" width="11" height="7" rx="1" fill="rgba(0,220,100,0.15)" stroke="#00bb55" stroke-width="0.5"/>
-      <rect x="63" y="143" width="9" height="12" rx="1" fill="rgba(5,30,15,0.85)" stroke="#00cc55" stroke-width="0.7"/>
-      <line x1="70" y1="106" x2="70" y2="116" stroke="#00ee77" stroke-width="1" opacity="0.8"/>
-      <circle cx="70" cy="105" r="2.5" fill="#00ff88" opacity="0.9"/>
+    const SVG_PIN_1 = `<svg class="pin-building" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="glassBlue1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#dff8ff"/><stop offset="100%" stop-color="#8ec8d9"/></linearGradient>
+        <radialGradient id="neonBase1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#d1e0f5" stop-opacity="0.9"/><stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/></radialGradient>
+        <filter id="neonBlur1" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+      </defs>
+      <g class="pin-1-soft"><ellipse cx="116" cy="168" rx="38" ry="10" fill="url(#neonBase1)" filter="url(#neonBlur1)"/></g>
+      <path d="M64 146 L117 121 L168 146 L116 172 Z" fill="#f4fbfc"/><path d="M64 146 L64 158 L116 184 L116 172 Z" fill="#b6d3d7"/><path d="M168 146 L168 158 L116 184 L116 172 Z" fill="#8eb8bc"/>
+      <g><path d="M126 82 L154 96 L154 145 L126 159 Z" fill="#d8e3e8"/><path d="M85 96 L126 82 L126 159 L85 145 Z" fill="#ffffff"/><path d="M85 96 L126 82 L154 96 L113 110 Z" fill="#ffffff"/>
+      <path d="M95 102 L121 93 L121 149 L95 140 Z" fill="url(#glassBlue1)"/><path d="M126 93 L147 103 L147 146 L126 156 Z" fill="url(#glassBlue1)" opacity="0.9"/>
+      <path class="pin-1-edge" d="M95 140 L95 102 L121 93" fill="none" stroke="#d1e0f5" stroke-width="1.5" filter="url(#neonBlur1)"/></g>
+    </svg>`;
+
+    const SVG_PIN_2 = `<svg class="pin-building" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="glassMain2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8fbff"/><stop offset="100%" stop-color="#8cc3d8"/></linearGradient>
+        <radialGradient id="neonBase2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#d1e0f5" stop-opacity="1"/><stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/></radialGradient>
+        <filter id="neonBlur2" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter>
+      </defs>
+      <g class="pin-2-outer"><ellipse cx="125" cy="192" rx="50" ry="14" fill="url(#neonBase2)" filter="url(#neonBlur2)"/></g>
+      <path d="M63 164 L129 132 L188 164 L124 198 Z" fill="#f7fcfd"/><path d="M63 164 L63 178 L124 212 L124 198 Z" fill="#c4d9de"/><path d="M188 164 L188 178 L124 212 L124 198 Z" fill="#b4ced4"/>
+      <g><path d="M135 102 L168 118 L168 165 L135 182 Z" fill="#d3dee4"/><path d="M87 118 L135 102 L135 182 L87 167 Z" fill="#ffffff"/><path d="M87 118 L135 102 L168 118 L120 134 Z" fill="#ffffff"/>
+      <path d="M95 122 L129 111 L129 172 L95 161 Z" fill="url(#glassMain2)"/><path d="M135 111 L161 124 L161 171 L135 184 Z" fill="url(#glassMain2)" opacity="0.9"/>
+      <path class="pin-2-edge" d="M95 161 L95 122 L129 111" fill="none" stroke="#d1e0f5" stroke-width="1.8" filter="url(#neonBlur2)"/></g>
+    </svg>`;
+
+    const SVG_PIN_3 = `<svg class="pin-building" viewBox="0 0 235 235" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="glassMain3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ebfcff"/><stop offset="100%" stop-color="#8fc4d8"/></linearGradient>
+        <radialGradient id="neonBase3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#d1e0f5" stop-opacity="1"/><stop offset="100%" stop-color="#d1e0f5" stop-opacity="0"/></radialGradient>
+        <filter id="neonBlur3" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.5"/></filter>
+      </defs>
+      <g class="pin-3-outer"><ellipse cx="118" cy="184" rx="47" ry="13" fill="url(#neonBase3)" filter="url(#neonBlur3)"/></g>
+      <path d="M60 158 L122 128 L177 158 L117 190 Z" fill="#f7fcfd"/><path d="M60 158 L60 171 L117 203 L117 190 Z" fill="#c5dade"/><path d="M177 158 L177 171 L117 203 L117 190 Z" fill="#b5cfd5"/>
+      <g><path d="M127 92 L156 107 L156 157 L127 173 Z" fill="#d4dfe5"/><path d="M89 107 L127 92 L127 173 L89 160 Z" fill="#ffffff"/><path d="M89 107 L127 92 L156 107 L118 122 Z" fill="#ffffff"/>
+      <path d="M97 113 L122 103 L122 164 L97 155 Z" fill="url(#glassMain3)"/><path d="M127 103 L149 114 L149 160 L127 171 Z" fill="url(#glassMain3)" opacity="0.9"/>
+      <path class="pin-3-edge" d="M97 155 L97 113 L122 103" fill="none" stroke="#d1e0f5" stroke-width="2.1" filter="url(#neonBlur3)"/></g>
     </svg>`;
 
 
@@ -778,20 +796,50 @@ function initFaqDNA() {
 
         locations.forEach((loc) => {
             const id = normalize(loc.name);
-            const fullName = loc.hq ? `${loc.name} ★ Sede Principal` : loc.name;
             
-            // 1. Map Pin — ANCLA CERO + SVG Edificio (coordenadas intactas)
+            // Lógica de Selección de Modelo de Edificio
+            let pinSvgString = "";
+            let scaleClass = "";
+            let baseSize = 45;
+
+            // 1. Identificar Clusters (Para usar Pin 3 que es más compacto)
+            const clusters = [
+                ["bogota", "cajica", "tocancipa"],
+                ["pereira", "armenia", "manizales"],
+                ["pasto", "ipiales", "tuquerres"],
+                ["barranquilla", "cartagena", "soledad"]
+            ];
+            const isInCluster = clusters.some(c => c.includes(id));
+
+            if (loc.hq) {
+                pinSvgString = SVG_PIN_HQ;
+                baseSize = 65; // Medellín más grande
+            } else if (isInCluster) {
+                pinSvgString = SVG_PIN_3;
+                baseSize = 35; // Nodos de cluster más pequeños
+            } else {
+                // Alternancia orgánica entre Tipo 1 y Tipo 2
+                pinSvgString = (id.length % 2 === 0) ? SVG_PIN_1 : SVG_PIN_2;
+                baseSize = 48;
+            }
+
+            // Map Pin — ANCLA CERO + SVG Edificio
             const pinDiv = document.createElement('div');
             pinDiv.className = `map-pin ${loc.hq ? 'pin-hq' : ''}`;
             pinDiv.style.left = `${loc.left}%`;
             pinDiv.style.top = `${loc.top}%`;
 
-            pinDiv.innerHTML = (loc.hq ? PIN_HQ_SVG : PIN_CITY_SVG) +
-                `<div class="city-floating-label">${loc.name}</div>`;
+            pinDiv.innerHTML = `
+                <div class="lab-marker-container" style="width:${baseSize}px; height:${baseSize}px;">
+                    ${pinSvgString}
+                </div>
+                <div class="city-floating-label">${loc.name}</div>
+            `;
 
             pinsLayer.appendChild(pinDiv);
+            const pinSvgContainer = pinDiv.querySelector('.lab-marker-container');
             const pinSvg = pinDiv.querySelector('svg.pin-building');
-            pinMap.set(id, { pin: pinDiv, pinSvg, loc: loc });
+            pinMap.set(id, { pin: pinDiv, pinSvg: pinSvgContainer, loc: loc });
 
             // 2. Sidebar Item
             const cityItem = document.createElement('div');
