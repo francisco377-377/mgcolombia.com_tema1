@@ -18,6 +18,54 @@ Este documento establece las directrices arquitectónicas inquebrantables para c
 *   **Dimensionamiento**: Como el componente padre está centrado, el SVG debe administrarse centrado asumiendo que `0,0` es el ancla. 
 *   **Eventos**: Dado que el ancla tiene `pointer-events: none` (para evitar colisiones), los eventos de `hover` e interacción los capta el propio SVG interno (`pointer-events: all; cursor: pointer;`).
 
+## 4. Backup de Seguridad (Snapshot Final)
+
+A continuación se presenta el snapshot exacto de las coordenadas finales calibradas al 2026-04-07. Si el archivo `js/map-data.js` se corrompe o se pierde, esta es la referencia manual obligatoria.
+
+```javascript
+/* SNAPSHOT FINAL - COORDENADAS CONGELADAS MUNDO GENÉTICO */
+const locations = [
+  { name: "Medellín", hq: true, left: 33.62, top: 41.11 },
+  { name: "Acacías", hq: false, left: 45.48, top: 53.75 },
+  { name: "Apartadó", hq: false, left: 27.35, top: 32.09 },
+  { name: "Arauca", hq: false, left: 62.49, top: 39.61 },
+  { name: "Armenia", hq: false, left: 33.30, top: 51.10 },
+  { name: "Barranquilla", hq: false, left: 37.46, top: 18.45 },
+  { name: "Bogotá", hq: false, left: 42.75, top: 48.13 },
+  { name: "Bucaramanga", hq: false, left: 49.97, top: 36.26 },
+  { name: "Cajicá", hq: false, left: 45.8, top: 49.1 },
+  { name: "Cali", hq: false, left: 26.87, top: 55.03 },
+  { name: "Cartagena", hq: false, left: 35.53, top: 21.66 },
+  { name: "Caucasia", hq: false, left: 36.81, top: 33.69 },
+  { name: "Cúcuta", hq: false, left: 53.04, top: 31.13 },
+  { name: "Granada", hq: false, left: 49.81, top: 55.03 },
+  { name: "Ibagué", hq: false, left: 37.01, top: 53.46 },
+  { name: "Ipiales", hq: false, left: 21.41, top: 68.83 },
+  { name: "Magangué", hq: false, left: 42.27, top: 30.64 },
+  { name: "Manizales", hq: false, left: 34.41, top: 46.85 },
+  { name: "Mocoa", hq: false, left: 30.56, top: 68.35 },
+  { name: "Montelíbano", hq: false, left: 32.48, top: 33.69 },
+  { name: "Montería", hq: false, left: 31.2, top: 28.24 },
+  { name: "Monterrey (Casanare)", hq: false, left: 58.15, top: 47.97 },
+  { name: "Neiva", hq: false, left: 34.25, top: 58.56 },
+  { name: "Palmira", hq: false, left: 29.43, top: 52.95 },
+  { name: "Pasto", hq: false, left: 20.93, top: 66.1 },
+  { name: "Pereira", hq: false, left: 31.52, top: 47.01 },
+  { name: "Pitalito", hq: false, left: 31.52, top: 62.09 },
+  { name: "Popayán", hq: false, left: 25.58, top: 60.17 },
+  { name: "Quibdó", hq: false, left: 23.98, top: 44.12 },
+  { name: "San Andrés", hq: false, left: 14.40, top: 15.00 },
+  { name: "Sincelejo", hq: false, left: 35.69, top: 25.51 },
+  { name: "Tocancipá", hq: false, left: 44.36, top: 46.53 },
+  { name: "Tumaco", hq: false, left: 14.03, top: 63.86 },
+  { name: "Tunja", hq: false, left: 51.41, top: 43.64 },
+  { name: "Túquerres", hq: false, left: 17.56, top: 66.42 },
+  { name: "Valledupar", hq: false, left: 47.89, top: 21.18 },
+  { name: "Villavicencio", hq: false, left: 54.46, top: 52.3 },
+  { name: "Yopal", hq: false, left: 61.36, top: 44.28 }
+];
+```
+
 ## Historial y Contexto para IA
 *Este documento fue creado tras repetidos incidentes donde agentes de IA, al intentar rediseñar los pines, alteraron involuntariamente el padding y transform del contenedor .map-pin, o inyectaron un array de ciudades corrupto en main.js.* 
 
