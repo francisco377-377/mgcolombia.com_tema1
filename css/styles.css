@@ -2859,7 +2859,7 @@ section {
 /* Nuevo Contenedor para Edificios Arquitectónicos */
 .lab-marker-container {
     position: absolute;
-    bottom: 0;
+    bottom: -8px; /* Bajado para mejor alineación con el punto */
     left: 50%;
     transform: translateX(-50%);
     pointer-events: all;
