@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos | Mundó Genético | Asesoría en Pruebas de ADN</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="¿Tienes dudas sobre una prueba de ADN? Contáctanos para recibir asesoría personalizada. Sedes en más de 30 ciudades de Colombia.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon-ad.svg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .hero-contact {
+            background-image: linear-gradient(rgba(0, 31, 63, 0.4), rgba(0, 31, 63, 0.7)), url('../assets/images/servicios/hero-contactenos.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 100px;
+        }
+        .contact-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .contact-card-detail {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .contact-card-detail:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+
+<body class="theme-light-medical">
+
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container d-flex align-center">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: white; display: flex; align-items: center;">
+                        <i class="fa-solid fa-dna logo-icon"></i>
+                        <div class="logo-text">
+                            <span>Mundo</span>
+                            <span>Genético</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav class="header-nav bg-white shadow-sm">
+            <div class="container">
+                <ul class="nav-links list-unstyled d-flex m-0">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#cobertura">Cobertura Nacional</a></li>
+                    <li><a href="../index.html#faq">Preguntas</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-contact">
+            <div class="container text-center">
+                <div class="trust-badge-light mb-3" style="margin: 0 auto;">Estamos para ayudarte</div>
+                <h1 class="hero-title" style="font-size: 3.5rem;">Contáctanos hoy mismo</h1>
+                <p class="hero-subtitle">Recibe asesoría profesional, confidencial y experta para tu caso.</p>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <div class="contact-grid-detail">
+                <div class="contact-card-detail">
+                    <i class="fa-brands fa-whatsapp text-primary-blue mb-3" style="font-size: 3rem;"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Habla directamente con un asesor especialista.</p>
+                    <a href="https://wa.me/573003095039" class="btn btn-whatsapp-modern w-100">Iniciar Chat</a>
+                </div>
+                <div class="contact-card-detail">
+                    <i class="fa-solid fa-phone-volume text-primary-blue mb-3" style="font-size: 3rem;"></i>
+                    <h3>Línea de Atención</h3>
+                    <p>Llámanos para resolver tus dudas de inmediato.</p>
+                    <a href="tel:+573003095039" class="btn btn-primary-blue w-100" style="padding: 1rem; border-radius: 50px; color: white;">Llamar Ahora</a>
+                </div>
+                <div class="contact-card-detail">
+                    <i class="fa-solid fa-location-dot text-primary-blue mb-3" style="font-size: 3rem;"></i>
+                    <h3>Sedes Nacionales</h3>
+                    <p>Atención en Medellín, Bogotá, Cali y más de 30 ciudades.</p>
+                    <a href="../index.html#cobertura" class="btn btn-outline-blue w-100" style="padding: 1rem; border-radius: 50px; border: 2px solid #0056b3; color: #0056b3;">Ver Mapa</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="transparency-section">
+            <div class="container text-center">
+                <h2 class="section-title">Laboratorio Genes SAS</h2>
+                <p class="section-subtitle">Sede Principal: Medellín, Colombia.</p>
+                <div class="lab-distinction-box" style="max-width: 600px; margin: 2rem auto;">
+                    Contamos con centros de toma de muestras autorizados en todo el país para garantizar tu comodidad y rapidez en los resultados.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
