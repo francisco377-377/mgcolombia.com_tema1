@@ -81,7 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initProcessParticles();
     initTransparencyStats();
     initTransparencyDNA();
+    initTechServices();
 });
+
+function initTechServices() {
+    const cards = document.querySelectorAll('.service-card-tech');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+            const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+            card.style.setProperty('--mouse-x', `${x}%`);
+            card.style.setProperty('--mouse-y', `${y}%`);
+        });
+    });
+}
 
 function initTransparencyDNA() {
     const canvas = document.getElementById('transparency-canvas');

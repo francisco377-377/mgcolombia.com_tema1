@@ -3430,4 +3430,177 @@ section {
     .coverage-section { padding: 5rem 0; }
     .coverage-sidebar { padding: 1.5rem; }
     .coverage-header { margin-bottom: 3rem; }
-}
+}
+
+/* =========================================
+   SPECIALIZED TECH SERVICES SECTION (HUD STYLE)
+   ========================================= */
+.services-tech-section {
+    padding: 80px 0;
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, #0a1931 0%, #060b1a 100%);
+    overflow: hidden;
+    color: var(--text-white);
+}
+
+/* Cyber Grid HUD Overlay */
+.services-tech-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.services-tech-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns for more compact look */
+    gap: 1.5rem; /* Reduced gap */
+    margin-top: 3.5rem;
+}
+
+.service-card-tech {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; /* More modern, less rounded */
+    padding: 1.8rem; /* Dramatically reduced padding */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%; /* Equal height */
+}
+
+/* Mouse Hover Glow Effect */
+.service-card-tech::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.service-card-tech:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.service-card-tech:hover::after { opacity: 1; }
+
+/* Hybrid HUD Icon Container */
+.hybrid-icon-wrapper {
+    width: 65px;
+    height: 65px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.hud-ring-outer {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed rgba(56, 189, 248, 0.4);
+    border-radius: 50%;
+    animation: spinSlow 12s linear infinite;
+}
+
+.hud-ring-inner {
+    position: absolute;
+    inset: 8px;
+    border: 2px solid rgba(56, 189, 248, 0.2);
+    border-top-color: #38bdf8;
+    border-radius: 50%;
+    animation: spinSlow 4s linear reverse infinite;
+}
+
+.hybrid-icon-main {
+    font-size: 1.5rem;
+    color: #38bdf8;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.service-card-tech:hover .hybrid-icon-main {
+    transform: scale(1.1);
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.service-card-tech h3 {
+    font-size: 1.35rem; /* Scaled down */
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.service-card-tech p {
+    font-size: 0.95rem; /* Scaled down */
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.tech-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #38bdf8;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: auto;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.tech-action-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #38bdf8;
+}
+
+.tech-action-link i {
+    font-size: 0.75rem;
+    transition: transform 0.3s;
+}
+
+.tech-action-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Specific centering for the 5th card row if needed */
+.tech-grid-center-last {
+    grid-column: 2; /* Centered in a 3-col grid row 2 */
+}
+
+@media (max-width: 1024px) {
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .tech-grid-center-last { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+    .tech-grid { grid-template-columns: 1fr; }
+    .tech-grid-center-last { grid-column: span 1; }
+    .service-card-tech { padding: 1.5rem; }
+}
+
