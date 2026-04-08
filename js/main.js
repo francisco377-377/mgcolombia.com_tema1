@@ -177,19 +177,19 @@ function initTransparencyStats() {
                 values.forEach(val => {
                     const target = parseFloat(val.getAttribute('data-target'));
                     let current = 0;
-                    const duration = 2000; // 2 seconds
-                    const step = target / (duration / 16); // 60fps
+                    const duration = 1500; 
+                    const jump = 10; // User requested increments of 10
+                    const interval = (duration / (target / jump)); 
 
-                    const updateCounter = () => {
-                        current += step;
+                    const timer = setInterval(() => {
+                        current += jump;
                         if (current < target) {
                             val.textContent = current.toFixed(target % 1 === 0 ? 0 : 3) + '%';
-                            requestAnimationFrame(updateCounter);
                         } else {
                             val.textContent = target + '%';
+                            clearInterval(timer);
                         }
-                    };
-                    updateCounter();
+                    }, interval);
                 });
 
                 // Animate bars
@@ -200,7 +200,7 @@ function initTransparencyStats() {
                 observer.unobserve(section);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.05 }); // Lower threshold to trigger sooner on mobile devices
 
     observer.observe(section);
 }
