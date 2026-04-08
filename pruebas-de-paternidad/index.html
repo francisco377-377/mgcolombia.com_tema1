@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas de Paternidad ADN | 99.999% Precisión | Mundo Genético</title>
+    <title>Prueba de Paternidad ADN | 99.999% Precisión | Mundo Genético</title>
     
     <!-- SEO & Ads Compliance Meta Tags -->
     <meta name="description" content="Sal de la duda con una prueba de ADN de paternidad con precisión superior al 99.999%. Resultados discretos, seguros y con validez jurídica. Más de 24 años de experiencia.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Pruebas de Paternidad ADN | Certeza y Precisión | Mundo Genético">
-    <meta property="og:description" content="Pruebas de paternidad discretas y 100% seguras. Solicita tu asesoría gratuita.">
+    <meta property="og:title" content="Prueba de Paternidad ADN | Certeza y Precisión | Mundo Genético">
+    <meta property="og:description" content="Pruebas de paternidad discretas y 100% seguras. Resultados en 2 días hábiles. Solicita tu asesoría gratuita.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mundogeneticocolombia.com/pruebas-de-paternidad/">
     <meta property="og:image" content="https://mundogeneticocolombia.com/assets/images/servicios/hero-paternidad.png">
@@ -31,17 +31,328 @@
     <link rel="stylesheet" href="../css/styles.css">
 
     <style>
-        /* Custom Hero Override for Paternidad */
-        .hero-paternidad {
-            background-image: linear-gradient(rgba(0, 31, 63, 0.4), rgba(0, 31, 63, 0.7)), url('../assets/images/servicios/hero-paternidad.png');
+        /* Per-page specific overrides for better visibility as requested */
+        .hero-premium.hero-paternidad-bg .hero-bg-image {
+            background: url('../assets/images/servicios/hero-paternidad.png') no-repeat center center;
             background-size: cover;
-            background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
+        }
+
+        .hero-premium.hero-paternidad-bg .hero-bg-lab-fade {
+            /* Lighter gradient to see the image better as requested */
+            background: linear-gradient(90deg, rgba(6, 40, 99, 0.85) 0%, rgba(6, 40, 99, 0.6) 45%, rgba(6, 40, 99, 0.1) 85%, transparent 100%);
+        }
+
+        /* Results Interaction Styles */
+        .result-interact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .result-card-premium {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(9, 60, 141, 0.1);
+            border: 1px solid rgba(9, 60, 141, 0.05);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            padding: 120px 0 80px;
+        }
+
+        .result-card-premium:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(9, 60, 141, 0.15);
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .badge-positive { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .badge-negative { background: rgba(51, 65, 85, 0.1); color: #334155; }
+
+        .result-percent {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .color-positive { color: var(--primary-blue); }
+        .color-negative { color: #334155; }
+
+        /* --- NEW TIMING SECTION STYLES --- */
+        .timing-grid-premium {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .timing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(9, 60, 141, 0.05);
+            border: 1px solid rgba(9, 60, 141, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(9, 60, 141, 0.12);
+        }
+
+        .timing-icon-box {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+        }
+
+        .timing-days {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--primary-blue-dark);
+            margin: 1rem 0;
+            display: block;
+        }
+
+        .timing-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .timing-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            min-height: 3rem;
+        }
+
+        /* Record Card Specialized Styling */
+        .timing-card.card-record {
+            border: 2px solid var(--whatsapp-green);
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .timing-card.card-record::after {
+            content: 'MAS SOLICITADO';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--whatsapp-green);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+        }
+
+        .card-record .timing-icon-box {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--whatsapp-green);
+        }
+
+        .card-record .timing-days {
+            color: var(--whatsapp-green);
+        }
+
+        .glow-pulse {
+            animation: glowPulse 2s infinite;
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); }
+            50% { box-shadow: 0 15px 60px rgba(16, 185, 129, 0.35); }
+            100% { box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); }
+        }
+
+        /* --- OPTION 3: DIGITAL PATH (NO CARDS) --- */
+        .digital-process-wrapper {
+            position: relative;
+            padding: 4rem 0;
+            margin-top: 2rem;
+        }
+
+        .process-line-bg {
+            position: absolute;
+            top: 75px; /* Aligned with icon center */
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(9, 60, 141, 0.1) 20%, 
+                rgba(56, 189, 248, 0.4) 50%, 
+                rgba(9, 60, 141, 0.1) 80%, 
+                transparent 100%);
+            z-index: 1;
+        }
+
+        .process-line-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            filter: blur(2px);
+            animation: movePulse 4s linear infinite;
+        }
+
+        @keyframes movePulse {
+            0% { left: -10%; }
+            100% { left: 110%; }
+        }
+
+        .digital-nodes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .digital-step-node {
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .node-icon-sphere {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(9, 60, 141, 0.08);
+            border: 2px solid #f1f5f9;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .digital-step-node:hover .node-icon-sphere {
+            transform: scale(1.15) translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .node-content-text {
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .node-content-text h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-blue-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .node-content-text p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #64748b;
+        }
+
+        /* Glass Consultancy Panel - More subtle for Option 3 */
+        .glass-consultancy-panel {
+            background: linear-gradient(145deg, rgba(6, 40, 99, 0.98), rgba(9, 60, 141, 0.92));
+            border-radius: 40px;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 60px rgba(6, 40, 99, 0.2);
+            color: white;
+        }
+
+        .glass-consultancy-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+            animation: rotateGlow 15s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .consultancy-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .consultancy-checklist {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkmark-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .checkmark-item i {
+            color: var(--whatsapp-green);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 992px) {
+            .genetic-nodes-container { grid-template-columns: 1fr; }
+            .consultancy-content { grid-template-columns: 1fr; gap: 2rem; }
+            .consultancy-checklist { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -72,9 +383,9 @@
             <div class="container d-flex justify-between align-center">
                 <ul class="nav-links list-unstyled d-flex m-0">
                     <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../index.html#beneficios">Beneficios</a></li>
-                    <li><a href="../index.html#proceso">Proceso</a></li>
-                    <li><a href="../index.html#cobertura">Cobertura</a></li>
+                    <li><a href="#introduccion">Definición</a></li>
+                    <li><a href="#resultados">Confiabilidad</a></li>
+                    <li><a href="#procesos">Proceso</a></li>
                     <li><a href="../index.html#contacto" class="text-primary-blue" style="font-weight: 700;">Contacto</a></li>
                 </ul>
                 <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
@@ -85,25 +396,31 @@
     </header>
 
     <main>
-        <!-- Specialized Hero for Paternidad -->
-        <section class="hero-paternidad">
+        <!-- Premium Hero for Paternidad -->
+        <section class="hero-premium hero-full-bg hero-paternidad-bg">
+            <div class="hero-bg-image"></div>
             <div class="hero-bg-lab-fade"></div>
-            <div class="container relative-z">
+
+            <!-- Animated HUD & DNA Overlay -->
+            <canvas id="tech-canvas" class="tech-hud-overlay"></canvas>
+
+            <div class="container hero-container-single relative-z">
                 <div class="hero-content reveal fade-up">
                     <div class="trust-badge-light float-anim mb-3">
-                        <span class="pulse-dot"></span> Prueba de Paternidad
+                        <span class="pulse-dot"></span> Laboratorio Genes SAS
                     </div>
 
                     <h1 class="hero-title text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-wrap: balance;">
-                        La tranquilidad que necesitas con una <span class="text-white">Prueba de Paternidad 99.999% segura</span>
+                        Prueba de Paternidad o <br><span class="text-white">Examen de ADN</span>
                     </h1>
 
                     <p class="hero-subtitle text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                        Sal de la duda hoy mismo. Resultados rápidos, discretos y con el respaldo científico de <strong>24 años de experiencia</strong>.
+                        La certeza científica que determina con precisión el vínculo genético entre un hijo(a) y su presunto padre. 
+                        <strong>Resultados confiables con validez jurídica.</strong>
                     </p>
 
                     <div class="hero-actions mb-4">
-                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20Prueba%20de%20Paternidad."
+                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa%20sobre%20la%20Prueba%20de%20Paternidad."
                             target="_blank" class="btn btn-whatsapp-modern">
                             <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
                         </a>
@@ -112,76 +429,242 @@
             </div>
         </section>
 
-        <!-- Service Specific Details -->
-        <section class="transparency-section" id="detalles">
-            <div class="container transparency-grid relative-z">
-                <div class="transparency-content reveal fade-right">
-                    <h2 class="transparency-title">¿Qué es una Prueba de Paternidad ADN?</h2>
-                    <p class="transparency-text">
-                        Es el método más preciso para determinar el vínculo biológico entre un padre y un hijo. En <strong>Mundo Genético</strong>, bajo el respaldo del <strong>Laboratorio Genes SAS</strong>, utilizamos 24 marcadores genéticos para garantizar la máxima certeza.
-                    </p>
-                    <div class="lab-distinction-box">
-                        Ya sea para procesos legales (impugnación) o simplemente para tu tranquilidad personal, nuestras pruebas cumplen con los más altos estándares internacionales.
+        <!-- Definition Section -->
+        <section class="definition-section" id="introduccion">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 reveal fade-up">
+                        <div class="section-header text-center mb-5">
+                            <h2 class="section-title">Claridad y Respaldo Científico</h2>
+                        </div>
+                        <p class="text-center text-lg mb-5" style="max-width: 900px; margin: 0 auto;">
+                            La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar resultados confiables y con validez jurídica.
+                        </p>
                     </div>
                 </div>
 
-                <div class="stats-container reveal fade-left">
-                    <div class="stat-card-glass">
-                        <div class="stat-header">
-                            <span class="stat-label">Precisión en Paternidad</span>
-                            <span class="stat-value">99.999%</span>
-                        </div>
-                        <div class="progress-track">
+                <!-- Interactive Results Visualizer -->
+                <div class="result-interact-grid" id="resultados">
+                    <!-- Positive Case -->
+                    <div class="result-card-premium reveal fade-right">
+                        <span class="result-badge badge-positive">Resultado Compatible</span>
+                        <h3 class="mb-3">Sí es el padre</h3>
+                        <span class="result-percent color-positive">99.999%</span>
+                        <p class="text-main">
+                            Cuando el resultado es compatible, se confirma con una confiabilidad superior al <strong>99.999%</strong> que el hombre evaluado sí es el padre biológico, tal como lo exige la ley colombiana.
+                        </p>
+                        <div class="progress-track mt-4">
                             <div class="progress-fill" style="width: 100%;"></div>
                         </div>
-                        <div class="marker-info">
-                            <i class="fa-solid fa-dna"></i> Certeza absoluta en cada resultado
+                    </div>
+
+                    <!-- Negative Case -->
+                    <div class="result-card-premium reveal fade-left">
+                        <span class="result-badge badge-negative">Resultado Incompatible</span>
+                        <h3 class="mb-3">No es el padre</h3>
+                        <span class="result-percent color-negative">100%</span>
+                        <p class="text-main">
+                            Cuando el resultado es incompatible, existe una <strong>certeza absoluta del 100%</strong> para excluir o descartar al presunto padre. No hay margen de error en este caso.
+                        </p>
+                        <div class="progress-track mt-4" style="background: rgba(51, 65, 85, 0.1);">
+                            <div class="progress-fill" style="width: 100%; background: #334155;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Options: Legal vs Personal -->
-        <section class="services-tech-section bg-medical-light">
-            <div class="container">
+        <!-- Timing Section (REDESIGNED PROP 2) -->
+        <section class="timing-section-premium bg-medical-light py-5" id="tiempos">
+            <div class="container py-4">
                 <div class="section-header text-center reveal fade-up mb-5">
-                    <h2 class="section-title">Elige el tipo de prueba según tu necesidad</h2>
+                    <h2 class="section-title">Tiempo de entrega de resultados</h2>
+                    <p class="section-subtitle">Para pruebas de paternidad en Medellín o el resto del país.</p>
                 </div>
-                <div class="tech-grid">
-                    <div class="service-card-tech reveal fade-up">
-                        <div class="hybrid-icon-wrapper">
-                            <i class="fa-solid fa-scale-balanced hybrid-icon-main"></i>
+
+                <div class="timing-grid-premium">
+                    <!-- National Card -->
+                    <div class="timing-card reveal fade-up delay-1">
+                        <div>
+                            <div class="timing-icon-box">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <span class="timing-label">Toma de muestras en ciudades fuera de Medellín</span>
+                            <span class="timing-days">5 - 6</span>
+                            <p class="font-bold mb-2">Días hábiles</p>
+                            <p class="timing-desc">Disponible en más de 39 ciudades. El tiempo incluye el envío de las muestras a la sede principal del Laboratorio en Medellín.</p>
                         </div>
-                        <h3>Validez Jurídica</h3>
-                        <p>Ideal para procesos legales de filiación, herencias o trámites en el juzgado. Requiere identificación de las partes.</p>
-                        <a href="https://wa.me/573003095039" class="tech-action-link">Más info <i class="fa-solid fa-chevron-right"></i></a>
+                        <div class="text-xs text-light">*Depende de la logística de envío.</div>
                     </div>
-                    <div class="service-card-tech reveal fade-up delay-1">
-                        <div class="hybrid-icon-wrapper">
-                            <i class="fa-solid fa-user-secret hybrid-icon-main"></i>
+
+                    <!-- Medellín Standard -->
+                    <div class="timing-card reveal fade-up delay-2">
+                        <div>
+                            <div class="timing-icon-box">
+                                <i class="fa-solid fa-flask-vial"></i>
+                            </div>
+                            <span class="timing-label">Sede Medellín</span>
+                            <span class="timing-days">2</span>
+                            <p class="font-bold mb-2">Días hábiles</p>
+                            <p class="timing-desc">Procesamiento estándar para muestras tomadas directamente en nuestra sede principal.</p>
                         </div>
-                        <h3>Anónima / Informativa</h3>
-                        <p>Para salir de dudas de forma privada. No requiere identificación oficial y los resultados son solo para uso personal.</p>
-                        <a href="https://wa.me/573003095039" class="tech-action-link">Más info <i class="fa-solid fa-chevron-right"></i></a>
+                        <div class="text-xs text-light">Máxima eficiencia operativa.</div>
+                    </div>
+
+                    <!-- RECORD SERVICE (Highlighted) -->
+                    <div class="timing-card card-record glow-pulse reveal fade-up delay-3">
+                        <div>
+                            <div class="timing-icon-box">
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                            <span class="timing-label" style="color: var(--whatsapp-green);">Servicio Record</span>
+                            <span class="timing-days">1</span>
+                            <p class="font-bold mb-2">Día hábil</p>
+                            <p class="timing-desc"><strong>Prioridad absoluta.</strong> Sus resultados en tiempo récord para casos de máxima urgencia.</p>
+                        </div>
+                        <a href="https://wa.me/573003095039?text=Hola,%20necesito%20el%20Servicio%20Record%20de%20entrega%20en%201%20dia." 
+                           target="_blank" class="btn btn-whatsapp-modern w-100 mt-2" style="background: var(--whatsapp-green); border-color: var(--whatsapp-green);">
+                           <i class="fa-solid fa-bolt"></i> Solicitar Record
+                        </a>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 reveal fade-up">
+                    <p class="text-xs text-light" style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                        Los tiempos de entrega están sujetos al cumplimiento de requisitos administrativos y protocolos de toma de muestras. <br>
+                        Para servicios fuera de Medellín, la entrega puede variar según condiciones logísticas en carretera. <br>
+                        Estos plazos no aplican para casos complejos (ausencia del presunto padre) o análisis especiales. <br>
+                        Aplican términos y condiciones.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal & Requirements Section (OPTION 3: DIGITAL PATH) -->
+        <section class="requirements-section py-5" id="procesos">
+            <div class="container py-5">
+                <div class="section-header text-center reveal fade-up mb-5">
+                    <div class="trust-badge-light mb-3" style="display: inline-flex; color: var(--primary-blue); background: rgba(9, 60, 141, 0.1); border-color: var(--primary-blue);">
+                        <i class="fa-solid fa-scale-balanced mr-1"></i> Validez Jurídica Garantizada
+                    </div>
+                    <h2 class="section-title">Requisitos y Cadena de Custodia</h2>
+                    <p class="section-subtitle">Procesos estandarizados para asegurar la integridad de sus resultados.</p>
+                </div>
+
+                <div class="digital-process-wrapper reveal fade-up">
+                    <!-- The connecting line -->
+                    <div class="process-line-bg">
+                        <div class="process-line-pulse"></div>
+                    </div>
+
+                    <div class="digital-nodes-grid">
+                        <!-- Step 1 -->
+                        <div class="digital-step-node">
+                            <div class="node-icon-sphere">
+                                <i class="fa-solid fa-id-card-clip"></i>
+                            </div>
+                            <div class="node-content-text">
+                                <h3>Documentación</h3>
+                                <p>Cédulas originales de los padres y registro civil del menor. Todo bajo estricta confidencialidad.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="digital-step-node">
+                            <div class="node-icon-sphere">
+                                <i class="fa-solid fa-dna"></i>
+                            </div>
+                            <div class="node-content-text">
+                                <h3>Toma de Muestra</h3>
+                                <p>Frotis bucal indoloro realizado por personal calificado. Rápido y seguro para el menor.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="digital-step-node">
+                            <div class="node-icon-sphere">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <div class="node-content-text">
+                                <h3>Preparación</h3>
+                                <p>No requiere ayuno. Simplemente evitar alimentos o tabaco 20 minutos antes de la cita.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialized Support Glass Panel -->
+                <div class="glass-consultancy-panel reveal fade-up">
+                    <div class="consultancy-content">
+                        <div>
+                            <h2 class="text-white mb-3">¿Tienes un caso especial?</h2>
+                            <p class="opacity-8 mb-4">Situaciones complejas requieren soluciones expertas. Nuestro equipo está listo para asesorarte en casos judiciales o ausencia de progenitores.</p>
+                            
+                            <div class="consultancy-checklist">
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Asesoría Confidencial</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Orientación Legal</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Agendamiento Express</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Soporte Especializado</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="https://wa.me/573003095039" target="_blank" class="btn btn-whatsapp-modern w-100 py-3" style="font-size: 1.1rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);">
+                                <i class="fa-brands fa-whatsapp"></i> Hablar con un Experto
+                            </a>
+                            <p class="text-xs opacity-6 mt-3">Atención inmediata y discreta.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process and CTA Reused from Main -->
+        <!-- Stats Section (Re-styled for Paternidad) -->
         <section class="blue-premium-cta-section text-center">
+            <canvas id="cta-dna-canvas" class="cta-bg-canvas"></canvas>
             <div class="container relative-z">
-                <h2 class="text-white mb-4">No sigas con la incertidumbre</h2>
-                <p class="text-white opacity-8 mb-4">Agenda tu cita hoy mismo o solicita asesoría personalizada sin compromiso.</p>
-                <a href="https://wa.me/573003095039" class="btn-whatsapp-modern">
-                    <i class="fa-brands fa-whatsapp"></i> Hablar con un especialista
-                </a>
+                <div class="section-header mb-5 reveal fade-up">
+                    <h2 class="text-white">Nuestra experiencia y garantía</h2>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-1">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">+80.000</p>
+                            <span class="text-white opacity-7">Pruebas realizadas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-2">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">+25 años</p>
+                            <span class="text-white opacity-7">De experiencia</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-3">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">39+</p>
+                            <span class="text-white opacity-7">Ciudades con cobertura</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-4">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">24</p>
+                            <span class="text-white opacity-7">Marcadores genéticos</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Floating Action -->
+    <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa%20sobre%20la%20Prueba%20de%20Paternidad."
+        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- Scripts -->
     <script src="../js/main.js"></script>
 </body>
+
 </html>
