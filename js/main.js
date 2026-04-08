@@ -486,109 +486,111 @@ function initBenefitsDNA() {
 
 // Cinematic 3D Particle DNA (CTA Banner)
 function initCTADNA() {
-    const canvas = document.getElementById('cta-dna-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: false }); // Disabled alpha for faster composite
+    const canvases = document.querySelectorAll('.cta-bg-canvas');
+    if (canvases.length === 0) return;
 
-    // Cap pixel ratio to max 1.5 to prevent massive rendering sweeps on mobile retina
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    let width, height;
+    canvases.forEach(canvas => {
+        const ctx = canvas.getContext('2d', { alpha: true });
 
-    function resize() {
-        width = canvas.parentElement.offsetWidth;
-        height = canvas.parentElement.offsetHeight;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        ctx.scale(dpr, dpr);
-    }
-    window.addEventListener('resize', resize);
-    resize();
+        // Cap pixel ratio to max 1.5 to prevent massive rendering sweeps on mobile retina
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        let width, height;
 
-    let phase = 0;
-    const isMobile = window.innerWidth < 768;
-    const numPoints = isMobile ? 35 : 55; // Slightly reduced node density
-    const spacing = 18;
-    const amplitude = isMobile ? 120 : 250;
-
-    const rungsCount = isMobile ? 4 : 7;
-    const rungT = [];
-    for (let j = 1; j < rungsCount; j++) {
-        rungT.push(j / rungsCount);
-    }
-
-    function draw() {
-        if (window.canvasVisibility[canvas.id] === false) {
-            setTimeout(() => requestAnimationFrame(draw), 200);
-            return;
+        function resize() {
+            width = canvas.parentElement.offsetWidth;
+            height = canvas.parentElement.offsetHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
         }
-        // Ultra-fast hardware clear
-        ctx.clearRect(0, 0, width, height);
+        window.addEventListener('resize', resize);
+        resize();
 
-        const centerY = height / 2;
-        const centerX = width / 2;
-        const startY = centerY - (numPoints * spacing) / 2;
+        let phase = 0;
+        const isMobile = window.innerWidth < 768;
+        const numPoints = isMobile ? 35 : 55; // Slightly reduced node density
+        const spacing = 18;
+        const amplitude = isMobile ? 120 : 250;
 
-        const nodes = [];
-        const twistFreq = 0.16;
+        const rungsCount = isMobile ? 4 : 7;
+        const rungT = [];
+        for (let j = 1; j < rungsCount; j++) {
+            rungT.push(j / rungsCount);
+        }
 
-        // Build particle nodes
-        for (let i = 0; i < numPoints; i++) {
-            const y = startY + i * spacing;
-            const angle = phase + i * twistFreq;
+        function draw() {
+            if (window.canvasVisibility[canvas.id] === false) {
+                setTimeout(() => requestAnimationFrame(draw), 200);
+                return;
+            }
+            // Ultra-fast hardware clear
+            ctx.clearRect(0, 0, width, height);
 
-            const sinA = Math.sin(angle);
-            const cosA = Math.cos(angle);
+            const centerY = height / 2;
+            const centerX = width / 2;
+            const startY = centerY - (numPoints * spacing) / 2;
 
-            const x1 = centerX + sinA * amplitude;
-            const x2 = centerX - sinA * amplitude;
-            const z1 = cosA;
-            const z2 = -cosA;
+            const nodes = [];
+            const twistFreq = 0.16;
 
-            nodes.push({ x: x1, y: y, z: z1, isBackbone: true });
-            nodes.push({ x: x2, y: y, z: z2, isBackbone: true });
+            // Build particle nodes
+            for (let i = 0; i < numPoints; i++) {
+                const y = startY + i * spacing;
+                const angle = phase + i * twistFreq;
 
-            if (i % 2 === 0) {
-                for (let j = 0; j < rungT.length; j++) {
-                    const t = rungT[j];
-                    const rx = x1 + (x2 - x1) * t;
-                    const rz = z1 + (z2 - z1) * t;
-                    const sag = Math.sin(t * Math.PI) * 12;
-                    nodes.push({ x: rx, y: y + sag, z: rz, isBackbone: false });
+                const sinA = Math.sin(angle);
+                const cosA = Math.cos(angle);
+
+                const x1 = centerX + sinA * amplitude;
+                const x2 = centerX - sinA * amplitude;
+                const z1 = cosA;
+                const z2 = -cosA;
+
+                nodes.push({ x: x1, y: y, z: z1, isBackbone: true });
+                nodes.push({ x: x2, y: y, z: z2, isBackbone: true });
+
+                if (i % 2 === 0) {
+                    for (let j = 0; j < rungT.length; j++) {
+                        const t = rungT[j];
+                        const rx = x1 + (x2 - x1) * t;
+                        const rz = z1 + (z2 - z1) * t;
+                        const sag = Math.sin(t * Math.PI) * 12;
+                        nodes.push({ x: rx, y: y + sag, z: rz, isBackbone: false });
+                    }
                 }
             }
-        }
 
-        // Z-Depth sorting
-        nodes.sort((a, b) => a.z - b.z);
+            // Z-Depth sorting
+            nodes.sort((a, b) => a.z - b.z);
 
-        // Highly optimized draw loop - NO shadowBlur
-        for (let i = 0; i < nodes.length; i++) {
-            const n = nodes[i];
-            const perspective = (n.z + 1.2) / 2.2;
+            // Highly optimized draw loop - NO shadowBlur
+            for (let i = 0; i < nodes.length; i++) {
+                const n = nodes[i];
+                const perspective = (n.z + 1.2) / 2.2;
 
-            const size = n.isBackbone ? (perspective * 4.5 + 1.5) : (perspective * 2 + 0.8);
-            let alpha = n.isBackbone ? perspective * 0.95 : perspective * 0.6;
+                const size = n.isBackbone ? (perspective * 4.5 + 1.5) : (perspective * 2 + 0.8);
+                let alpha = n.isBackbone ? perspective * 0.95 : perspective * 0.6;
 
-            ctx.beginPath();
-            ctx.arc(n.x, n.y, size, 0, Math.PI * 2);
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, size, 0, Math.PI * 2);
 
-            // Bright clinical blue colors to match the hero background
-            if (n.z > 0.4) {
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`; // Crisp white at the extreme front
-            } else if (n.z > -0.4) {
-                ctx.fillStyle = `rgba(186, 230, 253, ${alpha})`; // Light sky blue in the middle
-            } else {
-                ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.6})`; // Deeper blue in the back
+                if (n.z > 0.4) {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                } else if (n.z > -0.4) {
+                    ctx.fillStyle = `rgba(186, 230, 253, ${alpha})`;
+                } else {
+                    ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.6})`;
+                }
+
+                ctx.fill();
             }
 
-            ctx.fill();
+            phase += 0.015;
+            requestAnimationFrame(draw);
         }
 
-        phase += 0.015;
-        requestAnimationFrame(draw);
-    }
-
-    setTimeout(() => { resize(); draw(); }, 150);
+        setTimeout(() => { resize(); draw(); }, 150);
+    });
 }
 
 // Floating Particles for Process Section (4op)

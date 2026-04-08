@@ -354,6 +354,26 @@
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
         }
+
+        /* Stats Variations */
+        .blue-experience-variant {
+            background-color: var(--primary-blue) !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .small-experience-variant {
+            padding: 40px 0;
+            min-height: auto;
+        }
+
+        .small-experience-variant .stat-item p {
+            font-size: 2.5rem;
+        }
+
+        .small-experience-variant .section-header {
+            margin-bottom: 1.5rem !important;
+        }
     </style>
 </head>
 
@@ -472,7 +492,44 @@
                     </div>
                 </div>
             </div>
+
+        <!-- Stats Section (Blue Variant - Mover aquí) -->
+        <section class="blue-premium-cta-section blue-experience-variant text-center">
+            <canvas id="cta-dna-canvas-2" class="cta-bg-canvas"></canvas>
+            <div class="container relative-z">
+                <div class="section-header mb-5 reveal fade-up">
+                    <h2 class="text-white">Nuestra experiencia y garantía</h2>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-1">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">+80.000</p>
+                            <span class="text-white opacity-7">Pruebas realizadas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-2">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">+25 años</p>
+                            <span class="text-white opacity-7">De experiencia</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-3">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">39+</p>
+                            <span class="text-white opacity-7">Ciudades con cobertura</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-4">
+                        <div class="stat-item">
+                            <p class="text-white text-xxl mb-0 font-black">24</p>
+                            <span class="text-white opacity-7">Marcadores genéticos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
 
         <!-- Timing Section (REDESIGNED PROP 2) -->
         <section class="timing-section-premium bg-medical-light py-5" id="tiempos">
@@ -623,9 +680,9 @@
             </div>
         </section>
 
-        <!-- Stats Section (Re-styled for Paternidad) -->
-        <section class="blue-premium-cta-section text-center">
-            <canvas id="cta-dna-canvas" class="cta-bg-canvas"></canvas>
+        <!-- Stats Section (Original Black) -->
+        <section class="blue-premium-cta-section text-center" style="background: #000;">
+            <canvas id="cta-dna-canvas-1" class="cta-bg-canvas"></canvas>
             <div class="container relative-z">
                 <div class="section-header mb-5 reveal fade-up">
                     <h2 class="text-white">Nuestra experiencia y garantía</h2>
@@ -654,6 +711,44 @@
                         <div class="stat-item">
                             <p class="text-white text-xxl mb-0 font-black">24</p>
                             <span class="text-white opacity-7">Marcadores genéticos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Stats Section (Small Variant) -->
+        <section class="blue-premium-cta-section small-experience-variant text-center" style="background: #000;">
+            <canvas id="cta-dna-canvas-3" class="cta-bg-canvas"></canvas>
+            <div class="container relative-z">
+                <div class="section-header reveal fade-up">
+                    <h2 class="text-white" style="font-size: 1.5rem;">Nuestra experiencia y garantía (Pequeña)</h2>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-1">
+                        <div class="stat-item">
+                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">+80k</p>
+                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Pruebas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-2">
+                        <div class="stat-item">
+                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">+25a</p>
+                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Experiencia</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-3">
+                        <div class="stat-item">
+                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">39+</p>
+                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Sedes</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-4">
+                        <div class="stat-item">
+                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">24</p>
+                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Marcadores</span>
                         </div>
                     </div>
                 </div>
