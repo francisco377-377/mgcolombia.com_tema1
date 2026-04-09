@@ -447,7 +447,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.2rem;
             font-size: 1.8rem;
             color: var(--primary-blue);
         }
@@ -456,23 +456,53 @@
             font-size: 2.8rem;
             font-weight: 900;
             color: var(--primary-blue-dark);
-            margin: 1rem 0;
-            display: block;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            min-height: 3.2rem;
         }
 
         .timing-label {
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.8rem;
-            color: #64748b;
+            color: #093c8d;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.8rem; /* Forzar misma altura siempre */
         }
 
         .timing-desc {
-            font-size: 0.95rem;
-            color: #475569;
+            font-size: 1.05rem;
+            color: #1e293b;
             margin-bottom: 1.5rem;
-            min-height: 3rem;
+            line-height: 1.6;
+            font-weight: 500;
+            min-height: 5.5rem; /* Alineación base perfecta */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timing-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #093c8d;
+            margin-bottom: 0.8rem;
+            min-height: 2.5rem; /* Forzar espacio para el texto de 'Solo Medellín' */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        .card-record .timing-subtitle {
+            color: var(--whatsapp-green);
         }
 
         /* Record Card Specialized Styling */
@@ -1084,11 +1114,10 @@
                             </div>
                             <span class="timing-label">Toma de muestras en ciudades fuera de Medellín</span>
                             <span class="timing-days">5 - 6</span>
-                            <p class="font-bold mb-2">Días hábiles</p>
-                            <p class="timing-desc">Disponible en más de 39 ciudades. El tiempo incluye el envío de las
-                                muestras a la sede principal del Laboratorio en Medellín.</p>
+                            <p class="timing-subtitle">Días hábiles</p>
+                            <p class="timing-desc">Disponible en más de 39 ciudades. El tiempo incluye el envío de muestras a la sede principal.</p>
                         </div>
-                        <div class="text-xs text-light">*Depende de la logística de envío.</div>
+                        <div class="text-xs text-light mt-auto">*Depende de la logística de envío.</div>
                     </div>
 
                     <!-- Medellín Standard -->
@@ -1099,11 +1128,10 @@
                             </div>
                             <span class="timing-label">Sede Medellín</span>
                             <span class="timing-days">2</span>
-                            <p class="font-bold mb-2">Días hábiles</p>
-                            <p class="timing-desc">Procesamiento estándar para muestras tomadas directamente en nuestra
-                                sede principal.</p>
+                            <p class="timing-subtitle">Días hábiles</p>
+                            <p class="timing-desc">Procesamiento estándar para muestras tomadas directamente en nuestra sede principal.</p>
                         </div>
-                        <div class="text-xs text-light">Máxima eficiencia operativa.</div>
+                        <div class="text-xs text-light mt-auto">Máxima eficiencia operativa.</div>
                     </div>
 
                     <!-- RECORD SERVICE (Highlighted) -->
@@ -1114,14 +1142,11 @@
                             </div>
                             <span class="timing-label" style="color: var(--whatsapp-green);">Resultado exprés</span>
                             <span class="timing-days">1</span>
-                            <p class="font-bold mb-2">Día hábil <span class="text-xs"
-                                    style="display: block; font-weight: 700; color: var(--whatsapp-green);">(Solo en
-                                    Medellín)</span></p>
-                            <p class="timing-desc"><strong>Prioridad absoluta.</strong> Sus resultados en tiempo récord
-                                para casos de máxima urgencia. <br><strong>(Solo en Medellín)</strong></p>
+                            <p class="timing-subtitle">Día hábil <br>(Solo en Medellín)</p>
+                            <p class="timing-desc">Sus resultados en tiempo récord para casos de máxima urgencia.</p>
                         </div>
                         <a href="https://wa.me/573003095039?text=Hola,%20necesito%20el%20Servicio%20de%20Resultado%20expres%20en%201%20dia."
-                            target="_blank" class="btn btn-whatsapp-modern w-100 mt-2"
+                            target="_blank" class="btn btn-whatsapp-modern w-100 mt-auto"
                             style="background: var(--whatsapp-green); border-color: var(--whatsapp-green);">
                             <i class="fa-solid fa-bolt"></i> Solicitar Prueba
                         </a>
