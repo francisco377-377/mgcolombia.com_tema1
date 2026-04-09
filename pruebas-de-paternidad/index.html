@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba de Paternidad ADN | 99.999% Precisión | Mundo Genético</title>
-    
+
     <!-- SEO & Ads Compliance Meta Tags -->
-    <meta name="description" content="Sal de la duda con una prueba de ADN de paternidad con precisión superior al 99.999%. Resultados discretos, seguros y con validez jurídica. Más de 24 años de experiencia.">
+    <meta name="description"
+        content="Sal de la duda con una prueba de ADN de paternidad con precisión superior al 99.999%. Resultados discretos, seguros y con validez jurídica. Más de 24 años de experiencia.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Prueba de Paternidad ADN | Certeza y Precisión | Mundo Genético">
-    <meta property="og:description" content="Pruebas de paternidad discretas y 100% seguras. Resultados en 2 días hábiles. Solicita tu asesoría gratuita.">
+    <meta property="og:description"
+        content="Pruebas de paternidad discretas y 100% seguras. Resultados en 2 días hábiles. Solicita tu asesoría gratuita.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mundogeneticocolombia.com/pruebas-de-paternidad/">
     <meta property="og:image" content="https://mundogeneticocolombia.com/assets/images/servicios/hero-paternidad.png">
@@ -42,53 +44,328 @@
             background: linear-gradient(90deg, rgba(6, 40, 99, 0.85) 0%, rgba(6, 40, 99, 0.6) 45%, rgba(6, 40, 99, 0.1) 85%, transparent 100%);
         }
 
-        /* Results Interaction Styles */
+        /* ==========================================================================
+           RESULTS WOW REDESIGN: SOPHISTICATED 3D LIGHT ADN
+           ========================================================================== */
+        .definition-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 0 5rem 0;
+            /* Reduced from 5rem/10rem */
+            color: var(--primary-blue-dark);
+        }
+
+        /* 3D Visual Helix Base Background */
+        .dna-float-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 25% center;
+            opacity: 0.30;
+            z-index: 1;
+            pointer-events: none;
+            filter: saturate(0.8) brightness(1.02);
+        }
+
+        @keyframes helixGlowRestored {
+            0% { opacity: 0.22; transform: scale(1); }
+            100% { opacity: 0.32; transform: scale(1.03); }
+        }
+
+        /* Particles Layer (The elaborate molecules as effect) */
+        .molecule-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2; /* On top of the helix */
+            overflow: hidden;
+        }
+
+        .mol-item {
+            position: absolute;
+            opacity: 0.65; /* High visibility as requested */
+            filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.5)) brightness(1.4);
+            animation: floatMolecular 25s infinite alternate ease-in-out;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .mol-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Specific Layers for Separation */
+        .mol-1 { top: 10%; left: -2%; width: 280px; filter: blur(3px) opacity(0.35); animation-duration: 25s; }
+        .mol-2 { top: 60%; right: -2%; width: 320px; filter: blur(5px) opacity(0.3); animation-duration: 30s; animation-delay: -5s; }
+        .mol-3 { top: 40%; left: 12%; width: 140px; filter: blur(0px) opacity(0.5); animation-duration: 18s; animation-delay: -2s; }
+        .mol-4 { top: 20%; right: 18%; width: 180px; filter: blur(1px) opacity(0.45); animation-duration: 22s; animation-delay: -10s; }
+        .mol-5 { top: 75%; left: 45%; width: 220px; filter: blur(6px) opacity(0.2); animation-duration: 35s; }
+
+        @keyframes floatMolecular {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(20px, -20px) rotate(5deg);
+            }
+
+            100% {
+                transform: translate(-10px, 15px) rotate(-3deg);
+            }
+        }
+
+        /* Subtle Technical Nodes (Plexus) Overlay */
+        .plexus-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(9, 60, 141, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .section-dna-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-title.mg-blue {
+            color: var(--primary-blue-dark);
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.4rem;
+            position: relative;
+        }
+
+        /* Underline removed as requested */
+
+        /* Ethereal Tech Cards (Glassmorphism Light) */
         .result-interact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
+            /* Reduced from 4rem */
             margin-top: 3rem;
+            /* Reduced from 6rem */
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            /* Constrain width to make cards smaller */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .result-card-premium {
-            background: white;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 15px 35px rgba(9, 60, 141, 0.1);
-            border: 1px solid rgba(9, 60, 141, 0.05);
-            transition: all 0.4s ease;
+            /* Slightly smaller radius */
+            border: 1px solid rgba(255, 255, 255, 0.8);
             position: relative;
             overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            box-shadow: 0 15px 45px rgba(9, 60, 141, 0.04);
+        }
+
+        /* Colored Tints for Cards (Darkened for better contrast) */
+        .card-pos {
+            background: rgba(186, 230, 253, 0.45);
+            /* Darker/More Saturated Blue */
+            border-color: rgba(9, 60, 141, 0.15);
+        }
+
+        .card-neg {
+            background: rgba(186, 230, 253, 0.5);
+            /* Matching Darker Blue */
+            border-color: rgba(9, 60, 141, 0.15);
         }
 
         .result-card-premium:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(9, 60, 141, 0.15);
+            transform: translateY(-20px);
+            box-shadow: 0 40px 90px rgba(9, 60, 141, 0.12);
         }
 
-        .result-badge {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+        .card-pos:hover {
+            background: rgba(186, 230, 253, 0.7);
+            border-color: rgba(9, 60, 141, 0.4);
+            box-shadow: 0 40px 90px rgba(9, 60, 141, 0.15);
         }
 
-        .badge-positive { background: rgba(16, 185, 129, 0.1); color: #10b981; }
-        .badge-negative { background: rgba(51, 65, 85, 0.1); color: #334155; }
+        .card-neg:hover {
+            background: rgba(186, 230, 253, 0.75);
+            border-color: rgba(9, 60, 141, 0.4);
+            box-shadow: 0 40px 90px rgba(9, 60, 141, 0.15);
+        }
+
+        .card-header-tech {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(9, 60, 141, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .card-body-tech {
+            padding: 2rem 1.5rem;
+            /* Reduced from 3rem/2rem */
+            text-align: center;
+            position: relative;
+        }
+
+        .card-footer-tech {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(9, 60, 141, 0.05);
+            text-align: center;
+        }
 
         .result-percent {
             font-size: 3.5rem;
-            font-weight: 900;
+            font-weight: 950;
             line-height: 1;
-            margin-bottom: 1rem;
-            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--primary-blue-dark) !important;
+            -webkit-text-fill-color: var(--primary-blue-dark) !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            letter-spacing: -2px;
+            filter: drop-shadow(0 4px 10px rgba(9, 60, 141, 0.1));
         }
 
-        .color-positive { color: var(--primary-blue); }
-        .color-negative { color: #334155; }
+        /* Redundant override removed to sync colors naturally */
+
+        .result-badge {
+            background: rgba(9, 60, 141, 0.05);
+            color: var(--primary-blue-dark);
+            border: 1px solid rgba(9, 60, 141, 0.1);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-negative {
+            background: rgba(71, 85, 105, 0.05);
+            color: #475569;
+            border-color: rgba(71, 85, 105, 0.1);
+        }
+
+        /* Micro-nodes Animation */
+        .bg-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 1;
+            pointer-events: none;
+            animation: nodePulse 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes nodePulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0.3;
+            }
+        }
+
+        .card-neg .result-percent {
+            background: linear-gradient(135deg, #334155, #64748b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-watermark-icon {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.03;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .result-interact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title.mg-blue {
+                font-size: 2.2rem;
+            }
+
+            .result-percent {
+                font-size: 4rem;
+            }
+
+            .card-header-tech,
+            .card-body-tech,
+            .card-footer-tech {
+                padding: 1.5rem;
+            }
+        }
+
+        /* responsive grid fix */
+        @media (max-width: 992px) {
+            .result-interact-grid {
+                gap: 1.5rem;
+            }
+
+            .result-percent {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .result-interact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-card-premium {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .result-percent {
+                font-size: 4rem;
+            }
+        }
 
         /* --- NEW TIMING SECTION STYLES --- */
         .timing-grid-premium {
@@ -188,9 +465,17 @@
         }
 
         @keyframes glowPulse {
-            0% { box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); }
-            50% { box-shadow: 0 15px 60px rgba(16, 185, 129, 0.35); }
-            100% { box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); }
+            0% {
+                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 15px 60px rgba(16, 185, 129, 0.35);
+            }
+
+            100% {
+                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+            }
         }
 
         /* --- OPTION 3: DIGITAL PATH (NO CARDS) --- */
@@ -202,16 +487,17 @@
 
         .process-line-bg {
             position: absolute;
-            top: 75px; /* Aligned with icon center */
+            top: 75px;
+            /* Aligned with icon center */
             left: 10%;
             right: 10%;
             height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(9, 60, 141, 0.1) 20%, 
-                rgba(56, 189, 248, 0.4) 50%, 
-                rgba(9, 60, 141, 0.1) 80%, 
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(9, 60, 141, 0.1) 20%,
+                    rgba(56, 189, 248, 0.4) 50%,
+                    rgba(9, 60, 141, 0.1) 80%,
+                    transparent 100%);
             z-index: 1;
         }
 
@@ -227,8 +513,13 @@
         }
 
         @keyframes movePulse {
-            0% { left: -10%; }
-            100% { left: 110%; }
+            0% {
+                left: -10%;
+            }
+
+            100% {
+                left: 110%;
+            }
         }
 
         .digital-nodes-grid {
@@ -312,8 +603,13 @@
         }
 
         @keyframes rotateGlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .consultancy-content {
@@ -346,13 +642,24 @@
         }
 
         @media (max-width: 992px) {
-            .genetic-nodes-container { grid-template-columns: 1fr; }
-            .consultancy-content { grid-template-columns: 1fr; gap: 2rem; }
-            .consultancy-checklist { grid-template-columns: 1fr; }
+            .genetic-nodes-container {
+                grid-template-columns: 1fr;
+            }
+
+            .consultancy-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .consultancy-checklist {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
+            .hero-title {
+                font-size: 2.5rem;
+            }
         }
 
         /* Stats Variations */
@@ -384,9 +691,12 @@
         <div class="header-top">
             <div class="container d-flex align-center" style="height: 100%; position: relative;">
                 <div class="logo" style="font-weight: 500;">
-                    <a href="../index.html" style="text-decoration: none; display: flex; align-items: center; color: white;">
-                        <i class="fa-solid fa-dna logo-icon text-white" style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
-                        <div class="logo-text text-white" style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
+                    <a href="../index.html"
+                        style="text-decoration: none; display: flex; align-items: center; color: white;">
+                        <i class="fa-solid fa-dna logo-icon text-white"
+                            style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
+                        <div class="logo-text text-white"
+                            style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
                             <span>Mundo</span>
                             <span>Genético</span>
                         </div>
@@ -406,7 +716,8 @@
                     <li><a href="#introduccion">Definición</a></li>
                     <li><a href="#resultados">Confiabilidad</a></li>
                     <li><a href="#procesos">Proceso</a></li>
-                    <li><a href="../index.html#contacto" class="text-primary-blue" style="font-weight: 700;">Contacto</a></li>
+                    <li><a href="../index.html#contacto" class="text-primary-blue"
+                            style="font-weight: 700;">Contacto</a></li>
                 </ul>
                 <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
                     <i class="fa-solid fa-bars"></i>
@@ -430,12 +741,14 @@
                         <span class="pulse-dot"></span> Laboratorio Genes SAS
                     </div>
 
-                    <h1 class="hero-title text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-wrap: balance;">
+                    <h1 class="hero-title text-white"
+                        style="text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-wrap: balance;">
                         Prueba de Paternidad o <br><span class="text-white">Examen de ADN</span>
                     </h1>
 
                     <p class="hero-subtitle text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                        La certeza científica que determina con precisión el vínculo genético entre un hijo(a) y su presunto padre. 
+                        La certeza científica que determina con precisión el vínculo genético entre un hijo(a) y su
+                        presunto padre.
                         <strong>Resultados confiables con validez jurídica.</strong>
                     </p>
 
@@ -449,49 +762,94 @@
             </div>
         </section>
 
-        <!-- Definition Section -->
-        <section class="definition-section" id="introduccion">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-12 reveal fade-up">
-                        <div class="section-header text-center mb-5">
-                            <h2 class="section-title">Claridad y Respaldo Científico</h2>
+        <!-- Definition Section (Sophisticated Hybrid Design) -->
+        <section class="definition-section" id="introduccion" style="overflow: hidden;">
+            <!-- 3D DNA Helix (The Perfect Base) - Static -->
+            <img src="../assets/images/dna_paternidad_3d.png" class="dna-float-visual" alt="ADN 3D Background">
+
+            <!-- Technical Plexus Overlay -->
+            <div class="plexus-overlay"></div>
+
+            <!-- 3D Scattered Particles Container - High Intensity -->
+            <div class="molecule-bg-container">
+                <div class="mol-item mol-1 parallax-el" data-speed="0.8"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 1"></div>
+                <div class="mol-item mol-2 parallax-el" data-speed="0.6"><img src="../assets/images/medical_molecules_3d_blue.png" alt="Partícula 2"></div>
+                <div class="mol-item mol-3 parallax-el" data-speed="1.2"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 3"></div>
+                <div class="mol-item mol-4 parallax-el" data-speed="1.0"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 4"></div>
+                <div class="mol-item mol-5 parallax-el" data-speed="0.5"><img src="../assets/images/medical_molecules_3d_blue.png" alt="Partícula 5"></div>
+            </div>
+            
+            <!-- Floating Micro-Nodes (Remaining subtle detail) -->
+            <div class="bg-node" style="top: 20%; left: 15%;"></div>
+            <div class="bg-node" style="top: 70%; right: 25%; animation-delay: -2s;"></div>
+
+            <div class="container relative-z">
+                <div class="row align-items-center mb-3">
+                    <div class="col-lg-12 reveal fade-up d-flex flex-column align-items-center text-center">
+                        <div class="section-header mb-4 w-100">
+                            <h2 class="section-title mg-blue text-center" style="text-shadow: 0 2px 10px rgba(255,255,255,0.8); font-weight: 800;">Claridad y Respaldo Científico</h2>
                         </div>
-                        <p class="text-center text-lg mb-5" style="max-width: 900px; margin: 0 auto;">
-                            La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar resultados confiables y con validez jurídica.
+                        <p class="text-center text-lg mb-0"
+                            style="max-width: 850px; font-size: 1.25rem; color: #1e293b; line-height: 1.8; font-weight: 600; text-shadow: 0 1px 4px rgba(255,255,255,0.9), 0 0 15px rgba(255,255,255,0.5);">
+                            La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes
+                                SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su
+                            presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar
+                            resultados confiables y con validez jurídica.
                         </p>
                     </div>
                 </div>
 
-                <!-- Interactive Results Visualizer -->
+                <!-- Interactive Results Visualizer (Sophisticated Style) -->
                 <div class="result-interact-grid" id="resultados">
                     <!-- Positive Case -->
-                    <div class="result-card-premium reveal fade-right">
-                        <span class="result-badge badge-positive">Resultado Compatible</span>
-                        <h3 class="mb-3">Sí es el padre</h3>
-                        <span class="result-percent color-positive">99.999%</span>
-                        <p class="text-main">
-                            Cuando el resultado es compatible, se confirma con una confiabilidad superior al <strong>99.999%</strong> que el hombre evaluado sí es el padre biológico, tal como lo exige la ley colombiana.
-                        </p>
-                        <div class="progress-track mt-4">
-                            <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="result-card-premium card-pos reveal fade-up">
+                        <i class="fa-solid fa-dna bg-watermark-icon" style="opacity: 0.03;"></i>
+
+                        <div class="card-header-tech">
+                            <span class="result-badge"><i class="fa-solid fa-microscope"></i> Compatible</span>
+                        </div>
+
+                        <div class="card-body-tech">
+                            <h3 class="mb-2 font-black" style="color: var(--primary-blue-dark); font-size: 1.5rem;">
+                                Paternidad Confirmada</h3>
+                            <div class="result-percent animate-count" data-target="99.999">0%</div>
+                            <p class="text-xs font-bold opacity-70 uppercase tracking-widest"
+                                style="color: var(--primary-blue);">Confiabilidad exigida por la ley</p>
+                        </div>
+
+                        <div class="card-footer-tech">
+                            <p class="text-main mb-0" style="font-size: 1rem; font-weight: 500; color: #475569;">
+                                Resultados totalmente seguros que confirman el parentesco entre el padre y el hijo.
+                            </p>
                         </div>
                     </div>
 
                     <!-- Negative Case -->
-                    <div class="result-card-premium reveal fade-left">
-                        <span class="result-badge badge-negative">Resultado Incompatible</span>
-                        <h3 class="mb-3">No es el padre</h3>
-                        <span class="result-percent color-negative">100%</span>
-                        <p class="text-main">
-                            Cuando el resultado es incompatible, existe una <strong>certeza absoluta del 100%</strong> para excluir o descartar al presunto padre. No hay margen de error en este caso.
-                        </p>
-                        <div class="progress-track mt-4" style="background: rgba(51, 65, 85, 0.1);">
-                            <div class="progress-fill" style="width: 100%; background: #334155;"></div>
+                    <div class="result-card-premium card-neg reveal fade-up">
+                        <i class="fa-solid fa-flask-vial bg-watermark-icon" style="opacity: 0.03;"></i>
+
+                        <div class="card-header-tech">
+                            <span class="result-badge badge-negative"><i class="fa-solid fa-shield-virus"></i>
+                                Incompatible</span>
+                        </div>
+
+                        <div class="card-body-tech">
+                            <h3 class="mb-2 font-black" style="color: var(--primary-blue-dark); font-size: 1.5rem;">
+                                Exclusión de Paternidad</h3>
+                            <div class="result-percent animate-count" data-target="100">0%</div>
+                            <p class="text-xs font-bold opacity-70 uppercase tracking-widest"
+                                style="color: var(--primary-blue);">Certeza Absoluta de Exclusión</p>
+                        </div>
+
+                        <div class="card-footer-tech">
+                            <p class="text-main mb-0" style="font-size: 1rem; font-weight: 500; color: #475569;">
+                                El presunto padre queda descartado como progenitor biológico con un 100% de seguridad.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
         <!-- Stats Section (Blue Variant - Mover aquí) -->
         <section class="blue-premium-cta-section blue-experience-variant text-center">
@@ -500,7 +858,7 @@
                 <div class="section-header mb-5 reveal fade-up">
                     <h2 class="text-white">Nuestra experiencia y garantía</h2>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-3 col-6 mb-4 reveal fade-up delay-1">
                         <div class="stat-item">
@@ -549,7 +907,8 @@
                             <span class="timing-label">Toma de muestras en ciudades fuera de Medellín</span>
                             <span class="timing-days">5 - 6</span>
                             <p class="font-bold mb-2">Días hábiles</p>
-                            <p class="timing-desc">Disponible en más de 39 ciudades. El tiempo incluye el envío de las muestras a la sede principal del Laboratorio en Medellín.</p>
+                            <p class="timing-desc">Disponible en más de 39 ciudades. El tiempo incluye el envío de las
+                                muestras a la sede principal del Laboratorio en Medellín.</p>
                         </div>
                         <div class="text-xs text-light">*Depende de la logística de envío.</div>
                     </div>
@@ -563,7 +922,8 @@
                             <span class="timing-label">Sede Medellín</span>
                             <span class="timing-days">2</span>
                             <p class="font-bold mb-2">Días hábiles</p>
-                            <p class="timing-desc">Procesamiento estándar para muestras tomadas directamente en nuestra sede principal.</p>
+                            <p class="timing-desc">Procesamiento estándar para muestras tomadas directamente en nuestra
+                                sede principal.</p>
                         </div>
                         <div class="text-xs text-light">Máxima eficiencia operativa.</div>
                     </div>
@@ -576,21 +936,28 @@
                             </div>
                             <span class="timing-label" style="color: var(--whatsapp-green);">Resultado exprés</span>
                             <span class="timing-days">1</span>
-                            <p class="font-bold mb-2">Día hábil <span class="text-xs" style="display: block; font-weight: 700; color: var(--whatsapp-green);">(Solo en Medellín)</span></p>
-                            <p class="timing-desc"><strong>Prioridad absoluta.</strong> Sus resultados en tiempo récord para casos de máxima urgencia. <br><strong>(Solo en Medellín)</strong></p>
+                            <p class="font-bold mb-2">Día hábil <span class="text-xs"
+                                    style="display: block; font-weight: 700; color: var(--whatsapp-green);">(Solo en
+                                    Medellín)</span></p>
+                            <p class="timing-desc"><strong>Prioridad absoluta.</strong> Sus resultados en tiempo récord
+                                para casos de máxima urgencia. <br><strong>(Solo en Medellín)</strong></p>
                         </div>
-                        <a href="https://wa.me/573003095039?text=Hola,%20necesito%20el%20Servicio%20de%20Resultado%20expres%20en%201%20dia." 
-                           target="_blank" class="btn btn-whatsapp-modern w-100 mt-2" style="background: var(--whatsapp-green); border-color: var(--whatsapp-green);">
-                           <i class="fa-solid fa-bolt"></i> Solicitar Prueba
+                        <a href="https://wa.me/573003095039?text=Hola,%20necesito%20el%20Servicio%20de%20Resultado%20expres%20en%201%20dia."
+                            target="_blank" class="btn btn-whatsapp-modern w-100 mt-2"
+                            style="background: var(--whatsapp-green); border-color: var(--whatsapp-green);">
+                            <i class="fa-solid fa-bolt"></i> Solicitar Prueba
                         </a>
                     </div>
                 </div>
 
                 <div class="text-center mt-5 reveal fade-up">
                     <p class="text-xs text-light" style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                        Los tiempos de entrega están sujetos al cumplimiento de requisitos administrativos y protocolos de toma de muestras. <br>
-                        Para servicios fuera de Medellín, la entrega puede variar según condiciones logísticas en carretera. <br>
-                        Estos plazos no aplican para casos complejos (ausencia del presunto padre) o análisis especiales. <br>
+                        Los tiempos de entrega están sujetos al cumplimiento de requisitos administrativos y protocolos
+                        de toma de muestras. <br>
+                        Para servicios fuera de Medellín, la entrega puede variar según condiciones logísticas en
+                        carretera. <br>
+                        Estos plazos no aplican para casos complejos (ausencia del presunto padre) o análisis
+                        especiales. <br>
                         Aplican términos y condiciones.
                     </p>
                 </div>
@@ -601,15 +968,21 @@
         <section class="requirements-section py-5" id="procesos">
             <div class="container py-5">
                 <div class="section-header text-center reveal fade-up mb-5">
-                    <div class="trust-badge-light mb-3" style="display: inline-flex; color: var(--primary-blue); background: rgba(9, 60, 141, 0.1); border-color: var(--primary-blue);">
+                    <div class="trust-badge-light mb-3"
+                        style="display: inline-flex; color: var(--primary-blue); background: rgba(9, 60, 141, 0.1); border-color: var(--primary-blue);">
                         <i class="fa-solid fa-scale-balanced mr-1"></i> Validez Jurídica Garantizada
                     </div>
                     <h2 class="section-title mb-2">Requisitos y Cadena de Custodia</h2>
                     <p class="section-subtitle mb-2" style="max-width: 900px; margin-left: auto; margin-right: auto;">
-                        Para garantizar la cadena de custodia, las muestras son tomadas exclusivamente por personal autorizado y calificado del Laboratorio Genes SAS. El procedimiento consiste en la toma de células epiteliales de la mejilla interior (popularmente conocido como "muestra de saliva"). Es un proceso sencillo, rápido y no invasivo.
+                        Para garantizar la cadena de custodia, las muestras son tomadas exclusivamente por personal
+                        autorizado y calificado del Laboratorio Genes SAS. El procedimiento consiste en la toma de
+                        células epiteliales de la mejilla interior (popularmente conocido como "muestra de saliva"). Es
+                        un proceso sencillo, rápido y no invasivo.
                     </p>
                     <p class="section-subtitle" style="max-width: 900px; margin: 0 auto;">
-                        El Laboratorio Genes SAS, cumple todos los requisitos legales para poder hacer pruebas de paternidad con validez jurídica para casos de impugnación o filiación de paternidad, entre otros.
+                        El Laboratorio Genes SAS, cumple todos los requisitos legales para poder hacer pruebas de
+                        paternidad con validez jurídica para casos de impugnación o filiación de paternidad, entre
+                        otros.
                     </p>
                 </div>
 
@@ -627,7 +1000,8 @@
                             </div>
                             <div class="node-content-text">
                                 <h3>Documentación</h3>
-                                <p>Cédulas originales de los padres y registro civil o certificado de nacido vivo del menor (si aún no ha sido registrado).</p>
+                                <p>Cédulas originales de los padres y registro civil o certificado de nacido vivo del
+                                    menor (si aún no ha sido registrado).</p>
                             </div>
                         </div>
 
@@ -638,7 +1012,8 @@
                             </div>
                             <div class="node-content-text">
                                 <h3>Toma de Muestra</h3>
-                                <p>Realizada por personal calificado mediante un frotis bucal (células de la mejilla). Es un proceso indoloro y rápido.</p>
+                                <p>Realizada por personal calificado mediante un frotis bucal (células de la mejilla).
+                                    Es un proceso indoloro y rápido.</p>
                             </div>
                         </div>
 
@@ -649,7 +1024,8 @@
                             </div>
                             <div class="node-content-text">
                                 <h3>Preparación</h3>
-                                <p>No requiere ayuno. Simplemente evitar alimentos o bebidas 20 minutos antes de la cita.</p>
+                                <p>No requiere ayuno. Simplemente evitar alimentos o bebidas 20 minutos antes de la
+                                    cita.</p>
                             </div>
                         </div>
                     </div>
@@ -660,18 +1036,26 @@
                     <div class="consultancy-content">
                         <div>
                             <h2 class="text-white mb-3">¿Tienes un caso especial o deseas agendar tu cita?</h2>
-                            <p class="opacity-8 mb-4">Entendemos que hay situaciones particulares que requieren orientación experta. Escríbenos ahora a nuestra línea de WhatsApp para recibir asesoría personalizada y confidencial sobre su caso.</p>
-                            
+                            <p class="opacity-8 mb-4">Entendemos que hay situaciones particulares que requieren
+                                orientación experta. Escríbenos ahora a nuestra línea de WhatsApp para recibir asesoría
+                                personalizada y confidencial sobre su caso.</p>
+
                             <div class="consultancy-checklist">
-                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Asesoría Confidencial</div>
-                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Orientación personalizada</div>
-                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Agendamiento de citas</div>
-                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Soporte Especializado</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Asesoría
+                                    Confidencial</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Orientación
+                                    personalizada</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Agendamiento de
+                                    citas</div>
+                                <div class="checkmark-item"><i class="fa-solid fa-circle-check"></i> Soporte
+                                    Especializado</div>
                             </div>
                         </div>
-                        
+
                         <div class="text-center">
-                            <a href="https://wa.me/573003095039" target="_blank" class="btn btn-whatsapp-modern w-100 py-3" style="font-size: 1.1rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);">
+                            <a href="https://wa.me/573003095039" target="_blank"
+                                class="btn btn-whatsapp-modern w-100 py-3"
+                                style="font-size: 1.1rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);">
                                 <i class="fa-brands fa-whatsapp"></i> Hablar con un Experto
                             </a>
                         </div>
@@ -680,90 +1064,405 @@
             </div>
         </section>
 
-        <!-- Stats Section (Original Black) -->
-        <section class="blue-premium-cta-section text-center" style="background: #000;">
-            <canvas id="cta-dna-canvas-1" class="cta-bg-canvas"></canvas>
-            <div class="container relative-z">
-                <div class="section-header mb-5 reveal fade-up">
-                    <h2 class="text-white">Nuestra experiencia y garantía</h2>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-1">
-                        <div class="stat-item">
-                            <p class="text-white text-xxl mb-0 font-black">+80.000</p>
-                            <span class="text-white opacity-7">Pruebas realizadas</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-2">
-                        <div class="stat-item">
-                            <p class="text-white text-xxl mb-0 font-black">+25 años</p>
-                            <span class="text-white opacity-7">De experiencia</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-3">
-                        <div class="stat-item">
-                            <p class="text-white text-xxl mb-0 font-black">39+</p>
-                            <span class="text-white opacity-7">Ciudades con cobertura</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4 reveal fade-up delay-4">
-                        <div class="stat-item">
-                            <p class="text-white text-xxl mb-0 font-black">24</p>
-                            <span class="text-white opacity-7">Marcadores genéticos</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-        <!-- Stats Section (Small Variant) -->
-        <section class="blue-premium-cta-section small-experience-variant text-center" style="background: #000;">
-            <canvas id="cta-dna-canvas-3" class="cta-bg-canvas"></canvas>
-            <div class="container relative-z">
-                <div class="section-header reveal fade-up">
-                    <h2 class="text-white" style="font-size: 1.5rem;">Nuestra experiencia y garantía (Pequeña)</h2>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-1">
-                        <div class="stat-item">
-                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">+80k</p>
-                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Pruebas</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-2">
-                        <div class="stat-item">
-                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">+25a</p>
-                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Experiencia</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-3">
-                        <div class="stat-item">
-                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">39+</p>
-                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Sedes</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-2 reveal fade-up delay-4">
-                        <div class="stat-item">
-                            <p class="text-white mb-0 font-black" style="font-size: 1.8rem;">24</p>
-                            <span class="text-white opacity-7" style="font-size: 0.8rem;">Marcadores</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Floating Action -->
-    <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa%20sobre%20la%20Prueba%20de%20Paternidad."
-        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- New Redesigned Section: El Panel de Secuenciación Genética (Ultra-Minimalist & Technical) -->
+    <style>
+        .clarity-sequencing-panel {
+            background: #ffffff;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #f1f5f9;
+        }
 
-    <!-- Scripts -->
+        /* Subtle Lab Grid Texture */
+        .clarity-sequencing-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(0, 102, 204, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .dna-ribbon-bg {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            width: 70%;
+            opacity: 0.1;
+            transform: translateY(-50%) rotate(-3deg);
+            pointer-events: none;
+        }
+
+        /* Header Area */
+        .sequencing-header {
+            max-width: 950px;
+            margin: 0 auto 100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tech-label-v3 {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding: 4px 12px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .sequencing-main-text {
+            font-size: 1.35rem;
+            line-height: 1.8;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* The Horizontal Sequencing Panel */
+        .sequencing-data-strip {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 12%;
+            position: relative;
+            z-index: 10;
+            padding: 40px 0;
+        }
+
+        .data-point-premium {
+            text-align: left;
+            position: relative;
+            flex: 1;
+            max-width: 450px;
+        }
+
+        .data-point-premium.right-align {
+            text-align: right;
+        }
+
+        /* Precise Scientific Pointer Lines */
+        .tech-line-pointer {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-blue), transparent);
+            margin-bottom: 25px;
+            opacity: 0.3;
+        }
+
+        .data-point-premium.right-align .tech-line-pointer {
+            background: linear-gradient(90deg, transparent, var(--primary-blue));
+        }
+
+        .massive-value-v3 {
+            font-size: 6.5rem;
+            font-weight: 900;
+            line-height: 0.8;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            letter-spacing: -5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .massive-value-v3::after {
+            content: attr(data-unit);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-left: 5px;
+            vertical-align: top;
+            letter-spacing: normal;
+        }
+
+        .point-title-v3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .point-subtitle-v3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .point-description-v3 {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        .reveal.fade-p-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.fade-p-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 992px) {
+            .sequencing-data-strip {
+                flex-direction: column;
+                gap: 6rem;
+                align-items: center;
+            }
+            .data-point-premium, .data-point-premium.right-align { text-align: center; }
+            .tech-line-pointer { margin: 0 auto 25px; max-width: 200px; }
+            .massive-value-v3 { font-size: 5rem; }
+        }
+    </style>
+
+    <section class="clarity-sequencing-panel">
+        <img src="../assets/images/dna_paternidad_3d.png" class="dna-ribbon-bg" alt="DNA High-Tech Visual Left" style="left: -10%; right: auto; transform: translateY(-50%) rotate(5deg); opacity: 0.07;">
+        <img src="../assets/images/dna_paternidad_3d.png" class="dna-ribbon-bg" alt="DNA High-Tech Visual Right">
+        
+        <div class="container relative-z">
+            <div class="sequencing-header text-center reveal fade-up">
+                <span class="tech-label-v3">Scientific Precision Protocol</span>
+                <h2 class="section-title mg-blue mb-4" style="font-weight: 800; font-size: 3rem;">Claridad y Respaldo Científico</h2>
+                <p class="sequencing-main-text">
+                    La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes
+                    SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su
+                    presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar
+                    resultados confiables y con validez jurídica.
+                </p>
+            </div>
+
+            <div class="sequencing-data-strip">
+                <!-- Data Point 1 -->
+                <div class="data-point-premium reveal fade-p-left">
+                    <div class="tech-line-pointer"></div>
+                    <span class="point-subtitle-v3">Compatible</span>
+                    <h3 class="point-title-v3">Paternidad Confirmada</h3>
+                    <div class="massive-value-v3 animate-count" data-target="99.999" data-unit="%">0%</div>
+                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Confiabilidad exigida por la ley</p>
+                    <p class="point-description-v3">Resultados totalmente seguros que confirman el parentesco entre el padre y el hijo.</p>
+                </div>
+
+                <!-- Data Point 2 -->
+                <div class="data-point-premium right-align reveal fade-p-right">
+                    <div class="tech-line-pointer"></div>
+                    <span class="point-subtitle-v3">Incompatible</span>
+                    <h3 class="point-title-v3">Exclusión de Paternidad</h3>
+                    <div class="massive-value-v3 animate-count" data-target="100" data-unit="%">0%</div>
+                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Certeza Absoluta de Exclusión</p>
+                    <p class="point-description-v3">El presunto padre queda descartado como progenitor biológico con un 100% de seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Light Medical -->
+    <footer class="footer-medical">
+        <div class="container">
+            <div class="footer-grid" style="display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between;">
+                <div class="footer-brand" style="flex: 2 1 500px;">
+                    <div class="logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-dna text-white" style="font-size: 1.4rem; margin-right: 0.6rem;"></i>
+                        <span class="logo-text text-white" style="font-size: 1.25rem; font-weight: 700; text-transform: uppercase;">MUNDO GENÉTICO</span>
+                    </div>
+                    <h4 class="text-white" style="font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; opacity: 0.95;">
+                        Área comercial y de ventas del <strong>Laboratorio Genes SAS</strong>
+                    </h4>
+                    <p class="footer-desc text-white" style="opacity: 0.85; margin-bottom: 1rem; max-width: 650px; font-size: 0.95rem; line-height: 1.6;">
+                        Las pruebas de paternidad o los exámenes de ADN para determinar paternidad, son exámenes realizados y procesados por el Laboratorio Genes SAS, y es una prueba que permite determinar el vínculo genético entre un hijo y un presunto padre.
+                    </p>
+                </div>
+
+                <div class="footer-contact" style="flex: 1 1 250px;">
+                    <h3 class="text-white" style="font-size: 1.2rem; margin-bottom: 1.2rem;">Líneas de Atención</h3>
+                    
+                    <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
+                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                            WhatsApp: 300 309 50 39
+                        </a>
+                    </p>
+                    
+                    <p class="text-white" style="opacity: 0.95; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-phone-volume mr-2" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                        Call Center llamadas: 350 318 99 81
+                    </p>
+                    
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-regular fa-envelope mr-2" style="font-size: 1.2rem;"></i> comercial@mundogenetico.com
+                    </p>
+                    
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-map-location-dot mr-2" style="font-size: 1.2rem;"></i> Atención en 39 ciudades
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+                <p style="margin: 0;">&copy; 2026 Mundo Genético. Todos los derechos protegidos.</p>
+                
+                <!-- Compliance Ads: Privacy & Terms -->
+                <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
+                    <a href="../assets/docs/politica-tratamiento-datos.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Política de Privacidad</a>
+                    <span style="color: rgba(255,255,255,0.3);">|</span>
+                    <a href="../assets/docs/tratamiento-de-quejas.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Tratamiento de quejas</a>
+                </div>
+                
+                <p style="font-size: 0.75rem; opacity: 0.5; max-width: 800px; text-align: center; margin-top: 0.5rem; line-height: 1.4;">
+                    <strong>Protección de Datos:</strong> Este sitio respeta su privacidad. La información recopilada es estrictamente confidencial y se utiliza únicamente para proveer asesoramiento de pruebas genéticas. Genes SAS y Mundo Genético (área comercial del laboratorio Genes SAS) actúan conforme a lo dispuesto en la Ley 1581 de 2012 y en su Decreto reglamentario 1377 de 2013, y demás disposiciones que les adicionen o reformen. Este sitio no forma parte directamente de Meta ni de Google Platforms.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner (Glassmorphism) -->
+    <div id="cookie-banner" class="cookie-banner-glass hidden">
+        <div class="cookie-content">
+            <div class="cookie-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+            <p class="cookie-text">
+                Esta web usa cookies para ofrecerle una mejor experiencia. 
+                <button type="button" id="open-cookie-policy" class="cookie-link">Política de cookies</button>
+            </p>
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="btn-cookie-accept">Aceptar</button>
+            <button id="cookie-reject" class="btn-cookie-reject">Rechazar</button>
+            <button id="cookie-close-x" class="btn-cookie-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-modal" class="cookie-modal-overlay hidden">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>POLÍTICA DE COOKIES</h3>
+                <button id="close-cookie-modal" class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cookie-modal-body">
+                <h4>1. Introducción</h4>
+                <p>En este sitio web, utilizamos cookies para mejorar la experiencia de nuestros usuarios, optimizar nuestros servicios y garantizar el correcto funcionamiento del sitio web. Esta Política describe qué son las cookies, qué tipos utilizamos, con qué fines y cómo puedes gestionarlas a través de tu navegador.</p>
+                
+                <h4>2. ¿Qué son las cookies?</h4>
+                <p>Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando navegas por nuestra página web. Estos archivos permiten reconocer tu visita, recordar tus preferencias y recopilar información estadística sobre tu navegación.</p>
+
+                <h4>3. Tipos de cookies que utilizamos</h4>
+                <p><strong>3.1. Cookies esenciales o técnicas:</strong> Son necesarias para el funcionamiento del sitio web. Permiten, por ejemplo, que la página cargue correctamente y que puedas acceder a áreas seguras. Estas cookies no requieren consentimiento del usuario.</p>
+                <p><strong>3.2. Cookies de análisis o rendimiento:</strong> Nos permiten conocer cómo interactúan los visitantes con la página (tiempo de visita, secciones más vistas, etc.). Son utilizadas de forma agregada and anónima para mejorar la experiencia del usuario.</p>
+                <p><strong>3.3. Cookies de publicidad y remarketing:</strong> Se utilizan para mostrar anuncios relevantes, medir la efectividad publicitaria y crear públicos basados en comportamiento. Incluyen herramientas de terceros como: Meta (Facebook, Instagram), Google Ads, TikTok Ads y Herramientas de medición y conversión (Meta Pixel, Conversion API, Google Tag Manager).</p>
+
+                <h4>4. Finalidad del uso de cookies</h4>
+                <p>Usamos cookies para:<br>
+                • Garantizar el correcto funcionamiento del sitio web.<br>
+                • Recordar tus preferencias de navegación.<br>
+                • Analizar el desempeño del sitio y mejorar nuestros servicios.<br>
+                • Personalizar la publicidad según tus intereses.<br>
+                • Medir la efectividad de nuestras campañas publicitarias.</p>
+
+                <h4>5. Cookies de terceros</h4>
+                <p>Algunas cookies pueden ser instaladas por servicios externos que Utilizamos para estadísticas (Google Analytics), publicidad (Meta, Google, TikTok) y formularios y herramientas de contacto. Estos terceros pueden procesar datos siguiendo sus propias políticas, las cuales se pueden consultar en sus sitios oficiales.</p>
+
+                <h4>6. Gestión y desactivación de cookies</h4>
+                <p>Puedes aceptar, rechazar o eliminar las cookies desde tu navegador en cualquier momento. Algunas opciones: Google Chrome, Safari, Firefox, Edge. Si decides desactivar ciertas cookies desde tu navegador, es posible que algunas funciones del sitio no operen correctamente.</p>
+
+                <h4>7. Consentimiento</h4>
+                <p>Al ingresar a nuestro sitio, mostramos un banner informativo donde puedes aceptar o rechazar el uso de cookies no esenciales. Solo activaremos las cookies de análisis y publicidad si nos otorgas tu consentimiento expreso a través de dicho banner. Puedes retirar tu consentimiento en cualquier momento eliminando las cookies desde los ajustes de tu navegador.</p>
+
+                <h4>8. Actualizaciones a esta política</h4>
+                <p>Mundo Genético y Laboratorio Genes SAS pueden actualizar esta Política de Cookies en cualquier momento para adaptarse a cambios legales o tecnológicos. La versión vigente estará siempre disponible en esta misma sección del sitio web.</p>
+
+                <h4>9. Contacto</h4>
+                <p>Si tienes preguntas sobre esta Política o sobre el uso de cookies, puedes escribirnos a: <strong>comercial@mundogenetico.com</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrips -->
     <script src="../js/main.js"></script>
+    <script>
+        // Animated Counter for Results Section
+        function initResultCounters() {
+            const counters = document.querySelectorAll('.animate-count');
+            const speed = 200;
+
+            const animateValue = (el) => {
+                const target = parseFloat(el.getAttribute('data-target'));
+                const isDecimal = target % 1 !== 0;
+                let count = 0;
+                const inc = target / speed;
+
+                const updateCount = () => {
+                    count += inc;
+                    if (count < target) {
+                        el.innerText = isDecimal ? count.toFixed(3) + '%' : Math.floor(count) + '%';
+                        setTimeout(updateCount, 1);
+                    } else {
+                        el.innerText = target + '%';
+                    }
+                };
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // High Speed Parallax Effect for DNA & Molecules
+        function initHighSpeedParallax() {
+            const parallaxEls = document.querySelectorAll('.parallax-el');
+            const section = document.querySelector('.definition-section');
+            
+            if (!section) return;
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                // Only run animation if we are near the section
+                if (scrolled > sectionTop - window.innerHeight && scrolled < sectionTop + sectionHeight) {
+                    const relativeScroll = scrolled - sectionTop;
+                    
+                    parallaxEls.forEach(el => {
+                        const speed = parseFloat(el.getAttribute('data-speed')) || 0.5;
+                        const yPos = -(relativeScroll * speed);
+                        el.style.transform = `translateY(${yPos}px)`;
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initResultCounters();
+            initHighSpeedParallax();
+        });
+    </script>
 </body>
 
 </html>

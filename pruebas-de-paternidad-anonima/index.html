@@ -161,6 +161,56 @@
         </section>
     </main>
 
+    <!-- Footer Light Medical -->
+    <footer class="footer-medical">
+        <div class="container">
+            <div class="footer-grid" style="display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between;">
+                <div class="footer-brand" style="flex: 2 1 500px;">
+                    <div class="logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-dna text-white" style="font-size: 1.4rem; margin-right: 0.6rem;"></i>
+                        <span class="logo-text text-white" style="font-size: 1.25rem; font-weight: 700; text-transform: uppercase;">MUNDO GENÉTICO</span>
+                    </div>
+                </div>
+
+                <div class="footer-contact" style="flex: 1 1 250px;">
+                    <h3 class="text-white" style="font-size: 1.2rem; margin-bottom: 1.2rem;">Líneas de Atención</h3>
+                    
+                    <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
+                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                            WhatsApp: 300 309 50 39
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+                <p style="margin: 0;">&copy; 2026 Mundo Genético. Todos los derechos protegidos.</p>
+                <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
+                    <a href="../assets/docs/politica-tratamiento-datos.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Política de Privacidad</a>
+                    <span style="color: rgba(255,255,255,0.3);">|</span>
+                    <a href="../assets/docs/tratamiento-de-quejas.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Tratamiento de quejas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner (Glassmorphism) -->
+    <div id="cookie-banner" class="cookie-banner-glass hidden">
+        <div class="cookie-content">
+            <div class="cookie-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+            <p class="cookie-text">
+                Esta web usa cookies para ofrecerle una mejor experiencia. 
+                <button type="button" id="open-cookie-policy" class="cookie-link">Política de cookies</button>
+            </p>
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="btn-cookie-accept">Aceptar</button>
+            <button id="cookie-reject" class="btn-cookie-reject">Rechazar</button>
+            <button id="cookie-close-x" class="btn-cookie-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="../js/main.js"></script>
 </body>
