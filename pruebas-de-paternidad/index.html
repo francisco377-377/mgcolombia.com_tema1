@@ -148,6 +148,50 @@
             z-index: 0;
         }
 
+        /* --- GLOBAL SCIENTIFIC TYPOGRAPHY SYSTEM --- */
+        .tech-label-v3 {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            padding: 4px 12px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .section-title-premium {
+            font-weight: 800;
+            font-size: 3rem;
+            color: #093c8d;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .sequencing-main-text {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #1e293b;
+            font-weight: 500;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .section-header-v3 {
+            max-width: 950px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .section-title-premium { font-size: 1.85rem; line-height: 1.2; }
+            .sequencing-main-text { font-size: 1.05rem; }
+            .section-header-v3 { margin-bottom: 30px; }
+            .clarity-sequencing-panel { padding: 60px 0 !important; }
+        }
+
         .section-title.mg-blue {
             color: var(--primary-blue-dark);
             font-weight: 950;
@@ -464,17 +508,23 @@
             animation: glowPulse 2s infinite;
         }
 
-        @keyframes glowPulse {
-            0% {
-                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+        @media (max-width: 992px) {
+            .timing-grid-premium {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
+        }
 
-            50% {
-                box-shadow: 0 15px 60px rgba(16, 185, 129, 0.35);
+        @media (max-width: 768px) {
+            .timing-grid-premium {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
             }
-
-            100% {
-                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+            .timing-card {
+                padding: 2rem 1.5rem;
+            }
+            .timing-days {
+                font-size: 2.2rem;
             }
         }
 
@@ -552,10 +602,22 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .digital-step-node:hover .node-icon-sphere {
-            transform: scale(1.15) translateY(-5px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+        @media (max-width: 768px) {
+            .digital-nodes-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .process-line-bg {
+                display: none;
+                /* Hide horizontal line on mobile stack */
+            }
+            .node-icon-sphere {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+        }
             background: var(--primary-blue);
             color: white;
         }
@@ -762,94 +824,209 @@
             </div>
         </section>
 
-        <!-- Definition Section (Sophisticated Hybrid Design) -->
-        <section class="definition-section" id="introduccion" style="overflow: hidden;">
-            <!-- 3D DNA Helix (The Perfect Base) - Static -->
-            <img src="../assets/images/dna_paternidad_3d.png" class="dna-float-visual" alt="ADN 3D Background">
+    <!-- New Redesigned Section: El Panel de Secuenciación Genética (Ultra-Minimalist & Technical) -->
+    <style>
+        .clarity-sequencing-panel {
+            background: #ffffff;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #f1f5f9;
+        }
 
-            <!-- Technical Plexus Overlay -->
-            <div class="plexus-overlay"></div>
+        /* Subtle Lab Grid Texture */
+        .clarity-sequencing-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(0, 102, 204, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
 
-            <!-- 3D Scattered Particles Container - High Intensity -->
-            <div class="molecule-bg-container">
-                <div class="mol-item mol-1 parallax-el" data-speed="0.8"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 1"></div>
-                <div class="mol-item mol-2 parallax-el" data-speed="0.6"><img src="../assets/images/medical_molecules_3d_blue.png" alt="Partícula 2"></div>
-                <div class="mol-item mol-3 parallax-el" data-speed="1.2"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 3"></div>
-                <div class="mol-item mol-4 parallax-el" data-speed="1.0"><img src="../assets/images/single_medical_molecule_3d_blue.png" alt="Partícula 4"></div>
-                <div class="mol-item mol-5 parallax-el" data-speed="0.5"><img src="../assets/images/medical_molecules_3d_blue.png" alt="Partícula 5"></div>
-            </div>
+        .dna-ribbon-bg {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            width: 70%;
+            opacity: 0.1;
+            transform: translateY(-50%) rotate(-3deg);
+            pointer-events: none;
+        }
+
+        /* Header Area */
+        .sequencing-header {
+            max-width: 950px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+
+
+        /* The Horizontal Sequencing Panel */
+        .sequencing-data-strip {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 6%;
+            position: relative;
+            z-index: 10;
+            padding: 20px 0;
+        }
+
+        .data-point-premium {
+            text-align: left;
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .data-point-premium.right-align {
+            text-align: right;
+        }
+
+        /* Precise Scientific Pointer Lines */
+        .tech-line-pointer {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-blue), transparent);
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .data-point-premium.right-align .tech-line-pointer {
+            background: linear-gradient(90deg, transparent, var(--primary-blue));
+        }
+
+        .massive-value-v3 {
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #093c8d;
+            margin-bottom: 1rem;
+            letter-spacing: -3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .point-title-v3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .point-subtitle-v3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .point-description-v3 {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        /* --- MOBILE REFINEMENTS FOR SCIENTIFIC PANEL --- */
+        @media (max-width: 992px) {
+            .sequencing-data-strip {
+                gap: 40px;
+                padding: 0 20px;
+            }
+            .massive-value-v3 { font-size: 3.5rem; }
+            .point-title-v3 { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .clarity-sequencing-panel { padding: 60px 0 !important; }
             
-            <!-- Floating Micro-Nodes (Remaining subtle detail) -->
-            <div class="bg-node" style="top: 20%; left: 15%;"></div>
-            <div class="bg-node" style="top: 70%; right: 25%; animation-delay: -2s;"></div>
+            .sequencing-data-strip {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
 
-            <div class="container relative-z">
-                <div class="row align-items-center mb-3">
-                    <div class="col-lg-12 reveal fade-up d-flex flex-column align-items-center text-center">
-                        <div class="section-header mb-4 w-100">
-                            <h2 class="section-title mg-blue text-center" style="text-shadow: 0 2px 10px rgba(255,255,255,0.8); font-weight: 800;">Claridad y Respaldo Científico</h2>
-                        </div>
-                        <p class="text-center text-lg mb-0"
-                            style="max-width: 850px; font-size: 1.25rem; color: #1e293b; line-height: 1.8; font-weight: 600; text-shadow: 0 1px 4px rgba(255,255,255,0.9), 0 0 15px rgba(255,255,255,0.5);">
-                            La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes
-                                SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su
-                            presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar
-                            resultados confiables y con validez jurídica.
-                        </p>
-                    </div>
+            .data-point-premium, 
+            .data-point-premium.right-align {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .tech-line-pointer,
+            .data-point-premium.right-align .tech-line-pointer {
+                background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+                margin: 0 auto 20px;
+                width: 80%;
+            }
+
+            .massive-value-v3 {
+                font-size: 2.8rem;
+                letter-spacing: -1px;
+            }
+
+            .point-subtitle-v3 {
+                letter-spacing: 2px;
+                margin-bottom: 1.2rem;
+            }
+
+            .dna-ribbon-bg {
+                width: 150%;
+                top: 75%;
+                opacity: 0.05;
+            }
+        }
+    </style>
+
+    <section class="clarity-sequencing-panel">
+        <img src="../assets/images/dna_paternidad_3d.png" class="dna-ribbon-bg" alt="DNA High-Tech Visual Right">
+        
+        <div class="container relative-z">
+            <div class="section-header-v3 reveal fade-up">
+                <span class="tech-label-v3">¿Qué es una prueba de paternidad?</span>
+                <h2 class="section-title-premium">Claridad y Respaldo Científico</h2>
+                <p class="sequencing-main-text">
+                    La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes
+                    SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su
+                    presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar
+                    resultados confiables y con validez jurídica.
+                </p>
+            </div>
+
+            <div class="sequencing-data-strip">
+                <!-- Data Point 1 -->
+                <div class="data-point-premium reveal fade-p-left">
+                    <div class="tech-line-pointer"></div>
+                    <span class="point-subtitle-v3">Compatible</span>
+                    <h3 class="point-title-v3">Paternidad Confirmada</h3>
+                    <div class="massive-value-v3 animate-count" data-target="99.999">0%</div>
+                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Confiabilidad exigida por la ley</p>
+                    <p class="point-description-v3">Resultados totalmente seguros que confirman el parentesco entre el padre y el hijo.</p>
                 </div>
 
-                <!-- Interactive Results Visualizer (Sophisticated Style) -->
-                <div class="result-interact-grid" id="resultados">
-                    <!-- Positive Case -->
-                    <div class="result-card-premium card-pos reveal fade-up">
-                        <i class="fa-solid fa-dna bg-watermark-icon" style="opacity: 0.03;"></i>
-
-                        <div class="card-header-tech">
-                            <span class="result-badge"><i class="fa-solid fa-microscope"></i> Compatible</span>
-                        </div>
-
-                        <div class="card-body-tech">
-                            <h3 class="mb-2 font-black" style="color: var(--primary-blue-dark); font-size: 1.5rem;">
-                                Paternidad Confirmada</h3>
-                            <div class="result-percent animate-count" data-target="99.999">0%</div>
-                            <p class="text-xs font-bold opacity-70 uppercase tracking-widest"
-                                style="color: var(--primary-blue);">Confiabilidad exigida por la ley</p>
-                        </div>
-
-                        <div class="card-footer-tech">
-                            <p class="text-main mb-0" style="font-size: 1rem; font-weight: 500; color: #475569;">
-                                Resultados totalmente seguros que confirman el parentesco entre el padre y el hijo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Negative Case -->
-                    <div class="result-card-premium card-neg reveal fade-up">
-                        <i class="fa-solid fa-flask-vial bg-watermark-icon" style="opacity: 0.03;"></i>
-
-                        <div class="card-header-tech">
-                            <span class="result-badge badge-negative"><i class="fa-solid fa-shield-virus"></i>
-                                Incompatible</span>
-                        </div>
-
-                        <div class="card-body-tech">
-                            <h3 class="mb-2 font-black" style="color: var(--primary-blue-dark); font-size: 1.5rem;">
-                                Exclusión de Paternidad</h3>
-                            <div class="result-percent animate-count" data-target="100">0%</div>
-                            <p class="text-xs font-bold opacity-70 uppercase tracking-widest"
-                                style="color: var(--primary-blue);">Certeza Absoluta de Exclusión</p>
-                        </div>
-
-                        <div class="card-footer-tech">
-                            <p class="text-main mb-0" style="font-size: 1rem; font-weight: 500; color: #475569;">
-                                El presunto padre queda descartado como progenitor biológico con un 100% de seguridad.
-                            </p>
-                        </div>
-                    </div>
+                <!-- Data Point 2 -->
+                <div class="data-point-premium right-align reveal fade-p-right">
+                    <div class="tech-line-pointer"></div>
+                    <span class="point-subtitle-v3">Incompatible</span>
+                    <h3 class="point-title-v3">Exclusión de Paternidad</h3>
+                    <div class="massive-value-v3 animate-count" data-target="100">0%</div>
+                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Certeza Absoluta de Exclusión</p>
+                    <p class="point-description-v3">El presunto padre queda descartado como progenitor biológico con un 100% de seguridad.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <!-- Stats Section (Blue Variant - Mover aquí) -->
         <section class="blue-premium-cta-section blue-experience-variant text-center">
@@ -892,9 +1069,10 @@
         <!-- Timing Section (REDESIGNED PROP 2) -->
         <section class="timing-section-premium bg-medical-light py-5" id="tiempos">
             <div class="container py-4">
-                <div class="section-header text-center reveal fade-up mb-5">
-                    <h2 class="section-title">Tiempo de entrega de resultados</h2>
-                    <p class="section-subtitle">Para pruebas de paternidad en Medellín o el resto del país.</p>
+                <div class="section-header-v3 reveal fade-up">
+                    <span class="tech-label-v3">Eficiencia y Compromiso</span>
+                    <h2 class="section-title-premium">Tiempo de entrega de resultados</h2>
+                    <p class="sequencing-main-text">Para pruebas de paternidad en Medellín o el resto del país.</p>
                 </div>
 
                 <div class="timing-grid-premium">
@@ -967,19 +1145,16 @@
         <!-- Legal & Requirements Section (OPTION 3: DIGITAL PATH) -->
         <section class="requirements-section py-5" id="procesos">
             <div class="container py-5">
-                <div class="section-header text-center reveal fade-up mb-5">
-                    <div class="trust-badge-light mb-3"
-                        style="display: inline-flex; color: var(--primary-blue); background: rgba(9, 60, 141, 0.1); border-color: var(--primary-blue);">
-                        <i class="fa-solid fa-scale-balanced mr-1"></i> Validez Jurídica Garantizada
-                    </div>
-                    <h2 class="section-title mb-2">Requisitos y Cadena de Custodia</h2>
-                    <p class="section-subtitle mb-2" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div class="section-header-v3 reveal fade-up">
+                    <span class="tech-label-v3">Protocolos y Seguridad</span>
+                    <h2 class="section-title-premium">Requisitos y Cadena de Custodia</h2>
+                    <p class="sequencing-main-text mb-4">
                         Para garantizar la cadena de custodia, las muestras son tomadas exclusivamente por personal
                         autorizado y calificado del Laboratorio Genes SAS. El procedimiento consiste en la toma de
                         células epiteliales de la mejilla interior (popularmente conocido como "muestra de saliva"). Es
                         un proceso sencillo, rápido y no invasivo.
                     </p>
-                    <p class="section-subtitle" style="max-width: 900px; margin: 0 auto;">
+                    <p class="sequencing-main-text">
                         El Laboratorio Genes SAS, cumple todos los requisitos legales para poder hacer pruebas de
                         paternidad con validez jurídica para casos de impugnación o filiación de paternidad, entre
                         otros.
@@ -1066,214 +1241,12 @@
 
 
 
+
     </main>
 
-    <!-- New Redesigned Section: El Panel de Secuenciación Genética (Ultra-Minimalist & Technical) -->
-    <style>
-        .clarity-sequencing-panel {
-            background: #ffffff;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid #f1f5f9;
-        }
 
-        /* Subtle Lab Grid Texture */
-        .clarity-sequencing-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(rgba(0, 102, 204, 0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-        }
 
-        .dna-ribbon-bg {
-            position: absolute;
-            top: 50%;
-            right: -5%;
-            width: 70%;
-            opacity: 0.1;
-            transform: translateY(-50%) rotate(-3deg);
-            pointer-events: none;
-        }
 
-        /* Header Area */
-        .sequencing-header {
-            max-width: 950px;
-            margin: 0 auto 100px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .tech-label-v3 {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            padding: 4px 12px;
-            border-left: 3px solid var(--primary-blue);
-        }
-
-        .sequencing-main-text {
-            font-size: 1.35rem;
-            line-height: 1.8;
-            color: #1e293b;
-            font-weight: 500;
-        }
-
-        /* The Horizontal Sequencing Panel */
-        .sequencing-data-strip {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 12%;
-            position: relative;
-            z-index: 10;
-            padding: 40px 0;
-        }
-
-        .data-point-premium {
-            text-align: left;
-            position: relative;
-            flex: 1;
-            max-width: 450px;
-        }
-
-        .data-point-premium.right-align {
-            text-align: right;
-        }
-
-        /* Precise Scientific Pointer Lines */
-        .tech-line-pointer {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, var(--primary-blue), transparent);
-            margin-bottom: 25px;
-            opacity: 0.3;
-        }
-
-        .data-point-premium.right-align .tech-line-pointer {
-            background: linear-gradient(90deg, transparent, var(--primary-blue));
-        }
-
-        .massive-value-v3 {
-            font-size: 6.5rem;
-            font-weight: 900;
-            line-height: 0.8;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            letter-spacing: -5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .massive-value-v3::after {
-            content: attr(data-unit);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-left: 5px;
-            vertical-align: top;
-            letter-spacing: normal;
-        }
-
-        .point-title-v3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .point-subtitle-v3 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        .point-description-v3 {
-            font-size: 1.1rem;
-            color: #475569;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        /* Animations */
-        .reveal.fade-p-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .reveal.fade-p-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        @media (max-width: 992px) {
-            .sequencing-data-strip {
-                flex-direction: column;
-                gap: 6rem;
-                align-items: center;
-            }
-            .data-point-premium, .data-point-premium.right-align { text-align: center; }
-            .tech-line-pointer { margin: 0 auto 25px; max-width: 200px; }
-            .massive-value-v3 { font-size: 5rem; }
-        }
-    </style>
-
-    <section class="clarity-sequencing-panel">
-        <img src="../assets/images/dna_paternidad_3d.png" class="dna-ribbon-bg" alt="DNA High-Tech Visual Left" style="left: -10%; right: auto; transform: translateY(-50%) rotate(5deg); opacity: 0.07;">
-        <img src="../assets/images/dna_paternidad_3d.png" class="dna-ribbon-bg" alt="DNA High-Tech Visual Right">
-        
-        <div class="container relative-z">
-            <div class="sequencing-header text-center reveal fade-up">
-                <span class="tech-label-v3">Scientific Precision Protocol</span>
-                <h2 class="section-title mg-blue mb-4" style="font-weight: 800; font-size: 3rem;">Claridad y Respaldo Científico</h2>
-                <p class="sequencing-main-text">
-                    La prueba de paternidad es un examen científico procesado por el <strong>Laboratorio Genes
-                    SAS</strong> que determina con precisión el vínculo genético entre un hijo o hija y su
-                    presunto padre. Analizamos hasta <strong>24 marcadores genéticos</strong> para garantizar
-                    resultados confiables y con validez jurídica.
-                </p>
-            </div>
-
-            <div class="sequencing-data-strip">
-                <!-- Data Point 1 -->
-                <div class="data-point-premium reveal fade-p-left">
-                    <div class="tech-line-pointer"></div>
-                    <span class="point-subtitle-v3">Compatible</span>
-                    <h3 class="point-title-v3">Paternidad Confirmada</h3>
-                    <div class="massive-value-v3 animate-count" data-target="99.999" data-unit="%">0%</div>
-                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Confiabilidad exigida por la ley</p>
-                    <p class="point-description-v3">Resultados totalmente seguros que confirman el parentesco entre el padre y el hijo.</p>
-                </div>
-
-                <!-- Data Point 2 -->
-                <div class="data-point-premium right-align reveal fade-p-right">
-                    <div class="tech-line-pointer"></div>
-                    <span class="point-subtitle-v3">Incompatible</span>
-                    <h3 class="point-title-v3">Exclusión de Paternidad</h3>
-                    <div class="massive-value-v3 animate-count" data-target="100" data-unit="%">0%</div>
-                    <p class="point-subtitle-v3" style="font-size: 0.75rem; color: #64748b; margin-top: 1rem;">Certeza Absoluta de Exclusión</p>
-                    <p class="point-description-v3">El presunto padre queda descartado como progenitor biológico con un 100% de seguridad.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer Light Medical -->
     <footer class="footer-medical">
