@@ -424,7 +424,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../assets/images/hero-bg-new.webp') no-repeat center right;
+    background: url('../assets/images/hero-bg-new.webp') no-repeat right 15%;
     background-size: cover;
     z-index: 1;
 }
