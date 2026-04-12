@@ -582,6 +582,74 @@
             </div>
         </section>
 
+    <!-- ================================================
+         COBERTURA NACIONAL - MAPA COLOMBIA (Diseño 3B Aprobado)
+         Mapa imagen + capa interactiva CSS/JS
+         ================================================ -->
+    <section class="coverage-section" id="cobertura">
+        <div class="coverage-inner">
+            <!-- Scientific Background Layer -->
+            <div class="coverage-bg-dna"></div>
+            
+            <div class="coverage-header">
+                <span class="coverage-badge"><i class="fa-solid fa-dna"></i> Red Nacional</span>
+                <h2 class="coverage-title">
+                    <span class="title-first-line">Cobertura en más de</span><br>
+                    <span class="coverage-highlight">39 ciudades de Colombia.</span>
+                </h2>
+                <p class="coverage-subtitle">Laboratorio Genes SAS, sede principal Medellín, toma de muestras en más de 39 ciudades del país.</p>
+            </div>
+
+            <div class="coverage-layout">
+                <!-- Mapa interactivo sobre imagen aprobada -->
+                <div class="coverage-map-container">
+                    <div class="coverage-map-wrapper">
+                        <!-- Imagen del mapa limpio (sin edificios quemados) -->
+                        <img src="assets/images/Mapa base limpio.webp"
+                             alt="Mapa de cobertura nacional Mundo Genético - 37 ciudades"
+                             class="colombia-img" id="colombia-img" draggable="false">
+                        <!-- Pines dinámicos generados por JS -->
+                        <div class="map-pins-layer" id="map-pins-layer"></div>
+                        <!-- Tooltip -->
+                        <div class="map-tooltip" id="mapTooltip3"></div>
+                    </div>
+                </div>
+
+                <!-- Panel lateral interactivo -->
+                <div class="coverage-sidebar">
+                    <div class="sidebar-header-modern">
+                        <div class="lab-status-tag">
+                            <span class="status-dot pulsing"></span>
+                            <span class="status-text">CIUDADES DISPONIBLES</span>
+                        </div>
+                        <h3 class="sidebar-title-premium text-center">
+                            <span class="title-dark">Conoce nuestra</span><br>
+                            <span class="title-blue">cobertura nacional</span>
+                        </h3>
+                    </div>
+
+                    <div class="city-search-box">
+                        <div class="search-input-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="citySearchInput" placeholder="Escribe tu ciudad (ej: Pasto)..." autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="city-list-container" id="cityListContainer">
+                        <!-- JS inyectará las ciudades aquí dinámicamente -->
+                    </div>
+
+                    <div class="coverage-stats-mini">
+                        <div class="stat-mini">
+                            <strong id="city-stats-count">39</strong>
+                            <span>UBICACIONES ACTIVAS REGISTRADAS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
         <!-- Process Section (4op Design) -->
         <section class="process-section-4op" id="proceso">
@@ -658,73 +726,6 @@
     </a>
 
 
-    <!-- ================================================
-         COBERTURA NACIONAL - MAPA COLOMBIA (Diseño 3B Aprobado)
-         Mapa imagen + capa interactiva CSS/JS
-         ================================================ -->
-    <section class="coverage-section" id="cobertura">
-        <div class="coverage-inner">
-            <!-- Scientific Background Layer -->
-            <div class="coverage-bg-dna"></div>
-            
-            <div class="coverage-header">
-                <span class="coverage-badge"><i class="fa-solid fa-dna"></i> Red Nacional</span>
-                <h2 class="coverage-title">
-                    <span class="title-first-line">Cobertura en más de</span><br>
-                    <span class="coverage-highlight">39 ciudades de Colombia.</span>
-                </h2>
-                <p class="coverage-subtitle">Laboratorio Genes SAS, sede principal Medellín, toma de muestras en más de 39 ciudades del país.</p>
-            </div>
-
-            <div class="coverage-layout">
-                <!-- Mapa interactivo sobre imagen aprobada -->
-                <div class="coverage-map-container">
-                    <div class="coverage-map-wrapper">
-                        <!-- Imagen del mapa limpio (sin edificios quemados) -->
-                        <img src="assets/images/Mapa base limpio.webp"
-                             alt="Mapa de cobertura nacional Mundo Genético - 37 ciudades"
-                             class="colombia-img" id="colombia-img" draggable="false">
-                        <!-- Pines dinámicos generados por JS -->
-                        <div class="map-pins-layer" id="map-pins-layer"></div>
-                        <!-- Tooltip -->
-                        <div class="map-tooltip" id="mapTooltip3"></div>
-                    </div>
-                </div>
-
-                <!-- Panel lateral interactivo -->
-                <div class="coverage-sidebar">
-                    <div class="sidebar-header-modern">
-                        <div class="lab-status-tag">
-                            <span class="status-dot pulsing"></span>
-                            <span class="status-text">CIUDADES DISPONIBLES</span>
-                        </div>
-                        <h3 class="sidebar-title-premium text-center">
-                            <span class="title-dark">Conoce nuestra</span><br>
-                            <span class="title-blue">cobertura nacional</span>
-                        </h3>
-                    </div>
-
-                    <div class="city-search-box">
-                        <div class="search-input-wrapper">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" id="citySearchInput" placeholder="Escribe tu ciudad (ej: Pasto)..." autocomplete="off">
-                        </div>
-                    </div>
-
-                    <div class="city-list-container" id="cityListContainer">
-                        <!-- JS inyectará las ciudades aquí dinámicamente -->
-                    </div>
-
-                    <div class="coverage-stats-mini">
-                        <div class="stat-mini">
-                            <strong id="city-stats-count">39</strong>
-                            <span>UBICACIONES ACTIVAS REGISTRADAS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Footer Light Medical -->
     <footer class="footer-medical">
         <div class="container">
