@@ -471,5 +471,60 @@
 
     <!-- Scripts -->
     <script src="../js/main.js"></script>
+    
+    <!-- AJAX Form Handling -->
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Guardamos el contenido original del botón
+            const originalBtnContent = submitBtn.innerHTML;
+            
+            // Estado: Enviando
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Enviando...';
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Éxito
+                    submitBtn.innerHTML = '<i class="fa-solid fa-check-circle mr-2"></i> ¡Mensaje Enviado de Forma Éxitosa!';
+                    submitBtn.style.backgroundColor = '#22c55e'; // Verde éxito
+                    submitBtn.style.color = '#fff';
+                    contactForm.reset();
+                    
+                    // Opcional: Volver al estado normal después de 5 segundos
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnContent;
+                        submitBtn.style.backgroundColor = '';
+                        submitBtn.style.color = '';
+                    }, 5000);
+                } else {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Error desconocido');
+                }
+            } catch (error) {
+                console.error('Error en el envío:', error);
+                alert('Hubo un problema al enviar su mensaje. Por favor, inténtelo de nuevo o contáctenos por WhatsApp.');
+                
+                // Restauramos el botón
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+        });
+    </script>
 </body>
 </html>
