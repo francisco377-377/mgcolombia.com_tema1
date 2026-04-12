@@ -3430,24 +3430,24 @@ section {
 }
 
 /* =========================================
-   SPECIALIZED TECH SERVICES SECTION (HUD STYLE)
+   SPECIALIZED TECH SERVICES SECTION (HUD STYLE - LIGHT MODE)
    ========================================= */
 .services-tech-section {
     padding: 80px 0;
     position: relative;
-    background: radial-gradient(circle at 50% 50%, #0a1931 0%, #060b1a 100%);
+    background: #ffffff;
     overflow: hidden;
-    color: var(--text-white);
+    color: var(--text-main);
 }
 
-/* Cyber Grid HUD Overlay */
+/* Cyber Grid HUD Overlay (Dark Blue) */
 .services-tech-section::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(9, 60, 141, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(9, 60, 141, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
     z-index: 1;
     pointer-events: none;
@@ -3466,27 +3466,27 @@ section {
 }
 
 .service-card-tech {
-    background: rgba(255, 255, 255, 0.03);
+    background: #f8fafc;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px; /* More modern, less rounded */
-    padding: 1.8rem; /* Dramatically reduced padding */
+    border: 1px solid rgba(9, 60, 141, 0.1);
+    border-radius: 20px; 
+    padding: 1.8rem; 
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 100%; /* Equal height */
+    height: 100%; 
 }
 
-/* Mouse Hover Glow Effect */
+/* Mouse Hover Glow Effect (Subtle Blue) */
 .service-card-tech::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(9, 60, 141, 0.06) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.4s;
     pointer-events: none;
@@ -3494,13 +3494,14 @@ section {
 
 .service-card-tech:hover {
     transform: translateY(-8px);
-    border-color: rgba(56, 189, 248, 0.5);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-blue);
+    background: #ffffff;
+    box-shadow: 0 15px 30px rgba(9, 60, 141, 0.08);
 }
 
 .service-card-tech:hover::after { opacity: 1; }
 
-/* Hybrid HUD Icon Container */
+/* Hybrid HUD Icon Container - Deep Blue Variants */
 .hybrid-icon-wrapper {
     width: 65px;
     height: 65px;
@@ -3514,7 +3515,7 @@ section {
 .hud-ring-outer {
     position: absolute;
     inset: 0;
-    border: 1px dashed rgba(56, 189, 248, 0.4);
+    border: 1px dashed rgba(9, 60, 141, 0.2);
     border-radius: 50%;
     animation: spinSlow 12s linear infinite;
 }
@@ -3522,16 +3523,16 @@ section {
 .hud-ring-inner {
     position: absolute;
     inset: 8px;
-    border: 2px solid rgba(56, 189, 248, 0.2);
-    border-top-color: #38bdf8;
+    border: 2px solid rgba(9, 60, 141, 0.1);
+    border-top-color: var(--primary-blue);
     border-radius: 50%;
     animation: spinSlow 4s linear reverse infinite;
 }
 
 .hybrid-icon-main {
     font-size: 1.5rem;
-    color: #38bdf8;
-    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+    color: var(--primary-blue);
+    filter: drop-shadow(0 0 5px rgba(9, 60, 141, 0.15));
     z-index: 2;
     transition: transform 0.3s;
 }
@@ -3546,15 +3547,15 @@ section {
 }
 
 .service-card-tech h3 {
-    font-size: 1.35rem; /* Scaled down */
-    color: #ffffff;
+    font-size: 1.35rem; 
+    color: var(--primary-blue-dark);
     font-weight: 700;
     margin-bottom: 0.2rem;
 }
 
 .service-card-tech p {
-    font-size: 0.95rem; /* Scaled down */
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem; 
+    color: var(--text-main);
     line-height: 1.5;
     margin-bottom: 0.5rem;
 }
@@ -3563,7 +3564,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #38bdf8;
+    color: var(--primary-blue);
     font-weight: 600;
     font-size: 0.85rem;
     margin-top: auto;
@@ -3572,8 +3573,8 @@ section {
 }
 
 .tech-action-link:hover {
-    color: #ffffff;
-    text-shadow: 0 0 10px #38bdf8;
+    color: var(--primary-blue-dark);
+    text-shadow: 0 0 5px rgba(9, 60, 141, 0.1);
 }
 
 .tech-action-link i {
