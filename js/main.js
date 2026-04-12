@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Advanced HUD & DNA Canvas Animation
     initTechHUD();
     initBenefitsDNA();
+    initBenefitsDNADark();
     initCTADNA();
     initFAQ();
     initFaqDNA();
@@ -1049,3 +1050,105 @@ function initFaqDNA() {
     renderMap();
 })();
 
+function initBenefitsDNADark() {
+    const canvas = document.getElementById('benefits-canvas-dark');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let phase = 0;
+
+    function draw() {
+        if (window.canvasVisibility[canvas.id] === false) {
+            setTimeout(() => requestAnimationFrame(draw), 200);
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        const isMobile = window.innerWidth < 768;
+        const amplitude = isMobile ? 120 : 350; 
+        const spacing = isMobile ? 40 : 80;     
+
+        const diag = Math.sqrt(width * width + height * height);
+        const numPoints = Math.ceil(diag / spacing) + 10;
+
+        ctx.lineWidth = isMobile ? 2 : 4;
+
+        ctx.save();
+        ctx.translate(width / 2, height / 2); 
+
+        const tiltAngle = Math.atan2(height, width);
+        ctx.rotate(-tiltAngle * 0.7); 
+
+        const startY = -diag / 2 - 200; 
+
+        ctx.globalAlpha = 1;
+
+        for (let i = 0; i < numPoints; i++) {
+            const y = startY + i * spacing;
+            const angle = phase + i * 0.12; 
+
+            const x1 = Math.sin(angle) * amplitude;
+            const x2 = Math.sin(angle + Math.PI) * amplitude;
+
+            const z1 = Math.cos(angle);
+            const z2 = Math.cos(angle + Math.PI);
+
+            const size1 = (z1 + 1.5) * (isMobile ? 5 : 12); 
+            const size2 = (z2 + 1.5) * (isMobile ? 5 : 12);
+
+            const alpha1 = ((z1 + 1.5) / 2.5) * 0.45; // significantly higher alpha
+            const alpha2 = ((z2 + 1.5) / 2.5) * 0.45;
+
+            // Brighter White Connectors
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${Math.min(alpha1, alpha2) * 0.6})`;
+            ctx.stroke();
+
+            if (z1 < z2) {
+                drawNode(x1, y, size1, alpha1, false);
+                drawNode(x2, y, size2, alpha2, true);
+            } else {
+                drawNode(x2, y, size2, alpha2, false);
+                drawNode(x1, y, size1, alpha1, true);
+            }
+        }
+
+        function drawNode(x, y, size, alpha, isFront) {
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+
+            if (isFront) {
+                // Intensely bright white/SkyBlue nodes for dark theme
+                const grad = ctx.createRadialGradient(x - size * 0.2, y - size * 0.2, size * 0.1, x, y, size);
+                grad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 2.2})`);
+                grad.addColorStop(0.3, `rgba(224, 242, 254, ${alpha * 1.5})`);
+                grad.addColorStop(1, `rgba(56, 189, 248, ${alpha})`);
+                ctx.fillStyle = grad;
+
+                ctx.shadowBlur = 40; // More intense glow
+                ctx.shadowColor = `rgba(255, 255, 255, ${alpha * 0.8})`;
+            } else {
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.5})`;
+                ctx.shadowBlur = 0;
+            }
+            ctx.fill();
+        }
+
+        ctx.restore();
+        ctx.shadowBlur = 0;
+        phase -= 0.008; 
+        requestAnimationFrame(draw);
+    }
+
+    setTimeout(() => { resize(); draw(); }, 100);
+}
