@@ -66,6 +66,15 @@
             text-align: center;
             transition: all 0.4s ease;
             border: 1px solid rgba(9, 60, 141, 0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .contact-card-detail .btn-whatsapp-modern {
+            margin-top: auto;
+            width: 100%;
+            justify-content: center;
         }
 
         .contact-card-detail:hover {
@@ -213,12 +222,10 @@
                     </div>
                     <h3>WhatsApp</h3>
                     <p class="text-light mb-4">Habla directamente con un asesor especialista y recibe orientación profesional.</p>
-                    <div style="margin-top: 1.5rem;">
-                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
-                           target="_blank" class="btn btn-whatsapp-modern" style="width: 100%; justify-content: center;">
-                            <i class="fa-brands fa-whatsapp"></i> Chatear por WhatsApp
-                        </a>
-                    </div>
+                    <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
+                       target="_blank" class="btn btn-whatsapp-modern">
+                        <i class="fa-brands fa-whatsapp"></i> Chatear por WhatsApp
+                    </a>
                 </div>
 
                 <div class="contact-card-detail">
@@ -227,19 +234,19 @@
                     </div>
                     <h3>Call Center</h3>
                     <p class="text-light mb-4">Llámanos a nuestro Call Center para resolver tus dudas <strong style="color: var(--primary-blue);">350 318 9981</strong></p>
-                    <a href="tel:+573503189981" class="btn btn-whatsapp-modern w-100" style="background: var(--primary-blue); border-color: var(--primary-blue);">
+                    <a href="tel:+573503189981" class="btn btn-whatsapp-modern" style="background: var(--primary-blue); border-color: var(--primary-blue);">
                         <i class="fa-solid fa-phone"></i> Llamar Ahora
                     </a>
                 </div>
 
                 <div class="contact-card-detail">
                     <div class="contact-icon-wrapper">
-                        <i class="fa-solid fa-location-dot"></i>
+                        <i class="fa-solid fa-earth-americas"></i>
                     </div>
                     <h3>Cobertura Nacional</h3>
                     <p class="text-light mb-4">Atención en Medellín, Bogotá, Cali y más de 39 ciudades en el territorio nacional.</p>
-                    <a href="#cobertura" class="btn btn-whatsapp-modern w-100" style="background: transparent; color: var(--primary-blue); border-color: var(--primary-blue);">
-                        <i class="fa-solid fa-map-location-dot"></i> Ver Mapa de Cobertura
+                    <a href="#cobertura" class="btn btn-whatsapp-modern" style="background: transparent; color: var(--primary-blue); border-color: var(--primary-blue); white-space: nowrap; padding: 1rem 1.5rem;">
+                        <i class="fa-solid fa-map" style="color: inherit;"></i> Ver Mapa de Cobertura
                     </a>
                 </div>
             </div>
@@ -249,7 +256,7 @@
         <section class="container mb-6 reveal fade-up">
             <div class="contact-form-wrapper shadow-lg" style="background: white; border-radius: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
                 <!-- Left Column: Info -->
-                <div class="form-info-side" style="background: var(--primary-blue); color: white; padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="form-info-side" style="background: var(--primary-blue); color: white; padding: 1.8rem 3rem; display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <span style="font-size: 1.3rem; opacity: 0.9; display: block; margin-bottom: 0.5rem;">Bienvenido a</span>
                         <h2 class="text-white" style="font-size: 1.3rem; font-weight: 800; line-height: 1.2; margin: 0;">Mundo Genético</h2>
@@ -259,7 +266,7 @@
                         <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: 3.5rem;"></div>
 
                         <!-- WhatsApp Link -->
-                        <div class="info-item-minimal" style="margin-bottom: 3.5rem;">
+                        <div class="info-item-minimal" style="margin-bottom: 2.3rem;">
                             <i class="fa-brands fa-whatsapp" style="background: #25D366; color: white; border-radius: 50% !important; font-size: 1.8rem !important; width: 60px !important; height: 60px !important;"></i>
                             <div>
                                 <strong style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; display: block; margin-bottom: 0.2rem;">WHATSAPP</strong>
@@ -267,7 +274,7 @@
                             </div>
                         </div>
                         
-                        <div class="info-item-minimal" style="margin-bottom: 3.5rem;">
+                        <div class="info-item-minimal" style="margin-bottom: 2.3rem;">
                             <i class="fa-regular fa-envelope" style="background: rgba(255,255,255,0.1); color: white; border-radius: 50% !important; font-size: 1.5rem !important; width: 60px !important; height: 60px !important;"></i>
                             <div>
                                 <strong style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; display: block; margin-bottom: 0.3rem;">CORREO ELECTRÓNICO</strong>
@@ -275,7 +282,7 @@
                             </div>
                         </div>
 
-                        <div class="info-item-minimal" style="margin-bottom: 3.5rem;">
+                        <div class="info-item-minimal" style="margin-bottom: 2.3rem;">
                             <i class="fa-regular fa-clock" style="background: rgba(255,255,255,0.1); color: white; border-radius: 50% !important; font-size: 1.5rem !important; width: 60px !important; height: 60px !important;"></i>
                             <div>
                                 <strong style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; display: block; margin-bottom: 0.4rem;">HORARIOS LINEA COMERCIAL</strong>
@@ -306,8 +313,8 @@
                 </div>
 
                 <!-- Right Column: Form -->
-                <div class="form-input-side" style="padding: 4rem 3rem;">
-                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #062863; margin-bottom: 3rem;">Contáctenos</h2>
+                <div class="form-input-side" style="padding: 1.8rem 3rem;">
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #062863; margin-bottom: 1.5rem;">Contáctenos</h2>
                     <form action="https://formspree.io/f/mwvwgdlr" method="POST" id="contact-form">
                         <div class="form-group mb-4">
                             <label for="name" class="d-block mb-2" style="font-weight: 600; color: #1e293b;">Nombre Completo</label>

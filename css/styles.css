@@ -570,13 +570,10 @@ section {
     border-radius: 100px;
     text-decoration: none;
     transition: all 0.4s ease;
-    background: rgba(37, 211, 102, 0.5);
-    /* Much more prominent green glass */
+    background: #25D366;
+    /* Solid WhatsApp green */
     color: var(--text-white);
-    border: 1px solid rgba(37, 211, 102, 1);
-    /* Solid WhatsApp green border */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid #25D366;
     position: relative;
     overflow: hidden;
 }
