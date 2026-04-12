@@ -1059,10 +1059,10 @@ section {
 .testimonial-card {
     padding: 2.5rem 2.5rem;
     position: relative;
-    background: #ffffff;
+    background: #f8fafc; /* Refinado azul-gris muy suave para evitar el blanco puro */
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(9, 60, 141, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 12px 35px rgba(9, 60, 141, 0.07);
+    border: 1px solid rgba(9, 60, 141, 0.12); /* Toque de contorno solicitado */
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden;
     z-index: 1;
@@ -1070,8 +1070,9 @@ section {
 
 .testimonial-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(9, 60, 141, 0.12);
-    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 45px rgba(9, 60, 141, 0.14);
+    border-color: rgba(56, 189, 248, 0.5);
+    background: #ffffff; /* Brilla a blanco puro en hover para dinamismo */
 }
 
 .testimonial-card::before {
