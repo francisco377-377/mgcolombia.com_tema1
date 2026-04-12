@@ -3430,7 +3430,7 @@ section {
 }
 
 /* =========================================
-   SPECIALIZED TECH SERVICES SECTION (HUD STYLE - LIGHT MODE)
+   SPECIALIZED TECH SERVICES SECTION (HUD STYLE - DARK CARDS ON LIGHT BG)
    ========================================= */
 .services-tech-section {
     padding: 80px 0;
@@ -3440,7 +3440,7 @@ section {
     color: var(--text-main);
 }
 
-/* Cyber Grid HUD Overlay (Dark Blue) */
+/* Cyber Grid HUD Overlay (Subtle Dark Blue) */
 .services-tech-section::before {
     content: "";
     position: absolute;
@@ -3460,48 +3460,49 @@ section {
 
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns for more compact look */
-    gap: 1.5rem; /* Reduced gap */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     margin-top: 3.5rem;
 }
 
 .service-card-tech {
-    background: #f8fafc;
+    background: linear-gradient(145deg, #062863 0%, #0a1931 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(9, 60, 141, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px; 
-    padding: 1.8rem; 
+    padding: 2.2rem 1.8rem; 
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
     height: 100%; 
+    box-shadow: 0 15px 35px rgba(6, 40, 99, 0.12);
 }
 
-/* Mouse Hover Glow Effect (Subtle Blue) */
+/* Mouse Hover Glow Effect (Cyan) */
 .service-card-tech::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(9, 60, 141, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.4s;
     pointer-events: none;
 }
 
 .service-card-tech:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-blue);
-    background: #ffffff;
-    box-shadow: 0 15px 30px rgba(9, 60, 141, 0.08);
+    transform: translateY(-10px);
+    border-color: rgba(56, 189, 248, 0.4);
+    background: linear-gradient(145deg, #083480 0%, #062863 100%);
+    box-shadow: 0 25px 50px rgba(6, 40, 99, 0.25);
 }
 
 .service-card-tech:hover::after { opacity: 1; }
 
-/* Hybrid HUD Icon Container - Deep Blue Variants */
+/* Hybrid HUD Icon Container - Cyan/White Accents */
 .hybrid-icon-wrapper {
     width: 65px;
     height: 65px;
@@ -3509,13 +3510,13 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .hud-ring-outer {
     position: absolute;
     inset: 0;
-    border: 1px dashed rgba(9, 60, 141, 0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     animation: spinSlow 12s linear infinite;
 }
@@ -3523,16 +3524,16 @@ section {
 .hud-ring-inner {
     position: absolute;
     inset: 8px;
-    border: 2px solid rgba(9, 60, 141, 0.1);
-    border-top-color: var(--primary-blue);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-top-color: #38bdf8;
     border-radius: 50%;
     animation: spinSlow 4s linear reverse infinite;
 }
 
 .hybrid-icon-main {
     font-size: 1.5rem;
-    color: var(--primary-blue);
-    filter: drop-shadow(0 0 5px rgba(9, 60, 141, 0.15));
+    color: #38bdf8;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
     z-index: 2;
     transition: transform 0.3s;
 }
@@ -3547,16 +3548,17 @@ section {
 }
 
 .service-card-tech h3 {
-    font-size: 1.35rem; 
-    color: var(--primary-blue-dark);
+    font-size: 1.4rem; 
+    color: #ffffff;
     font-weight: 700;
     margin-bottom: 0.2rem;
+    letter-spacing: -0.2px;
 }
 
 .service-card-tech p {
     font-size: 0.95rem; 
-    color: var(--text-main);
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
     margin-bottom: 0.5rem;
 }
 
@@ -3564,17 +3566,17 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary-blue);
+    color: #38bdf8;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: auto;
     transition: all 0.3s;
     text-decoration: none;
 }
 
 .tech-action-link:hover {
-    color: var(--primary-blue-dark);
-    text-shadow: 0 0 5px rgba(9, 60, 141, 0.1);
+    color: #ffffff;
+    text-shadow: 0 0 10px #38bdf8;
 }
 
 .tech-action-link i {
@@ -3588,7 +3590,7 @@ section {
 
 /* Specific centering for the 5th card row if needed */
 .tech-grid-center-last {
-    grid-column: 2; /* Centered in a 3-col grid row 2 */
+    grid-column: 2; 
 }
 
 @media (max-width: 1024px) {
@@ -3599,6 +3601,6 @@ section {
 @media (max-width: 768px) {
     .tech-grid { grid-template-columns: 1fr; }
     .tech-grid-center-last { grid-column: span 1; }
-    .service-card-tech { padding: 1.5rem; }
+    .service-card-tech { padding: 1.8rem; }
 }
 
