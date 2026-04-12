@@ -28,7 +28,7 @@
             background-size: cover;
         }
 
-        .service-intro-section { padding: 80px 0; }
+        .service-intro-section { padding: 80px 0 0 0; }
         .service-content-block { max-width: 850px; margin: 0 auto; }
         
         .modality-card {
@@ -75,6 +75,130 @@
             font-weight: 700;
             color: var(--primary-blue-dark);
             margin-bottom: 10px;
+        }
+
+        /* Redesign Styles for "Que es" Section */
+        .intro-premium-box {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 60px 60px 30px 60px;
+            box-shadow: 0 15px 50px rgba(9, 60, 141, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sample-mosaic {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 35px 0;
+            justify-content: center;
+        }
+
+        .sample-tag {
+            background: #f8fafc;
+            color: var(--primary-blue-dark);
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(9, 60, 141, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .sample-tag:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(9, 60, 141, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .sample-tag i, 
+        .sample-tag svg {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            flex-shrink: 0;
+        }
+
+        .precision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 45px 0;
+        }
+
+        .precision-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            padding: 35px 25px;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid rgba(9, 60, 141, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .precision-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--primary-blue);
+            opacity: 0.7;
+        }
+
+        .precision-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(9, 60, 141, 0.08);
+        }
+
+        .precision-val {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .precision-label {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+        }
+
+        .lab-backing-seal {
+            background: linear-gradient(135deg, var(--primary-blue-dark), #093c8d);
+            color: white;
+            padding: 22px 35px;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(6, 40, 99, 0.25);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .lab-backing-seal:hover {
+            transform: scale(1.03);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .intro-premium-box { padding: 40px 20px; border-radius: 24px; margin-top: -30px; }
+            .precision-grid { grid-template-columns: 1fr; }
+            .sample-mosaic { gap: 10px; }
+            .sample-tag { padding: 10px 18px; font-size: 0.85rem; }
         }
 
         @media (max-width: 768px) {
@@ -149,31 +273,80 @@
                 </div>
             </div>
         </section>
-
-        <!-- Section 1: Definition -->
+        <!-- Section 1: Redesigned Intro -->
         <section class="service-intro-section" id="que-es">
             <div class="container">
-                <div class="service-content-block reveal fade-up">
-                    <h2 class="section-title mg-blue mb-4">¿Qué es una prueba de paternidad anónima?</h2>
-                    
-                    <p class="content-text mb-4" style="font-size: 1.15rem; line-height: 1.8;">
-                        Es un proceso cómodo y preciso que le permite recolectar sus propias muestras de ADN en el momento y lugar que prefiera. Contamos con múltiples opciones para lograrlo: células bucales mediante copitos, cabellos, cepillo de dientes, manchas de sangre o chicle, cada una con un protocolo específico de recolección y embalaje para garantizar resultados confiables.
-                    </p>
+                <div class="intro-premium-box reveal fade-up">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title mg-blue mb-4" style="font-size: 2.4rem; font-weight: 900;">¿Qué es una prueba de paternidad anónima?</h2>
+                        <p class="content-text" style="font-size: 1.25rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #334155;">
+                            Es un proceso cómodo y preciso que le permite recolectar sus propias muestras de ADN en el momento y lugar que prefiera. 
+                        </p>
+                    </div>
 
-                    <p class="content-text mb-5" style="font-size: 1.15rem; line-height: 1.8;">
-                        Es importante aclarar que esta prueba no tiene validez jurídica y no puede utilizarse en trámites legales. Es de carácter exclusivamente informativo, pensada para brindarle la certeza que necesita de forma privada y confidencial. En cuanto a precisión, cuando se confirma la paternidad la confiabilidad es superior al <strong>99.999%</strong>, y cuando se descarta, la certeza es absoluta del <strong>100%</strong>.
-                    </p>
+                    <div class="sample-mosaic">
+                        <div class="sample-tag">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 4.5a7.5 7.5 0 0 0-7.5 7.5c0 4.1 3.4 7.5 7.5 7.5"></path>
+                                <path d="M10 12l9-5v10l-9-5z" fill="currentColor"></path>
+                            </svg>
+                            <span>Células bucales</span>
+                        </div>
+                        <div class="sample-tag">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <path d="M18 3c-1 6-7 12-11 12"></path>
+                                <circle cx="5" cy="18" r="3" fill="currentColor"></circle>
+                            </svg>
+                            <span>Cabellos</span>
+                        </div>
+                        <div class="sample-tag">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="15" width="20" height="3" rx="1.5"></rect>
+                                <rect x="3" y="10" width="9" height="5" rx="1"></rect>
+                                <rect x="4" y="7" width="1.2" height="3"></rect>
+                                <rect x="7" y="7" width="1.2" height="3"></rect>
+                                <rect x="10" y="7" width="1.2" height="3"></rect>
+                            </svg>
+                            <span>Cepillo de dientes</span>
+                        </div>
+                        <div class="sample-tag"><i class="fa-solid fa-droplet"></i> <span>Manchas de sangre</span></div>
+                        <div class="sample-tag">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5" fill="currentColor"></circle>
+                                <path d="M7 12L3 8v8l4-4zM17 12l4-4v8l-4-4z" fill="currentColor"></path>
+                            </svg>
+                            <span>Chicle</span>
+                        </div>
+                    </div>
 
-                    <div class="alert-info-glass d-flex align-center p-4" style="background: rgba(9, 60, 141, 0.03); border-left: 4px solid var(--primary-blue); border-radius: 0 12px 12px 0;">
-                        <i class="fa-solid fa-circle-info mr-3 text-primary-blue" style="font-size: 1.5rem;"></i>
-                        <p class="m-0" style="color: var(--primary-blue-dark); font-weight: 500;">Esta prueba le brinda la respuesta que busca con el respaldo del Laboratorio Genes SAS.</p>
+                    <div class="precision-grid">
+                        <div class="precision-card">
+                            <span class="precision-val">99.999%</span>
+                            <span class="precision-label">Confirma la paternidad</span>
+                        </div>
+                        <div class="precision-card">
+                            <span class="precision-val">100%</span>
+                            <span class="precision-label">Descarta la paternidad</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center" style="font-size: 1.05rem; line-height: 1.6; color: #475569; margin-bottom: 30px;">
+                        <p class="mb-2">Es importante aclarar que esta prueba es de carácter exclusivamente informativo, pensada para brindarle la certeza que necesita de forma privada y confidencial. No tiene validez jurídica y no puede utilizarse en trámites legales.</p>
+                        <p class="m-0">Cada una de estas muestras cuenta con un protocolo específico de recolección y embalaje, escríbenos para mayor información.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="lab-backing-seal">
+                            <i class="fa-solid fa-circle-check" style="font-size: 1.5rem;"></i>
+                            <span style="font-size: 1.1rem; font-weight: 600;">Respaldo del Laboratorio Genes SAS</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Modalities -->
-        <section class="py-5 bg-light" id="modalidades">
+        <section class="pb-5 pt-4 bg-light" id="modalidades">
             <div class="container">
                 <div class="service-content-block">
                     <div class="section-header text-center mb-5 reveal fade-up">
