@@ -198,7 +198,7 @@
                     </h1>
 
                     <p class="hero-subtitle text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8); max-width: 700px; margin: 0 auto 2.5rem;">
-                        Recibe asesoría profesional, confidencial y experta para tu caso. Estamos disponibles en toda Colombia.
+                        Recibe asesoría profesional, confidencial y experta para tu caso. Estamos disponibles en 39 ciudades del pais.
                     </p>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <h3>WhatsApp</h3>
-                    <p class="text-light mb-4">Habla directamente con un asesor especialista y recibe orientación instantánea.</p>
+                    <p class="text-light mb-4">Habla directamente con un asesor especialista y recibe orientación profesional.</p>
                     <div style="margin-top: 1.5rem;">
                         <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
                            target="_blank" class="btn btn-whatsapp-modern" style="width: 100%; justify-content: center;">
@@ -225,9 +225,9 @@
                     <div class="contact-icon-wrapper">
                         <i class="fa-solid fa-phone-volume"></i>
                     </div>
-                    <h3>Línea de Atención</h3>
-                    <p class="text-light mb-4">Llámanos para resolver tus dudas de inmediato con nuestro equipo administrativo.</p>
-                    <a href="tel:+573003095039" class="btn btn-whatsapp-modern w-100" style="background: var(--primary-blue); border-color: var(--primary-blue);">
+                    <h3>Call Center</h3>
+                    <p class="text-light mb-4">Llámanos a nuestro Call Center para resolver tus dudas <strong style="color: var(--primary-blue);">350 318 9981</strong></p>
+                    <a href="tel:+573503189981" class="btn btn-whatsapp-modern w-100" style="background: var(--primary-blue); border-color: var(--primary-blue);">
                         <i class="fa-solid fa-phone"></i> Llamar Ahora
                     </a>
                 </div>
@@ -236,9 +236,9 @@
                     <div class="contact-icon-wrapper">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
-                    <h3>Sedes Nacionales</h3>
-                    <p class="text-light mb-4">Atención en Medellín, Bogotá, Cali y más de 30 ciudades en todo el territorio nacional.</p>
-                    <a href="../index.html#cobertura" class="btn btn-whatsapp-modern w-100" style="background: transparent; color: var(--primary-blue); border-color: var(--primary-blue);">
+                    <h3>Cobertura Nacional</h3>
+                    <p class="text-light mb-4">Atención en Medellín, Bogotá, Cali y más de 39 ciudades en el territorio nacional.</p>
+                    <a href="#cobertura" class="btn btn-whatsapp-modern w-100" style="background: transparent; color: var(--primary-blue); border-color: var(--primary-blue);">
                         <i class="fa-solid fa-map-location-dot"></i> Ver Mapa de Cobertura
                     </a>
                 </div>
@@ -341,6 +341,65 @@
                 </div>
             </div>
         </section>
+        <!-- Cobertura Nacional - Mapa Interactivo -->
+        <section class="coverage-section" id="cobertura">
+            <div class="coverage-inner">
+                <div class="coverage-bg-dna"></div>
+                
+                <div class="coverage-header">
+                    <span class="coverage-badge"><i class="fa-solid fa-dna"></i> Red Nacional</span>
+                    <h2 class="coverage-title">
+                        <span class="title-first-line">Cobertura en más de</span><br>
+                        <span class="coverage-highlight">39 ciudades de Colombia.</span>
+                    </h2>
+                    <p class="coverage-subtitle">Laboratorio Genes SAS, sede principal Medellín, toma de muestras en más de 39 ciudades del país.</p>
+                </div>
+
+                <div class="coverage-layout">
+                    <div class="coverage-map-container">
+                        <div class="coverage-map-wrapper">
+                            <img src="../assets/images/Mapa base limpio.webp"
+                                 alt="Mapa de cobertura nacional Mundo Genético"
+                                 class="colombia-img" id="colombia-img" draggable="false">
+                            <div class="map-pins-layer" id="map-pins-layer"></div>
+                            <div class="map-tooltip" id="mapTooltip3"></div>
+                        </div>
+                    </div>
+
+                    <div class="coverage-sidebar">
+                        <div class="sidebar-header-modern">
+                            <div class="lab-status-tag">
+                                <span class="status-dot pulsing"></span>
+                                <span class="status-text">CIUDADES DISPONIBLES</span>
+                            </div>
+                            <h3 class="sidebar-title-premium text-center">
+                                <span class="title-dark">Conoce nuestra</span><br>
+                                <span class="title-blue">cobertura nacional</span>
+                            </h3>
+                        </div>
+
+                        <div class="city-search-box">
+                            <div class="search-input-wrapper">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="citySearchInput" placeholder="Escribe tu ciudad (ej: Pasto)..." autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="city-list-container" id="cityListContainer">
+                            <!-- JS inyectará las ciudades aquí dinámicamente -->
+                        </div>
+
+                        <div class="coverage-stats-mini">
+                            <div class="stat-mini">
+                                <strong id="city-stats-count">39</strong>
+                                <span>UBICACIONES ACTIVAS REGISTRADAS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer Light Medical -->
@@ -470,6 +529,7 @@
     </a>
 
     <!-- Scripts -->
+    <script src="../js/map-data.js"></script>
     <script src="../js/main.js"></script>
     
     <!-- AJAX Form Handling -->
