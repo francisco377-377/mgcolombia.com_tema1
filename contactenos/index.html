@@ -14,6 +14,22 @@
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon-ad.svg">
 
     <!-- Fonts & Icons -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos | Mundo Genético | Asesoría en Pruebas de ADN</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="¿Tienes dudas sobre una prueba de ADN? Contáctanos para recibir asesoría personalizada. Sedes en más de 30 ciudades de Colombia.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon-ad.svg">
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,7 +41,7 @@
     <style>
         /* Per-page specific overrides for better visibility as requested */
         .hero-premium.hero-contact-bg .hero-bg-image {
-            background: url('../assets/images/servicios/hero-contactenos.png') no-repeat center center;
+            background: url('../assets/images/servicios/hero-contactenos.webp') no-repeat center 40%;
             background-size: cover;
         }
 
@@ -77,9 +93,50 @@
             transform: scale(1.1);
         }
 
+        /* Form Modern Styles */
+        .form-control-modern {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-control-modern:focus {
+            border-color: var(--primary-blue);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(9, 60, 141, 0.1);
+        }
+
+        .info-item-minimal {
+            display: flex;
+            align-items: flex-start; /* Changed from center to align icon with top of multiline text */
+            gap: 1.5rem;
+        }
+
+        .info-item-minimal i {
+            background: rgba(255,255,255,0.15);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem; }
             .contact-grid-detail { margin-top: 2rem; }
+            .form-info-side { padding: 3rem 1.5rem !important; }
+            .form-input-side { padding: 3rem 1.5rem !important; }
+            .info-item-minimal { gap: 1rem; }
+            .info-item-minimal i { width: 45px; height: 45px; font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -148,7 +205,7 @@
         </section>
 
         <!-- Contact Cards -->
-        <section class="container relative-z">
+        <section class="container relative-z mb-6">
             <div class="contact-grid-detail reveal fade-up">
                 <div class="contact-card-detail">
                     <div class="contact-icon-wrapper">
@@ -184,6 +241,87 @@
                     <a href="../index.html#cobertura" class="btn btn-whatsapp-modern w-100" style="background: transparent; color: var(--primary-blue); border-color: var(--primary-blue);">
                         <i class="fa-solid fa-map-location-dot"></i> Ver Mapa de Cobertura
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Contact Form Section -->
+        <section class="container mb-6 reveal fade-up">
+            <div class="contact-form-wrapper shadow-lg" style="background: white; border-radius: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
+                <!-- Left Column: Info -->
+                <div class="form-info-side" style="background: var(--primary-blue); color: white; padding: 4rem 3rem;">
+                    <h2 class="text-white mb-5" style="font-weight: 700;">Escríbenos a nuestra línea de WhatsApp</h2>
+                    
+                    <!-- WhatsApp Link -->
+                    <a href="https://wa.me/573503189981" target="_blank" class="info-item-minimal mb-5 text-white" style="text-decoration: none !important; border: none !important; outline: none !important; display: flex; align-items: center;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.8rem; color: #fff; background: #25D366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); border: none;"></i>
+                        <div style="text-decoration: none !important;">
+                            <strong style="font-size: 1.1rem; display: block; margin-bottom: 0.1rem; text-decoration: none !important;">Línea Directa</strong>
+                            <span style="font-size: 1.35rem; font-weight: 800; opacity: 1; text-decoration: none !important;">350 318 9981</span>
+                        </div>
+                    </a>
+                    
+                    <div class="info-item-minimal mb-5">
+                        <i class="fa-regular fa-clock" style="font-size: 1.4rem;"></i>
+                        <div>
+                            <strong style="font-size: 1.1rem; display: block; margin-bottom: 0.4rem;">Horarios de Atención</strong>
+                            <div style="font-size: 0.95rem; opacity: 0.9; line-height: 1.7;">
+                                <div class="mb-1"><strong>Lun, Mar y Jue:</strong> 8:00 am a 5:00 pm</div>
+                                <div class="mb-1"><strong>Mié y Vie:</strong> 8:00 am a 4:00 pm</div>
+                                <div><strong>Sábados:</strong> 9:00 am a 12:00 pm</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item-minimal">
+                        <i class="fa-solid fa-location-dot" style="font-size: 1.4rem;"></i>
+                        <div>
+                            <strong style="font-size: 1.1rem; display: block; margin-bottom: 0.4rem;">Sede Medellín</strong>
+                            <p style="font-size: 1rem; opacity: 0.9; margin: 0; line-height: 1.5;">
+                                Centro Comercial Monterrey,<br>Piso 6, Consultorio 611<br>
+                                <strong style="color: #fff; opacity: 1;">Laboratorio Genes SAS</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="form-input-side" style="padding: 4rem 3rem;">
+                    <form action="https://formspree.io/f/mwvwgdlr" method="POST" id="contact-form">
+                        <div class="form-group mb-4">
+                            <label for="name" class="d-block mb-2" style="font-weight: 600; color: #1e293b;">Nombre Completo</label>
+                            <input type="text" name="nombre" id="name" class="form-control-modern" placeholder="Ej: Juan Pérez" required>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="phone" class="d-block mb-2" style="font-weight: 600; color: #1e293b;">Celular / WhatsApp</label>
+                            <input type="tel" name="celular" id="phone" class="form-control-modern" placeholder="Ej: 300 123 4567" required>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="email" class="d-block mb-2" style="font-weight: 600; color: #1e293b;">Correo Electrónico</label>
+                            <input type="email" name="_replyto" id="email" class="form-control-modern" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="message" class="d-block mb-2" style="font-weight: 600; color: #1e293b;">Su Consulta o Mensaje</label>
+                            <textarea name="mensaje" id="message" rows="4" class="form-control-modern" placeholder="Cuéntenos cómo podemos ayudarle..." required></textarea>
+                        </div>
+
+                        <div class="form-group mb-5 d-flex align-start">
+                            <input type="checkbox" id="privacy" name="politica_datos" required style="margin-top: 5px; margin-right: 12px; transform: scale(1.3); cursor: pointer;">
+                            <label for="privacy" style="font-size: 0.85rem; line-height: 1.5; color: #64748b; cursor: pointer;">
+                                He leído y acepto la <a href="../assets/docs/politica-tratamiento-datos.pdf" target="_blank" style="color: var(--primary-blue); font-weight: 700; text-decoration: underline;">Política de tratamiento de datos personales</a>.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary-modern w-100" style="padding: 1.3rem; font-size: 1.15rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                            <i class="fa-solid fa-paper-plane mr-3"></i> Enviar Mensaje de Consulta
+                        </button>
+                        
+                        <!-- Anti-Spam Hidden Input -->
+                        <input type="text" name="_gotcha" style="display:none">
+                    </form>
                 </div>
             </div>
         </section>
@@ -227,7 +365,7 @@
                     
                     <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
                         <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
-                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
                             WhatsApp: 300 309 50 39
                         </a>
                     </p>
