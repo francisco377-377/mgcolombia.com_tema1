@@ -28,7 +28,7 @@
             background-size: cover;
         }
 
-        .service-intro-section { padding: 80px 0 40px; }
+        .service-intro-section { padding: 60px 0 0; }
         .service-content-block { max-width: 900px; margin: 0 auto; }
         
         /* Modality Specific Styles */
@@ -36,7 +36,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 0;
         }
 
         .modality-card-prenatal {
@@ -48,6 +48,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .modality-card-prenatal:hover {
@@ -75,7 +76,7 @@
             border-radius: 18px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.8rem;
-            margin-bottom: 25px;
+            margin: 0 auto 25px;
         }
 
         .icon-invasive { background: var(--primary-blue-light); color: var(--primary-blue); }
@@ -101,6 +102,7 @@
         .weeks-indicator {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             font-weight: 700;
             color: var(--primary-blue);
@@ -109,8 +111,80 @@
             border-bottom: 1px dashed rgba(0,0,0,0.1);
         }
 
+        .modality-card-prenatal .content-text {
+            text-align: justify;
+        }
+
         @media (max-width: 992px) {
             .modality-split { grid-template-columns: 1fr; }
+        }
+
+        /* --- SCIENTIFIC NARRATIVE STYLES --- */
+        .scientific-narrative-panel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+            border-radius: 30px;
+            padding: 40px 50px;
+            border: 1px solid rgba(9, 60, 141, 0.08);
+            box-shadow: 
+                0 10px 40px rgba(9, 60, 141, 0.03),
+                0 1px 3px rgba(9, 60, 141, 0.05);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scientific-narrative-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-blue), #38bdf8);
+        }
+
+        .narrative-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 30px;
+        }
+
+        .narrative-badge i { font-size: 1rem; }
+
+        .narrative-text {
+            font-size: 1.45rem;
+            line-height: 1.7;
+            color: #1e293b;
+            font-weight: 500;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .lab-highlight {
+            color: var(--primary-blue-dark);
+            font-weight: 800;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .modalities-highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .scientific-narrative-panel { padding: 40px 25px; border-radius: 20px; }
+            .narrative-text { font-size: 1.15rem; }
+            .narrative-badge { padding: 6px 14px; letter-spacing: 1.5px; }
         }
     </style>
 </head>
@@ -121,10 +195,12 @@
     <header class="main-header">
         <div class="header-top">
             <div class="container d-flex align-center" style="height: 100%; position: relative;">
-                <div class="logo">
+                <div class="logo" style="font-weight: 500;">
                     <a href="../index.html" style="text-decoration: none; display: flex; align-items: center; color: white;">
-                        <i class="fa-solid fa-dna logo-icon text-white" style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
-                        <div class="logo-text text-white" style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
+                        <i class="fa-solid fa-dna logo-icon text-white"
+                            style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
+                        <div class="logo-text text-white"
+                            style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
                             <span>Mundo</span>
                             <span>Genético</span>
                         </div>
@@ -137,14 +213,25 @@
             </div>
         </div>
 
+        <!-- Main Navigation added for Hybrid Web structure -->
         <nav class="header-nav bg-white shadow-sm" id="main-nav">
             <div class="container d-flex justify-between align-center">
                 <ul class="nav-links list-unstyled d-flex m-0">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../pruebas-de-paternidad/index.html">Paternidad Legal</a></li>
-                    <li><a href="#que-es" style="font-weight: 700; color: var(--primary-blue);">Prenatal</a></li>
-                    <li><a href="#modalidades">Modalidades</a></li>
-                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="../index.html" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="javascript:void(0)" class="nav-no-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="../pruebas-de-paternidad/"><i class="fa-solid fa-dna"></i> Prueba de Paternidad</a></li>
+                            <li><a href="../pruebas-de-paternidad-anonima/"><i class="fa-solid fa-user-secret"></i> Prueba Anónima</a></li>
+                            <li><a href="../pruebas-de-paternidad-prenatal/"><i class="fa-solid fa-baby"></i> Prueba Prenatal</a></li>
+                            <li><a href="../pruebas-de-consanguinidad/"><i class="fa-solid fa-diagram-project"></i> Prueba de Consanguinidad</a></li>
+                            <li><a href="../servicio-a-domicilio/"><i class="fa-solid fa-car-side"></i> Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#beneficios" class="nav-scroll">Beneficios</a></li>
+                    <li><a href="../index.html#cobertura" class="nav-scroll">Cobertura</a></li>
+                    <li><a href="../index.html#faq" class="nav-scroll">Preguntas</a></li>
+                    <li><a href="../contactenos/" class="text-primary-blue" style="font-weight: 700;">Contáctenos</a></li>
                 </ul>
                 <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
                     <i class="fa-solid fa-bars"></i>
@@ -188,21 +275,25 @@
         <!-- Section 1: Intro -->
         <section class="service-intro-section" id="que-es">
             <div class="container">
-                <div class="service-content-block reveal fade-up">
-                    <p class="content-text text-center mb-0" style="font-size: 1.25rem; line-height: 1.8; color: #1e293b;">
-                        El Laboratorio Genes SAS ofrece este servicio en dos modalidades: una prueba no invasiva y una prueba invasiva. Cada una aplica en momentos distintos del embarazo y bajo condiciones específicas.
+                <div class="scientific-narrative-panel reveal fade-up">
+                    <div class="narrative-badge">
+                        <i class="fa-solid fa-baby"></i>
+                        <span>Prueba prenatal para paternidad</span>
+                    </div>
+                    <p class="narrative-text">
+                        El <span class="lab-highlight">Laboratorio Genes SAS</span> ofrece este servicio en <span class="modalities-highlight">dos modalidades</span>: una prueba no invasiva y una prueba invasiva. Cada una aplica en momentos distintos del embarazo y bajo condiciones específicas.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Modalities -->
-        <section class="pb-5" id="modalidades">
+        <section class="pb-3" id="modalidades">
             <div class="container">
                 <div class="modality-split reveal fade-up">
                     <!-- Modalidad Invasiva -->
                     <div class="modality-card-prenatal">
-                        <span class="card-accent-tag accent-invasive">Procedimiento Médico</span>
+                        <span class="card-accent-tag accent-invasive">Prueba invasiva</span>
                         <div class="modality-icon-circle icon-invasive"><i class="fa-solid fa-hospital-user"></i></div>
                         <span class="modalidad-label">Opción 1</span>
                         <h3 class="modalidad-title">Modalidad invasiva</h3>
@@ -214,7 +305,7 @@
 
                     <!-- Modalidad No Invasiva -->
                     <div class="modality-card-prenatal">
-                        <span class="card-accent-tag accent-non-invasive">100% Seguro</span>
+                        <span class="card-accent-tag accent-non-invasive">Prueba no invasiva</span>
                         <div class="modality-icon-circle icon-non-invasive"><i class="fa-solid fa-shield-heart"></i></div>
                         <span class="modalidad-label">Opción 2</span>
                         <h3 class="modalidad-title">Modalidad no invasiva</h3>
@@ -228,17 +319,24 @@
         </section>
 
         <!-- Section 3: Final Orientation -->
-        <section class="py-5 bg-light mt-5">
+        <section class="py-7" style="background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%); margin-top: 0.5rem;">
             <div class="container text-center reveal fade-up">
-                <div class="service-content-block">
-                    <h2 class="mg-blue mb-4" style="font-weight: 900; font-size: 2.2rem;">¿No sabe cuál modalidad aplica para su caso?</h2>
-                    <p class="content-text mb-5" style="font-size: 1.3rem; line-height: 1.8; max-width: 850px; margin-left: auto; margin-right: auto;">
+                <div class="service-content-block" style="max-width: 800px; margin: 0 auto;">
+                    <div style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 1.5rem; opacity: 0.8;">
+                        <i class="fa-solid fa-clipboard-question"></i>
+                    </div>
+                    <h2 class="mg-blue mb-4" style="font-weight: 800; font-size: 2.3rem; letter-spacing: -0.5px;">
+                        ¿No sabe cuál modalidad aplica para su caso?
+                    </h2>
+                    <p class="content-text" style="font-size: 1.2rem; line-height: 1.8; color: #475569; margin-bottom: 0;">
                         Cada embarazo es único y queremos orientarle de la mejor manera posible. Escríbanos por WhatsApp, nuestro equipo le informará los costos, y le pondrá en contacto con el especialista indicado según su ubicación y semana de gestación.
                     </p>
-                    <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
-                       class="btn btn-whatsapp-modern" style="padding: 1.3rem 3.5rem; font-size: 1.1rem;">
-                        <i class="fa-brands fa-whatsapp"></i> Iniciar asesoría ahora
-                    </a>
+                    <div style="margin-top: 3.5rem;">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
+                           class="btn btn-whatsapp-modern" style="padding: 0.9rem 2.2rem; font-size: 1rem; border-radius: 100px;">
+                            <i class="fa-brands fa-whatsapp"></i> Iniciar asesoría ahora
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

@@ -89,10 +89,12 @@
     <header class="main-header">
         <div class="header-top">
             <div class="container d-flex align-center" style="height: 100%; position: relative;">
-                <div class="logo">
+                <div class="logo" style="font-weight: 500;">
                     <a href="../index.html" style="text-decoration: none; display: flex; align-items: center; color: white;">
-                        <i class="fa-solid fa-dna logo-icon text-white" style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
-                        <div class="logo-text text-white" style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
+                        <i class="fa-solid fa-dna logo-icon text-white"
+                            style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
+                        <div class="logo-text text-white"
+                            style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
                             <span>Mundo</span>
                             <span>Genético</span>
                         </div>
@@ -105,14 +107,25 @@
             </div>
         </div>
 
+        <!-- Main Navigation added for Hybrid Web structure -->
         <nav class="header-nav bg-white shadow-sm" id="main-nav">
             <div class="container d-flex justify-between align-center">
                 <ul class="nav-links list-unstyled d-flex m-0">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../pruebas-de-paternidad/index.html">Paternidad Legal</a></li>
-                    <li><a href="#que-es" style="font-weight: 700; color: var(--primary-blue);">Consanguinidad</a></li>
-                    <li><a href="#casos">Tipos de Vínculos</a></li>
-                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="../index.html" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="javascript:void(0)" class="nav-no-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="../pruebas-de-paternidad/"><i class="fa-solid fa-dna"></i> Prueba de Paternidad</a></li>
+                            <li><a href="../pruebas-de-paternidad-anonima/"><i class="fa-solid fa-user-secret"></i> Prueba Anónima</a></li>
+                            <li><a href="../pruebas-de-paternidad-prenatal/"><i class="fa-solid fa-baby"></i> Prueba Prenatal</a></li>
+                            <li><a href="../pruebas-de-consanguinidad/"><i class="fa-solid fa-diagram-project"></i> Prueba de Consanguinidad</a></li>
+                            <li><a href="../servicio-a-domicilio/"><i class="fa-solid fa-car-side"></i> Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#beneficios" class="nav-scroll">Beneficios</a></li>
+                    <li><a href="../index.html#cobertura" class="nav-scroll">Cobertura</a></li>
+                    <li><a href="../index.html#faq" class="nav-scroll">Preguntas</a></li>
+                    <li><a href="../contactenos/" class="text-primary-blue" style="font-weight: 700;">Contáctenos</a></li>
                 </ul>
                 <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
                     <i class="fa-solid fa-bars"></i>
@@ -205,17 +218,89 @@
             </div>
         </section>
 
+    <!-- Benefits Section (Futuristic Grid Light Style) -->
+    <section class="benefits-section bg-medical-gradient" id="beneficios">
+        <canvas id="benefits-canvas" class="benefits-dna-overlay"></canvas>
+        <div class="container relative-z">
+            <div class="section-header text-center reveal fade-up" style="margin-bottom: 3rem;">
+                <h2 class="section-title text-primary-dark">La certeza que necesitas, <span
+                        class="text-primary-blue">con respaldo real</span></h2>
+            </div>
+
+            <div class="benefits-grid compact-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-1">
+                    <div class="icon-wrapper light-icon"><i class="fa-solid fa-flask text-primary-blue text-xl"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Pruebas procesadas por el <strong class="highlight-stat">laboratorio Genes SAS</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-2">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-microscope text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Más de <strong class="highlight-stat">24 años</strong> resolviendo casos reales con
+                            precisión genética</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-3">
+                    <div class="icon-wrapper light-icon"><i class="fa-solid fa-users text-primary-blue text-xl"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Más de <strong class="highlight-stat">80,000</strong> pruebas realizadas con resultados
+                            confiables</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-4">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-map-location-dot text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Atención en más de <strong class="highlight-stat">39 ciudades</strong> en Colombia</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-5">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-scale-balanced text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Pruebas con <strong class="highlight-stat">validez jurídica</strong> para procesos
+                            legales</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-6">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-comments text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            <strong class="highlight-stat">Asesoría profesional</strong> y confidencial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
         <!-- Section 3: Final CTA -->
-        <section class="py-5">
+        <section class="py-5" style="background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);">
             <div class="container text-center reveal fade-up">
-                <div class="service-content-block">
-                    <h2 class="mg-blue mb-4" style="font-weight: 800;">Contáctenos para Obtener Más Información</h2>
-                    <p class="content-text mb-5" style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div class="service-content-block" style="padding: 2rem 0;">
+                    <h2 class="mg-blue mb-4" style="font-weight: 800; font-size: 2.2rem;">Contáctenos para Obtener Más Información</h2>
+                    <p class="content-text mb-4" style="font-size: 1.15rem; line-height: 1.8; max-width: 850px; margin-left: auto; margin-right: auto; color: #475569;">
                         Para obtener más información sobre nuestras pruebas de parentesco y cómo podemos ayudarte en tu situación específica, no dudes en comunicarte con nosotros. Nuestro equipo de expertos está listo para responder a tus preguntas y brindarte la orientación que necesitas.
                     </p>
-                    <div class="text-center mt-5 reveal fade-up">
+                    <div class="text-center mt-5 pt-2 reveal fade-up">
                         <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
-                           class="btn btn-whatsapp-modern" style="padding: 1.2rem 3.5rem;">
+                           class="btn btn-whatsapp-modern" style="padding: 0.9rem 2.5rem; font-size: 1.05rem;">
                             <i class="fa-brands fa-whatsapp"></i> Hablar con un experto
                         </a>
                     </div>
