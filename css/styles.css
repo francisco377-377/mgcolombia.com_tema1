@@ -317,6 +317,98 @@ section {
     transform: translateY(-2px);
 }
 
+/* Cobertura Nacional Header Button - Glassmorphism style for Header Top */
+.btn-cobertura-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible;
+    margin-left: auto; /* Push to right in flex container */
+    z-index: 10;
+}
+
+.btn-cobertura-nav:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.flag-icon-3d {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.btn-cobertura-nav:hover .flag-icon-3d {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.pulse-indicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    border: 2px solid white;
+    z-index: 2;
+}
+
+.pulse-dot-anim {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    animation: ripple-pulse 2s linear infinite;
+    z-index: 1;
+}
+
+@keyframes ripple-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+}
+
+@media (max-width: 991px) {
+    .btn-text-nav {
+        display: none;
+    }
+    .btn-cobertura-nav {
+        padding: 6px;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        gap: 0;
+        margin-right: 45px; /* Leave space for hamburger in subpages if absolute */
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-cobertura-nav {
+        margin-right: 40px;
+    }
+}
+
 /* =========================================
    HEADER (SOLID BLUE WITH WHITE SUBNAV)
    ========================================= */
