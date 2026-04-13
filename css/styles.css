@@ -2668,6 +2668,23 @@ section {
     padding: 1.5rem 2rem !important;
     font-size: 1.15rem !important;
     letter-spacing: 0.5px;
+    display: flex !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 1.2rem !important;
+}
+
+.faq-question-icon {
+    color: #38bdf8 !important;
+    font-size: 1.3rem !important;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
 }
 
 .faq-answer * {
