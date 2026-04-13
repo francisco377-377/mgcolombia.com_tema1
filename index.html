@@ -62,11 +62,22 @@
         <nav class="header-nav bg-white shadow-sm" id="main-nav">
             <div class="container d-flex justify-between align-center">
                 <ul class="nav-links list-unstyled d-flex m-0">
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#inicio" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#servicios" class="nav-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="pruebas-de-paternidad/">Prueba de Paternidad</a></li>
+                            <li><a href="pruebas-de-paternidad-anonima/">Prueba Anónima</a></li>
+                            <li><a href="pruebas-de-paternidad-prenatal/">Prueba Prenatal</a></li>
+                            <li><a href="pruebas-de-consanguinidad/">Prueba de Consanguinidad</a></li>
+                            <li><a href="servicio-a-domicilio/">Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#beneficios" class="nav-scroll">Beneficios</a></li>
-                    <li><a href="#impacto" class="nav-scroll">Proceso</a></li>
+                    <li><a href="#proceso" class="nav-scroll">Proceso</a></li>
+                    <li><a href="#cobertura" class="nav-scroll">Cobertura</a></li>
                     <li><a href="#faq" class="nav-scroll">Preguntas</a></li>
-                    <li><a href="contactenos/" class="text-primary-blue" style="font-weight: 700;">Contacto</a></li>
+                    <li><a href="#contacto" class="nav-scroll text-primary-blue" style="font-weight: 700;">Contacto</a></li>
                 </ul>
                 <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
                     <i class="fa-solid fa-bars"></i>
@@ -77,7 +88,7 @@
 
     <main>
         <!-- Hero Section (Tech Lab Future) -->
-        <section class="hero-premium hero-full-bg">
+        <section class="hero-premium hero-full-bg" id="inicio">
             <div class="hero-bg-image"></div>
             <div class="hero-bg-lab-fade"></div>
 
@@ -164,7 +175,7 @@
         </section>
 
         <!-- Benefits Section DARK TEST (Futuristic Grid Dark Style) -->
-        <section class="benefits-section" id="beneficios-dark-test" style="background: linear-gradient(180deg, #062863 0%, #093c8d 100%); padding: 6rem 0;">
+        <section class="benefits-section" id="beneficios" style="background: linear-gradient(180deg, #062863 0%, #093c8d 100%); padding: 6rem 0;">
             <canvas id="benefits-canvas-dark" class="benefits-dna-overlay" style="opacity: 0.6;"></canvas>
             <div class="container relative-z">
                 <div class="section-header text-center reveal fade-up" style="margin-bottom: 3rem;">
@@ -236,7 +247,7 @@
         </section>
 
         <!-- Specialized DNA Services Grid (Redesigned Compact Layout) -->
-        <section class="services-tech-section" id="servicios-especializados">
+        <section class="services-tech-section" id="servicios">
             <div class="container">
                 <div class="section-header text-center reveal fade-up">
                     <div class="transparency-tag mb-3" style="display: inline-flex;">

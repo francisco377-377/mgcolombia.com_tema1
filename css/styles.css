@@ -2538,20 +2538,104 @@ section {
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+}
+
+.header-nav .nav-links li {
+    position: relative;
 }
 
 .header-nav .nav-links li a {
     color: var(--text-main);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
     padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .header-nav .nav-links li a:hover {
     color: var(--primary-blue);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    min-width: 240px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-nav .nav-links li:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-content li {
+    width: 100%;
+}
+
+.dropdown-content li a {
+    display: block !important;
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.85rem !important;
+    color: var(--text-main) !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap;
+}
+
+.dropdown-content li a:hover {
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--primary-blue) !important;
+    padding-left: 1.8rem !important;
+}
+
+@media (max-width: 768px) {
+    .header-nav .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none; /* Controlled by mobile logic if needed, but for now simple list */
+        background: rgba(0, 0, 0, 0.02);
+        box-shadow: none;
+        min-width: 100%;
+        border-radius: 0;
+        padding: 0;
+        border: none;
+    }
+
+    /* On mobile, show dropdown if parent nav is active or always if preferred */
+    .header-nav.active .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown-content li a {
+        padding: 0.5rem 1rem !important;
+        background: transparent !important;
+    }
 }
 
 .mobile-menu-toggle {
