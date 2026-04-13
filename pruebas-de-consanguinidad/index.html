@@ -28,7 +28,7 @@
             background-size: cover;
         }
 
-        .service-intro-section { padding: 80px 0; }
+        .service-intro-section { padding: 60px 0 0 0; }
         .service-content-block { max-width: 900px; margin: 0 auto; }
         
         .modality-card {
@@ -43,6 +43,10 @@
             align-items: flex-start;
             gap: 25px;
         }
+        
+        /* New case section spacing tweak */
+        #casos { padding-top: 30px !important; }
+
 
         .modality-card:hover {
             transform: translateY(-5px);
@@ -76,7 +80,65 @@
             margin: 50px 0;
         }
 
+        .scientific-context-panel {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(239, 246, 255, 0.5) 100%);
+            border-left: 6px solid var(--primary-blue);
+            padding: 50px 0 10px 45px;
+            margin-bottom: 0px; /* Reduced to tighten with next section */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scientific-context-panel::before {
+            content: "\f471"; /* microscope */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            font-size: 12rem;
+            color: rgba(9, 60, 141, 0.03);
+            transform: rotate(-15deg);
+        }
+
+        .context-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .narrative-title {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--primary-blue-dark);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -0.03em;
+        }
+
+        .narrative-text-justified {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #334155;
+            text-align: justify;
+            max-width: 900px;
+        }
+
         @media (max-width: 768px) {
+            .scientific-context-panel { padding: 40px 20px; border-left-width: 4px; }
+            .narrative-title { font-size: 1.8rem; }
+            .narrative-text-justified { font-size: 1.15rem; text-align: left; }
+        }
+
             .modality-card { flex-direction: column; padding: 25px; }
             .modality-icon { margin-bottom: 10px; }
         }
@@ -166,21 +228,25 @@
             </div>
         </section>
 
-        <!-- Section 1: Definition -->
+        <!-- Section 1: Scientific Context -->
         <section class="service-intro-section" id="que-es">
             <div class="container">
-                <div class="service-content-block reveal fade-up">
-                    <h2 class="section-title mg-blue mb-4">¿Qué es una prueba de consanguinidad o relación biológica?</h2>
+                <div class="scientific-context-panel reveal fade-up">
+                    <div class="context-badge">
+                        <i class="fa-solid fa-microscope text-primary-blue"></i> Alcance Científico
+                    </div>
                     
-                    <p class="content-text mb-4" style="font-size: 1.2rem; line-height: 1.8; color: #334155;">
-                        En el Laboratorio Genes SAS, comprendemos que existe una gran necesidad en nuestros usuarios, de conocer el vínculo familiar entre dos o más personas, cuando el presunto padre no está presente, ya sea por ausencia o por muerte. Nuestro laboratorio cuenta con una variedad de pruebas de parentesco que pueden ayudar a aclarar dudas de este tipo.
+                    <h2 class="narrative-title">¿Qué es una prueba de consanguinidad o relación biológica?</h2>
+                    
+                    <p class="narrative-text-justified">
+                        En el <strong>Laboratorio Genes SAS</strong>, comprendemos que existe una gran necesidad en nuestros usuarios de conocer el vínculo familiar entre dos o más personas cuando el presunto padre no está presente, ya sea por ausencia o por muerte. Nuestro laboratorio cuenta con una variedad de pruebas de parentesco que pueden ayudar a aclarar dudas de este tipo con el respaldo de tecnología genética de vanguardia.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Cases -->
-        <section class="py-5 bg-light" id="casos">
+        <section class="pb-5 pt-0 bg-light" id="casos">
             <div class="container">
                 <div class="service-content-block">
                     <div class="cases-row reveal fade-up">
