@@ -2767,18 +2767,42 @@ section {
     .dropdown-content li {
         opacity: 1 !important;
         transform: none !important;
+        position: relative;
     }
 
     .dropdown-content li a {
-        padding: 1rem 3rem !important;
+        padding: 1rem 3.5rem 1rem 3rem !important;
         background: transparent !important;
         justify-content: flex-start !important;
         white-space: normal !important;
-        border-bottom: 1px solid rgba(0,0,0,0.03);
+        border-bottom: none !important;
+        font-size: 0.95rem;
+        color: var(--text-dark);
     }
     
-    .dropdown-content li:last-child a {
-        border-bottom: none;
+    /* Separador sutil asimétrico para los sub ítems */
+    .dropdown-content li:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 3rem;
+        width: calc(100% - 4rem);
+        height: 1px;
+        background: linear-gradient(90deg, rgba(9, 60, 141, 0.08), transparent);
+    }
+    
+    /* Disable heavy desktop hover animations for mobile (fixes "laggy" feeling) */
+    .dropdown-content li a:hover,
+    .dropdown-content li a:active {
+        padding-left: 3rem !important; /* Prevent layout shift */
+        background: transparent !important;
+        border-left-color: transparent !important;
+    }
+
+    .dropdown-content li a:hover i,
+    .dropdown-content li a:active i {
+        transform: none !important; /* Remove 360 degree spin on touch */
+        filter: none !important;
     }
 }
 
@@ -2812,18 +2836,22 @@ section {
         top: 65px;
         right: 0;
         left: auto;
-        width: 320px;
-        max-width: 85vw;
-        height: calc(100vh - 65px);
-        background: white;
-        box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+        width: 330px;
+        max-width: 88vw;
+        height: auto; /* Shrink to completely wrap items! */
+        max-height: calc(100vh - 85px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-bottom-left-radius: 28px; /* Elegant bottom curve */
+        box-shadow: -10px 20px 45px rgba(9, 60, 141, 0.18); /* Floating app card shadow */
         display: flex;
         flex-direction: column;
         transform: translateX(100%);
         opacity: 1;
         visibility: visible;
         transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        padding: 1rem 0;
+        padding: 1.5rem 0 2rem 0;
         z-index: 2000;
         overflow-y: auto;
     }
@@ -2846,14 +2874,30 @@ section {
         height: auto;
     }
 
-    .nav-links a {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid rgba(0,0,0,0.03);
-        width: 100%;
+    .nav-links li {
+        position: relative;
     }
 
-    .nav-links li:last-child a {
+    .nav-links a {
+        padding: 1.1rem 2rem;
         border-bottom: none;
+        width: 100%;
+        color: var(--primary-color);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Beautiful tech-styled gradient dividing line */
+    .nav-links > li:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.35), transparent);
     }
 
     .nav-separator {
