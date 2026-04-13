@@ -2740,7 +2740,7 @@ section {
     transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .header-nav .nav-links li {
         width: 100%;
         text-align: center;
@@ -2748,7 +2748,7 @@ section {
 
     .dropdown-content {
         position: static;
-        transform: none;
+        transform: none !important;
         opacity: 1;
         visibility: visible;
         display: none; /* Controlled by mobile logic if needed, but for now simple list */
@@ -2760,66 +2760,107 @@ section {
         border: none;
     }
 
-    /* On mobile, show dropdown if parent nav is active or always if preferred */
-    .header-nav.active .dropdown-content {
+    /* On mobile, toggle dropdown using 'open' class via JS */
+    .nav-item-dropdown.open .dropdown-content {
         display: block;
     }
-    
+    .dropdown-content li {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
     .dropdown-content li a {
-        padding: 0.5rem 1rem !important;
+        padding: 1rem 3rem !important;
         background: transparent !important;
+        justify-content: flex-start !important;
+        white-space: normal !important;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    
+    .dropdown-content li:last-child a {
+        border-bottom: none;
     }
 }
 
+/* Mobile Menu Toggle (Hamburger) */
 .mobile-menu-toggle {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
-    font-size: 1.5rem;
-    color: var(--text-main);
+    font-size: 1.8rem;
+    color: var(--text-white);
     cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    padding: 0;
 }
 
-@media (max-width: 768px) {
-    .header-top {
-        display: flex;
+.mobile-menu-toggle:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 991px) {
+    .mobile-menu-toggle {
+        display: flex !important;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        pointer-events: auto !important;
     }
 
     .header-nav {
-        position: absolute;
+        position: fixed;
         top: 65px;
-        left: 0;
-        width: 100%;
-        height: auto;
-        flex-direction: column;
+        right: 0;
+        left: auto;
+        width: 320px;
+        max-width: 85vw;
+        height: calc(100vh - 65px);
         background: white;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        display: none; /* hidden by default */
+        box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         padding: 1rem 0;
+        z-index: 2000;
+        overflow-y: auto;
     }
     
     .header-nav.active {
-        display: flex;
+        transform: translateX(0) !important;
+    }
+
+    .header-nav .nav-links li:hover .dropdown-content,
+    .header-nav .nav-links li:active .dropdown-content,
+    .header-nav .nav-links li:focus .dropdown-content {
+        transform: none !important;
     }
 
     .header-nav .nav-links {
         flex-direction: column;
-        gap: 1rem;
-        align-items: center;
+        gap: 0;
+        align-items: stretch;
+        width: 100%;
+        height: auto;
+    }
+
+    .nav-links a {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
         width: 100%;
     }
 
-    .mobile-menu-toggle {
-        display: block;
-        position: absolute;
-        right: 1.5rem;
-        top: 15px;
-        color: white; /* on top of header-top */
-        z-index: 1001;
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .nav-separator {
+        display: none;
     }
 }
+
 
 /* =========================================
    FAQ REDESIGN (Futuristic Tech Medical Background)

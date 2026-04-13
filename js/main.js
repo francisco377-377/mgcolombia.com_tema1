@@ -36,6 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainNav.classList.remove('active');
             });
         });
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.nav-item-dropdown > a').forEach(dropdownToggle => {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    dropdownToggle.parentElement.classList.toggle('open');
+                }
+            });
+        });
     }
 
     // Smooth scrolling for anchor links
