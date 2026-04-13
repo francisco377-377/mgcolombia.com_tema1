@@ -1,0 +1,85 @@
+=============================================================================
+             PLAN DE DESPLIEGUE A SITEGROUND - MUNDO GENÉTICO
+=============================================================================
+
+Este es el resumen definitivo, paso a paso, para reemplazar el antiguo
+WordPress por la nueva página web estática de ultra rendimiento, sin
+romper nada de lo que está funcionando (como otras landings o certificados).
+
+-----------------------------------------------------------------------------
+FASE 1: LIMPIEZA EN SITEGROUND (GESTOR DE ARCHIVOS)
+-----------------------------------------------------------------------------
+Entra a tu panel de SiteGround -> Sitio web -> Gestor de Archivos -> public_html
+
+1. CARPETAS INTOCABLES (DEJARLAS EXACTAMENTE DONDE ESTÁN):
+   [ x ] .well-known (Esta es la que da la verificación del SSL).
+   [ x ] ventasexamendepaternidad (Tu otro proyecto / Landing Page).
+   [ x ] webstats (Estadísticas nativas del servidor).
+
+2. CREAR CARPETA DE RESPALDO:
+   [ x ] Crea una carpeta nueva llamándola "wp-respaldo".
+
+3. MOVER EL WORDPRESS:
+   [ x ] Selecciona TODO lo de WordPress y arrástralo/muévelo a "wp-respaldo".
+   (Esto incluye: wp-admin, wp-content, wp-includes, index.php, wp-config.php, 
+   .htaccess (renombralo a .htaccess_viejo primero), xmlrpc.php, php_errorlog, 
+   readme.html, Default.html, license.txt, etc).
+
+Tu "public_html" ahora debería verse casi vacío: solo con ".well-known",
+tu landing de "ventas...", y la carpeta de "wp-respaldo".
+
+
+-----------------------------------------------------------------------------
+FASE 2: LA SUBIDA DEL NUEVO SITIO
+-----------------------------------------------------------------------------
+En tu Gestor de Archivos o mediante FTP (dentro de public_html vacío):
+
+1. LO QUE DEBES SUBIR (DE TU PC A SITEGROUND):
+   [ x ] index.html (La página de inicio)
+   [ x ] Carpeta: assets
+   [ x ] Carpeta: css
+   [ x ] Carpeta: js
+   [ x ] Carpeta: pruebas-de-paternidad
+   [ x ] Carpeta: pruebas-de-paternidad-anonima
+   [ x ] Carpeta: pruebas-de-paternidad-prenatal
+   [ x ] Carpeta: pruebas-de-consanguinidad
+   [ x ] Carpeta: servicio-a-domicilio
+   [ x ] Carpeta: contactenos
+
+2. LO QUE NO DEBES SUBIR:
+   [ x ] MAP_DEVELOPMENT_RULES.md
+   [ x ] Carpetas .git (si existen)
+
+
+-----------------------------------------------------------------------------
+FASE 3: RED DE SEGURIDAD (.htaccess DE PRODUCCIÓN)
+-----------------------------------------------------------------------------
+Estando en public_html, verás que el bot te creó un archivo un poco antes allí
+en tu disco local llamado ".htaccess". 
+
+[ x ] Sube ese archivo ".htaccess" a tu public_html en SiteGround.
+
+(Este archivo automáticamente forzará HTTPS, previene ataques XSS y Clickjacking,
+impide que la gente husmee en tu carpeta wp-respaldo, y activa la compresión GZIP
+super agresiva para tiempos de carga inmediatos).
+
+
+-----------------------------------------------------------------------------
+FASE 4: TOQUES FINALES Y CACHÉ  
+-----------------------------------------------------------------------------
+1. ACTIVAR HTTPS NATIVO:
+   [ x ] Ve a Seguridad -> Forzar HTTPS en el panel de SiteGround y asegúrate
+         de que el "switch" de tu dominio esté encendido (Activo).
+
+2. ESCÁNER DE SEGURIDAD:
+   [ x ] Activa o revisa el Site Scanner en el panel para prevenir Malware.
+
+3. VACIADO DE CACHÉ MÁXIMO (EL PASO MÁS OLVIDADO):
+   [ x ] SiteGround guarda copias de las páginas viejas. Ve a "Velocidad" -> "Caché".
+   [ x ] En "Caché Dinámica", dale a "Vaciar Caché" (el icono de escobita).
+   [ x ] Haz lo mismo en cualquier otra opción de Purga/Flush Cache que veas.
+   [ x ] En tu computadora, limpia la caché de Google Chrome (Ctrl+Shift+R o vaciar
+         la memoria caché).
+         
+
+¡Felicidades, el despliegue habrá concluido con éxito!
