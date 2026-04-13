@@ -366,7 +366,7 @@ section {
     right: -2px;
     width: 10px;
     height: 10px;
-    background-color: #ff4d4d;
+    background-color: #2ecc71;
     border-radius: 50%;
     border: 2px solid white;
     z-index: 2;
@@ -378,7 +378,7 @@ section {
     right: -2px;
     width: 10px;
     height: 10px;
-    background-color: #ff4d4d;
+    background-color: #2ecc71;
     border-radius: 50%;
     animation: ripple-pulse 2s linear infinite;
     z-index: 1;
