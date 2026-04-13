@@ -1910,7 +1910,12 @@ section {
 }
 
 .faq-answer {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .faq-answer p {
@@ -3009,7 +3014,8 @@ section {
 }
 
 .faq-item.active .faq-answer {
-    display: block;
+    max-height: 800px;
+    opacity: 1;
     padding: 1.5rem 2rem !important;
     background: rgba(0, 0, 0, 0.2) !important; 
 }
