@@ -481,8 +481,6 @@ function initBenefitsDNA() {
                 grad.addColorStop(1, `rgba(9, 60, 141, ${alpha})`);
                 ctx.fillStyle = grad;
 
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = `rgba(56, 189, 248, ${alpha * 0.4})`;
             } else {
                 // Deeper tone for background spheres structure
                 ctx.fillStyle = `rgba(9, 60, 141, ${alpha * 0.8})`;
@@ -783,7 +781,7 @@ function initFaqDNA() {
 
     function draw() {
         if (window.canvasVisibility && window.canvasVisibility['faq-dna-canvas'] === false) {
-            requestAnimationFrame(draw);
+            setTimeout(() => requestAnimationFrame(draw), 200);
             return;
         }
 
@@ -820,8 +818,6 @@ function initFaqDNA() {
             ctx.beginPath();
             ctx.arc(x1, p.y, p.radius * (z1 + 1.5), 0, Math.PI * 2);
             ctx.fillStyle = `rgba(56, 189, 248, ${alpha1})`;
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#38bdf8';
             ctx.fill();
 
             ctx.beginPath();
@@ -1151,8 +1147,6 @@ function initBenefitsDNADark() {
                 grad.addColorStop(1, `rgba(56, 189, 248, ${alpha})`);
                 ctx.fillStyle = grad;
 
-                ctx.shadowBlur = 40; // More intense glow
-                ctx.shadowColor = `rgba(255, 255, 255, ${alpha * 0.8})`;
             } else {
                 ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.5})`;
                 ctx.shadowBlur = 0;
