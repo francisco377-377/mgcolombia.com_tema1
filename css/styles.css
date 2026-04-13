@@ -2561,50 +2561,85 @@ section {
     color: var(--primary-blue);
 }
 
-/* Dropdown Content */
+/* Dropdown Content - Premium Liquid Glass */
 .dropdown-content {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    min-width: 240px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0.8rem 0;
+    transform: translateX(-50%) translateY(15px);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    min-width: 260px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 1px 1px rgba(255, 255, 255, 0.5) inset,
+        0 0 10px rgba(56, 189, 248, 0.1);
+    border-radius: 16px;
+    padding: 1rem 0;
     list-style: none;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     z-index: 1000;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.15);
 }
 
 .header-nav .nav-links li:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(5px);
 }
 
 .dropdown-content li {
     width: 100%;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s ease;
 }
 
+/* Staggered Entry Animation */
+.header-nav .nav-links li:hover .dropdown-content li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.header-nav .nav-links li:hover .dropdown-content li:nth-child(1) { transition-delay: 0.05s; }
+.header-nav .nav-links li:hover .dropdown-content li:nth-child(2) { transition-delay: 0.1s; }
+.header-nav .nav-links li:hover .dropdown-content li:nth-child(3) { transition-delay: 0.15s; }
+.header-nav .nav-links li:hover .dropdown-content li:nth-child(4) { transition-delay: 0.2s; }
+.header-nav .nav-links li:hover .dropdown-content li:nth-child(5) { transition-delay: 0.25s; }
+
 .dropdown-content li a {
-    display: block !important;
-    padding: 0.7rem 1.5rem !important;
-    font-size: 0.85rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    padding: 0.8rem 1.8rem !important;
+    font-size: 0.9rem !important;
     color: var(--text-main) !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.25s ease !important;
     white-space: nowrap;
+    position: relative;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-content li a i {
+    color: var(--primary-blue);
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
 }
 
 .dropdown-content li a:hover {
-    background: rgba(56, 189, 248, 0.08);
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.1) 0%, transparent 100%);
     color: var(--primary-blue) !important;
-    padding-left: 1.8rem !important;
+    padding-left: 2.2rem !important;
+    border-left-color: var(--primary-blue);
+}
+
+.dropdown-content li a:hover i {
+    transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
