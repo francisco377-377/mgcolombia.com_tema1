@@ -3341,7 +3341,8 @@ section {
     /* ANCLAJE ESTRICTO DE DIMENSIÓN CERO */
     width: 0;
     height: 0;
-    transform: translate(-50%, -50%); 
+    transform: translate3d(-50%, -50%, 0); /* Hardware Acceleration */
+    will-change: transform;
     pointer-events: none;
     z-index: 10;
     display: flex;
@@ -3375,7 +3376,8 @@ section {
     height: 100%;
     display: block;
     overflow: visible;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.18));
+    will-change: transform;
+    transform: translateZ(0); /* Forzar rasterización temprana para evitar jank */
 }
 
 .lab-marker-container:hover,
