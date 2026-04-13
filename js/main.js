@@ -346,14 +346,12 @@ function initTechHUD() {
             ctx.beginPath();
             ctx.arc(x1, y, size1, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(56, 189, 248, ${alpha1})`;
-            if (z1 > 0) { ctx.shadowBlur = 15; ctx.shadowColor = '#38bdf8'; } else { ctx.shadowBlur = 0; }
             ctx.fill();
 
             // Strand 2 (Light Cyan/White)
             ctx.beginPath();
             ctx.arc(x2, y, size2, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(224, 242, 254, ${alpha2})`;
-            if (z2 > 0) { ctx.shadowBlur = 15; ctx.shadowColor = '#e0f2fe'; } else { ctx.shadowBlur = 0; }
             ctx.fill();
         }
         ctx.shadowBlur = 0;
