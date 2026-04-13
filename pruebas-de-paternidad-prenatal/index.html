@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Paternidad Prenatal ADN | Mundo Genético</title>
+
+    <!-- SEO & Ads Compliance -->
+    <meta name="description" content="Certeza antes del nacimiento con pruebas de paternidad prenatales invasivas y no invasivas. Resultados seguros y profesionales.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon-ad.svg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Baseline Clean Design for Paternidad Prenatal */
+        .hero-prenatal-bg {
+            background: url('../assets/images/servicios/hero-prenatal.webp') no-repeat center center;
+            background-size: cover;
+        }
+
+        .service-intro-section { padding: 60px 0 0; }
+        .service-content-block { max-width: 900px; margin: 0 auto; }
+        
+        /* Modality Specific Styles */
+        .modality-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 0;
+        }
+
+        .modality-card-prenatal {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(9, 60, 141, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .modality-card-prenatal:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(9, 60, 141, 0.08);
+        }
+
+        .card-accent-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 15px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .accent-invasive { background: rgba(56, 189, 248, 0.1); color: var(--primary-blue); }
+        .accent-non-invasive { background: rgba(16, 185, 129, 0.1); color: var(--whatsapp-green); }
+
+        .modality-icon-circle {
+            width: 65px; height: 65px;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 25px;
+        }
+
+        .icon-invasive { background: var(--primary-blue-light); color: var(--primary-blue); }
+        .icon-non-invasive { background: #f0fdf4; color: var(--whatsapp-green); }
+
+        .modalidad-label {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .modalidad-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue-dark);
+            margin-bottom: 15px;
+        }
+
+        .weeks-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .modality-card-prenatal .content-text {
+            text-align: justify;
+        }
+
+        @media (max-width: 992px) {
+            .modality-split { grid-template-columns: 1fr; }
+        }
+
+        /* --- SCIENTIFIC NARRATIVE STYLES --- */
+        .scientific-narrative-panel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+            border-radius: 30px;
+            padding: 40px 50px;
+            border: 1px solid rgba(9, 60, 141, 0.08);
+            box-shadow: 
+                0 10px 40px rgba(9, 60, 141, 0.03),
+                0 1px 3px rgba(9, 60, 141, 0.05);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scientific-narrative-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-blue), #38bdf8);
+        }
+
+        .narrative-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 30px;
+        }
+
+        .narrative-badge i { font-size: 1rem; }
+
+        .narrative-text {
+            font-size: 1.45rem;
+            line-height: 1.7;
+            color: #1e293b;
+            font-weight: 500;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .lab-highlight {
+            color: var(--primary-blue-dark);
+            font-weight: 800;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .modalities-highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .scientific-narrative-panel { padding: 40px 25px; border-radius: 20px; }
+            .narrative-text { font-size: 1.15rem; }
+            .narrative-badge { padding: 6px 14px; letter-spacing: 1.5px; }
+        }
+    </style>
+</head>
+
+<body class="theme-light-medical">
+
+    <!-- Solid Blue Header (Standardized) -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container d-flex align-center" style="height: 100%; position: relative;">
+                <div class="logo" style="font-weight: 500;">
+                    <a href="../index.html" style="text-decoration: none; display: flex; align-items: center; color: white;">
+                        <i class="fa-solid fa-dna logo-icon text-white"
+                            style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
+                        <div class="logo-text text-white"
+                            style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
+                            <span>Mundo</span>
+                            <span>Genético</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="header-tagline text-white">
+                    <span class="tagline-top">Área comercial y de ventas del</span><br>
+                    <strong class="tagline-bottom">Laboratorio Genes SAS.</strong>
+                </div>
+
+                <div class="header-actions" style="margin-left: auto; display: flex; align-items: center; gap: 15px;">
+                    <a href="../index.html#cobertura" class="btn-cobertura-nav" style="margin-left: 0;">
+                        <img src="../assets/images/colombia-flag-3d.webp" alt="Colombia flag" class="flag-icon-3d">
+                        <span class="btn-text-nav">Cobertura Nacional</span>
+                        <span class="pulse-indicator"></span>
+                        <span class="pulse-dot-anim"></span>
+                    </a>
+
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation added for Hybrid Web structure -->
+        <nav class="header-nav bg-white shadow-sm" id="main-nav">
+
+            <div class="container d-flex justify-between align-center">
+                <ul class="nav-links list-unstyled d-flex m-0">
+                    <li><a href="../index.html" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="javascript:void(0)" class="nav-no-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="../pruebas-de-paternidad/"><i class="fa-solid fa-dna"></i> Prueba de Paternidad</a></li>
+                            <li><a href="../pruebas-de-paternidad-anonima/"><i class="fa-solid fa-user-secret"></i> Prueba Anónima</a></li>
+                            <li><a href="../pruebas-de-paternidad-prenatal/"><i class="fa-solid fa-baby"></i> Prueba Prenatal</a></li>
+                            <li><a href="../pruebas-de-consanguinidad/"><i class="fa-solid fa-diagram-project"></i> Prueba de Consanguinidad</a></li>
+                            <li><a href="../servicio-a-domicilio/"><i class="fa-solid fa-car-side"></i> Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#beneficios" class="nav-scroll">Beneficios</a></li>
+                    <li><a href="../index.html#cobertura" class="nav-scroll">Cobertura</a></li>
+                    <li><a href="../index.html#faq" class="nav-scroll">Preguntas</a></li>
+                    <li><a href="../contactenos/" class="text-primary-blue" style="font-weight: 700;">Contáctenos</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section (Original Design Maintained) -->
+        <section class="hero-premium hero-full-bg hero-prenatal-bg">
+            <div class="hero-bg-lab-fade" style="background: linear-gradient(90deg, rgba(6, 40, 99, 0.9) 0%, rgba(6, 40, 99, 0.7) 45%, rgba(6, 40, 99, 0.2) 85%, transparent 100%);"></div>
+            
+            <!-- Animated HUD & DNA Overlay -->
+            <canvas id="tech-canvas" class="tech-hud-overlay"></canvas>
+            
+            <div class="container hero-container-single relative-z">
+                <div class="hero-content reveal fade-up">
+                    <div class="trust-badge-light mb-4">
+                        <span class="pulse-dot"></span> Vínculos y Certeza Prenatal
+                    </div>
+
+                    <h1 class="hero-title text-white" style="font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; text-wrap: balance;">
+                        Prueba de paternidad prenatal
+                    </h1>
+
+                    <p class="hero-subtitle text-white" style="font-size: 1.35rem; max-width: 800px; line-height: 1.6; opacity: 0.95;">
+                        La prueba de paternidad prenatal es un examen de ADN que permite determinar el vínculo biológico entre un bebé en gestación y su presunto padre, antes del nacimiento.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
+                            target="_blank" class="btn btn-whatsapp-modern">
+                            <i class="fa-brands fa-whatsapp"></i> Hablar con un experto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Intro -->
+        <section class="service-intro-section" id="que-es">
+            <div class="container">
+                <div class="scientific-narrative-panel reveal fade-up">
+                    <div class="narrative-badge">
+                        <i class="fa-solid fa-baby"></i>
+                        <span>Prueba prenatal para paternidad</span>
+                    </div>
+                    <p class="narrative-text">
+                        El <span class="lab-highlight">Laboratorio Genes SAS</span> ofrece este servicio en <span class="modalities-highlight">dos modalidades</span>: una prueba no invasiva y una prueba invasiva. Cada una aplica en momentos distintos del embarazo y bajo condiciones específicas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Modalities -->
+        <section class="pb-3" id="modalidades">
+            <div class="container">
+                <div class="modality-split reveal fade-up">
+                    <!-- Modalidad Invasiva -->
+                    <div class="modality-card-prenatal">
+                        <span class="card-accent-tag accent-invasive">Prueba invasiva</span>
+                        <div class="modality-icon-circle icon-invasive"><i class="fa-solid fa-hospital-user"></i></div>
+                        <span class="modalidad-label">Opción 1</span>
+                        <h3 class="modalidad-title">Modalidad invasiva</h3>
+                        <div class="weeks-indicator"><i class="fa-regular fa-calendar-check"></i> Desde la semana 14</div>
+                        <p class="content-text m-0" style="line-height: 1.7;">
+                            Esta prueba se realiza mediante un procedimiento médico llamado amniocentesis, que consiste en la extracción de una pequeña muestra de líquido amniótico. Por su naturaleza, solo puede ser llevada a cabo por un médico especialista en un centro de salud habilitado y con todos los protocolos requeridos para este tipo de procedimiento. Puede practicarse a partir de la semana 14 de gestación. El Laboratorio Genes SAS le facilitará el contacto de los especialistas autorizados para la toma de la muestra, quienes nos la envían directamente para su análisis.
+                        </p>
+                    </div>
+
+                    <!-- Modalidad No Invasiva -->
+                    <div class="modality-card-prenatal">
+                        <span class="card-accent-tag accent-non-invasive">Prueba no invasiva</span>
+                        <div class="modality-icon-circle icon-non-invasive"><i class="fa-solid fa-shield-heart"></i></div>
+                        <span class="modalidad-label">Opción 2</span>
+                        <h3 class="modalidad-title">Modalidad no invasiva</h3>
+                        <div class="weeks-indicator" style="color: var(--whatsapp-green);"><i class="fa-regular fa-calendar-check"></i> Desde la semana 8</div>
+                        <p class="content-text m-0" style="line-height: 1.7;">
+                            Durante el embarazo, el bebé libera naturalmente material genético en la sangre de la madre. Esta prueba aprovecha ese proceso para analizar cerca de 17.000 marcadores genéticos, comparándolos con los de la madre y el presunto padre, sin ningún riesgo para el bebé ni para la gestante. Puede realizarse desde la semana 8 de embarazo, aunque no aplica para embarazos gemelares, con óvulo donado o con vientre subrogado. Cabe precisar que esta modalidad tiene un propósito exclusivamente informativo, puesto que las muestras se procesan en laboratorios especializados en el extranjero con quienes el Laboratorio Genes SAS mantiene alianzas estratégicas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Final Orientation -->
+        <section class="py-7" style="background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%); margin-top: 0.5rem;">
+            <div class="container text-center reveal fade-up">
+                <div class="service-content-block" style="max-width: 800px; margin: 0 auto;">
+                    <div style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 1.5rem; opacity: 0.8;">
+                        <i class="fa-solid fa-clipboard-question"></i>
+                    </div>
+                    <h2 class="mg-blue mb-4" style="font-weight: 800; font-size: 2.3rem; letter-spacing: -0.5px;">
+                        ¿No sabe cuál modalidad aplica para su caso?
+                    </h2>
+                    <p class="content-text" style="font-size: 1.2rem; line-height: 1.8; color: #475569; margin-bottom: 0;">
+                        Cada embarazo es único y queremos orientarle de la mejor manera posible. Escríbanos por WhatsApp, nuestro equipo le informará los costos, y le pondrá en contacto con el especialista indicado según su ubicación y semana de gestación.
+                    </p>
+                    <div style="margin-top: 3.5rem;">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
+                           class="btn btn-whatsapp-modern" style="padding: 0.9rem 2.2rem; font-size: 1rem; border-radius: 100px;">
+                            <i class="fa-brands fa-whatsapp"></i> Iniciar asesoría ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Light Medical (Authorized Version) -->
+    <footer class="footer-medical" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-grid" style="display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between;">
+                <div class="footer-brand" style="flex: 2 1 500px;">
+                    <div class="logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-dna text-white" style="font-size: 1.4rem; margin-right: 0.6rem;"></i>
+                        <span class="logo-text text-white" style="font-size: 1.25rem; font-weight: 700; text-transform: uppercase;">MUNDO GENÉTICO</span>
+                    </div>
+                    <h4 class="text-white" style="font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; opacity: 0.95;">
+                        Área comercial y de ventas del <strong>Laboratorio Genes SAS</strong>
+                    </h4>
+                    <p class="footer-desc text-white" style="opacity: 0.85; margin-bottom: 1rem; max-width: 650px; font-size: 0.95rem; line-height: 1.6;">
+                        Las pruebas de paternidad o los exámenes de ADN para determinar paternidad, son exámenes realizados y procesados por el Laboratorio Genes SAS, y es una prueba que permite determinar el vínculo genético entre un hijo y un presunto padre.
+                    </p>
+                </div>
+
+                <div class="footer-contact" style="flex: 1 1 250px;">
+                    <h3 class="text-white" style="font-size: 1.2rem; margin-bottom: 1.2rem;">Líneas de Atención</h3>
+                    <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
+                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                            WhatsApp: 300 309 50 39
+                        </a>
+                    </p>
+                    <p class="text-white" style="opacity: 0.95; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-phone-volume mr-2" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                        Call Center llamadas: 350 318 99 81
+                    </p>
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-regular fa-envelope mr-2" style="font-size: 1.2rem;"></i> comercial@mundogenetico.com
+                    </p>
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-map-location-dot mr-2" style="font-size: 1.2rem;"></i> Atención en 39 ciudades
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+                <p style="margin: 0;">&copy; 2026 Mundo Genético. Todos los derechos protegidos.</p>
+                <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
+                    <a href="../assets/docs/politica-tratamiento-datos.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Política de Privacidad</a>
+                    <span style="color: rgba(255,255,255,0.3);">|</span>
+                    <a href="../assets/docs/tratamiento-de-quejas.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Tratamiento de quejas</a>
+                </div>
+                <p style="font-size: 0.75rem; opacity: 0.5; max-width: 800px; text-align: center; margin-top: 0.5rem; line-height: 1.4;">
+                    <strong>Protección de Datos:</strong> Este sitio respeta su privacidad. La información recopilada es estrictamente confidencial y se utiliza únicamente para proveer asesoramiento de pruebas genéticas. Genes SAS y Mundo Genético (área comercial del laboratorio Genes SAS) actúan conforme a lo dispuesto en la Ley 1581 de 2012 y en su Decreto reglamentario 1377 de 2013, y demás disposiciones que les adicionen o reformen. Este sitio no forma parte directamente de Meta ni de Google Platforms.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action -->
+    <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
+        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Cookie Banner (Glassmorphism) -->
+    <div id="cookie-banner" class="cookie-banner-glass hidden">
+        <div class="cookie-content">
+            <div class="cookie-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+            <p class="cookie-text">
+                Esta web usa cookies para ofrecerle una mejor experiencia. 
+                <button type="button" id="open-cookie-policy" class="cookie-link">Política de cookies</button>
+            </p>
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="btn-cookie-accept">Aceptar</button>
+            <button id="cookie-reject" class="btn-cookie-reject">Rechazar</button>
+            <button id="cookie-close-x" class="btn-cookie-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-modal" class="cookie-modal-overlay hidden">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>POLÍTICA DE COOKIES</h3>
+                <button id="close-cookie-modal" class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cookie-modal-body">
+                <h4>1. Introducción</h4>
+                <p>En este sitio web, utilizamos cookies para mejorar la experiencia de nuestros usuarios, optimizar nuestros servicios y garantizar el correcto funcionamiento del sitio web. Esta Política describe qué son las cookies, qué tipos utilizamos, con qué fines y cómo puedes gestionarlas a través de tu navegador.</p>
+                <h4>2. ¿Qué son las cookies?</h4>
+                <p>Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando navegas por nuestra página web. Estos archivos permiten reconocer tu visita, recordar tus preferencias y recopilar información estadística sobre tu navegación.</p>
+                <h4>3. Tipos de cookies que utilizamos</h4>
+                <p><strong>3.1. Cookies esenciales o técnicas:</strong> Son necesarias para el funcionamiento del sitio web. Permiten, por ejemplo, que la página cargue correctamente y que puedas acceder a áreas seguras. Estas cookies no requieren consentimiento del usuario.</p>
+                <p><strong>3.2. Cookies de análisis o rendimiento:</strong> Nos permiten conocer cómo interactúan los visitantes con la página (tiempo de visita, secciones más vistas, etc.). Son utilizadas de forma agregada y anónima para mejorar la experiencia del usuario.</p>
+                <p><strong>3.3. Cookies de publicidad y remarketing:</strong> Se utilizan para mostrar anuncios relevantes, medir la efectividad publicitaria y crear públicos basados en comportamiento. Incluyen herramientas de terceros como: Meta (Facebook, Instagram), Google Ads, TikTok Ads y Herramientas de medición y conversión (Meta Pixel, Conversion API, Google Tag Manager).</p>
+                <h4>4. Finalidad del uso de cookies</h4>
+                <p>Usamos cookies para:<br>
+                • Garantizar el correcto funcionamiento del sitio web.<br>
+                • Recordar tus preferencias de navegación.<br>
+                • Analizar el desempeño del sitio y mejorar nuestros servicios.<br>
+                • Personalizar la publicidad según tus intereses.<br>
+                • Medir la efectividad de nuestras campañas publicitarias.</p>
+                <h4>5. Cookies de terceros</h4>
+                <p>Algunas cookies pueden ser instaladas por servicios externos que Utilizamos para estadísticas (Google Analytics), publicidad (Meta, Google, TikTok) and formularios y herramientas de contacto. Estos terceros pueden procesar datos siguiendo sus propias políticas, las cuales se pueden consultar en sus sitios oficiales.</p>
+                <h4>6. Gestión y desactivación de cookies</h4>
+                <p>Puedes aceptar, rechazar o eliminar las cookies desde tu navegador en cualquier momento. Algunas opciones: Google Chrome, Safari, Firefox, Edge. Si decides desactivar ciertas cookies desde tu navegador, es posible que algunas funciones del sitio no operen correctamente.</p>
+                <h4>7. Consentimiento</h4>
+                <p>Al ingresar a nuestro sitio, mostramos un banner informativo donde puedes aceptar o rechazar el uso de cookies no esenciales. Solo activaremos las cookies de análisis y publicidad si nos otorgas tu consentimiento expreso a través de dicho banner. Puedes retirar tu consentimiento en cualquier momento eliminando las cookies desde los ajustes de tu navegador.</p>
+                <h4>8. Actualizaciones a esta política</h4>
+                <p>Mundo Genético y Laboratorio Genes SAS pueden actualizar esta Política de Cookies en cualquier momento para adaptarse a cambios legales o tecnológicos. La versión vigente estará siempre disponible en esta misma sección del sitio web.</p>
+                <h4>9. Contacto</h4>
+                <p>Si tienes preguntas sobre esta Política o sobre el uso de cookies, puedes escribirnos a: <strong>comercial@mundogenetico.com</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="../js/main.js"></script>
+</body>
+
+</html>

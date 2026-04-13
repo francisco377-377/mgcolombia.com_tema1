@@ -13,7 +13,7 @@
     <meta property="og:description" content="Pruebas de paternidad discretas y 100% seguras. Solicita tu asesoría gratuita.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mundogeneticocolombia.com/ventasexamendepaternidad/">
-    <meta property="og:image" content="https://mundogeneticocolombia.com/ventasexamendepaternidad/assets/images/wa-portada.png">
+    <meta property="og:image" content="https://mundogeneticocolombia.com/ventasexamendepaternidad/assets/images/wa-portada.webp">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon-ad.svg">
@@ -25,7 +25,7 @@
         rel="stylesheet">
 
     <!-- Core Asset Preload for Lighthouse 95+ Score -->
-    <link rel="preload" as="image" href="assets/img/bg_landing_adn.jpg">
+    <link rel="preload" as="image" href="assets/images/hero-bg-new.webp">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,29 +55,51 @@
                     <span class="tagline-top">Área comercial y de ventas del</span><br>
                     <strong class="tagline-bottom">Laboratorio Genes SAS.</strong>
                 </div>
+
+                <div class="header-actions" style="margin-left: auto; display: flex; align-items: center; gap: 15px;">
+                    <a href="#cobertura" class="btn-cobertura-nav" style="margin-left: 0;">
+                        <img src="assets/images/colombia-flag-3d.webp" alt="Colombia flag" class="flag-icon-3d" width="28" height="28">
+                        <span class="btn-text-nav">Cobertura Nacional</span>
+                        <span class="pulse-indicator"></span>
+                        <span class="pulse-dot-anim"></span>
+                    </a>
+
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Main Navigation added for Hybrid Web structure -->
         <nav class="header-nav bg-white shadow-sm" id="main-nav">
+
             <div class="container d-flex justify-between align-center">
                 <ul class="nav-links list-unstyled d-flex m-0">
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#inicio" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="javascript:void(0)" class="nav-no-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="pruebas-de-paternidad/"><i class="fa-solid fa-dna"></i> Prueba de Paternidad</a></li>
+                            <li><a href="pruebas-de-paternidad-anonima/"><i class="fa-solid fa-user-secret"></i> Prueba Anónima</a></li>
+                            <li><a href="pruebas-de-paternidad-prenatal/"><i class="fa-solid fa-baby"></i> Prueba Prenatal</a></li>
+                            <li><a href="pruebas-de-consanguinidad/"><i class="fa-solid fa-diagram-project"></i> Prueba de Consanguinidad</a></li>
+                            <li><a href="servicio-a-domicilio/"><i class="fa-solid fa-car-side"></i> Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#beneficios" class="nav-scroll">Beneficios</a></li>
-                    <li><a href="#impacto" class="nav-scroll">Proceso</a></li>
+                    <li><a href="#cobertura" class="nav-scroll">Cobertura</a></li>
                     <li><a href="#faq" class="nav-scroll">Preguntas</a></li>
-                    <li><a href="#contacto" class="text-primary-blue nav-scroll" style="font-weight: 700;">Contacto</a></li>
+                    <li><a href="contactenos/" class="text-primary-blue" style="font-weight: 700;">Contáctenos</a></li>
                 </ul>
-                <button class="mobile-menu-toggle d-none" id="mobile-menu-btn" aria-label="Abrir menú">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+
             </div>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section (Tech Lab Future) -->
-        <section class="hero-premium hero-full-bg">
+        <section class="hero-premium hero-full-bg" id="inicio">
             <div class="hero-bg-image"></div>
             <div class="hero-bg-lab-fade"></div>
 
@@ -91,16 +113,16 @@
                     </div>
 
                     <h1 class="hero-title text-white"
-                        style="text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-wrap: balance;">Sal de la duda hoy mismo
+                        style="text-shadow: 0 4px 20px rgba(0,0,0,0.8); text-wrap: balance;">Encuentra la tranquilidad y certeza que necesitas
                         con una <span class="text-white">prueba de ADN precisa, segura y confiable</span></h1>
 
                     <p class="hero-subtitle text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                        Resultados con <strong>precisión superior al 99.99%</strong> y respaldo científico de más de
+                        Resultados con <strong>precisión superior al 99.999%</strong> y respaldo científico de más de
                         <strong>24 años de experiencia</strong>.
                     </p>
 
                     <div class="hero-actions mb-4">
-                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa."
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
                             target="_blank" class="btn btn-whatsapp-modern">
                             <i class="fa-brands fa-whatsapp"></i> Envíanos un Whatsapp
                         </a>
@@ -109,80 +131,223 @@
             </div>
         </section>
 
-
-
-        <!-- Benefits Section (Futuristic Grid Light Style) -->
-        <section class="benefits-section bg-medical-gradient" id="beneficios">
-            <canvas id="benefits-canvas" class="benefits-dna-overlay"></canvas>
-            <div class="container relative-z">
-                <div class="section-header text-center reveal fade-up" style="margin-bottom: 3rem;">
-                    <h2 class="section-title text-primary-dark">La certeza que necesitas, <span
-                            class="text-primary-blue">con respaldo real</span></h2>
+        <!-- Transparency & Legal Transparency Section (SIC Compliance) -->
+        <section class="transparency-section" id="transparencia">
+            <canvas id="transparency-canvas" class="benefits-dna-overlay"></canvas>
+            <div class="container transparency-grid relative-z">
+                <div class="transparency-content reveal fade-right">
+                    <div class="transparency-tag">
+                        <span class="pulse-dot"></span>
+                        <span>Mundo Genético</span>
+                    </div>
+                    <h2 class="transparency-title">Área comercial y de ventas del Laboratorio Genes SAS</h2>
+                    <p class="transparency-text">
+                        La Prueba de Paternidad o exámen de ADN, son exámenes procesados y analizados por el 
+                        <strong>Laboratorio Genes SAS</strong>, con un respaldo de más de <strong>24 años de experiencia</strong>. 
+                        Esta prueba de ADN es un método científico preciso para determinar el vínculo genético entre un hijo(a) y su presunto padre.
+                    </p>
+                    <div class="lab-distinction-box">
+                        En pocas palabras, con estas pruebas se busca establecer si un hombre es el padre biológico de un individuo.
+                    </div>
                 </div>
 
-                <div class="benefits-grid compact-grid"
-                    style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-1">
-                        <div class="icon-wrapper light-icon"><i class="fa-solid fa-flask text-primary-blue text-xl"></i>
+                <div class="stats-container reveal fade-left">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-card-glass">
+                        <div class="stat-header">
+                            <span class="stat-label">Confiabilidad Compatible (SÍ es el padre)</span>
+                            <span class="stat-value" data-target="99.999">0%</span>
                         </div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Pruebas procesadas por el <strong class="highlight-stat">laboratorio Genes SAS</strong>
-                            </p>
+                        <div class="progress-track">
+                            <div class="progress-fill" data-width="100%"></div>
                         </div>
-                    </div>
-
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-2">
-                        <div class="icon-wrapper light-icon"><i
-                                class="fa-solid fa-microscope text-primary-blue text-xl"></i></div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Más de <strong class="highlight-stat">24 años</strong> resolviendo casos reales con
-                                precisión genética</p>
+                        <div class="marker-info">
+                            <i class="fa-solid fa-dna"></i> Análisis de 24 marcadores genéticos
                         </div>
                     </div>
 
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-3">
-                        <div class="icon-wrapper light-icon"><i class="fa-solid fa-users text-primary-blue text-xl"></i>
+                    <!-- Stat Card 2 -->
+                    <div class="stat-card-glass">
+                        <div class="stat-header">
+                            <span class="stat-label">Certeza Incompatible (NO es el padre)</span>
+                            <span class="stat-value" data-target="100">0%</span>
                         </div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Más de <strong class="highlight-stat">80,000</strong> pruebas realizadas con resultados
-                                confiables</p>
+                        <div class="progress-track">
+                            <div class="progress-fill" data-width="100%"></div>
                         </div>
-                    </div>
-
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-4">
-                        <div class="icon-wrapper light-icon"><i
-                                class="fa-solid fa-map-location-dot text-primary-blue text-xl"></i></div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Atención en más de <strong class="highlight-stat">30 ciudades</strong> en Colombia</p>
-                        </div>
-                    </div>
-
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-5">
-                        <div class="icon-wrapper light-icon"><i
-                                class="fa-solid fa-scale-balanced text-primary-blue text-xl"></i></div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Pruebas con <strong class="highlight-stat">validez jurídica</strong> para procesos
-                                legales</p>
-                        </div>
-                    </div>
-
-                    <div class="benefit-card flex-row card-panel-light reveal fade-up delay-6">
-                        <div class="icon-wrapper light-icon"><i
-                                class="fa-solid fa-user-secret text-primary-blue text-xl"></i></div>
-                        <div class="benefit-text">
-                            <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
-                                Pruebas <strong class="highlight-stat">anónimas o informativas</strong> para solo salir
-                                de dudas</p>
+                        <div class="marker-info">
+                            <i class="fa-solid fa-dna"></i> Análisis de 24 marcadores genéticos
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        </section>
+
+        <!-- Benefits Section DARK TEST (Futuristic Grid Dark Style) -->
+        <section class="benefits-section" id="beneficios" style="background: linear-gradient(180deg, #062863 0%, #093c8d 100%); padding: 6rem 0;">
+            <canvas id="benefits-canvas-dark" class="benefits-dna-overlay" style="opacity: 0.6;"></canvas>
+            <div class="container relative-z">
+                <div class="section-header text-center reveal fade-up" style="margin-bottom: 3rem;">
+                    <h2 class="section-title text-white">La certeza que necesitas, <span
+                            style="color: #38bdf8;">con respaldo real</span></h2>
+                </div>
+
+                <div class="benefits-grid compact-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                    <div class="benefit-card flex-row reveal fade-up delay-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i class="fa-solid fa-flask" style="color: #38bdf8; font-size: 1.25rem;"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                Pruebas procesadas por el <strong style="color: #38bdf8;">laboratorio Genes SAS</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card flex-row reveal fade-up delay-2" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i
+                                class="fa-solid fa-microscope" style="color: #38bdf8; font-size: 1.25rem;"></i></div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                Más de <strong style="color: #38bdf8;">24 años</strong> resolviendo casos reales con
+                                precisión genética</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card flex-row reveal fade-up delay-3" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i class="fa-solid fa-users" style="color: #38bdf8; font-size: 1.25rem;"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                Más de <strong style="color: #38bdf8;">80,000</strong> pruebas realizadas con resultados
+                                confiables</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card flex-row reveal fade-up delay-4" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i
+                                class="fa-solid fa-map-location-dot" style="color: #38bdf8; font-size: 1.25rem;"></i></div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                Atención en más de <strong style="color: #38bdf8;">39 ciudades</strong> en Colombia</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card flex-row reveal fade-up delay-5" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i
+                                class="fa-solid fa-scale-balanced" style="color: #38bdf8; font-size: 1.25rem;"></i></div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                Pruebas con <strong style="color: #38bdf8;">validez jurídica</strong> para procesos
+                                legales</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card flex-row reveal fade-up delay-6" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease;">
+                        <div class="icon-wrapper light-icon" style="background: rgba(56, 189, 248, 0.1);"><i
+                                class="fa-solid fa-comments" style="color: #38bdf8; font-size: 1.25rem;"></i></div>
+                        <div class="benefit-text">
+                            <p class="text-white m-0 line-tight" style="font-size: 1.05rem; font-weight: 400;">
+                                <strong style="color: #38bdf8;">Asesoría profesional</strong> y confidencial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialized DNA Services Grid (Redesigned Compact Layout) -->
+        <section class="services-tech-section" id="servicios">
+            <div class="container">
+                <div class="section-header text-center reveal fade-up">
+                    <div class="transparency-tag mb-3" style="display: inline-flex;">
+                        <div class="pulse-dot"></div>
+                        <span>Excelencia en Genética</span>
+                    </div>
+                </div>
+
+                <div class="tech-grid">
+                    <!-- 1. Validez Jurídica -->
+                    <div class="service-card-tech reveal fade-up delay-1">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-scale-balanced hybrid-icon-main"></i>
+                        </div>
+                        <h3>Validez Jurídica</h3>
+                        <p>Resultados con plena validez legal para procesos judiciales como impugnación de paternidad y herencias.</p>
+                        <a href="pruebas-de-paternidad/" class="tech-action-link">Consultar más <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+
+                    <!-- 2. Anónimas -->
+                    <div class="service-card-tech reveal fade-up delay-2">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-user-secret hybrid-icon-main"></i>
+                        </div>
+                        <h3>Prueba Anónima</h3>
+                        <p>Máxima privacidad para salir de dudas desde la comodidad de su hogar con total discreción.</p>
+                        <a href="pruebas-de-paternidad-anonima/" class="tech-action-link">Consultar más <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+
+                    <!-- 3. Prenatal -->
+                    <div class="service-card-tech reveal fade-up delay-3">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-person-pregnant hybrid-icon-main"></i>
+                        </div>
+                        <h3>Prueba Prenatal</h3>
+                        <p>Determinación del vínculo biológico antes del nacimiento con tecnología de vanguardia internacional.</p>
+                        <a href="pruebas-de-paternidad-prenatal/" class="tech-action-link">Consultar más <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+
+                    <!-- 4. Consanguinidad -->
+                    <div class="service-card-tech reveal fade-up delay-4">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-dna hybrid-icon-main"></i>
+                        </div>
+                        <h3>Consanguinidad</h3>
+                        <p>Establecimiento de vínculos biológicos complejos en ausencia del presunto padre.</p>
+                        <a href="pruebas-de-consanguinidad/" class="tech-action-link">Consultar más <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+
+                    <!-- 5. Servicio a domicilio -->
+                    <div class="service-card-tech reveal fade-up delay-5">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-truck-fast hybrid-icon-main"></i>
+                        </div>
+                        <h3>Servicio a Domicilio</h3>
+                        <p>Toma de muestras profesional en su ubicación. Consulte coberturas y costos en nuestra línea especializada.</p>
+                        <a href="servicio-a-domicilio/" class="tech-action-link">Consultar más <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+
+                    <!-- 6. Atención Personalizada -->
+                    <div class="service-card-tech reveal fade-up delay-6">
+                        <div class="hybrid-icon-wrapper">
+                            <div class="hud-ring-outer"></div>
+                            <div class="hud-ring-inner"></div>
+                            <i class="fa-solid fa-mobile-screen-button hybrid-icon-main"></i>
+                        </div>
+                        <h3>Asesoría personalizada con nuestro equipo de expertos</h3>
+                        <p>Reciba orientación profesional a través de WhatsApp.</p>
+                        <a href="contactenos/" class="tech-action-link">Asesoría Directa <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
 
         <!-- Cinematic DNA Background CTA Section -->
         <section class="blue-premium-cta-section reveal fade-up text-center" id="contacto">
@@ -203,7 +368,7 @@
                                 style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2rem auto;">Obtén resultados
                                 claros y confiables con respaldo científico y total confidencialidad.</p>
 
-                            <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa."
+                            <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
                                 target="_blank" class="btn-whatsapp-modern mb-4">
                                 <i class="fa-brands fa-whatsapp"></i> Envíanos un WhatsApp
                             </a>
@@ -225,7 +390,7 @@
                     <h2 class="section-title text-primary-dark">De la duda a la <span class="text-primary-blue">certeza
                             absoluta.</span></h2>
                     <p class="section-subtitle text-main" style="max-width: 700px; margin: 0 auto;">Un proceso discreto,
-                        rápido y 100% confiable para tu tranquilidad familiar.</p>
+                        rápido y confiable para tu tranquilidad familiar.</p>
                 </div>
 
                 <div class="impact-split-container reveal fade-up delay-1">
@@ -330,6 +495,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-dna faq-question-icon"></i>
                                     <span class="faq-text">¿Quién realiza las pruebas de ADN?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -341,6 +507,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-certificate faq-question-icon"></i>
                                     <span class="faq-text">¿Qué tan confiable es el resultado?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -352,6 +519,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-tag faq-question-icon"></i>
                                     <span class="faq-text">¿Cuánto cuesta la prueba?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -363,6 +531,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-clock faq-question-icon"></i>
                                     <span class="faq-text">¿En cuánto tiempo recibiré los resultados?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -380,6 +549,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-scale-balanced faq-question-icon"></i>
                                     <span class="faq-text">¿La prueba tiene validez legal en Colombia?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -391,6 +561,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-vial faq-question-icon"></i>
                                     <span class="faq-text">¿Cómo se toma la muestra? ¿Es doloroso?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -402,6 +573,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-users faq-question-icon"></i>
                                     <span class="faq-text">¿Es necesario que la madre participe en la prueba?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -413,6 +585,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-user-lock faq-question-icon"></i>
                                     <span class="faq-text">¿Garantizan la confidencialidad?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -424,6 +597,7 @@
 
                             <div class="faq-item">
                                 <button class="faq-question">
+                                    <i class="fa-solid fa-map-location-dot faq-question-icon"></i>
                                     <span class="faq-text">¿Tienen cobertura en mi ciudad?</span>
                                     <span class="faq-icon"><i class="fa-solid fa-plus icon-closed"></i><i class="fa-solid fa-dna icon-opened"></i></span>
                                 </button>
@@ -438,150 +612,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Trust Section (Testimonials & Cerst) -->
-        <section class="trust-section bg-medical-light" id="testimonios">
-            <div class="container relative-z">
-                <div class="section-header text-center reveal fade-up">
-                    <span class="subtitle-badge-blue">Experiencias Reales</span>
-                    <h2 class="section-title text-primary-dark mb-4">Historias de <span class="text-primary-blue">Paz y
-                            Certeza</span></h2>
-                    <p class="section-subtitle text-main" style="max-width: 700px; margin: 0 auto;">No estás solo. Así
-                        es como ayudamos a familias en toda Colombia a encontrar la verdad que necesitaban.</p>
-                </div>
-
-                <div class="testimonials-grid">
-                    <!-- Carlos -->
-                    <div class="testimonial-card interactive-hover reveal fade-up delay-1">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">C</div>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <i class="fa-solid fa-quote-right quote-mark-bg"></i>
-                        <p class="testimonial-text">"El proceso fue muy discreto y claro desde el inicio. Me sentí
-                            acompañado en todo momento y eso me dio mucha tranquilidad para tomar la decisión."</p>
-                        <div class="author-block">
-                            <strong class="text-primary-dark">Carlos</strong>
-                            <span class="text-primary-blue">Medellín</span>
-                        </div>
-                    </div>
-
-                    <!-- Andrea -->
-                    <div class="testimonial-card interactive-hover reveal fade-up delay-2">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar"
-                                style="background: linear-gradient(135deg, #10b981, #34d399);">A</div>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <i class="fa-solid fa-quote-right quote-mark-bg"></i>
-                        <p class="testimonial-text">"Todo fue muy rápido y profesional. Me explicaron cada paso con
-                            paciencia y resolvieron todas mis dudas, lo que me generó mucha confianza."</p>
-                        <div class="author-block">
-                            <strong class="text-primary-dark">Andrea</strong>
-                            <span class="text-primary-blue">Bogotá</span>
-                        </div>
-                    </div>
-
-                    <!-- Luis -->
-                    <div class="testimonial-card interactive-hover reveal fade-up delay-3">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar"
-                                style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">L</div>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <i class="fa-solid fa-quote-right quote-mark-bg"></i>
-                        <p class="testimonial-text">"Pensé que sería complicado o incómodo, pero en realidad fue muy
-                            sencillo. La atención fue excelente y el proceso más fácil de lo que imaginaba."</p>
-                        <div class="author-block">
-                            <strong class="text-primary-dark">Luis</strong>
-                            <span class="text-primary-blue">Cali</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Process Section (4op Design) -->
-        <section class="process-section-4op" id="proceso">
-            <canvas id="process-particles-4op" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index: 1;"></canvas>
-            <div class="container relative-z max-w-6xl" style="z-index: 2; position: relative; padding: 4rem 15px;">
-                <div class="glass-container-4op reveal fade-up">
-                    <div class="process-header-4op text-center mb-4">
-                        <h2 class="title-4op">Tu tranquilidad en 3 pasos simples</h2>
-                        <p class="subtitle-4op">Desde el primer mensaje hasta tus resultados, te acompañamos con total confidencialidad y respaldo científico.</p>
-                    </div>
-
-                    <div class="grid-4op">
-                        <!-- Step 1 -->
-                        <div class="card-4op">
-                            <a href="https://wa.me/573003095039" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">01</a>
-                            <div class="card-content-4op">
-                                <h3 class="card-title-4op">
-                                    <i class="fa-brands fa-whatsapp icon-green-4op" style="font-size: 1.8rem;"></i> 
-                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Asesoría<br>personalizada</span>
-                                </h3>
-                                <p class="card-desc-4op">
-                                    Habla con un experto por <strong>WhatsApp</strong> y recibe orientación clara sobre la prueba que necesitas según tu caso.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Step 2 -->
-                        <div class="card-4op">
-                            <a href="https://wa.me/573003095039" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">02</a>
-                            <div class="card-content-4op">
-                                <h3 class="card-title-4op">
-                                    <i class="fa-regular fa-calendar-check icon-blue-4op" style="font-size: 1.8rem;"></i> 
-                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Agenda tu cita</span>
-                                </h3>
-                                <p class="card-desc-4op">
-                                    Agenda tu cita por WhatsApp con uno de nuestros expertos.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="card-4op">
-                            <a href="https://wa.me/573003095039" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">03</a>
-                            <div class="card-content-4op">
-                                <h3 class="card-title-4op">
-                                    <i class="fa-solid fa-microscope icon-blue-4op" style="font-size: 1.8rem;"></i> 
-                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Toma de muestra<br>y resultados</span>
-                                </h3>
-                                <p class="card-desc-4op">
-                                    Realizamos la toma de muestra de forma rápida y profesional. Luego, recibirás tus resultados en la fecha programada.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-checks-4op mt-4">
-                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Proceso seguro</span>
-                        <span class="dot-separator-4op">•</span>
-                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Sin dolor</span>
-                        <span class="dot-separator-4op">•</span>
-                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> 100% confidencial</span>
-                        <span class="dot-separator-4op">•</span>
-                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Resultados confiables</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Floating Action -->
-    <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20y%20asesor%C3%ADa."
-        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
 
     <!-- ================================================
          COBERTURA NACIONAL - MAPA COLOMBIA (Diseño 3B Aprobado)
@@ -608,7 +638,8 @@
                         <!-- Imagen del mapa limpio (sin edificios quemados) -->
                         <img src="assets/images/Mapa base limpio.webp"
                              alt="Mapa de cobertura nacional Mundo Genético - 37 ciudades"
-                             class="colombia-img" id="colombia-img" draggable="false">
+                             class="colombia-img" id="colombia-img" draggable="false"
+                             width="800" height="1000" loading="lazy" decoding="async">
                         <!-- Pines dinámicos generados por JS -->
                         <div class="map-pins-layer" id="map-pins-layer"></div>
                         <!-- Tooltip -->
@@ -650,6 +681,83 @@
             </div>
         </div>
     </section>
+
+
+        <!-- Process Section (4op Design) -->
+        <section class="process-section-4op" id="proceso">
+            <canvas id="process-particles-4op" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index: 1;"></canvas>
+            <div class="container relative-z max-w-6xl" style="z-index: 2; position: relative; padding: 4rem 15px;">
+                <div class="glass-container-4op reveal fade-up">
+                    <div class="process-header-4op text-center mb-4">
+                        <h2 class="title-4op">Tu tranquilidad en 3 pasos simples</h2>
+                        <p class="subtitle-4op">Desde el primer mensaje hasta tus resultados, te acompañamos con total confidencialidad y respaldo científico.</p>
+                    </div>
+
+                    <div class="grid-4op">
+                        <!-- Step 1 -->
+                        <div class="card-4op">
+                            <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">01</a>
+                            <div class="card-content-4op">
+                                <h3 class="card-title-4op">
+                                    <i class="fa-brands fa-whatsapp icon-green-4op" style="font-size: 1.8rem;"></i> 
+                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Asesoría<br>personalizada</span>
+                                </h3>
+                                <p class="card-desc-4op">
+                                    Habla con un experto por <strong>WhatsApp</strong> y recibe orientación clara sobre la prueba que necesitas según tu caso.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="card-4op">
+                            <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">02</a>
+                            <div class="card-content-4op">
+                                <h3 class="card-title-4op">
+                                    <i class="fa-regular fa-calendar-check icon-blue-4op" style="font-size: 1.8rem;"></i> 
+                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Agenda tu cita</span>
+                                </h3>
+                                <p class="card-desc-4op">
+                                    Agenda tu cita por WhatsApp con uno de nuestros expertos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="card-4op">
+                            <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" target="_blank" class="pill-number-4op" style="text-decoration:none; cursor:pointer;">03</a>
+                            <div class="card-content-4op">
+                                <h3 class="card-title-4op">
+                                    <i class="fa-solid fa-microscope icon-blue-4op" style="font-size: 1.8rem;"></i> 
+                                    <span style="display:inline-block; text-align:left; line-height:1.2;">Toma de muestra<br>y resultados</span>
+                                </h3>
+                                <p class="card-desc-4op">
+                                    Realizamos la toma de muestra de forma rápida y profesional. Luego, recibirás tus resultados en la fecha programada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-checks-4op mt-4">
+                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Proceso seguro</span>
+                        <span class="dot-separator-4op">•</span>
+                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Sin dolor</span>
+                        <span class="dot-separator-4op">•</span>
+                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> 100% confidencial</span>
+                        <span class="dot-separator-4op">•</span>
+                        <span><i class="fa-solid fa-circle-check text-green-4op"></i> Resultados confiables</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action -->
+    <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
+        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
     <!-- Footer Light Medical -->
     <footer class="footer-medical">
         <div class="container">
@@ -672,7 +780,7 @@
                     
                     <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
                         <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
-                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
                             WhatsApp: 300 309 50 39
                         </a>
                     </p>
@@ -770,7 +878,7 @@
         </div>
     </div>
 
-    <script src="js/map-data.js"></script>
-    <script src="js/main.js"></script>
+    <script defer src="js/map-data.js"></script>
+    <script defer src="js/main.js"></script>
 </body>
 </html> 

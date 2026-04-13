@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas de Consanguinidad o Relación Biológica | Mundo Genético</title>
+
+    <!-- SEO & Ads Compliance -->
+    <meta name="description" content="Resuelve dudas familiares de abuelidad y parentesco con precisión científica. Pruebas de ADN de consanguinidad procesadas por Laboratorio Genes SAS.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon-ad.svg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Modern Design Overrides */
+        .hero-consanguinidad {
+            background: url('../assets/images/servicios/hero-consanguinidad.webp') no-repeat center center;
+            background-size: cover;
+        }
+
+        .service-intro-section { padding: 60px 0 0 0; }
+        .service-content-block { max-width: 900px; margin: 0 auto; }
+        
+        .modality-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(9, 60, 141, 0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+        }
+        
+        /* New case section spacing tweak */
+        #casos { padding-top: 30px !important; }
+
+
+        .modality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(9, 60, 141, 0.08);
+            border-color: var(--primary-blue);
+        }
+
+        .modality-icon {
+            width: 60px; height: 60px;
+            background: var(--primary-blue-light);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+        }
+
+        .case-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-blue-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .value-highlight-box {
+            background: linear-gradient(135deg, rgba(9, 60, 141, 0.03) 0%, rgba(56, 189, 248, 0.03) 100%);
+            border-left: 5px solid var(--primary-blue);
+            padding: 40px;
+            border-radius: 0 24px 24px 0;
+            margin: 50px 0;
+        }
+
+        .scientific-context-panel {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(239, 246, 255, 0.5) 100%);
+            border-left: 6px solid var(--primary-blue);
+            padding: 50px 0 10px 45px;
+            margin-bottom: 0px; /* Reduced to tighten with next section */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scientific-context-panel::before {
+            content: "\f471"; /* microscope */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            font-size: 12rem;
+            color: rgba(9, 60, 141, 0.03);
+            transform: rotate(-15deg);
+        }
+
+        .context-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .narrative-title {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--primary-blue-dark);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -0.03em;
+        }
+
+        .narrative-text-justified {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #334155;
+            text-align: justify;
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .scientific-context-panel { padding: 40px 20px; border-left-width: 4px; }
+            .narrative-title { font-size: 1.8rem; }
+            .narrative-text-justified { font-size: 1.15rem; text-align: left; }
+        }
+
+            .modality-card { flex-direction: column; padding: 25px; }
+            .modality-icon { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+
+<body class="theme-light-medical">
+
+    <!-- Solid Blue Header (Standardized) -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container d-flex align-center" style="height: 100%; position: relative;">
+                <div class="logo" style="font-weight: 500;">
+                    <a href="../index.html" style="text-decoration: none; display: flex; align-items: center; color: white;">
+                        <i class="fa-solid fa-dna logo-icon text-white"
+                            style="font-size: 1.8rem; margin-right: 0.2rem;"></i>
+                        <div class="logo-text text-white"
+                            style="display: flex; flex-direction: column; line-height: 1.1; font-size: 1.15rem; font-weight: 500;">
+                            <span>Mundo</span>
+                            <span>Genético</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="header-tagline text-white">
+                    <span class="tagline-top">Área comercial y de ventas del</span><br>
+                    <strong class="tagline-bottom">Laboratorio Genes SAS.</strong>
+                </div>
+
+                <div class="header-actions" style="margin-left: auto; display: flex; align-items: center; gap: 15px;">
+                    <a href="../index.html#cobertura" class="btn-cobertura-nav" style="margin-left: 0;">
+                        <img src="../assets/images/colombia-flag-3d.webp" alt="Colombia flag" class="flag-icon-3d">
+                        <span class="btn-text-nav">Cobertura Nacional</span>
+                        <span class="pulse-indicator"></span>
+                        <span class="pulse-dot-anim"></span>
+                    </a>
+
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation added for Hybrid Web structure -->
+        <nav class="header-nav bg-white shadow-sm" id="main-nav">
+
+            <div class="container d-flex justify-between align-center">
+                <ul class="nav-links list-unstyled d-flex m-0">
+                    <li><a href="../index.html" class="nav-scroll">Inicio</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="javascript:void(0)" class="nav-no-scroll">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="../pruebas-de-paternidad/"><i class="fa-solid fa-dna"></i> Prueba de Paternidad</a></li>
+                            <li><a href="../pruebas-de-paternidad-anonima/"><i class="fa-solid fa-user-secret"></i> Prueba Anónima</a></li>
+                            <li><a href="../pruebas-de-paternidad-prenatal/"><i class="fa-solid fa-baby"></i> Prueba Prenatal</a></li>
+                            <li><a href="../pruebas-de-consanguinidad/"><i class="fa-solid fa-diagram-project"></i> Prueba de Consanguinidad</a></li>
+                            <li><a href="../servicio-a-domicilio/"><i class="fa-solid fa-car-side"></i> Servicio a Domicilio</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../index.html#beneficios" class="nav-scroll">Beneficios</a></li>
+                    <li><a href="../index.html#cobertura" class="nav-scroll">Cobertura</a></li>
+                    <li><a href="../index.html#faq" class="nav-scroll">Preguntas</a></li>
+                    <li><a href="../contactenos/" class="text-primary-blue" style="font-weight: 700;">Contáctenos</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section (Original Image Kept) -->
+        <section class="hero-premium hero-full-bg hero-consanguinidad">
+            <div class="hero-bg-lab-fade" style="background: linear-gradient(90deg, rgba(6, 40, 99, 0.9) 0%, rgba(6, 40, 99, 0.7) 45%, rgba(6, 40, 99, 0.2) 85%, transparent 100%);"></div>
+            
+            <!-- Animated HUD & DNA Overlay -->
+            <canvas id="tech-canvas" class="tech-hud-overlay"></canvas>
+            
+            <div class="container hero-container-single relative-z">
+                <div class="hero-content reveal fade-up">
+                    <div class="trust-badge-light mb-4">
+                        <span class="pulse-dot"></span> Vínculos Familiares y Certeza Científica
+                    </div>
+
+                    <h1 class="hero-title text-white" style="font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; text-wrap: balance;">
+                        Pruebas de consanguinidad o relación biológica
+                    </h1>
+
+                    <p class="hero-subtitle text-white" style="font-size: 1.35rem; max-width: 800px; line-height: 1.6; opacity: 0.95;">
+                        Las pruebas de consanguinidad o relaciones biológicas, son procesadas y realizadas por el <strong>Laboratorio Genes SAS</strong>.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
+                            target="_blank" class="btn btn-whatsapp-modern">
+                            <i class="fa-brands fa-whatsapp"></i> Hablar con un experto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Scientific Context -->
+        <section class="service-intro-section" id="que-es">
+            <div class="container">
+                <div class="scientific-context-panel reveal fade-up">
+                    <div class="context-badge">
+                        <i class="fa-solid fa-microscope text-primary-blue"></i> Alcance Científico
+                    </div>
+                    
+                    <h2 class="narrative-title">¿Qué es una prueba de consanguinidad o relación biológica?</h2>
+                    
+                    <p class="narrative-text-justified">
+                        En el <strong>Laboratorio Genes SAS</strong>, comprendemos que existe una gran necesidad en nuestros usuarios de conocer el vínculo familiar entre dos o más personas cuando el presunto padre no está presente, ya sea por ausencia o por muerte. Nuestro laboratorio cuenta con una variedad de pruebas de parentesco que pueden ayudar a aclarar dudas de este tipo con el respaldo de tecnología genética de vanguardia.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Cases -->
+        <section class="pb-5 pt-0 bg-light" id="casos">
+            <div class="container">
+                <div class="service-content-block">
+                    <div class="cases-row reveal fade-up">
+                        <!-- Case 1: Abuelos -->
+                        <div class="modality-card">
+                            <div class="modality-icon"><i class="fa-solid fa-people-arrows"></i></div>
+                            <div>
+                                <h3 class="case-title">Abuelos paternos – Nieto/a</h3>
+                                <p class="content-text m-0" style="line-height: 1.7;">
+                                    Determinamos la relación biológica entre abuelos paternos y nieto/a para inferir la paternidad del presunto padre, con o sin la presencia de la madre del menor. Es importante recordar que cualquier otro hijo varón de los presuntos abuelos podría ser el padre biológico del presunto nieto.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Case 2: Hijos biológicos -->
+                        <div class="modality-card">
+                            <div class="modality-icon"><i class="fa-solid fa-dna"></i></div>
+                            <div>
+                                <h3 class="case-title">Hijos biológicos reconocidos del presunto padre</h3>
+                                <p class="content-text m-0" style="line-height: 1.7;">
+                                    A partir de los hijos biológicos del Presunto Padre se puede reconstruir el perfil genético (información genética) del padre ausente o fallecido, es altamente recomendable la presencia de la madre o madres de estos hijos biológicos. La información obtenida posteriormente se utiliza para determinar la exclusión o no exclusión de la paternidad en investigación.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlight: Value -->
+                    <div class="value-highlight-box reveal fade-up">
+                        <h2 class="mg-blue mb-3" style="font-size: 1.75rem; font-weight: 800;">Valor de las Pruebas</h2>
+                        <p class="content-text m-0" style="font-size: 1.15rem; line-height: 1.8;">
+                            El valor de estas pruebas de consanguinidad o relaciones biológicas dependerá de la complejidad del caso y del número de personas involucradas para alcanzar los niveles de confiabilidad que exigen las leyes en Colombia. Nuestro compromiso es proporcionar resultados precisos y confiables.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Benefits Section (Futuristic Grid Light Style) -->
+    <section class="benefits-section bg-medical-gradient" id="beneficios">
+        <canvas id="benefits-canvas" class="benefits-dna-overlay"></canvas>
+        <div class="container relative-z">
+            <div class="section-header text-center reveal fade-up" style="margin-bottom: 3rem;">
+                <h2 class="section-title text-primary-dark">La certeza que necesitas, <span
+                        class="text-primary-blue">con respaldo real</span></h2>
+            </div>
+
+            <div class="benefits-grid compact-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-1">
+                    <div class="icon-wrapper light-icon"><i class="fa-solid fa-flask text-primary-blue text-xl"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Pruebas procesadas por el <strong class="highlight-stat">laboratorio Genes SAS</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-2">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-microscope text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Más de <strong class="highlight-stat">24 años</strong> resolviendo casos reales con
+                            precisión genética</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-3">
+                    <div class="icon-wrapper light-icon"><i class="fa-solid fa-users text-primary-blue text-xl"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Más de <strong class="highlight-stat">80,000</strong> pruebas realizadas con resultados
+                            confiables</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-4">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-map-location-dot text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Atención en más de <strong class="highlight-stat">39 ciudades</strong> en Colombia</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-5">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-scale-balanced text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            Pruebas con <strong class="highlight-stat">validez jurídica</strong> para procesos
+                            legales</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card flex-row card-panel-light reveal fade-up delay-6">
+                    <div class="icon-wrapper light-icon"><i
+                            class="fa-solid fa-comments text-primary-blue text-xl"></i></div>
+                    <div class="benefit-text">
+                        <p class="text-primary-dark m-0 line-tight" style="font-size: 1.05rem; font-weight: 500;">
+                            <strong class="highlight-stat">Asesoría profesional</strong> y confidencial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Section 3: Final CTA -->
+        <section class="py-5" style="background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);">
+            <div class="container text-center reveal fade-up">
+                <div class="service-content-block" style="padding: 2rem 0;">
+                    <h2 class="mg-blue mb-4" style="font-weight: 800; font-size: 2.2rem;">Contáctenos para Obtener Más Información</h2>
+                    <p class="content-text mb-4" style="font-size: 1.15rem; line-height: 1.8; max-width: 850px; margin-left: auto; margin-right: auto; color: #475569;">
+                        Para obtener más información sobre nuestras pruebas de parentesco y cómo podemos ayudarte en tu situación específica, no dudes en comunicarte con nosotros. Nuestro equipo de expertos está listo para responder a tus preguntas y brindarte la orientación que necesitas.
+                    </p>
+                    <div class="text-center mt-5 pt-2 reveal fade-up">
+                        <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0" 
+                           class="btn btn-whatsapp-modern" style="padding: 0.9rem 2.5rem; font-size: 1.05rem;">
+                            <i class="fa-brands fa-whatsapp"></i> Hablar con un experto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Light Medical (Authorized Version) -->
+    <footer class="footer-medical">
+        <div class="container">
+            <div class="footer-grid" style="display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between;">
+                <div class="footer-brand" style="flex: 2 1 500px;">
+                    <div class="logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-dna text-white" style="font-size: 1.4rem; margin-right: 0.6rem;"></i>
+                        <span class="logo-text text-white" style="font-size: 1.25rem; font-weight: 700; text-transform: uppercase;">MUNDO GENÉTICO</span>
+                    </div>
+                    <h4 class="text-white" style="font-weight: 500; font-size: 1.05rem; margin-bottom: 1rem; opacity: 0.95;">
+                        Área comercial y de ventas del <strong>Laboratorio Genes SAS</strong>
+                    </h4>
+                    <p class="footer-desc text-white" style="opacity: 0.85; margin-bottom: 1rem; max-width: 650px; font-size: 0.95rem; line-height: 1.6;">
+                        Las pruebas de paternidad o los exámenes de ADN para determinar paternidad, son exámenes realizados y procesados por el Laboratorio Genes SAS, y es una prueba que permite determinar el vínculo genético entre un hijo y un presunto padre.
+                    </p>
+                </div>
+
+                <div class="footer-contact" style="flex: 1 1 250px;">
+                    <h3 class="text-white" style="font-size: 1.2rem; margin-bottom: 1.2rem;">Líneas de Atención</h3>
+                    <p class="text-white" style="font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-brands fa-whatsapp text-whatsapp mr-2" style="font-size: 1.3rem;"></i> 
+                        <a href="https://wa.me/573003095039?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="text-white" style="text-decoration: none; transition: opacity 0.3s; opacity: 0.95;">
+                            WhatsApp: 300 309 50 39
+                        </a>
+                    </p>
+                    <p class="text-white" style="opacity: 0.95; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-phone-volume mr-2" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                        Call Center llamadas: 350 318 99 81
+                    </p>
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; margin-bottom: 0.8rem; display: flex; align-items: center;">
+                        <i class="fa-regular fa-envelope mr-2" style="font-size: 1.2rem;"></i> comercial@mundogenetico.com
+                    </p>
+                    <p class="text-white" style="opacity: 0.85; font-size: 1.05rem; display: flex; align-items: center;">
+                        <i class="fa-solid fa-map-location-dot mr-2" style="font-size: 1.2rem;"></i> Atención en 39 ciudades
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+                <p style="margin: 0;">&copy; 2026 Mundo Genético. Todos los derechos protegidos.</p>
+                <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem;">
+                    <a href="../assets/docs/politica-tratamiento-datos.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Política de Privacidad</a>
+                    <span style="color: rgba(255,255,255,0.3);">|</span>
+                    <a href="../assets/docs/tratamiento-de-quejas.pdf" target="_blank" class="text-white" style="text-decoration: underline; margin: 0 10px;">Tratamiento de quejas</a>
+                </div>
+                <p style="font-size: 0.75rem; opacity: 0.5; max-width: 800px; text-align: center; margin-top: 0.5rem; line-height: 1.4;">
+                    <strong>Protección de Datos:</strong> Este sitio respeta su privacidad. La información recopilada es estrictamente confidencial y se utiliza únicamente para proveer asesoramiento de pruebas genéticas. Genes SAS y Mundo Genético (área comercial del laboratorio Genes SAS) actúan conforme a lo dispuesto en la Ley 1581 de 2012 y en su Decreto reglamentario 1377 de 2013, y demás disposiciones que les adicionen o reformen. Este sitio no forma parte directamente de Meta ni de Google Platforms.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action -->
+    <a href="https://api.whatsapp.com/send/?phone=573003095039&text=Hola%2C+me+gustar%C3%ADa+recibir+m%C3%A1s+informaci%C3%B3n+y+asesor%C3%ADa.&type=phone_number&app_absent=0"
+        target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Cookie Banner (Glassmorphism) -->
+    <div id="cookie-banner" class="cookie-banner-glass hidden">
+        <div class="cookie-content">
+            <div class="cookie-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+            <p class="cookie-text">
+                Esta web usa cookies para ofrecerle una mejor experiencia. 
+                <button type="button" id="open-cookie-policy" class="cookie-link">Política de cookies</button>
+            </p>
+        </div>
+        <div class="cookie-actions">
+            <button id="cookie-accept" class="btn-cookie-accept">Aceptar</button>
+            <button id="cookie-reject" class="btn-cookie-reject">Rechazar</button>
+            <button id="cookie-close-x" class="btn-cookie-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-modal" class="cookie-modal-overlay hidden">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>POLÍTICA DE COOKIES</h3>
+                <button id="close-cookie-modal" class="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cookie-modal-body">
+                <h4>1. Introducción</h4>
+                <p>En este sitio web, utilizamos cookies para mejorar la experiencia de nuestros usuarios, optimizar nuestros servicios y garantizar el correcto funcionamiento del sitio web. Esta Política describe qué son las cookies, qué tipos utilizamos, con qué fines y cómo puedes gestionarlas a través de tu navegador.</p>
+                <h4>2. ¿Qué son las cookies?</h4>
+                <p>Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando navegas por nuestra página web. Estos archivos permiten reconocer tu visita, recordar tus preferencias y recopilar información estadística sobre tu navegación.</p>
+                <h4>3. Tipos de cookies que utilizamos</h4>
+                <p><strong>3.1. Cookies esenciales o técnicas:</strong> Son necesarias para el funcionamiento del sitio web. Permiten, por ejemplo, que la página cargue correctamente y que puedas acceder a áreas seguras. Estas cookies no requieren consentimiento del usuario.</p>
+                <p><strong>3.2. Cookies de análisis o rendimiento:</strong> Nos permiten conocer cómo interactúan los visitantes con la página (tiempo de visita, secciones más vistas, etc.). Son utilizadas de forma agregada y anónima para mejorar la experiencia del usuario.</p>
+                <p><strong>3.3. Cookies de publicidad y remarketing:</strong> Se utilizan para mostrar anuncios relevantes, medir la efectividad publicitaria y crear públicos basados en comportamiento. Incluyen herramientas de terceros como: Meta (Facebook, Instagram), Google Ads, TikTok Ads y Herramientas de medición y conversión (Meta Pixel, Conversion API, Google Tag Manager).</p>
+                <h4>4. Finalidad del uso de cookies</h4>
+                <p>Usamos cookies para:<br>
+                • Garantizar el correcto funcionamiento del sitio web.<br>
+                • Recordar tus preferencias de navegación.<br>
+                • Analizar el desempeño del sitio y mejorar nuestros servicios.<br>
+                • Personalizar la publicidad según tus intereses.<br>
+                • Medir la efectividad de nuestras campañas publicitarias.</p>
+                <h4>5. Cookies de terceros</h4>
+                <p>Algunas cookies pueden ser instaladas por servicios externos que Utilizamos para estadísticas (Google Analytics), publicidad (Meta, Google, TikTok) y formularios y herramientas de contacto. Estos terceros pueden procesar datos siguiendo sus propias políticas, las cuales se pueden consultar en sus sitios oficiales.</p>
+                <h4>6. Gestión y desactivación de cookies</h4>
+                <p>Puedes aceptar, rechazar o eliminar las cookies desde tu navegador en cualquier momento. Algunas opciones: Google Chrome, Safari, Firefox, Edge. Si decides desactivar ciertas cookies desde tu navegador, es posible que algunas funciones del sitio no operen correctamente.</p>
+                <h4>7. Consentimiento</h4>
+                <p>Al ingresar a nuestro sitio, mostramos un banner informativo donde puedes aceptar o rechazar el uso de cookies no esenciales. Solo activaremos las cookies de análisis y publicidad si nos otorgas tu consentimiento expreso a través de dicho banner. Puedes retirar tu consentimiento en cualquier momento eliminando las cookies desde los ajustes de tu navegador.</p>
+                <h4>8. Actualizaciones a esta política</h4>
+                <p>Mundo Genético y Laboratorio Genes SAS pueden actualizar esta Política de Cookies en cualquier momento para adaptarse a cambios legales o tecnológicos. La versión vigente estará siempre disponible en esta misma sección del sitio web.</p>
+                <h4>9. Contacto</h4>
+                <p>Si tienes preguntas sobre esta Política o sobre el uso de cookies, puedes escribirnos a: <strong>comercial@mundogenetico.com</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="../js/main.js"></script>
+</body>
+
+</html>

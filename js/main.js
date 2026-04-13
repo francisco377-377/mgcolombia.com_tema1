@@ -36,6 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainNav.classList.remove('active');
             });
         });
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.nav-item-dropdown > a').forEach(dropdownToggle => {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    dropdownToggle.parentElement.classList.toggle('open');
+                }
+            });
+        });
     }
 
     // Smooth scrolling for anchor links
@@ -54,7 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                targetElement.scrollIntoView({
+                
+                // Calculate dynamic offset (header height + margin)
+                const header = document.querySelector('.main-header');
+                const headerHeight = header ? header.offsetHeight : 115;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+
+                window.scrollTo({
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             }
@@ -75,11 +93,150 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Advanced HUD & DNA Canvas Animation
     initTechHUD();
     initBenefitsDNA();
+    initBenefitsDNADark();
     initCTADNA();
     initFAQ();
     initFaqDNA();
     initProcessParticles();
+    initTransparencyStats();
+    initTransparencyDNA();
+    initTechServices();
 });
+
+function initTechServices() {
+    const cards = document.querySelectorAll('.service-card-tech');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+            const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+            card.style.setProperty('--mouse-x', `${x}%`);
+            card.style.setProperty('--mouse-y', `${y}%`);
+        });
+    });
+}
+
+function initTransparencyDNA() {
+    const canvas = document.getElementById('transparency-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let phase = 0;
+
+    function draw() {
+        if (window.canvasVisibility[canvas.id] === false) {
+            setTimeout(() => requestAnimationFrame(draw), 200);
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        // Massive Helix matching Benefits section EXACTLY
+        const isMobile = window.innerWidth < 768;
+        const amplitude = isMobile ? 120 : 350; 
+        const spacing = isMobile ? 40 : 80;     
+
+        const diag = Math.sqrt(width * width + height * height);
+        const numPoints = Math.ceil(diag / spacing) + 10;
+
+        ctx.lineWidth = isMobile ? 2 : 4;
+
+        ctx.save();
+        ctx.translate(width / 2, height / 2); 
+
+        const tiltAngle = Math.atan2(height, width);
+        ctx.rotate(-tiltAngle * 0.7); 
+
+        const startY = -diag / 2 - 200; 
+
+        for (let i = 0; i < numPoints; i++) {
+            const y = startY + i * spacing;
+            const angle = phase + i * 0.12; 
+
+            const x1 = Math.sin(angle) * amplitude;
+            const x2 = Math.sin(angle + Math.PI) * amplitude;
+
+            const z1 = Math.cos(angle);
+            const z2 = Math.cos(angle + Math.PI);
+
+            const size1 = (z1 + 1.5) * (isMobile ? 5 : 12); 
+            const size2 = (z2 + 1.5) * (isMobile ? 5 : 12);
+
+            const alpha1 = ((z1 + 1.5) / 2.5) * 0.22;
+            const alpha2 = ((z2 + 1.5) / 2.5) * 0.22;
+
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.strokeStyle = `rgba(9, 60, 141, ${Math.min(alpha1, alpha2) * 0.5})`;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(x1, y, size1, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(9, 60, 141, ${alpha1})`;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x2, y, size2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(9, 60, 141, ${alpha2})`;
+            ctx.fill();
+        }
+        ctx.restore();
+        
+        phase += 0.012; // Matching exact speed
+        requestAnimationFrame(draw);
+    }
+    setTimeout(() => { resize(); draw(); }, 150);
+}
+
+function initTransparencyStats() {
+    const section = document.querySelector('.transparency-section');
+    if (!section) return;
+
+    const values = section.querySelectorAll('.stat-value');
+    const bars = section.querySelectorAll('.progress-fill');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate numbers
+                values.forEach(val => {
+                    const target = parseFloat(val.getAttribute('data-target'));
+                    let current = 0;
+                    const duration = 1500; 
+                    const jump = 10; // User requested increments of 10
+                    const interval = (duration / (target / jump)); 
+
+                    const timer = setInterval(() => {
+                        current += jump;
+                        if (current < target) {
+                            val.textContent = current.toFixed(target % 1 === 0 ? 0 : 3) + '%';
+                        } else {
+                            val.textContent = target + '%';
+                            clearInterval(timer);
+                        }
+                    }, interval);
+                });
+
+                // Animate bars
+                bars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+
+                observer.unobserve(section);
+            }
+        });
+    }, { threshold: 0.05 }); // Lower threshold to trigger sooner on mobile devices
+
+    observer.observe(section);
+}
 
 function initTechHUD() {
     const canvas = document.getElementById('tech-canvas');
@@ -189,14 +346,12 @@ function initTechHUD() {
             ctx.beginPath();
             ctx.arc(x1, y, size1, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(56, 189, 248, ${alpha1})`;
-            if (z1 > 0) { ctx.shadowBlur = 15; ctx.shadowColor = '#38bdf8'; } else { ctx.shadowBlur = 0; }
             ctx.fill();
 
             // Strand 2 (Light Cyan/White)
             ctx.beginPath();
             ctx.arc(x2, y, size2, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(224, 242, 254, ${alpha2})`;
-            if (z2 > 0) { ctx.shadowBlur = 15; ctx.shadowColor = '#e0f2fe'; } else { ctx.shadowBlur = 0; }
             ctx.fill();
         }
         ctx.shadowBlur = 0;
@@ -326,8 +481,6 @@ function initBenefitsDNA() {
                 grad.addColorStop(1, `rgba(9, 60, 141, ${alpha})`);
                 ctx.fillStyle = grad;
 
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = `rgba(56, 189, 248, ${alpha * 0.4})`;
             } else {
                 // Deeper tone for background spheres structure
                 ctx.fillStyle = `rgba(9, 60, 141, ${alpha * 0.8})`;
@@ -348,109 +501,111 @@ function initBenefitsDNA() {
 
 // Cinematic 3D Particle DNA (CTA Banner)
 function initCTADNA() {
-    const canvas = document.getElementById('cta-dna-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: false }); // Disabled alpha for faster composite
+    const canvases = document.querySelectorAll('.cta-bg-canvas');
+    if (canvases.length === 0) return;
 
-    // Cap pixel ratio to max 1.5 to prevent massive rendering sweeps on mobile retina
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    let width, height;
+    canvases.forEach(canvas => {
+        const ctx = canvas.getContext('2d', { alpha: true });
 
-    function resize() {
-        width = canvas.parentElement.offsetWidth;
-        height = canvas.parentElement.offsetHeight;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        ctx.scale(dpr, dpr);
-    }
-    window.addEventListener('resize', resize);
-    resize();
+        // Cap pixel ratio to max 1.5 to prevent massive rendering sweeps on mobile retina
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        let width, height;
 
-    let phase = 0;
-    const isMobile = window.innerWidth < 768;
-    const numPoints = isMobile ? 35 : 55; // Slightly reduced node density
-    const spacing = 18;
-    const amplitude = isMobile ? 120 : 250;
-
-    const rungsCount = isMobile ? 4 : 7;
-    const rungT = [];
-    for (let j = 1; j < rungsCount; j++) {
-        rungT.push(j / rungsCount);
-    }
-
-    function draw() {
-        if (window.canvasVisibility[canvas.id] === false) {
-            setTimeout(() => requestAnimationFrame(draw), 200);
-            return;
+        function resize() {
+            width = canvas.parentElement.offsetWidth;
+            height = canvas.parentElement.offsetHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
         }
-        // Ultra-fast hardware clear
-        ctx.clearRect(0, 0, width, height);
+        window.addEventListener('resize', resize);
+        resize();
 
-        const centerY = height / 2;
-        const centerX = width / 2;
-        const startY = centerY - (numPoints * spacing) / 2;
+        let phase = 0;
+        const isMobile = window.innerWidth < 768;
+        const numPoints = isMobile ? 35 : 55; // Slightly reduced node density
+        const spacing = 18;
+        const amplitude = isMobile ? 120 : 250;
 
-        const nodes = [];
-        const twistFreq = 0.16;
+        const rungsCount = isMobile ? 4 : 7;
+        const rungT = [];
+        for (let j = 1; j < rungsCount; j++) {
+            rungT.push(j / rungsCount);
+        }
 
-        // Build particle nodes
-        for (let i = 0; i < numPoints; i++) {
-            const y = startY + i * spacing;
-            const angle = phase + i * twistFreq;
+        function draw() {
+            if (window.canvasVisibility[canvas.id] === false) {
+                setTimeout(() => requestAnimationFrame(draw), 200);
+                return;
+            }
+            // Ultra-fast hardware clear
+            ctx.clearRect(0, 0, width, height);
 
-            const sinA = Math.sin(angle);
-            const cosA = Math.cos(angle);
+            const centerY = height / 2;
+            const centerX = width / 2;
+            const startY = centerY - (numPoints * spacing) / 2;
 
-            const x1 = centerX + sinA * amplitude;
-            const x2 = centerX - sinA * amplitude;
-            const z1 = cosA;
-            const z2 = -cosA;
+            const nodes = [];
+            const twistFreq = 0.16;
 
-            nodes.push({ x: x1, y: y, z: z1, isBackbone: true });
-            nodes.push({ x: x2, y: y, z: z2, isBackbone: true });
+            // Build particle nodes
+            for (let i = 0; i < numPoints; i++) {
+                const y = startY + i * spacing;
+                const angle = phase + i * twistFreq;
 
-            if (i % 2 === 0) {
-                for (let j = 0; j < rungT.length; j++) {
-                    const t = rungT[j];
-                    const rx = x1 + (x2 - x1) * t;
-                    const rz = z1 + (z2 - z1) * t;
-                    const sag = Math.sin(t * Math.PI) * 12;
-                    nodes.push({ x: rx, y: y + sag, z: rz, isBackbone: false });
+                const sinA = Math.sin(angle);
+                const cosA = Math.cos(angle);
+
+                const x1 = centerX + sinA * amplitude;
+                const x2 = centerX - sinA * amplitude;
+                const z1 = cosA;
+                const z2 = -cosA;
+
+                nodes.push({ x: x1, y: y, z: z1, isBackbone: true });
+                nodes.push({ x: x2, y: y, z: z2, isBackbone: true });
+
+                if (i % 2 === 0) {
+                    for (let j = 0; j < rungT.length; j++) {
+                        const t = rungT[j];
+                        const rx = x1 + (x2 - x1) * t;
+                        const rz = z1 + (z2 - z1) * t;
+                        const sag = Math.sin(t * Math.PI) * 12;
+                        nodes.push({ x: rx, y: y + sag, z: rz, isBackbone: false });
+                    }
                 }
             }
-        }
 
-        // Z-Depth sorting
-        nodes.sort((a, b) => a.z - b.z);
+            // Z-Depth sorting
+            nodes.sort((a, b) => a.z - b.z);
 
-        // Highly optimized draw loop - NO shadowBlur
-        for (let i = 0; i < nodes.length; i++) {
-            const n = nodes[i];
-            const perspective = (n.z + 1.2) / 2.2;
+            // Highly optimized draw loop - NO shadowBlur
+            for (let i = 0; i < nodes.length; i++) {
+                const n = nodes[i];
+                const perspective = (n.z + 1.2) / 2.2;
 
-            const size = n.isBackbone ? (perspective * 4.5 + 1.5) : (perspective * 2 + 0.8);
-            let alpha = n.isBackbone ? perspective * 0.95 : perspective * 0.6;
+                const size = n.isBackbone ? (perspective * 4.5 + 1.5) : (perspective * 2 + 0.8);
+                let alpha = n.isBackbone ? perspective * 0.95 : perspective * 0.6;
 
-            ctx.beginPath();
-            ctx.arc(n.x, n.y, size, 0, Math.PI * 2);
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, size, 0, Math.PI * 2);
 
-            // Bright clinical blue colors to match the hero background
-            if (n.z > 0.4) {
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`; // Crisp white at the extreme front
-            } else if (n.z > -0.4) {
-                ctx.fillStyle = `rgba(186, 230, 253, ${alpha})`; // Light sky blue in the middle
-            } else {
-                ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.6})`; // Deeper blue in the back
+                if (n.z > 0.4) {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                } else if (n.z > -0.4) {
+                    ctx.fillStyle = `rgba(186, 230, 253, ${alpha})`;
+                } else {
+                    ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.6})`;
+                }
+
+                ctx.fill();
             }
 
-            ctx.fill();
+            phase += 0.015;
+            requestAnimationFrame(draw);
         }
 
-        phase += 0.015;
-        requestAnimationFrame(draw);
-    }
-
-    setTimeout(() => { resize(); draw(); }, 150);
+        setTimeout(() => { resize(); draw(); }, 150);
+    });
 }
 
 // Floating Particles for Process Section (4op)
@@ -626,7 +781,7 @@ function initFaqDNA() {
 
     function draw() {
         if (window.canvasVisibility && window.canvasVisibility['faq-dna-canvas'] === false) {
-            requestAnimationFrame(draw);
+            setTimeout(() => requestAnimationFrame(draw), 200);
             return;
         }
 
@@ -663,8 +818,6 @@ function initFaqDNA() {
             ctx.beginPath();
             ctx.arc(x1, p.y, p.radius * (z1 + 1.5), 0, Math.PI * 2);
             ctx.fillStyle = `rgba(56, 189, 248, ${alpha1})`;
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#38bdf8';
             ctx.fill();
 
             ctx.beginPath();
@@ -909,3 +1062,103 @@ function initFaqDNA() {
     renderMap();
 })();
 
+function initBenefitsDNADark() {
+    const canvas = document.getElementById('benefits-canvas-dark');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    let phase = 0;
+
+    function draw() {
+        if (window.canvasVisibility[canvas.id] === false) {
+            setTimeout(() => requestAnimationFrame(draw), 200);
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        const isMobile = window.innerWidth < 768;
+        const amplitude = isMobile ? 120 : 350; 
+        const spacing = isMobile ? 40 : 80;     
+
+        const diag = Math.sqrt(width * width + height * height);
+        const numPoints = Math.ceil(diag / spacing) + 10;
+
+        ctx.lineWidth = isMobile ? 2 : 4;
+
+        ctx.save();
+        ctx.translate(width / 2, height / 2); 
+
+        const tiltAngle = Math.atan2(height, width);
+        ctx.rotate(-tiltAngle * 0.7); 
+
+        const startY = -diag / 2 - 200; 
+
+        ctx.globalAlpha = 1;
+
+        for (let i = 0; i < numPoints; i++) {
+            const y = startY + i * spacing;
+            const angle = phase + i * 0.12; 
+
+            const x1 = Math.sin(angle) * amplitude;
+            const x2 = Math.sin(angle + Math.PI) * amplitude;
+
+            const z1 = Math.cos(angle);
+            const z2 = Math.cos(angle + Math.PI);
+
+            const size1 = (z1 + 1.5) * (isMobile ? 5 : 12); 
+            const size2 = (z2 + 1.5) * (isMobile ? 5 : 12);
+
+            const alpha1 = ((z1 + 1.5) / 2.5) * 0.45; // significantly higher alpha
+            const alpha2 = ((z2 + 1.5) / 2.5) * 0.45;
+
+            // Brighter White Connectors
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${Math.min(alpha1, alpha2) * 0.6})`;
+            ctx.stroke();
+
+            if (z1 < z2) {
+                drawNode(x1, y, size1, alpha1, false);
+                drawNode(x2, y, size2, alpha2, true);
+            } else {
+                drawNode(x2, y, size2, alpha2, false);
+                drawNode(x1, y, size1, alpha1, true);
+            }
+        }
+
+        function drawNode(x, y, size, alpha, isFront) {
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+
+            if (isFront) {
+                // Intensely bright white/SkyBlue nodes for dark theme
+                const grad = ctx.createRadialGradient(x - size * 0.2, y - size * 0.2, size * 0.1, x, y, size);
+                grad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 2.2})`);
+                grad.addColorStop(0.3, `rgba(224, 242, 254, ${alpha * 1.5})`);
+                grad.addColorStop(1, `rgba(56, 189, 248, ${alpha})`);
+                ctx.fillStyle = grad;
+
+            } else {
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.5})`;
+                ctx.shadowBlur = 0;
+            }
+            ctx.fill();
+        }
+
+        ctx.restore();
+        ctx.shadowBlur = 0;
+        phase -= 0.008; 
+        requestAnimationFrame(draw);
+    }
+
+    setTimeout(() => { resize(); draw(); }, 100);
+}
