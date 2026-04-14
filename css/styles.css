@@ -574,8 +574,7 @@ section {
     font-size: 0.85rem;
     color: var(--text-white);
     font-weight: 600;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    /* backdrop-filter eliminado por rendimiento */
     position: relative;
     overflow: hidden;
 }
@@ -1998,7 +1997,8 @@ section {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
+        width: calc(100% - 130px); /* Espacio para bandera a la derecha */
+        max-width: 220px;
         text-align: center;
         pointer-events: none;
         z-index: 5;
@@ -2052,6 +2052,10 @@ section {
     .cert-logos {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    .hero-premium {
+        padding: 120px 0 60px 0;
+        min-height: 80vh;
     }
 }
 
