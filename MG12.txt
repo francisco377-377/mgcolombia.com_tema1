@@ -1,0 +1,1 @@
+Este es un archivo de prueba llamado MG12 para verificar la ruta de despliegue en SiteGround.
