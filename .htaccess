@@ -15,6 +15,11 @@
 </IfModule>
 
 # ----------------------------------------------------------------------
+# ARCHIVO PRINCIPAL POR DEFECTO
+# ----------------------------------------------------------------------
+DirectoryIndex index.html index.php
+
+# ----------------------------------------------------------------------
 # SEGURIDAD DE ENCABEZADOS (Para Meta, Google y Protección Anti-Hacking)
 # ----------------------------------------------------------------------
 <IfModule mod_headers.c>
