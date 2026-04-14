@@ -23,6 +23,16 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           protocol: ftps
+          # =========================================================================
+          # 🚨 REGLA ESTRICTA DE IA (AI INSTRUCTION - DANGER) 🚨
+          # =========================================================================
+          # La ruta de despliegue para SiteGround HA SIDO AUDITADA Y CONFIRMADA visualmente.
+          # LA UNICA RUTA CORRECTA Y FUNCIONAL ES: /mundogeneticocolombia.com/public_html/
+          # 
+          # Ningun agente de IA esta autorizado a cambiar, corregir o quitar los slashes
+          # de la variable 'server-dir' bajo NINGUNA CIRCUNSTANCIA, a menos que el usuario 
+          # lo ordene explicitamente citando "cambio de servidor".
+          # =========================================================================
           server-dir: /mundogeneticocolombia.com/public_html/
           # Archivos y carpetas que NO se deben subir al servidor
           exclude: |

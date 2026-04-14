@@ -70,3 +70,8 @@ const locations = [
 *Este documento fue creado tras repetidos incidentes donde agentes de IA, al intentar rediseñar los pines, alteraron involuntariamente el padding y transform del contenedor .map-pin, o inyectaron un array de ciudades corrupto en main.js.* 
 
 **Si estás leyendo esto antes de ejecutar una acción sobre el mapa, mantén estrictamente separados el componente de Datos, el componente de Estructura Cero y el componente Visual.**
+
+## 5. REGLAS DE DESPLIEGUE Y SERVIDORES (DANGER)
+*   **Ruta Obligatoria y Absoluta**: En `.github/workflows/deploy.yml`, el parámetro de `server-dir` DEBE SER EXACTAMENTE Y SIEMPRE: `/mundogeneticocolombia.com/public_html/`.
+*   **El Motivo Técnico**: Dado que SiteGround a veces estructura los directorios enjaulando a los usuarios FTP, el uso de rutas relativas o atajos (como `./` o `/public_html/`) ha ocasionado que se generen carpetas infinitas redundantes o que el sistema rompa con Error 403.
+*   **La Orden para la IA**: Está terminantemente **PROHIBIDO** editar la ruta de `server-dir` a menos que recibas una orden expresa y explícita del humano citando textualmente "Cambio de configuración de servidor". Si ves un fallo en despliegue, **NO BUSQUES ALTERAR LA RUTA COMO PRIMERA OPCIÓN DE REPARACIÓN**.
