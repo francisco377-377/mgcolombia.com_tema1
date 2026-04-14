@@ -2057,6 +2057,45 @@ section {
         padding: 120px 0 60px 0;
         min-height: 80vh;
     }
+
+    /* ---- FAQ Mobile Fix ---- */
+    .faq-question {
+        padding: 1rem 1rem !important;
+        font-size: 0.95rem !important;
+        gap: 0.75rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .faq-question-icon {
+        font-size: 1rem !important;
+        width: 20px;
+        flex-shrink: 0;
+    }
+
+    .faq-icon {
+        width: 34px !important;
+        height: 34px !important;
+        flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 0.85rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .faq-answer * {
+        font-size: 0.9rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .faq-item {
+        margin-bottom: 0.75rem;
+    }
+
+    .scifi-tablet-wrapper {
+        padding: 1rem !important;
+        border-radius: 16px !important;
+    }
 }
 
 /* =========================================================================
