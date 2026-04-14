@@ -75,3 +75,12 @@ const locations = [
 *   **Ruta Obligatoria y Absoluta**: En `.github/workflows/deploy.yml`, el parámetro de `server-dir` DEBE SER EXACTAMENTE Y SIEMPRE: `/mundogeneticocolombia.com/public_html/`.
 *   **El Motivo Técnico**: Dado que SiteGround a veces estructura los directorios enjaulando a los usuarios FTP, el uso de rutas relativas o atajos (como `./` o `/public_html/`) ha ocasionado que se generen carpetas infinitas redundantes o que el sistema rompa con Error 403.
 *   **La Orden para la IA**: Está terminantemente **PROHIBIDO** editar la ruta de `server-dir` a menos que recibas una orden expresa y explícita del humano citando textualmente "Cambio de configuración de servidor". Si ves un fallo en despliegue, **NO BUSQUES ALTERAR LA RUTA COMO PRIMERA OPCIÓN DE REPARACIÓN**.
+
+## 6. GIT WORKFLOW & ESTRATEGIA DE RAMAS (DANGER - MANTENER PRODUCCIÓN LIMPIA)
+Para los modelos de IA que abran este proyecto en sesiones futuras, existe una estricta política de versionamiento que no debe pasarse por alto para evitar corromper la página en vivo:
+
+*   **1. `main` (Rama de Producción Exclusiva):** NUNCA realices tareas de ideación, experimentación de diseño, o maquetación inicial directamente en la rama `main`. La rama `main` dispara automáticamente un despliegue en SiteGround y actualizará el dominio en vivo para todo el público afectando operaciones de la clínica en tiempo real. 
+*   **2. `fase-2-evolucion` (Tu entorno de trabajo):** A menos que el usuario esté solicitando un "Hotfix" imperativo para errores urgentes en producción, **CUALQUIER NUEVO DISEÑO, MAQUETACIÓN, FUNCIONALIDAD U OPTIMIZACIÓN DEBE DESARROLLARSE EXCLUSIVAMENTE SOBRE LA RAMA `fase-2-evolucion`**. Si te abren para crear cosas nuevas y estás sobre `main`, **cambia de rama (`git checkout fase-2-evolucion`) ANTES de empezar a alterar código**.
+*   **3. Merge a Producción:** Una vez que el usuario audite los diseños de la fase 2 localmente y emita una frase como "Ok, subámoslo todo" o "Lanza los cambios de Fase 2", entonces —y solo entonces— tienes autorizado ejecutar un merge limpio hacia `main` (y confirmar la ejecución automática de la Subida FTP a Producción).
+*   **4. Respaldo Inviolable:** NUNCA escribas, hagas push, o fusiones commits hacia la rama `mgcol.com-stable-v1-completa`. Esta es una caja fuerte congelada bajo el tag `v1.0.0-stable`.
+
