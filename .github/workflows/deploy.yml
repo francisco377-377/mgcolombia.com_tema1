@@ -1,0 +1,33 @@
+name: 🚀 Deploy a SiteGround (mundogeneticocolombia.com)
+
+# Se activa automáticamente cuando se hace push a la rama main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Subir archivos al servidor por SFTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: 🚀 Sincronizar con SiteGround via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftps
+          server-dir: /public_html/
+          # Archivos y carpetas que NO se deben subir al servidor
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            PLAN_DESPLIEGUE_SITEGROUND.txt
+            pines/**
