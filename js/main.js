@@ -21,38 +21,62 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(reveal);
     });
 
-    // Mobile Navigation Toggle
+    // =========================================================
+    // MOBILE NAVIGATION — Menú lateral completo
+    // =========================================================
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mainNav = document.getElementById('main-nav');
-    
+
+    // Sin overlay — el panel deslizante ya separa visualmente el menú
+
+    function openMobileNav() {
+        mainNav.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        mobileBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        mobileBtn.setAttribute('aria-label', 'Cerrar menú');
+    }
+
+    function closeMobileNav() {
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+        mobileBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        mobileBtn.setAttribute('aria-label', 'Abrir menú');
+        // Reset megamenu y dropdowns al cerrar
+        document.querySelectorAll('.nav-item-megamenu').forEach(i => i.classList.remove('active-mm'));
+        document.querySelectorAll('.nav-item-dropdown').forEach(i => i.classList.remove('open'));
+    }
+
     if (mobileBtn && mainNav) {
         mobileBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
+            mainNav.classList.contains('active') ? closeMobileNav() : openMobileNav();
         });
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-scroll').forEach(link => {
+
+        // Cerrar al navegar a un anchor (#) o a una ciudad
+        document.querySelectorAll('#main-nav .nav-scroll, #main-nav .mm-cities-grid a, #main-nav .megamenu-footer a').forEach(link => {
             link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
+                if (window.innerWidth <= 991) closeMobileNav();
             });
         });
 
-        // Dropdown toggle for mobile
+        // Dropdown toggle para móvil (Servicios y Cobertura Nacional)
         document.querySelectorAll('.nav-item-dropdown > a, .nav-item-megamenu > a').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 991) {
                     e.preventDefault();
-                    // Close others if open
-                    document.querySelectorAll('.nav-item-dropdown, .nav-item-megamenu').forEach(item => {
-                        if (item !== toggle.parentElement) {
-                            item.classList.remove('open', 'active-mm');
-                        }
-                    });
-                    
-                    if (toggle.parentElement.classList.contains('nav-item-megamenu')) {
-                        toggle.parentElement.classList.toggle('active-mm');
+                    const parent = toggle.parentElement;
+
+                    if (parent.classList.contains('nav-item-megamenu')) {
+                        // Cerrar otros megamenus
+                        document.querySelectorAll('.nav-item-megamenu').forEach(i => {
+                            if (i !== parent) i.classList.remove('active-mm');
+                        });
+                        parent.classList.toggle('active-mm');
                     } else {
-                        toggle.parentElement.classList.toggle('open');
+                        // Cerrar otros dropdowns
+                        document.querySelectorAll('.nav-item-dropdown').forEach(i => {
+                            if (i !== parent) i.classList.remove('open');
+                        });
+                        parent.classList.toggle('open');
                     }
                 }
             });
@@ -68,13 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNavEl = document.getElementById('main-nav');
 
     function positionMegaMenu() {
-        if (!mainNavEl) return;
+        // En móvil el megamenú usa position:static — no reposicionar con JS
+        if (!mainNavEl || window.innerWidth <= 991) {
+            document.querySelectorAll('.megamenu-content').forEach(menu => {
+                menu.style.left = '';
+                menu.style.width = '';
+            });
+            return;
+        }
         const navRect = mainNavEl.getBoundingClientRect();
         megaMenuItems.forEach(item => {
             const menu = item.querySelector('.megamenu-content');
             if (!menu) return;
-            // Offset negativo: position:absolute está dentro de un li,
-            // necesitamos mover el menú hasta el borde izquierdo real del nav
             const itemRect = item.getBoundingClientRect();
             menu.style.left = (navRect.left - itemRect.left) + 'px';
             menu.style.width = navRect.width + 'px';

@@ -335,6 +335,7 @@ header.main-header {
     .nav-item-megamenu {
         position: relative;
     }
+    /* Oculto por defecto — activa con active-mm (igual que en main.js) */
     .megamenu-content {
         position: static;
         width: 100%;
@@ -344,23 +345,51 @@ header.main-header {
         transform: none;
         box-shadow: none;
         border: none;
+        border-top: 2px solid rgba(7,77,166,0.12);
+        background: #f8fafc;
     }
-    .nav-item-megamenu.active .megamenu-content {
+    /* ✅ FIX: JS usa active-mm, CSS debe ser active-mm */
+    .nav-item-megamenu.active-mm .megamenu-content {
         display: block;
+    }
+    /* Chevron rotation cuando está abierto */
+    .nav-item-megamenu.active-mm > a .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+    .mm-tab-bar {
+        background: #fff;
     }
     .mm-tabs-inner {
         flex-wrap: wrap;
-        padding: 0 0.5rem;
+        padding: 0;
+        gap: 0;
     }
     .mm-tab {
-        padding: 0.6rem 0.75rem;
+        padding: 0.65rem 1rem;
         font-size: 0.75rem;
+        border-bottom-width: 2px;
+        flex: 1;
+        justify-content: center;
+    }
+    .mm-badge {
+        font-size: 0.6rem;
+        padding: 1px 4px;
     }
     .mm-panel {
-        padding: 1rem;
+        padding: 0.75rem 0.75rem 0.5rem;
+        max-width: 100%;
     }
     .mm-cities-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+    .mm-cities-grid a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.4rem;
+    }
+    .megamenu-footer {
+        text-align: center;
+        padding: 0.6rem 1rem;
     }
 }
 </style>
