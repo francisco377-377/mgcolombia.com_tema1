@@ -38,34 +38,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Dropdown toggle for mobile
-        document.querySelectorAll('.nav-item-dropdown > a').forEach(dropdownToggle => {
-            dropdownToggle.addEventListener('click', (e) => {
+        document.querySelectorAll('.nav-item-dropdown > a, .nav-item-megamenu > a').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 991) {
                     e.preventDefault();
-                    dropdownToggle.parentElement.classList.toggle('open');
+                    // Close others if open
+                    document.querySelectorAll('.nav-item-dropdown, .nav-item-megamenu').forEach(item => {
+                        if (item !== toggle.parentElement) {
+                            item.classList.remove('open', 'active-mm');
+                        }
+                    });
+                    
+                    if (toggle.parentElement.classList.contains('nav-item-megamenu')) {
+                        toggle.parentElement.classList.toggle('active-mm');
+                    } else {
+                        toggle.parentElement.classList.toggle('open');
+                    }
                 }
             });
         });
     }
 
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"], a[href^="../#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
+            const href = this.getAttribute('href');
+            const isBackToHome = href.startsWith('../#');
+            const targetId = isBackToHome ? href.substring(3) : href;
+
             if (targetId === '#') return;
 
             if (targetId === '#whatsapp') {
                 e.preventDefault();
-                // Replace with actual WhatsApp logic/redirect
                 alert('Redirigiendo a WhatsApp de Mundo Genético...');
                 return;
             }
 
             const targetElement = document.querySelector(targetId);
+            
+            // If target is on this page, smooth scroll
             if (targetElement) {
                 e.preventDefault();
                 
-                // Calculate dynamic offset (header height + margin)
                 const header = document.querySelector('.main-header');
                 const headerHeight = header ? header.offsetHeight : 115;
                 const elementPosition = targetElement.getBoundingClientRect().top;
@@ -75,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+            } else if (isBackToHome) {
+                // Let the browser navigate back to the home page anchor
+                // No preventDefault here
             }
         });
     });
