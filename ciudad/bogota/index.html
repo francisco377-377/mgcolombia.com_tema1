@@ -91,47 +91,83 @@
                     <li class="nav-item-megamenu">
                         <a href="javascript:void(0)" class="nav-no-scroll">Cobertura Nacional <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                         <div class="megamenu-content shadow-lg">
-                            <div class="megamenu-grid">
-                                <div class="megamenu-column">
-                                    <h4><i class="fa-solid fa-mountain-city"></i> Región Andina</h4>
-                                    <ul>
-                                        <li><a href="/ciudad/medellin/">Medellín (Sede)</a></li>
-                                        <li><a href="/ciudad/bogota/">Bogotá</a></li>
-                                        <li><a href="/ciudad/bucaramanga/">Bucaramanga</a></li>
-                                        <li><a href="/ciudad/cucuta/">Cúcuta</a></li>
-                                        <li><a href="/ciudad/pereira/">Pereira</a></li>
-                                        <li><a href="/ciudad/manizales/">Manizales</a></li>
-                                        <li><a href="/ciudad/armenia/">Armenia</a></li>
-                                        <li><a href="/ciudad/ibague/">Ibagué</a></li>
-                                    </ul>
-                                </div>
-                                <div class="megamenu-column">
-                                    <h4><i class="fa-solid fa-umbrella-beach"></i> Región Caribe</h4>
-                                    <ul>
-                                        <li><a href="/ciudad/barranquilla/">Barranquilla</a></li>
-                                        <li><a href="/ciudad/cartagena/">Cartagena</a></li>
-                                        <li><a href="/ciudad/monteria/">Montería</a></li>
-                                        <li><a href="/ciudad/valledupar/">Valledupar</a></li>
-                                        <li><a href="/ciudad/sincelejo/">Sincelejo</a></li>
-                                        <li><a href="/ciudad/apartado/">Apartadó</a></li>
-                                        <li><a href="/ciudad/san-andres/">San Andrés</a></li>
-                                    </ul>
-                                </div>
-                                <div class="megamenu-column">
-                                    <h4><i class="fa-solid fa-cloud-sun"></i> Pacífica y Llanos</h4>
-                                    <ul>
-                                        <li><a href="/ciudad/cali/">Cali</a></li>
-                                        <li><a href="/ciudad/palmira/">Palmira</a></li>
-                                        <li><a href="/ciudad/pasto/">Pasto</a></li>
-                                        <li><a href="/ciudad/villavicencio/">Villavicencio</a></li>
-                                        <li><a href="/ciudad/yopal/">Yopal</a></li>
-                                        <li><a href="/ciudad/quibdo/">Quibdó</a></li>
-                                        <li><a href="/ciudad/mocoa/">Mocoa</a></li>
-                                    </ul>
+
+                            <!-- BARRA DE NAVEGACIÓN DE REGIONES (TABS) -->
+                            <div class="mm-tab-bar">
+                                <div class="mm-tabs-inner">
+                                    <button class="mm-tab active" data-region="andina">
+                                        <i class="fa-solid fa-mountain-city"></i> Región Andina
+                                        <span class="mm-badge">14</span>
+                                    </button>
+                                    <button class="mm-tab" data-region="caribe">
+                                        <i class="fa-solid fa-umbrella-beach"></i> Región Caribe
+                                        <span class="mm-badge">9</span>
+                                    </button>
+                                    <button class="mm-tab" data-region="pacifico">
+                                        <i class="fa-solid fa-cloud-sun"></i> Pacífica y Llanos
+                                        <span class="mm-badge">15</span>
+                                    </button>
                                 </div>
                             </div>
+
+                            <!-- PANEL: REGIÓN ANDINA -->
+                            <div class="mm-panel active" data-panel="andina">
+                                <div class="mm-cities-grid">
+                                    <a href="/ciudad/medellin/"><i class="fa-solid fa-star mm-star"></i> Medellín</a>
+                                    <a href="/ciudad/bogota/">Bogotá</a>
+                                    <a href="/ciudad/bucaramanga/">Bucaramanga</a>
+                                    <a href="/ciudad/cucuta/">Cúcuta</a>
+                                    <a href="/ciudad/pereira/">Pereira</a>
+                                    <a href="/ciudad/manizales/">Manizales</a>
+                                    <a href="/ciudad/armenia/">Armenia</a>
+                                    <a href="/ciudad/ibague/">Ibagué</a>
+                                    <a href="/ciudad/neiva/">Neiva</a>
+                                    <a href="/ciudad/tunja/">Tunja</a>
+                                    <a href="/ciudad/cajica/">Cajicá</a>
+                                    <a href="/ciudad/tocancipa/">Tocancipá</a>
+                                    <a href="/ciudad/pitalito/">Pitalito</a>
+                                    <a href="/ciudad/granada/">Granada</a>
+                                </div>
+                            </div>
+
+                            <!-- PANEL: REGIÓN CARIBE -->
+                            <div class="mm-panel" data-panel="caribe">
+                                <div class="mm-cities-grid">
+                                    <a href="/ciudad/barranquilla/">Barranquilla</a>
+                                    <a href="/ciudad/cartagena/">Cartagena</a>
+                                    <a href="/ciudad/monteria/">Montería</a>
+                                    <a href="/ciudad/valledupar/">Valledupar</a>
+                                    <a href="/ciudad/sincelejo/">Sincelejo</a>
+                                    <a href="/ciudad/apartado/">Apartadó</a>
+                                    <a href="/ciudad/san-andres/">San Andrés</a>
+                                    <a href="/ciudad/magangue/">Magangué</a>
+                                    <a href="/ciudad/caucasia/">Caucasia</a>
+                                </div>
+                            </div>
+
+                            <!-- PANEL: PACÍFICA Y LLANOS -->
+                            <div class="mm-panel" data-panel="pacifico">
+                                <div class="mm-cities-grid">
+                                    <a href="/ciudad/cali/">Cali</a>
+                                    <a href="/ciudad/palmira/">Palmira</a>
+                                    <a href="/ciudad/pasto/">Pasto</a>
+                                    <a href="/ciudad/villavicencio/">Villavicencio</a>
+                                    <a href="/ciudad/yopal/">Yopal</a>
+                                    <a href="/ciudad/quibdo/">Quibdó</a>
+                                    <a href="/ciudad/mocoa/">Mocoa</a>
+                                    <a href="/ciudad/tumaco/">Tumaco</a>
+                                    <a href="/ciudad/ipiales/">Ipiales</a>
+                                    <a href="/ciudad/tuquerres/">Túquerres</a>
+                                    <a href="/ciudad/arauca/">Arauca</a>
+                                    <a href="/ciudad/monterrey/">Monterrey</a>
+                                    <a href="/ciudad/acacias/">Acacías</a>
+                                    <a href="/ciudad/popayan/">Popayán</a>
+                                    <a href="/ciudad/montelibano/">Montelíbano</a>
+                                </div>
+                            </div>
+
                             <div class="megamenu-footer">
-                                <a href="#cobertura" class="nav-scroll">Ver todas las 39 ciudades en el mapa <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="#cobertura" class="nav-scroll">Ver todas las 38 ciudades en el mapa <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </li>
@@ -151,8 +187,14 @@
 /* =========================================
    MEGA MENU STYLES
    ========================================= */
+
+/* El HEADER completo es el ancestro de posicionamiento — siempre es 100% viewport */
+header.main-header {
+    position: relative;
+}
+
 .nav-item-megamenu {
-    position: static; /* Required for full-width megamenu */
+    position: static;
 }
 
 .megamenu-content {
@@ -160,17 +202,17 @@
     top: 100%;
     left: 0;
     right: 0;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
     background: #ffffff;
-    border-top: 1px solid rgba(0,0,0,0.05);
+    border-top: 3px solid var(--primary-blue);
     border-bottom: 3px solid var(--primary-blue);
-    padding: 2.5rem 0;
+    padding: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
     z-index: 1000;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
 }
 
 .nav-item-megamenu:hover .megamenu-content {
@@ -179,67 +221,116 @@
     transform: translateY(0);
 }
 
-.megamenu-grid {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    padding: 0 1.5rem;
-}
-
-.megamenu-column h4 {
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--primary-blue);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    padding-bottom: 0.75rem;
-}
-
-.megamenu-column ul {
-    list-style: none;
+/* BARRA DE TABS */
+.mm-tab-bar {
+    background: #f8fafc;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
     padding: 0;
 }
-
-.megamenu-column ul li {
-    margin-bottom: 0.6rem;
+.mm-tabs-inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
 }
-
-.megamenu-column ul li a {
-    color: var(--text-main);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.2s;
-    display: block;
-    padding: 4px 0;
+.mm-tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    font-family: inherit;
 }
-
-.megamenu-column ul li a:hover {
+.mm-tab:hover {
     color: var(--primary-blue);
-    transform: translateX(5px);
+}
+.mm-tab.active {
+    color: var(--primary-blue);
+    border-bottom-color: var(--primary-blue);
+}
+.mm-badge {
+    background: var(--primary-blue);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 10px;
+    line-height: 1.4;
+}
+.mm-tab.active .mm-badge {
+    background: var(--primary-blue);
+}
+
+/* PANELS DE CIUDADES */
+.mm-panel {
+    display: none;
+    padding: 1.25rem 2rem 1rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+.mm-panel.active {
+    display: block;
+}
+.mm-cities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+.mm-cities-grid a {
+    color: #334155;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background 0.15s, color 0.15s;
+}
+.mm-cities-grid a:hover {
+    background: rgba(7,77,166,0.07);
+    color: var(--primary-blue);
+}
+.mm-star {
+    color: #f59e0b;
+    font-size: 0.6rem;
 }
 
 .megamenu-footer {
     max-width: var(--container-width);
-    margin: 1.5rem auto 0;
-    padding: 1.5rem 1.5rem 0;
-    border-top: 1px solid rgba(0,0,0,0.05);
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
     text-align: right;
+    background: #f8fafc;
 }
 
 .megamenu-footer a {
     font-weight: 700;
     color: var(--primary-blue);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+}
+.megamenu-footer a:hover {
+    gap: 0.8rem;
 }
 
-/* Mobile Menu Adjustments for MegaMenu */
+/* Mobile */
 @media (max-width: 991px) {
     .nav-item-megamenu {
         position: relative;
@@ -247,11 +338,9 @@
     .megamenu-content {
         position: static;
         width: 100%;
-        margin-left: 0;
         opacity: 1;
         visibility: visible;
-        display: none; /* Toggle with JS if needed, or always show in mobile nav */
-        padding: 1rem 0;
+        display: none;
         transform: none;
         box-shadow: none;
         border: none;
@@ -259,9 +348,19 @@
     .nav-item-megamenu.active .megamenu-content {
         display: block;
     }
-    .megamenu-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .mm-tabs-inner {
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+    }
+    .mm-tab {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    .mm-panel {
+        padding: 1rem;
+    }
+    .mm-cities-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 </style>

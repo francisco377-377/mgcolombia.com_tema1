@@ -59,6 +59,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
+    // MEGA MENU: posicionamiento dinámico vía JS (100% confiable)
+    // El CSS position:absolute falla en estructuras flex anidadas.
+    // Aquí calculamos left/width con getBoundingClientRect del nav.
+    // =========================================================
+    const megaMenuItems = document.querySelectorAll('.nav-item-megamenu');
+    const mainNavEl = document.getElementById('main-nav');
+
+    function positionMegaMenu() {
+        if (!mainNavEl) return;
+        const navRect = mainNavEl.getBoundingClientRect();
+        megaMenuItems.forEach(item => {
+            const menu = item.querySelector('.megamenu-content');
+            if (!menu) return;
+            // Offset negativo: position:absolute está dentro de un li,
+            // necesitamos mover el menú hasta el borde izquierdo real del nav
+            const itemRect = item.getBoundingClientRect();
+            menu.style.left = (navRect.left - itemRect.left) + 'px';
+            menu.style.width = navRect.width + 'px';
+        });
+    }
+
+    // Ejecutar al cargar y al redimensionar
+    positionMegaMenu();
+    window.addEventListener('resize', positionMegaMenu);
+
+    // =========================================================
+    // MEGA MENU TABS: switching entre regiones
+    // =========================================================
+    document.querySelectorAll('.mm-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const region = tab.dataset.region;
+            // Tabs
+            document.querySelectorAll('.mm-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            // Panels
+            document.querySelectorAll('.mm-panel').forEach(p => p.classList.remove('active'));
+            const panel = document.querySelector(`.mm-panel[data-panel="${region}"]`);
+            if (panel) panel.classList.add('active');
+        });
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"], a[href^="../#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
