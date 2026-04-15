@@ -17,6 +17,10 @@ html = html.replace(/href="servicio-a-/g, 'href="../../servicio-a-');
 html = html.replace(/href="contactenos\//g, 'href="../../contactenos/');
 html = html.replace(/src="js\//g, 'src="../../js/');
 
+// Mega menu ciudad-a-ciudad: desde /ciudad/bogota/ → ../medellin/
+// index.html usa href="ciudad/medellin/" → en city pages debe ser href="../medellin/"
+html = html.replace(/href="ciudad\//g, 'href="../');
+
 // specifically update href="# anchors to jump to root if needed, wait! Actually if they click an anchor inside the city page, it should scroll down the CITY page!
 // So href="#inicio" should REMAIN href="#inicio" because the page is identical and has those sections!
 // Except the nav links! If they are on /ciudad/medellin/ and click href="#inicio", the browser scrolls down. This is perfect! 
