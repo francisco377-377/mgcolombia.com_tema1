@@ -27,6 +27,7 @@ const locations = [
   { name: "Cartagena", hq: false, left: 35.53, top: 21.66 },
   { name: "Caucasia", hq: false, left: 36.81, top: 33.69 },
   { name: "Cúcuta", hq: false, left: 53.04, top: 31.13 },
+  { name: "Duitama", hq: false, left: 54.8, top: 42.2 },
   { name: "Granada", hq: false, left: 49.81, top: 55.03 },
   { name: "Ibagué", hq: false, left: 37.01, top: 53.46 },
   { name: "Ipiales", hq: false, left: 21.41, top: 68.83 },

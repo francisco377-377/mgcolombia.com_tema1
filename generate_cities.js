@@ -18,6 +18,7 @@ const cities = [
   { name: "Cartagena", slug: "cartagena", delivery: "5 a 6 días hábiles" },
   { name: "Caucasia", slug: "caucasia", delivery: "5 a 6 días hábiles" },
   { name: "Cúcuta", slug: "cucuta", delivery: "5 a 6 días hábiles" },
+  { name: "Duitama", slug: "duitama", delivery: "5 a 6 días hábiles" },
   { name: "Granada", slug: "granada", delivery: "5 a 6 días hábiles" },
   { name: "Ibagué", slug: "ibague", delivery: "5 a 6 días hábiles" },
   { name: "Ipiales", slug: "ipiales", delivery: "5 a 6 días hábiles" },
