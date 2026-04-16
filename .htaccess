@@ -12,6 +12,15 @@
     # 2. REDIRIGIR WWW A SIN WWW (Opcional, pero recomendado para SEO)
     RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
     RewriteRule ^(.*)$ https://mundogeneticocolombia.com/$1 [L,R=301]
+
+    # 3. URLs LIMPIAS PARA CIUDADES (Clean URLs)
+    # Redirigir /ciudad/nombre-ciudad/ a /nombre-ciudad/ (SEO 301)
+    RewriteRule ^ciudad/([^/]+)/?$ /$1/ [L,R=301]
+
+    # Reescritura interna: /nombre-ciudad/ mapea a /ciudad/nombre-ciudad/index.html de forma transparente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([^/]+)/?$ ciudad/$1/index.html [L,QSA]
 </IfModule>
 
 # ----------------------------------------------------------------------
