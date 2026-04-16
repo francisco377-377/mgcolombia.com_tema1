@@ -5,7 +5,7 @@ const templatePath = path.join(__dirname, 'template-city.html');
 const template = fs.readFileSync(templatePath, 'utf8');
 
 const cities = [
-  { name: "Medellín", slug: "medellin", hq: true, delivery: "1 a 2 días hábiles" },
+  { name: "Medellín", slug: "medellin", hq: true, delivery: "1 a 2 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
   { name: "Acacías", slug: "acacias", delivery: "5 a 6 días hábiles" },
   { name: "Apartadó", slug: "apartado", delivery: "5 a 6 días hábiles" },
   { name: "Arauca", slug: "arauca", delivery: "5 a 6 días hábiles" },
@@ -60,7 +60,8 @@ cities.forEach(city => {
     const pageTitle = `Pruebas de ADN en ${city.name} | Certeza y Precisión 99.99%`;
     const heroTitle = `Encuentra la tranquilidad<br>y certeza que necesitas<br>con una prueba de ADN<br>precisa, segura y confiable<br>en <span style="color: #25D366;">${city.name}</span>`;
     const heroSubtitle = `Resultados con precisión superior al 99.999% y respaldo científico de más de 24 años de experiencia. Toma de muestras profesionales en <strong>${city.name}</strong>.`;
-    const waNumber = "573003095039";
+    const waNumber = city.waNumber || "573003095039";
+    const waDisplay = city.waDisplay || "300 309 50 39";
     const waMessage = "Hola, me gustaría recibir más información y asesoría.";
 
     let content = template;
@@ -70,6 +71,7 @@ cities.forEach(city => {
     content = content.replace(/{{HERO_TITLE}}/g, heroTitle);
     content = content.replace(/{{HERO_SUBTITLE}}/g, heroSubtitle);
     content = content.replace(/{{WHATSAPP_NUMBER}}/g, waNumber);
+    content = content.replace(/{{WHATSAPP_DISPLAY}}/g, waDisplay);
     content = content.replace(/{{WHATSAPP_MESSAGE}}/g, encodeURIComponent(waMessage));
     content = content.replace(/{{DELIVERY_TIME}}/g, city.delivery);
 
