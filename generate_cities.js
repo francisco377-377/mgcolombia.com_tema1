@@ -58,10 +58,8 @@ cities.forEach(city => {
 
     // Dynamic strings
     const pageTitle = `Pruebas de ADN en ${city.name} | Certeza y Precisión 99.99%`;
-    const heroTitle = `Pruebas de Paternidad en ${city.name} con Resultados Rápidos`;
-    const heroSubtitle = city.hq 
-        ? `Sede principal con los tiempos de entrega más rápidos del país. Tecnología genética de última generación en ${city.name}.`
-        : `Toma de muestras profesional y discreta en ${city.name}. Resultados 100% confiables con respaldo de Laboratorio Genes SAS.`;
+    const heroTitle = `Encuentra la tranquilidad<br>y certeza que necesitas<br>con una prueba de ADN<br>precisa, segura y confiable<br>en <span style="color: #25D366;">${city.name}</span>`;
+    const heroSubtitle = `Resultados con precisión superior al 99.999% y respaldo científico de más de 24 años de experiencia. Toma de muestras profesionales en <strong>${city.name}</strong>.`;
     const waNumber = "573003095039";
     const waMessage = "Hola, me gustaría recibir más información y asesoría.";
 
