@@ -13,13 +13,8 @@
     RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
     RewriteRule ^(.*)$ https://mundogeneticocolombia.com/$1 [L,R=301]
 
-    # 3. URLs LIMPIAS PARA CIUDADES (Clean URLs)
-
-
-    # Reescritura interna: /nombre-ciudad/ mapea a /ciudad/nombre-ciudad/index.html de forma transparente
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^([^/]+)/?$ ciudad/$1/index.html [L,QSA]
+    # 3. URLs LIMPIAS PARA CIUDADES (Deshabilitado para usar estructura /ciudad/ física)
+    # Reescritura interna removida para favorecer rutas físicas y visualización local redundante.
 </IfModule>
 
 # ----------------------------------------------------------------------
