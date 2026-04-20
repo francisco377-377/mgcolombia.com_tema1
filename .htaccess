@@ -1,0 +1,85 @@
+# ----------------------------------------------------------------------
+# REGLAS DE SEGURIDAD Y RENDIMIENTO (MUNDO GENÉTICO)
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # 1. FORZAR HTTPS (Certificado SSL)
+    # COMENTADO: SiteGround y GitHub Pages ya fuerzan HTTPS. Hacerlo aquí puede causar un bucle (ERR_TOO_MANY_REDIRECTS) y "desaparecer" la URL.
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 2. REDIRIGIR WWW A SIN WWW (Opcional, pero recomendado para SEO)
+    # COMENTADO: Preferible configurarlo desde el panel del hosting o DNS para evitar conflictos de redirección.
+    # RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
+    # RewriteRule ^(.*)$ https://mundogeneticocolombia.com/$1 [L,R=301]
+
+    # 3. URLs LIMPIAS PARA CIUDADES (Deshabilitado para usar estructura /ciudad/ física)
+    # Reescritura interna removida para favorecer rutas físicas y visualización local redundante.
+</IfModule>
+
+# ----------------------------------------------------------------------
+# ARCHIVO PRINCIPAL POR DEFECTO
+# ----------------------------------------------------------------------
+DirectoryIndex index.html index.php
+
+# ----------------------------------------------------------------------
+# SEGURIDAD DE ENCABEZADOS (Para Meta, Google y Protección Anti-Hacking)
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Proteger contra Clickjacking (Para evitar que pongan tu web en un iframe)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Forzar protección XSS en navegadores antiguos
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Evitar que los navegadores "adivinen" tipos de archivos para inyectar código
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Impedir que otros sitios referencien a tu web de forma insegura (Referrer Policy)
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# PROTECCIÓN DE DIRECTORIOS Y ARCHIVOS
+# ----------------------------------------------------------------------
+# Deshabilitar mostrar archivos en carpetas sin "index.html"
+Options -Indexes
+
+# Bloquear archivos sensibles
+<FilesMatch "\.(env|log|md|bak|sql|config|git)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Ocultar la carpeta antigua de Backup de WordPress para que nadie la ejecute o la indexe Google
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^wp-backup/.*$ - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# OPTIMIZACIÓN DE RENDIMIENTO (CACHÉ Y GZIP)
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    # Comprimir texto, html, javascript, css, xml, etc (Mayor velocidad)
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    # Caché del navegador para recursos estáticos
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresDefault "access plus 2 days"
+</IfModule>

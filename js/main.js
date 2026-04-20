@@ -208,7 +208,9 @@ function initWhatsAppTracking() {
 
             // Evento para Google Ads
             gtag('event', 'conversion', {
-                'send_to': 'AW-996359759/S41nCPjVndIZEP_A_9kD'
+                'send_to': 'AW-996359759',
+                'event_category': 'engagement',
+                'event_label': 'whatsapp_click'
             });
             
             console.log('Google Ads & GA4: WhatsApp tracking event sent');
