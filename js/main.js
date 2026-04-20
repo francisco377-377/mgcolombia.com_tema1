@@ -190,7 +190,33 @@ document.addEventListener('DOMContentLoaded', () => {
     initTransparencyStats();
     initTransparencyDNA();
     initTechServices();
+    initWhatsAppTracking();
 });
+
+// =========================================================
+// GOOGLE ADS & WHATSAPP TRACKING
+// =========================================================
+function initWhatsAppTracking() {
+    document.addEventListener('click', (e) => {
+        const waLink = e.target.closest('a[href*="whatsapp.com"]');
+        if (waLink && typeof gtag === 'function') {
+            // Evento para GA4
+            gtag('event', 'generate_lead', {
+                'service': 'whatsapp',
+                'location': window.location.pathname
+            });
+
+            // Evento para Google Ads
+            gtag('event', 'conversion', {
+                'send_to': 'AW-996359759',
+                'event_category': 'engagement',
+                'event_label': 'whatsapp_click'
+            });
+            
+            console.log('Google Ads & GA4: WhatsApp tracking event sent');
+        }
+    });
+}
 
 function initTechServices() {
     const cards = document.querySelectorAll('.service-card-tech');
