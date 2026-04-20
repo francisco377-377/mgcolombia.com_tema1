@@ -14,9 +14,9 @@ DirectoryIndex index.html
     RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|svg|webp|ico)$ [NC]
 
     # 2. FORZAR NO-WWW (Canónico: mundogeneticocolombia.com)
-    # Usamos R=302 (temporal) para evitar bloqueos por caché del navegador durante las pruebas.
+    # Usamos R=301 (permanente) ahora que el sitio es estable.
     RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
-    RewriteRule ^ https://mundogeneticocolombia.com%{REQUEST_URI} [L,R=302]
+    RewriteRule ^ https://mundogeneticocolombia.com%{REQUEST_URI} [L,R=301]
 
     # 3. FORZAR HTTPS (DELEGADO A SITE TOOLS)
     # Nota: No añadimos la regla de HTTPS aquí porque el panel de SiteGround ya tiene
