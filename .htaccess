@@ -6,12 +6,14 @@
     RewriteEngine On
     
     # 1. FORZAR HTTPS (Certificado SSL)
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # COMENTADO: SiteGround y GitHub Pages ya fuerzan HTTPS. Hacerlo aquí puede causar un bucle (ERR_TOO_MANY_REDIRECTS) y "desaparecer" la URL.
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # 2. REDIRIGIR WWW A SIN WWW (Opcional, pero recomendado para SEO)
-    RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
-    RewriteRule ^(.*)$ https://mundogeneticocolombia.com/$1 [L,R=301]
+    # COMENTADO: Preferible configurarlo desde el panel del hosting o DNS para evitar conflictos de redirección.
+    # RewriteCond %{HTTP_HOST} ^www\.mundogeneticocolombia\.com$ [NC]
+    # RewriteRule ^(.*)$ https://mundogeneticocolombia.com/$1 [L,R=301]
 
     # 3. URLs LIMPIAS PARA CIUDADES (Deshabilitado para usar estructura /ciudad/ física)
     # Reescritura interna removida para favorecer rutas físicas y visualización local redundante.
