@@ -14,7 +14,7 @@ const cities = [
   { name: "Bogotá", slug: "bogota", delivery: "5 a 6 días hábiles" },
   { name: "Bucaramanga", slug: "bucaramanga", delivery: "5 a 6 días hábiles" },
   { name: "Cajicá", slug: "cajica", delivery: "5 a 6 días hábiles" },
-  { name: "Cali", slug: "cali", delivery: "5 a 6 días hábiles" },
+  { name: "Cali", slug: "cali", delivery: "5 a 6 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
   { name: "Cartagena", slug: "cartagena", delivery: "5 a 6 días hábiles" },
   { name: "Caucasia", slug: "caucasia", delivery: "5 a 6 días hábiles" },
   { name: "Cúcuta", slug: "cucuta", delivery: "5 a 6 días hábiles" },
