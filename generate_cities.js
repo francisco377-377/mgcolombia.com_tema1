@@ -42,7 +42,7 @@ const cities = [
   { name: "Tunja", slug: "tunja", delivery: "5 a 6 días hábiles" },
   { name: "Túquerres", slug: "tuquerres", delivery: "5 a 6 días hábiles" },
   { name: "Valledupar", slug: "valledupar", delivery: "5 a 6 días hábiles" },
-  { name: "Villavicencio", slug: "villavicencio", delivery: "5 a 6 días hábiles" },
+  { name: "Villavicencio", slug: "villavicencio", delivery: "5 a 6 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
   { name: "Yopal", slug: "yopal", delivery: "5 a 6 días hábiles" }
 ];
 
