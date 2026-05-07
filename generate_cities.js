@@ -28,7 +28,7 @@ const cities = [
   { name: "Montelíbano", slug: "montelibano", delivery: "5 a 6 días hábiles" },
   { name: "Montería", slug: "monteria", delivery: "5 a 6 días hábiles" },
   { name: "Monterrey", slug: "monterrey", delivery: "5 a 6 días hábiles" },
-  { name: "Neiva", slug: "neiva", delivery: "5 a 6 días hábiles" },
+  { name: "Neiva", slug: "neiva", delivery: "5 a 6 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
   { name: "Palmira", slug: "palmira", delivery: "5 a 6 días hábiles" },
   { name: "Pasto", slug: "pasto", delivery: "5 a 6 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
   { name: "Pereira", slug: "pereira", delivery: "5 a 6 días hábiles", waNumber: "573503189981", waDisplay: "350 318 99 81" },
